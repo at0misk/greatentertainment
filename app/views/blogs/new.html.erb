@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6">
+			<h4><%= @user.first %> <%= @user.last %>'s Blog - New Blog Post</h4>
+			<!-- <h5>New Blog Post:</h5> -->
+			<form action="/blogs" method="post" class="form-horizontal">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<input name="blog[user_id]" type="hidden" value="<%= @user.id %>">
+			<div class="row">
+				<div class="form-group">
+				    <label for="title" class="col-sm-4 control-label">Title</label>
+				    <div class="col-sm-8">
+				        <input name="blog[title]" type="text" class="form-control" id="title" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="content" class="col-sm-4 control-label">Post:</label>
+				    <div class="col-sm-8">
+				    	<textarea name="blog[content]" class="form-control" id="content" rows="20"></textarea>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="submit" class="col-sm-4 control-label"></label>
+				    <div class="col-sm-8 btn-col">
+				        <button class="btn btn-primary">Submit</button>
+				    </div>
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>

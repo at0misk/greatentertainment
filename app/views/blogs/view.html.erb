@@ -1,0 +1,15 @@
+<style type="text/css">
+	small{
+		margin-left: 2%;
+	}
+</style>
+<div class="container">
+	<div class="row">
+		<% @blogs.each do |val| %>
+		<div class="col-sm-6">
+			<h4><%= val.title %><small><%= val.created_at.to_time.strftime('%B %e at %l:%M %p') %></small></h4>
+			<p><%= val.content %></p>
+		</div>
+		<% end %>
+	</div>
+</div>

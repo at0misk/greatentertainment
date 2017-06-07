@@ -25,7 +25,9 @@ class UsersController < ApplicationController
 			redirect_to '/'
 		else
 			@current_user = User.find(session[:user_id]) if session[:user_id]
+			@request_count = Topic.where(user_id: session[:user_id]).length if session[:user_id]
 		end
+		@latest = Blog.where(user_id: @page_user.id).last
 	end
 	def edit
 		@user = User.find_by_username(params['username'])

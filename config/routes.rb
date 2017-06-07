@@ -8,6 +8,12 @@ Rails.application.routes.draw do
 	post '/topics/destroy' => 'topics#destroy'
 	get '/topics/:id' => 'topics#view'
 	post '/messages' => 'messages#create'
+	get '/blogs/edit/:id' => 'blogs#edit'
+	get '/blogs/new/:id' => 'blogs#new'
+	post 'blogs' => 'blogs#create'
+	post 'blogs/destroy' => 'blogs#destroy'
+	patch '/blogs/:id' => 'blogs#update'
+	get '/blogs/:id' => 'blogs#view'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
 	mount ActionCable.server => '/cable'

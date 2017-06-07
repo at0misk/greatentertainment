@@ -5,6 +5,7 @@ class User < ApplicationRecord
 	validates :email, :username, uniqueness: true
 	has_many :topics
 	has_many :messages
+	has_many :blogs
 	has_attached_file :avatar, styles: { medium: "300x300", thumb: "100x100" }
 
 	def find_by_username(username)
