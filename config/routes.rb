@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 	get '/requests/:id' => 'users#requests'
 	get '/request_chat/:id' => 'users#request_chat'
 	post 'topics' => 'topics#create'
+	post '/topics/destroy' => 'topics#destroy'
 	get '/topics/:id' => 'topics#view'
 	post '/messages' => 'messages#create'
 	# ALL other routes must go above this --

@@ -25,8 +25,9 @@ class TopicsController < ApplicationController
 		params.require(:topic).permit(:name, :user_id, :request_name)
 	end
 	def destroy
+		@user = User.find(session[:user_id])
 		Topic.destroy(params['topic_id'])
-		redirect_to '/chatroom_admin'
+		redirect_to "/#{@user.username}"
 	end
 	# def broadcast_topic
 	# end

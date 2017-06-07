@@ -30,7 +30,7 @@
 	}
 </style>
 <div class="container">
-	<%# if @user.permod %>
+	<% if @current_user %>
 		<div class="row">
 				<form action="/topics/destroy" method="POST" data-remote="true" class="chatBoxForm">
 					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -38,7 +38,7 @@
 					<button class="btn btn-danger" data-confirm="End Conversation?">X</button>
 				</form>
 		</div>
-	<%# end %>
+	<% end %>
 	<div class="row headerRow">
 		<h3><%= @topic.name %></h3>
 	</div>
@@ -46,6 +46,10 @@
 		<div class="col-sm-2">
 		</div>
 		<div id="messages<%= @topic.id %>" class="col-sm-8 messageBox">
+		<p>Your request has been received, someone will be with you shortly</p>
+			<% @topic.messages.each do |val| %>
+				<p><b><%= val.username %>:</b> <%= val.content %></p>
+			<% end %>
 		</div>
 		<div class="col-sm-2">
 		</div>
