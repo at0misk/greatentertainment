@@ -4,6 +4,8 @@ class TopicsController < ApplicationController
 		session[:req_name] = @topic.request_name
 		if @topic.save
 			# broadcast_topic
+			# Broadcast happens from model
+			# Mail the user here to notify them that a chat room just opened.
 			redirect_to "/topics/#{@topic.id}"
 		end
 	end
