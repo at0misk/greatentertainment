@@ -1,0 +1,34 @@
+<style type="text/css">
+	.imgDiv{
+		width: 350px;
+	}
+	.imgDiv img{
+		width: 100%;
+	}
+</style>
+<div class="container">
+	<div class="row">	
+		<div class="col-sm-6">
+		<div class="imgDiv">
+			<%= image_tag @page_user.avatar.url %>
+		</div>
+			<h4>Username: <%= @page_user.username %> </h4>
+			<h5>Name: <%= @page_user.first %> <%= @page_user.last %></h5>
+			<h5>Email: <%= @page_user.email %></h5>
+			<h5>Phone #: <%= @page_user.phone_number %></h5>
+			<a href="/request_chat/<%= @page_user.id %>">Request to chat with this agent</a>
+			<h4>About:</h4>
+			<p><%= @page_user.about %></p>
+		</div>
+	<% if @current_user && @current_user.id == @page_user.id %>
+		<div class="col-sm-6">
+			<h4>Admin Tools</h4>
+			<a href="/<%= @page_user.username %>/edit">Edit User Info</a><br>
+			<a href="/requests/<%= @current_user.id %>">Chat Requests</a><br>
+		</div>
+	<% else %>
+		<div class="col-sm-6">
+		</div>
+	<% end %>
+	</div>
+</div>

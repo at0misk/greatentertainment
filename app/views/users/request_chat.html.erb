@@ -1,0 +1,42 @@
+<style type="text/css">
+	.header{
+		text-align: center;
+	}
+	.formButtons{
+		text-align: center;
+		margin-top: 2%;
+	}
+</style>
+<div class="row">
+	<div class="col-md-3">
+	</div>
+	<div class="col-md-6">
+		<h2 class="header">Live Chat</h2>
+		<h4 class="header">What do you need help with?</h4>
+		<form action="/topics" method="POST" data-remote="true" class="form-horizontal">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<input type="hidden" name="topic[user_id]" value="<%= @agent.id %>">
+				<div class="form-group">
+				    <label for="req_name" class="col-sm-3 control-label">Your Name: </label>
+				    <div class="col-sm-6">
+				        <input type="text" name="topic[request_name]" class="form-control" id="req_name" />
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="topicName" class="col-sm-3 control-label">Topic: </label>
+				    <div class="col-sm-6">
+				        <input type="text" name="topic[name]" class="form-control" id="topicName" />
+				    </div>
+				</div>
+			<div class="row btnRow">
+			    <div class="col-sm-12 formButtons">
+			        <button type="submit" class="btn btn-primary">
+			            Request Chat</button>
+			        <!-- <a href="javascript:;">Forgot your password?</a> -->
+			    </div>
+			</div>
+		</form>
+	</div>
+	<div class="col-md-3">
+	</div>
+</div>
