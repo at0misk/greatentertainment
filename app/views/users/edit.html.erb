@@ -8,119 +8,119 @@
 				<div class="col-sm-8">
 				</div>
 			</div>
-			<form action="/<%= @user.username %>" method="post" class="form-horizontal" enctype="multipart/form-data">
-				<input name="_method" type="hidden" value="PATCH"%>
-				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-			<div class="row">
-				<div class="form-group">
-				    <label for="first" class="col-sm-4 control-label">First Name</label>
-				    <div class="col-sm-8">
-				        <input name="user[first]" type="text" class="form-control" id="first" value="<%= @user.first %>"/>
-				    </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group">
-				    <label for="last" class="col-sm-4 control-label">Last Name</label>
-				    <div class="col-sm-8">
-				        <input name="user[last]" type="text" class="form-control" id="last" value="<%= @user.last %>" />
-				    </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group">
-				    <label for="email" class="col-sm-4 control-label">Email</label>
-				    <div class="col-sm-8">
-				        <input name="user[email]" type="text" class="form-control" id="email" value="<%= @user.email %>"/>
-				    </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group">
-				    <label for="username" class="col-sm-4 control-label">Username</label>
-				    <div class="col-sm-8">
-				        <input name="user[username]" type="text" class="form-control" id="username" value="<%= @user.username %>"/>
-				    </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group">
-				    <label for="phone_number" class="col-sm-4 control-label">Phone Number</label>
-				    <div class="col-sm-8">
-				        <input name="user[phone_number]" type="text" class="form-control" id="phone_number" value="<%= @user.phone_number %>" />
-				    </div>
-				</div>
-			</div>
-			<% if @user.avatar.url %>
-			<div class="row">
-				<div class="form-group">
-					<label for="current_image" class="col-sm-4 control-label">Current Photo</label>
-					<div class="col-sm-8">
-						<%= image_tag @user.avatar.url , :size => "100x100"%>
+				<form action="/<%= @user.username %>" method="post" class="form-horizontal" enctype="multipart/form-data">
+					<input name="_method" type="hidden" value="PATCH"%>
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<div class="row">
+					<div class="form-group">
+					    <label for="first" class="col-sm-4 control-label">First Name</label>
+					    <div class="col-sm-8">
+					        <input name="user[first]" type="text" class="form-control" id="first" value="<%= @user.first %>"/>
+					    </div>
 					</div>
 				</div>
-			</div>
-			<% end %>
-			  <div class="form-group">
-			    <label for="exampleInputFile" class="col-sm-4 control-label">Photo</label>
-			    <div class="col-sm-8">
-			    	<input name="user[avatar]" type="file" class="form-control-file" id="inputFile" aria-describedby="fileHelp" value="<%= @user.avatar %>">
-			    </div>
-			  </div>
-			<div class="row">
-				<div class="form-group">
-				    <label for="about" class="col-sm-4 control-label">About Me:</label>
+				<div class="row">
+					<div class="form-group">
+					    <label for="last" class="col-sm-4 control-label">Last Name</label>
+					    <div class="col-sm-8">
+					        <input name="user[last]" type="text" class="form-control" id="last" value="<%= @user.last %>" />
+					    </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+					    <label for="email" class="col-sm-4 control-label">Email</label>
+					    <div class="col-sm-8">
+					        <input name="user[email]" type="text" class="form-control" id="email" value="<%= @user.email %>"/>
+					    </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+					    <label for="username" class="col-sm-4 control-label">Username</label>
+					    <div class="col-sm-8">
+					        <input name="user[username]" type="text" class="form-control" id="username" value="<%= @user.username %>"/>
+					    </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+					    <label for="phone_number" class="col-sm-4 control-label">Phone Number</label>
+					    <div class="col-sm-8">
+					        <input name="user[phone_number]" type="text" class="form-control" id="phone_number" value="<%= @user.phone_number %>" />
+					    </div>
+					</div>
+				</div>
+				<% if @user.avatar.url %>
+				<div class="row">
+					<div class="form-group">
+						<label for="current_image" class="col-sm-4 control-label">Current Photo</label>
+						<div class="col-sm-8">
+							<%= image_tag @user.avatar.url , :size => "100x100"%>
+						</div>
+					</div>
+				</div>
+				<% end %>
+				  <div class="form-group">
+				    <label for="exampleInputFile" class="col-sm-4 control-label">Photo</label>
 				    <div class="col-sm-8">
-				    	<textarea name="user[about]" class="form-control" id="about" rows="6"><%= @user.about %></textarea>
+				    	<input name="user[avatar]" type="file" class="form-control-file" id="inputFile" aria-describedby="fileHelp" value="<%= @user.avatar %>">
 				    </div>
+				  </div>
+				<div class="row">
+					<div class="form-group">
+					    <label for="about" class="col-sm-4 control-label">About Me:</label>
+					    <div class="col-sm-8">
+					    	<textarea name="user[about]" class="form-control" id="about" rows="6"><%= @user.about %></textarea>
+					    </div>
+					</div>
 				</div>
+				<div class="row">
+					<div class="form-group">
+					    <label for="password" class="col-sm-4 control-label">Password</label>
+					    <div class="col-sm-8">
+					        <input name="user[password]" type="password" class="form-control" id="password" />
+					    </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+					    <label for="password_confirmation" class="col-sm-4 control-label">Password Confirmation</label>
+					    <div class="col-sm-8">
+					        <input name="user[password_confirmation]" type="password" class="form-control" id="password_confirmation" />
+					    </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+					    <label for="submit" class="col-sm-4 control-label"></label>
+					    <div class="col-sm-8 btn-col">
+					        <button class="btn btn-primary">Submit</button>
+					    </div>
+					</div>
+				</div>
+				</form>
 			</div>
-			<div class="row">
-				<div class="form-group">
-				    <label for="password" class="col-sm-4 control-label">Password</label>
-				    <div class="col-sm-8">
-				        <input name="user[password]" type="password" class="form-control" id="password" />
-				    </div>
+			<div class="col-sm-6">
+				<div class="row">
+					<div class="col-sm-4">
+						<h3 class="form-header">Destroy</h3>
+					</div>
+					<div class="col-sm-8">
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="form-group">
-				    <label for="password_confirmation" class="col-sm-4 control-label">Password Confirmation</label>
-				    <div class="col-sm-8">
-				        <input name="user[password_confirmation]" type="password" class="form-control" id="password_confirmation" />
-				    </div>
+				<form action="/<%= @user.username %>" method="post" class="form-horizontal">
+					<input name="_method" type="hidden" value="DELETE"%>
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<div class="row">
+					<div class="form-group">
+					    <label for="submit" class="col-sm-4 control-label"></label>
+					    <div class="col-sm-8 btn-col">
+					        <button class="btn btn-danger" data-confirm="are you sure?">Destroy</button>
+					    </div>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="form-group">
-				    <label for="submit" class="col-sm-4 control-label"></label>
-				    <div class="col-sm-8 btn-col">
-				        <button class="btn btn-primary">Submit</button>
-				    </div>
-				</div>
-			</div>
-			</form>
-		</div>
-		<div class="col-sm-6">
-			<div class="row">
-				<div class="col-sm-4">
-					<h3 class="form-header">Destroy</h3>
-				</div>
-				<div class="col-sm-8">
-				</div>
-			</div>
-			<form action="/<%= @user.username %>" method="post" class="form-horizontal">
-				<input name="_method" type="hidden" value="DELETE"%>
-				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-			<div class="row">
-				<div class="form-group">
-				    <label for="submit" class="col-sm-4 control-label"></label>
-				    <div class="col-sm-8 btn-col">
-				        <button class="btn btn-danger" data-confirm="are you sure?">Destroy</button>
-				    </div>
-				</div>
-			</div>
-			</form>
+				</form>
 			</div>
 		</div>
 	</div>
