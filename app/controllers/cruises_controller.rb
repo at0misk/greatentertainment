@@ -1,0 +1,2 @@
+class CruisesController < ApplicationController
+end
