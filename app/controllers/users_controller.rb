@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 		if @user.save
 			flash[:created] = true
 			session[:user_id] = @user.id
+			redirect_to "/#{@user.username}" and return 
 		else
 			flash[:created] = false
 		end
@@ -26,6 +27,9 @@ class UsersController < ApplicationController
 		else
 			@current_user = User.find(session[:user_id]) if session[:user_id]
 			@request_count = Topic.where(user_id: session[:user_id]).length if session[:user_id]
+				if @request_count && @request_count > 0
+					@page_user_topics = Topic.where(user_id: session[:user_id])
+				end
 		end
 		@latest = Blog.where(user_id: @page_user.id).last
 	end

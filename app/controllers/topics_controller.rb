@@ -15,13 +15,13 @@ class TopicsController < ApplicationController
 		if session[:user_id] == @topic.user_id
 			@current_user = User.find(session[:user_id])
 		end
-		# # if @user.permod
-		# 	ActionCable.server.broadcast 'messages',
-	 #        message: "A customer service representitive has joined the channel",
-	 #        user: "System",
-	 #        topic_id: @topic.id,
-	 #        user_id: @user.id
-		# # end
+		if @current_user && @current_user.id == @topic.user.id
+			ActionCable.server.broadcast 'messages',
+	        message: "The agent has joined the channel",
+	        username: "System",
+	        topic_id: @topic.id,
+	        user_id: @user.id
+		end
 	end
 	def topic_params
 		params.require(:topic).permit(:name, :user_id, :request_name)

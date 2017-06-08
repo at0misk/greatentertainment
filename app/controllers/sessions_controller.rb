@@ -6,12 +6,13 @@ class SessionsController < ApplicationController
 		if @user
 			if @user.authenticate(params['password'])
 				session[:user_id] = @user.id
+				redirect_to "/#{@user.username}" and return 
 			else
 				flash[:errors] = "Incorrect password"
 			end
 		else
 			flash[:errors] = "User doesn't exist"
 		end
-		redirect_to "/#{@user.username}"
+		redirect_to "/"
 	end
 end

@@ -1,6 +1,7 @@
 App.topics = App.cable.subscriptions.create('TopicsChannel', {  
   received: function(data) {
-    return $("#topics" + data.user_id).append(this.renderTopic(data));
+  	$("#req_table" + data.user_id).removeClass('hide');
+    return $(".topics" + data.user_id).append(this.renderTopic(data));
   },
 
   renderTopic: function(data) {

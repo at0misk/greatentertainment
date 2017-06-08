@@ -8,6 +8,9 @@
 	small{
 		margin-left: 2%;
 	}
+	.hide{
+		display: none;
+	}
 </style>
 <div class="container">
 	<div class="row">	
@@ -22,17 +25,39 @@
 			<a href="/request_chat/<%= @page_user.id %>">Request to chat with this agent</a><br>
 			<h4>About:</h4>
 			<p><%= @page_user.about %></p>
+			<% if @latest %>
 			<h4>Latest Post from <a href="/blogs/<%= @page_user.id %>">Blog</a>:</h4>
 			<h5><%= @latest.title %><small><%= @latest.created_at.to_time.strftime('%B %e at %l:%M %p') %></small></h6>
 			<p><%= @latest.content %></p>
+			<% end %>
 		</div>
 	<% if @current_user && @current_user.id == @page_user.id %>
 		<div class="col-sm-6">
 			<h4>Admin Tools</h4>
 			<a href="/<%= @page_user.username %>/edit">Edit User Info</a><br>
-			<a href="/requests/<%= @current_user.id %>">Chat Requests</a><% if @request_count > 0 %> <small><%= @request_count %> new request(s)!</small><% end %><br>
 			<a href="/blogs/new/<%= @page_user.id %>">New Blog Post</a><br>
 			<a href="/blogs/edit/<%= @page_user.id %>">Edit Blog Posts</a></br>
+			<a href="/requests/<%= @current_user.id %>">Chat Requests</a><% if @request_count > 0 %> <small><%= @request_count %> new request(s)!</small><% end %><br>
+				<table class="table table-striped hide" id="req_table<%= @page_user.id %>">
+					<thead>	
+						<tr>
+							<td>Topic</td>
+							<td>Requested By</td>
+							<td>Requested At</td>
+						</tr>
+					</thead>
+					<tbody class="topics<%= @page_user.id %>">
+						<% if @request_count > 0 %>
+							<% @page_user_topics.each do |val| %>
+						   		<tr>
+									<td><a href="/topics/<%= val.id %>"><%= val.name %></a></td>
+									<td><%= val.request_name %></td>
+									<td><%= time_ago_in_words(val.created_at) %></td>
+								</tr>
+							<% end %>
+						<% end %>
+				  </tbody>
+				</table>
 		</div>
 	<% else %>
 		<div class="col-sm-6">
