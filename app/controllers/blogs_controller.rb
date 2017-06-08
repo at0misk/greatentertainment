@@ -6,7 +6,6 @@ class BlogsController < ApplicationController
 		@user = User.find(session[:user_id])
 		@blog = Blog.new(blog_params)
 		if @blog.save
-
 		end
 		redirect_to "/blogs/#{@user.id}"
 	end
