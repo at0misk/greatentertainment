@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 	get '/subscriptions' => 'subscriptions#index'
 	get '/subscriptions/:id' => 'subscriptions#subscribe'
 	post '/subscriptions' => 'subscriptions#create'
+	get '/cruises/new/:id' => 'cruises#new'
+	post '/cruises' => 'cruises#create'
+	get '/cruises/:id' => 'cruises#view'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
 	mount ActionCable.server => '/cable'
