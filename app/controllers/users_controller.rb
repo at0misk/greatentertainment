@@ -53,9 +53,6 @@ class UsersController < ApplicationController
 	def requests
 		@user = User.find(session[:user_id])
 		@topics = Topic.where(user_id: @user.id)
-		# if !@user.permod
-		# 	redirect_to '/'
-		# end
 	end
 	def request_chat
 		@agent = User.find(params['id'])
