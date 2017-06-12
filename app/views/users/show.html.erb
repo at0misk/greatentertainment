@@ -46,7 +46,7 @@
 							<td>Requested At</td>
 						</tr>
 					</thead>
-					<tbody class="topics<%= @page_user.id %>">
+					<tbody class="topicsList<%= @page_user.id %>">
 						<% if @request_count > 0 %>
 							<% @page_user_topics.each do |val| %>
 						   		<tr>
@@ -55,6 +55,11 @@
 									<td><%= time_ago_in_words(val.created_at) %></td>
 								</tr>
 							<% end %>
+						<% end %>
+						<% else %>
+							<tr class="topicsListEmpty">
+								<td>No chat requests found</td>
+							</tr>
 						<% end %>
 				    </tbody>
 				</table>
