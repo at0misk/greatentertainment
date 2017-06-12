@@ -25,6 +25,7 @@
 			<a href="/request_chat/<%= @page_user.id %>">Request to chat with this agent</a><br>
 			<h4>About:</h4>
 			<p><%= @page_user.about %></p>
+			<a href="/subscriptions/<%= @page_user.id %>">Subscribe to this agent</a><br>
 			<% if @latest %>
 			<h4>Latest Post from <a href="/blogs/<%= @page_user.id %>">Blog</a>:</h4>
 			<h5><%= @latest.title %><small><%= @latest.created_at.to_time.strftime('%B %e at %l:%M %p') %></small></h6>
@@ -33,14 +34,15 @@
 		</div>
 	<% if @current_user && @current_user.id == @page_user.id %>
 		<div class="col-sm-6">
-			<h4>Admin Tools</h4>
+			<h4>Agent Tools</h4>
 			<a href="/<%= @page_user.username %>/edit">Edit User Info</a><br>
 			<a href="/blogs/new/<%= @page_user.id %>">New Blog Post</a><br>
 			<a href="/blogs/edit/<%= @page_user.id %>">Edit Blog Posts</a></br>
+			<a href="/subscriptions">View Subscribers</a></br>
 			<a href="/requests/<%= @current_user.id %>">Chat Requests</a><% if @request_count > 0 %> <small><%= @request_count %> new request(s)!</small><% end %><br>
-				<table class="table table-striped hide" id="req_table<%= @page_user.id %>">
+				<table class="table table-striped" id="req_table<%= @page_user.id %>">
 					<thead>	
-						<tr>
+						<tr class="chatTableHeader<%= @page_user.id %> hide">
 							<td>Topic</td>
 							<td>Requested By</td>
 							<td>Requested At</td>
@@ -55,10 +57,9 @@
 									<td><%= time_ago_in_words(val.created_at) %></td>
 								</tr>
 							<% end %>
-						<% end %>
 						<% else %>
-							<tr class="topicsListEmpty">
-								<td>No chat requests found</td>
+							<tr class="topicsListEmpty<%= @page_user.id %>">
+								<td>No Chat Requests Found</td>
 							</tr>
 						<% end %>
 				    </tbody>

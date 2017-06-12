@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 	post 'blogs/destroy' => 'blogs#destroy'
 	patch '/blogs/:id' => 'blogs#update'
 	get '/blogs/:id' => 'blogs#view'
+	get '/subscriptions' => 'subscriptions#index'
+	get '/subscriptions/:id' => 'subscriptions#subscribe'
+	post '/subscriptions' => 'subscriptions#create'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
 	mount ActionCable.server => '/cable'
