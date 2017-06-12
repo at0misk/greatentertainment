@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  depart: 2017-06-12
+  return: 2017-06-12
+  vacancy: 1
+  description: MyString
+  user_references: MyString
+
+two:
+  title: MyString
+  depart: 2017-06-12
+  return: 2017-06-12
+  vacancy: 1
+  description: MyString
+  user_references: MyString

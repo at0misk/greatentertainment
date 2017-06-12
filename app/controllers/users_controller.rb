@@ -33,6 +33,7 @@ class UsersController < ApplicationController
 		end
 		@latest = Blog.where(user_id: @page_user.id).last
 		@cruise = Cruise.where(user_id: @page_user.id).last
+		@special = Special.where(user_id: @page_user.id).last
 	end
 	def edit
 		@user = User.find_by_username(params['username'])

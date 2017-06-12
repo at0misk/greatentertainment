@@ -6,17 +6,17 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-6">
-			<h3><%= @cruise.title %></h3>
-			<h4>Leaves on: <%= @cruise.departure %></h4>
-			<h4>Returns on: <%= @cruise.return %></h4>
-			<h4>Room available: <%= @cruise.vacancy %></h4>
-			<h4>Description: <%= @cruise.description %></h4>
+			<h3><%= @special.title %></h3>
+			<h4>Leaves on: <%= @special.depart %></h4>
+			<h4>Returns on: <%= @special.return %></h4>
+			<h4>Room available: <%= @special.vacancy %></h4>
+			<h4>Description: <%= @special.description %></h4>
 		</div>
 		<div class="col-sm-6">
 			<div class="col-sm-4">
 			</div>
 			<div class="col-sm-8">
-				<h4 class="header">Interested in this cruise?</h4>
+				<h4 class="header">Interested in this special?</h4>
 				<h5>Fill out this form to get in touch</h5>
 			</div>
 			<form action="/subscriptions" method="post" class="form-horizontal">

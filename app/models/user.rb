@@ -8,6 +8,7 @@ class User < ApplicationRecord
 	has_many :blogs
 	has_many :subscriptions
 	has_many :cruises
+	has_many :specials
 	has_attached_file :avatar, styles: { medium: "300x300", thumb: "100x100" }
 
 	def find_by_username(username)

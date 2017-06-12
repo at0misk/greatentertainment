@@ -32,12 +32,20 @@
 			<p><%= @latest.content %></p>
 			<% end %>
 			<% if @cruise %>
-			<h4>Latest Cruise Special:</h4>
+			<h4>Latest Cruise:</h4>
 			<h5><a href="/cruises/<%= @cruise.id %>"><%= @cruise.title %></a></h5>
 			<p>Leaves on: <%= @cruise.departure %></p>
 			<p>Returns on: <%= @cruise.return %></p>
 			<p>Room available: <%= @cruise.vacancy %></p>
 			<p>Description: <%= @cruise.description %></p>
+			<% end %>
+			<% if @special %>
+			<h4>Latest Special:</h4>
+			<h5><a href="/specials/<%= @special.id %>"><%= @special.title %></a></h5>
+			<p>Leaves on: <%= @special.depart %></p>
+			<p>Returns on: <%= @special.return %></p>
+			<p>Room available: <%= @special.vacancy %></p>
+			<p>Description: <%= @special.description %></p>
 			<% end %>
 		</div>
 	<% if @current_user && @current_user.id == @page_user.id %>
@@ -47,7 +55,8 @@
 			<a href="/blogs/new/<%= @page_user.id %>">New Blog Post</a><br>
 			<a href="/blogs/edit/<%= @page_user.id %>">Edit Blog Posts</a></br>
 			<a href="/subscriptions">View Subscribers</a></br>
-			<a href="/cruises/new/<%= @page_user.id %>">New Cruise Special</a><br>
+			<a href="/cruises/new/<%= @page_user.id %>">New Cruise</a><br>
+			<a href="/specials/new/<%= @page_user.id %>">New Special</a><br>
 			<a href="/requests/<%= @current_user.id %>">Chat Requests</a><% if @request_count > 0 %> <small><%= @request_count %> new request(s)!</small><% end %><br>
 				<table class="table table-striped" id="req_table<%= @page_user.id %>">
 					<thead>	
