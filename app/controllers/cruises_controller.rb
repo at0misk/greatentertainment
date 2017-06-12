@@ -13,6 +13,7 @@ class CruisesController < ApplicationController
 		params.require(:cruise).permit(:title, :departure, :return, :vacancy, :description, :user_id)
 	end
 	def view
+		@user = User.find(session[:user_id])
 		@cruise = Cruise.find(params['id'])
 	end
 end

@@ -1,1 +1,81 @@
-<%= @cruise.title %>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6">
+			<h3><%= @cruise.title %></h3>
+			<h4>Leaves on: <%= @cruise.departure %></h4>
+			<h4>Returns on: <%= @cruise.return %></h4>
+			<h4>Room available: <%= @cruise.vacancy %></h4>
+			<h4>Description: <%= @cruise.description %></h4>
+		</div>
+		<div class="col-sm-6">
+			<div class="col-sm-4">
+			</div>
+			<div class="col-sm-8">
+				<h4 class="header">Interested in this cruise?</h4>
+				<h5>Fill out this form to get in touch</h5>
+			</div>
+			<form action="/subscriptions" method="post" class="form-horizontal">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<input name="subscription[user_id]" type="hidden" value="<%= @user.id %>">
+			<div class="row">
+				<div class="form-group">
+				    <label for="first" class="col-sm-4 control-label">First Name</label>
+				    <div class="col-sm-8">
+				        <input name="subscription[first]" type="text" class="form-control" id="first" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="last" class="col-sm-4 control-label">Last Name</label>
+				    <div class="col-sm-8">
+				        <input name="subscription[last]" type="text" class="form-control" id="last" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="email" class="col-sm-4 control-label">Email</label>
+				    <div class="col-sm-8">
+				        <input name="subscription[email]" type="text" class="form-control" id="email" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="email" class="col-sm-4 control-label">Phone Number</label>
+				    <div class="col-sm-8">
+				        <input name="subscription[email]" type="text" class="form-control" id="email" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="email" class="col-sm-4 control-label">Message</label>
+				    <div class="col-sm-8">
+				        <input name="subscription[email]" type="text" class="form-control" id="email" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="submit" class="col-sm-4 control-label"></label>
+				    <div class="col-sm-8 btn-col">
+				        <button class="btn btn-primary">Subscribe</button>
+				    </div>
+				</div>
+			</div>
+			</form>
+			<% if flash[:sub] %>
+				<div class="row">
+					<div class="col-sm-4">
+					</div>
+					<div class="col-sm-6">
+						<h4><%= flash[:sub] %></h4>
+					</div>
+				</div>
+				<% flash[:sub] = nil %>
+			<% end %>
+		</div>
+	</div>
+</div>
