@@ -1,4 +1,7 @@
 <style type="text/css">
+	.outer-cont{
+		height: 100%;
+	}
 	.imgDiv{
 		width: 350px;
 	}
@@ -15,6 +18,7 @@
 		max-width: 100%;
 		height: 100%;
 		width: 100%;
+   		min-height: 171px;
 	}
 	.profileDiv{
 		padding-right: 0px;
@@ -22,7 +26,7 @@
 	}
 	.userInfo{
 		color: white;
-		height: 100%;
+   		height: 171px;
 		vertical-align: top;
 		background-color: #5b90b2;
 		overflow: scroll;
@@ -31,7 +35,7 @@
 		text-align: center;
 	}
 	.profileRow{
-		height: 200px;
+		height: auto;
 	}
 	.meet{
 		margin-top: 10px;
@@ -246,6 +250,10 @@ fieldset[disabled] .btn-fare.active {
 	max-height: 416px;
     overflow-x: hidden;
     overflow-y: scroll;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .contact-col h3{
 	display: inline-block;
@@ -362,6 +370,32 @@ fieldset[disabled] .btn-fare.active {
 }
 .vacationRow .arrow-col .arrow{
 	margin-top: 79px;
+}
+.faregrabbrRow{
+	margin-left: -15px !important;
+    background-color: #eba10a;
+    height: 90px;
+    margin-top: 15px;
+    color: white;
+    margin-top: 15px;
+}
+.faregrabbrRow h5{
+	margin-left: 15px;
+    margin-top: 0px;
+}
+.faregrabbrRow .arrow-col .arrow{
+	margin-top: 30px;
+}
+.faregrabbrWhite{
+	background: white;
+	color: black;
+}
+.faregrabbrWhite .arrow-col{
+	background-color: rgba(0, 0, 0, 0.1); 
+}
+.faregrabbrProfile{
+	background-color: #06b78d;
+	color: white;
 }
 </style>
 <div class="container-fluid outer-cont">
@@ -811,6 +845,33 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			</div>
 			</div>
+			<div class="row faregrabbrRow faregrabbrWhite">
+				<div class="col-sm-10 contact-col">
+					<h3>WAIT FOR THE BEST PRICE?</h3>
+					<h5>User our flight engine Faregrabbr</h5>
+				</div>
+				<div class="col-sm-2 contact-col arrow-col">
+					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
+				</div>
+			</div>
+			<div class="row faregrabbrRow">
+				<div class="col-sm-10 contact-col">
+					<h3>CRUISE BOOKING ENGINER</h3>
+					<h5>Explore cruises all over the world</h5>
+				</div>
+				<div class="col-sm-2 contact-col arrow-col">
+					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
+				</div>
+			</div>
+			<div class="row faregrabbrRow faregrabbrProfile">
+				<div class="col-sm-10 contact-col">
+					<h3>TRAVELER PROFILE</h3>
+					<h5>Create of view a traveler profile</h5>
+				</div>
+				<div class="col-sm-2 contact-col arrow-col">
+					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -993,7 +1054,7 @@ $('#air_type').change(function(){
 		$('.multiDiv').removeClass('hide');
 		$('.multiDiv').addClass('block');
 		$('.destination-col').removeClass('hide');
-		$('.formOuter').addClass('scrolling')
+		$('.tabsDiv').addClass('scrolling')
 	}
 	else if($(this).val() == 'oneway'){
 		if(multi == true){
@@ -1010,7 +1071,7 @@ $('#air_type').change(function(){
 		$('.multi-button').removeClass('button-show');
 		$('.multiDiv').addClass('hide');
 		$('.multiDiv').removeClass('block');
-		$('.formOuter').removeClass('scrolling')
+		$('.tabsDiv').removeClass('scrolling')
 	}
 	else if($(this).val() == 'roundtrip'){
 		if(multi == true){
@@ -1027,7 +1088,7 @@ $('#air_type').change(function(){
 		$('.multiDiv').addClass('hide');
 		$('.multiDiv').removeClass('block');
 		$('.destination-col').removeClass('hide');
-		$('.formOuter').removeClass('scrolling')
+		$('.tabsDiv').removeClass('scrolling')
 	}
 	if($(this).val() == "oneway" || $(this).val() == 'multicity'){
 		$('.return-form-group').addClass('hide');
