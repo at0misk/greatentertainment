@@ -24,6 +24,82 @@
 					</table>
 				</div>
 			</div>
+				<div class="row">
+				DB Stuff	
+		<div class="col-sm-6">
+		<div class="imgDiv">
+			<%= image_tag @page_user.avatar.url %>
+		</div>
+			<h4>Username: <%= @page_user.username %> </h4>
+			<h5>Name: <%= @page_user.first %> <%= @page_user.last %></h5>
+			<h5>Email: <%= @page_user.email %></h5>
+			<h5>Phone #: <%= @page_user.phone_number %></h5>
+			<a href="/request_chat/<%= @page_user.id %>">Request to chat with this agent</a><br>
+			<h4>About:</h4>
+			<p><%= @page_user.about %></p>
+			<a href="/subscriptions/<%= @page_user.id %>">Subscribe to this agent</a><br>
+			<% if @latest %>
+			<h4>Latest Post from <a href="/blogs/<%= @page_user.id %>">Blog</a>:</h4>
+			<h5><%= @latest.title %><small><%= @latest.created_at.to_time.strftime('%B %e at %l:%M %p') %></small></h6>
+			<p><%= @latest.content %></p>
+			<% end %>
+			<% if @cruise %>
+			<h4>Latest Cruise:</h4>
+			<h5><a href="/cruises/<%= @cruise.id %>"><%= @cruise.title %></a></h5>
+			<p>Leaves on: <%= @cruise.departure %></p>
+			<p>Returns on: <%= @cruise.return %></p>
+			<p>Room available: <%= @cruise.vacancy %></p>
+			<p>Description: <%= @cruise.description %></p>
+			<% end %>
+			<% if @special %>
+			<h4>Latest Special:</h4>
+			<h5><a href="/specials/<%= @special.id %>"><%= @special.title %></a></h5>
+			<p>Leaves on: <%= @special.depart %></p>
+			<p>Returns on: <%= @special.return %></p>
+			<p>Room available: <%= @special.vacancy %></p>
+			<p>Description: <%= @special.description %></p>
+			<% end %>
+		</div>
+	<% if @current_user && @current_user.id == @page_user.id %>
+		<div class="col-sm-6">
+			<h4>Agent Tools</h4>
+			<a href="/<%= @page_user.username %>/edit">Edit User Info</a><br>
+			<a href="/blogs/new/<%= @page_user.id %>">New Blog Post</a><br>
+			<a href="/blogs/edit/<%= @page_user.id %>">Edit Blog Posts</a></br>
+			<a href="/subscriptions">View Subscribers</a></br>
+			<a href="/cruises/new/<%= @page_user.id %>">New Cruise</a><br>
+			<a href="/specials/new/<%= @page_user.id %>">New Special</a><br>
+			<a href="/requests/<%= @current_user.id %>">Chat Requests</a><% if @request_count > 0 %> <small><%= @request_count %> new request(s)!</small><% end %><br>
+				<table class="table table-striped" id="req_table<%= @page_user.id %>">
+					<thead>	
+						<tr class="chatTableHeader<%= @page_user.id %> hide">
+							<td>Topic</td>
+							<td>Requested By</td>
+							<td>Requested At</td>
+						</tr>
+					</thead>
+					<tbody class="topicsList<%= @page_user.id %>">
+						<% if @request_count > 0 %>
+							<% @page_user_topics.each do |val| %>
+						   		<tr>
+									<td><a href="/topics/<%= val.id %>"><%= val.name %></a></td>
+									<td><%= val.request_name %></td>
+									<td><%= time_ago_in_words(val.created_at) %></td>
+								</tr>
+							<% end %>
+						<% else %>
+							<tr class="topicsListEmpty<%= @page_user.id %>">
+								<td>No Chat Requests Found</td>
+							</tr>
+						<% end %>
+				    </tbody>
+				</table>
+		</div>
+	<% else %>
+		<div class="col-sm-6">
+		</div>
+	<% end %>
+	</div>
 		</div>
 	</div>
 </div>

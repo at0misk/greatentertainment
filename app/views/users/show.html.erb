@@ -18,7 +18,7 @@
 	}
 	.profileDiv{
 		padding-right: 0px;
-		height: 145px;
+		height: 100%;
 	}
 	.userInfo{
 		color: white;
@@ -31,7 +31,7 @@
 		text-align: center;
 	}
 	.profileRow{
-		height: 145px;
+		height: 200px;
 	}
 	.meet{
 		margin-top: 10px;
@@ -60,7 +60,7 @@
 		background-color: #5b90b2;
 	}
 	.s3{
-		background-color: #daa822;
+		background-color: #eba10a;
 	}
 	.outerCol{
 		margin-right: 15px;
@@ -132,7 +132,7 @@
 		padding: 10px 20px !important;
 	}
 	.myTabs a:hover{
-		color: #fbcf58;
+		color: #eba10a;
 		background: white !important;
 	}
 	.myTabs{
@@ -143,12 +143,12 @@
 		background: white;
 	}
 	#myTabs .active a{
-		color: #fbcf58 !important;
+		color: #eba10a !important;
 		background: white !important;
 	}
 	.outer-cont{
     	background: #f1f1f1;
-    	padding-top: 20px;
+    	padding-top: 15px;
 	}
 	input{
 		background-color: #A5B3C0 !important;
@@ -224,18 +224,205 @@ fieldset[disabled] .btn-fare.active {
 	background-color: #A5B3C0;
     color: white;
 }
+.hide{
+	display: none;
+}
+#multiButton{
+	margin-right: -15px;
+}
+#multiDiv{
+	padding-right: 0px;
+    text-align: right;
+}
+.del-button{
+    float: right;
+    margin-right: 30px;
+    margin-bottom: 15px;
+}
+.append-div{
+	padding-bottom: 0px;
+}
+.scrolling{
+	max-height: 416px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.contact-col h3{
+	display: inline-block;
+	margin-left: 15px;
+}
+.contact-col .glyphicon{
+	font-size: 1.5em;
+	margin-left: 15px;
+}
+.arrow{
+	float: right;
+	margin-top: 20px;
+	margin-right: 15px;
+}
+.contactRow{
+    margin-right: -15px;
+    background-color: #153649;
+    margin-left: 0px;
+    /*padding-right: 15px;*/
+    color: white;
+    /*padding-bottom: 10px;*/
+    height: 66px;
+}
+.contact-col{
+	padding-bottom: 10px;
+	height: 100%;
+}
+.arrow-col{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.blogCont{
+	margin: 0px;
+	margin-top: 15px;
+}
+.blogRowHeader{
+	margin-right: -15px;
+    background-color: #eba10a;
+    margin-left: 0px;
+    /*padding-right: 15px;*/
+    color: white;
+    /*padding-bottom: 10px;*/
+    height: 66px;
+}
+.blogContent{
+	overflow: hidden;
+	/*border: 1px solid black;*/
+	height: 110px;
+	margin-left: 0px;
+	background: white;
+	padding: 10px;
+	padding-bottom: 0px;
+}
+.blogContent h4{
+	margin: 0px;
+	/*font-size: 16px;*/
+}
+.blogContent p{
+	margin: 0px;
+	/*font-size: 0.8em*/
+}
+.blogContent a{
+	/*font-size: 0.8em;*/
+}
+.blogImgCol img{
+	height: 100px;
+	width: 100%;
+}
+.blogImgCol{
+	padding: 0px;
+}
+.blog-content-col{
+	padding-right: 0px;
+}
+.myTabs{
+	width: 99px;
+    text-align: center;
+}
+.specialWeeklyRow{
+	height: 300px;
+	/*border: 1px solid black;*/
+	margin-top: 15px;
+}
+.weekly-details{
+	position: relative;
+	background-color: #4f4f4f;
+	height: 100%;
+	color: white;
+}
+.weekly-img{
+	height: 100%;
+	padding-left: 0px;
+	overflow: hidden; 
+}
+.special-yellow{
+    position: absolute;
+    bottom: 5px;
+    left: 15px;
+	color: #eba10a;
+}
+.vacationRow{
+	margin-right: -15px;
+    margin-left: -15px !important;
+    background-color: #e84c3d;
+    color: white;
+    height: 200px;
+    margin-top: 15px;
+}
+.vacationRow .contact-col h4{
+	margin-left: 15px;
+	margin-top: 0px;
+}
+.vacationRow .contact-col h3{
+	margin-top: 70px;
+}
+.vacationRow .arrow-col .arrow{
+	margin-top: 79px;
+}
 </style>
 <div class="container-fluid outer-cont">
 	<div class="row outerRow">
 		<div class="col-sm-4 outerCol">
 			<div class="row profileRow">
-				<div class="col-sm-5 profileDiv">
+				<div class="col-sm-6 profileDiv">
 					<%= image_tag @page_user.avatar.url, :class => "img-fluid" %>
 				</div>
-				<div class="col-sm-7 userInfo">
+				<div class="col-sm-6 userInfo">
 					<span class="meet">Meet Your Agent:</span>
 					<h4 class="name"><%= @page_user.first %> <%= @page_user.last %></h4>
 					<p class="about"><%= @page_user.about %></p>
+				</div>
+			</div>
+			<div class="row contactRow">
+				<div class="col-sm-10 contact-col">
+					<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3>CONTACT <%= @page_user.first.upcase %></h3>
+				</div>
+				<div class="col-sm-2 contact-col arrow-col">
+					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
+				</div>
+			</div>
+			<div class="row blogCont">
+				<div class="row blogRowHeader">
+				<div class="col-sm-10 contact-col">
+					<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3>TRAVEL BLOG</h3>
+				</div>
+				<div class="col-sm-2 contact-col arrow-col">
+					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
+				</div>
+				</div>
+				<div class="row blogContent">
+					<div class="col-sm-3 blogImgCol">
+						<%= image_tag('athens.jpg', :class => 'img-fluid') %>
+					</div>
+					<div class="col-sm-9 blog-content-col">
+						<nobr><h4>3 DAYS IN ATHENS: WHAT TO DO WH...</h4></nobr>
+						<h5>Written by Markus Lelay</h5>
+						<a href="#">Read More...</a>
+					</div>
+				</div>
+				<div class="row blogContent">
+					<div class="col-sm-3 blogImgCol">
+						<%= image_tag('packing.jpg', :class => 'img-fluid') %>
+					</div>
+					<div class="col-sm-9 blog-content-col">
+						<nobr><h4>WHAT TO ALWAYS PACK FOR AN INT...</h4></nobr>
+						<h5>Written by Erin Tippins</h5>
+						<a href="#">Read More...</a>
+					</div>
+				</div>
+				<div class="row blogContent">
+					<div class="col-sm-3 blogImgCol">
+						<%= image_tag('golden.jpg', :class => 'img-fluid') %>
+					</div>
+					<div class="col-sm-9 blog-content-col">
+						<nobr><h4>GOLDEN ANNIVERSARY TRAVEL IDEAS</h4></nobr>
+						<h5>Written by Kanisha L.</h5>
+						<a href="#">Read More...</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -262,6 +449,26 @@ fieldset[disabled] .btn-fare.active {
 					<p>7 day Carribean...</p>
 					<p>4 day Mexico wee...</p>
 				</div>	
+			</div>
+			<div class="row specialWeeklyRow">
+				<div class="col-sm-4 weekly weekly-details">
+					<h3>SPECIAL OF THE WEEK</h3>
+					<h4>3 Day Guided Tour of Rome, includes dinner.</h4>
+					<h4>$180.00 pp</h4>
+					<p class="special-yellow">Click to see more</p>
+				</div>
+				<div class="col-sm-8 weekly weekly-img">
+					<%= image_tag('colloseum', :class => 'img-fluid' ) %>
+				</div>
+			</div>
+			<div class="row vacationRow">
+				<div class="col-sm-10 contact-col">
+					<h3>I WANT TO GO ON VACATION</h3>
+					<h4>Start here with our travel quiz</h4>
+				</div>
+				<div class="col-sm-2 contact-col arrow-col">
+					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
+				</div>
 			</div>
 		</div>
 		<div class="col-sm-4 outerCol formOuter">
@@ -418,7 +625,7 @@ fieldset[disabled] .btn-fare.active {
 						<input type="text" name="citypairs[0][origin]" class="form-control" id="origin" list="origin-list" autocomplete="off" placeholder="Origin">
 					<span class="tiny">Origin Airport Code</span>
 					</div>
-				    <div class="col-md-6">
+				    <div class="col-md-6 destination-col">
 						<input type="text" name="citypairs[0][destination]" class="form-control" id="destination" list="dest-list" autocomplete="off" placeholder="Destination">
 						<span class="tiny">Destination Airport Code</span>
 					</div>
@@ -436,9 +643,11 @@ fieldset[disabled] .btn-fare.active {
 				</div>
 				<div class="append-div hide lower-group">
 				</div>
-				<div id="multiDiv" class="form-group col-sm-12 btnDiv multiDiv hide lower-group">
-					<button id="multiButton" class="multi-button btn btn-sm hide addOrigin btn-sample" type="button">Add City</button>
-				</div>
+				<!-- <div class="row"> -->
+					<div id="multiDiv" class="form-group col-sm-12 btnDiv multiDiv hide lower-group">
+						<button id="multiButton" class="multi-button btn btn-sm hide addOrigin btn-sample btn-fare" type="button">Add City</button>
+					</div>
+				<!-- </div> -->
 				<div class="row bottom-group hide lower-group">
 				</div>
 <!-- 				<div class="form-group return-form-group">
@@ -604,81 +813,6 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 		</div>
 	</div>
-	<div class="row">	
-		<div class="col-sm-6">
-		<div class="imgDiv">
-			<%= image_tag @page_user.avatar.url %>
-		</div>
-			<h4>Username: <%= @page_user.username %> </h4>
-			<h5>Name: <%= @page_user.first %> <%= @page_user.last %></h5>
-			<h5>Email: <%= @page_user.email %></h5>
-			<h5>Phone #: <%= @page_user.phone_number %></h5>
-			<a href="/request_chat/<%= @page_user.id %>">Request to chat with this agent</a><br>
-			<h4>About:</h4>
-			<p><%= @page_user.about %></p>
-			<a href="/subscriptions/<%= @page_user.id %>">Subscribe to this agent</a><br>
-			<% if @latest %>
-			<h4>Latest Post from <a href="/blogs/<%= @page_user.id %>">Blog</a>:</h4>
-			<h5><%= @latest.title %><small><%= @latest.created_at.to_time.strftime('%B %e at %l:%M %p') %></small></h6>
-			<p><%= @latest.content %></p>
-			<% end %>
-			<% if @cruise %>
-			<h4>Latest Cruise:</h4>
-			<h5><a href="/cruises/<%= @cruise.id %>"><%= @cruise.title %></a></h5>
-			<p>Leaves on: <%= @cruise.departure %></p>
-			<p>Returns on: <%= @cruise.return %></p>
-			<p>Room available: <%= @cruise.vacancy %></p>
-			<p>Description: <%= @cruise.description %></p>
-			<% end %>
-			<% if @special %>
-			<h4>Latest Special:</h4>
-			<h5><a href="/specials/<%= @special.id %>"><%= @special.title %></a></h5>
-			<p>Leaves on: <%= @special.depart %></p>
-			<p>Returns on: <%= @special.return %></p>
-			<p>Room available: <%= @special.vacancy %></p>
-			<p>Description: <%= @special.description %></p>
-			<% end %>
-		</div>
-	<% if @current_user && @current_user.id == @page_user.id %>
-		<div class="col-sm-6">
-			<h4>Agent Tools</h4>
-			<a href="/<%= @page_user.username %>/edit">Edit User Info</a><br>
-			<a href="/blogs/new/<%= @page_user.id %>">New Blog Post</a><br>
-			<a href="/blogs/edit/<%= @page_user.id %>">Edit Blog Posts</a></br>
-			<a href="/subscriptions">View Subscribers</a></br>
-			<a href="/cruises/new/<%= @page_user.id %>">New Cruise</a><br>
-			<a href="/specials/new/<%= @page_user.id %>">New Special</a><br>
-			<a href="/requests/<%= @current_user.id %>">Chat Requests</a><% if @request_count > 0 %> <small><%= @request_count %> new request(s)!</small><% end %><br>
-				<table class="table table-striped" id="req_table<%= @page_user.id %>">
-					<thead>	
-						<tr class="chatTableHeader<%= @page_user.id %> hide">
-							<td>Topic</td>
-							<td>Requested By</td>
-							<td>Requested At</td>
-						</tr>
-					</thead>
-					<tbody class="topicsList<%= @page_user.id %>">
-						<% if @request_count > 0 %>
-							<% @page_user_topics.each do |val| %>
-						   		<tr>
-									<td><a href="/topics/<%= val.id %>"><%= val.name %></a></td>
-									<td><%= val.request_name %></td>
-									<td><%= time_ago_in_words(val.created_at) %></td>
-								</tr>
-							<% end %>
-						<% else %>
-							<tr class="topicsListEmpty<%= @page_user.id %>">
-								<td>No Chat Requests Found</td>
-							</tr>
-						<% end %>
-				    </tbody>
-				</table>
-		</div>
-	<% else %>
-		<div class="col-sm-6">
-		</div>
-	<% end %>
-	</div>
 </div>
 
 <datalist id="origin-list">
@@ -755,9 +889,12 @@ $(".addOrigin").on('click', function(){
 	$('.append-div').removeClass('hide');
 	$('.append-div').addClass('block');
 	$('.addOrigin').addClass('margin-bottom-2');
-	$('.append-div').append("<div class='cont'><div class='row bottom-group bottom-group-border'></div><div class='row delRow'><button class='btn btn-xs btn-danger del-button'>X</button></div><div class='form-group'><label for='origin' class='col-lg-4 control-label col-md-6'>Origin</label><div class='col-lg-8 col-md-6'><input type='text' name='citypairs[" + x + "][origin]' class='form-control' id='origin" + x + "' list='origin-list" + x + "'></div></div><div class='form-group'><label for='destination' class='col-lg-4 control-label col-md-6'>Destination</label><div class='col-lg-8 col-md-6'><input type='text' name='citypairs[" + x + "][destination]' class='form-control' id='destination" + x + "' list='dest-list" + x + "'></div></div><div class='form-group'><label for='depart' class='col-lg-4 control-label col-md-6'>Depart</label><div class='col-lg-8 col-md-6'><input type='date' name='citypairs[" + x + "][departdate]' class='form-control' id='depart' min=''></div></div></div><datalist id='origin-list" + x + "'></datalist><datalist id='dest-list" + x + "'></datalist>");
+	$('.append-div').append("<div class='cont-span'><div class='form-group second-group lower-group'><div class='row delRow'><button class='btn btn-xs btn-danger del-button'>X</button></div><div class='col-md-6'><input type='text' name='citypairs[" + x + "][origin]' class='form-control' id='origin" + x + "' list='origin-list" + x + "' autocomplete='off' placeholder='Origin'><span class='tiny'>Origin Airport Code</span></div><div class='col-md-6 destination-col'><input type='text' name='citypairs[" + x + "][destination]' class='form-control' id='destination" + x + "' list='dest-list" + x + "' autocomplete='off' placeholder='Destination'><span class='tiny'>Destination Airport Code</span></div></div><div class='form-group lower-group second-row'><div class='col-md-6'><input type'date' class='form-control' name='citypairs[" + x + "][departdate]' id='depart" + x + "' min=''><span class='tiny'>Depart Date</span></div></div><datalist id='origin-list" + x + "'></datalist><datalist id='dest-list" + x + "'></datalist></span>");
+
+	var contString = "<div class='cont-span'><div class='form-group second-group lower-group'><div class='row delRow'><button class='btn btn-xs btn-danger del-button'>X</button></div><div class='col-md-6'><input type='text' name='citypairs[" + x + "][origin]' class='form-control' id='origin" + x + "' list='origin-list" + x + "' autocomplete='off' placeholder='Origin'><span class='tiny'>Origin Airport Code</span></div><div class='col-md-6 destination-col'><input type='text' name='citypairs[" + x + "][destination]' class='form-control' id='destination" + x + "' list='dest-list" + x + "' autocomplete='off' placeholder='Destination'><span class='tiny'>Destination Airport Code</span></div></div><div class='form-group lower-group second-row'><div class='col-md-6'><input type'date' class='form-control' name='citypairs[" + x + "][departdate]' id='depart" + x + "' min=''><span class='tiny'>Depart Date</span></div></div><datalist id='origin-list" + x + "'></datalist><datalist id='dest-list" + x + "'></datalist></div>"
+
 	$('.del-button').on('click', function(){
-		$(this).parent().parent().remove();
+		$(this).parent().parent().parent().remove();
 	})
 
 		$("#origin" + x).keyup(function(e) {
@@ -855,12 +992,15 @@ $('#air_type').change(function(){
 		$('.multi-button').removeClass('hide');
 		$('.multiDiv').removeClass('hide');
 		$('.multiDiv').addClass('block');
+		$('.destination-col').removeClass('hide');
+		$('.formOuter').addClass('scrolling')
 	}
 	else if($(this).val() == 'oneway'){
 		if(multi == true){
 			$('.append-div').empty();
 			multi = false;
 		}
+		$('.destination-col').addClass('hide');
 		$('.return-form-group').addClass('block');
 		$('.return-form-group').removeClass('hide');
 		$('.top-group').removeClass('top-group-border');
@@ -870,6 +1010,7 @@ $('#air_type').change(function(){
 		$('.multi-button').removeClass('button-show');
 		$('.multiDiv').addClass('hide');
 		$('.multiDiv').removeClass('block');
+		$('.formOuter').removeClass('scrolling')
 	}
 	else if($(this).val() == 'roundtrip'){
 		if(multi == true){
@@ -885,6 +1026,8 @@ $('#air_type').change(function(){
 		$('.multi-button').removeClass('button-show');
 		$('.multiDiv').addClass('hide');
 		$('.multiDiv').removeClass('block');
+		$('.destination-col').removeClass('hide');
+		$('.formOuter').removeClass('scrolling')
 	}
 	if($(this).val() == "oneway" || $(this).val() == 'multicity'){
 		$('.return-form-group').addClass('hide');
