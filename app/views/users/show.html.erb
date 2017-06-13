@@ -11,8 +11,599 @@
 	.hide{
 		display: none;
 	}
+	.profileDiv img{
+		max-width: 100%;
+		height: 100%;
+		width: 100%;
+	}
+	.profileDiv{
+		padding-right: 0px;
+		height: 145px;
+	}
+	.userInfo{
+		color: white;
+		height: 100%;
+		vertical-align: top;
+		background-color: #5b90b2;
+		overflow: scroll;
+	}
+	.profileHeader{
+		text-align: center;
+	}
+	.profileRow{
+		height: 145px;
+	}
+	.meet{
+		margin-top: 10px;
+		display: block;
+	}
+	.name{
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	.about{
+		margin-bottom: 0px;
+	}
+	.specialsRow{
+		height: 145px;
+	}
+	.specialBox{
+		/*border: 1px solid black;*/
+		height: 100%;
+		color: white;
+		overflow: hidden;
+	}
+	.s1{
+		background-color: #1eba9b
+	}
+	.s2{
+		background-color: #5b90b2;
+	}
+	.s3{
+		background-color: #daa822;
+	}
+	.outerCol{
+		margin-right: 15px;
+		width: 32%;
+	}
+	.specialBox p{
+		margin-bottom: 0px;
+	}
+	.textbox-n{
+		padding: 6px 12px;
+    	color: #555;
+	}
+	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  color: white !important;
+	}
+	::-moz-placeholder { /* Firefox 19+ */
+	  color: white !important;
+	}
+	:-ms-input-placeholder { /* IE 10+ */
+	  color: white !important;
+	}
+	:-moz-placeholder { /* Firefox 18- */
+	  color: white !important;
+	}
+	.form-control{
+		/*margin-bottom: 15px;*/
+	}
+	.sub-btn{
+		width: 100%;
+	}
+	.searchAs{
+		margin-top: 6px;
+		padding-left: 27px;
+	}
+	#myTabs{
+		/*background: white;*/
+		margin-left: -15px;
+		/*margin-bottom: 15px;*/
+	}
+	.top-group{
+		background-color: #608cab;
+		color: white;
+		padding-top: 15px;
+		margin-bottom: 0px;
+		padding-bottom: 15px
+	}
+	.lower-group{
+		background-color: #486880;
+		padding-bottom: 15px;
+	}
+	.formOuter{
+		/*background-color: white;*/
+	}
+	.second-group{
+		padding-top: 15px;
+	}
+	.form-group{
+		margin-bottom: 0px;
+	}
+	.myTabs a{
+		padding-left: 0px;
+		/*font-size: 1.2em;*/
+		background-color: #44537c !important;
+		border-color: white !important;
+		color: white;
+		border-bottom: 0px !important;
+		margin: 0px !important;
+		border-radius: 0px !important;
+		padding: 10px 20px !important;
+	}
+	.myTabs a:hover{
+		color: #fbcf58;
+		background: white !important;
+	}
+	.myTabs{
+		border: 0px;
+	}
+	.active{
+		border: 0px !important;
+		background: white;
+	}
+	#myTabs .active a{
+		color: #fbcf58 !important;
+		background: white !important;
+	}
+	.outer-cont{
+    	background: #f1f1f1;
+    	padding-top: 20px;
+	}
+	input{
+		background-color: #A5B3C0 !important;
+		color: white !important;
+	}
+	.collapse{
+		/*display: block;*/
+	}
+	datalist{
+		display: block;
+	}
+	.tiny{
+	    color: white;
+	    font-size: 0.8em;
+	    padding-left: 3px;
+	}
+	.second-row{
+		/*padding-top: 10px;*/
+		padding-bottom: 10px;
+	}
+
+	.last-group{
+		padding-bottom: 20px;
+	}
+
+.btn-fare { 
+  color: #ffffff; 
+  background-color: #A5B3C0; 
+  border-color: #FFFFFF; 
+} 
+ 
+.btn-fare:hover, 
+.btn-fare:focus, 
+.btn-fare:active, 
+.btn-fare.active, 
+.open .dropdown-toggle.btn-fare { 
+  color: #ffffff; 
+  background-color: #608CAB; 
+  border-color: #FFFFFF; 
+} 
+ 
+.btn-fare:active, 
+.btn-fare.active, 
+.open .dropdown-toggle.btn-fare { 
+  background-image: none; 
+} 
+ 
+.btn-fare.disabled, 
+.btn-fare[disabled], 
+fieldset[disabled] .btn-fare, 
+.btn-fare.disabled:hover, 
+.btn-fare[disabled]:hover, 
+fieldset[disabled] .btn-fare:hover, 
+.btn-fare.disabled:focus, 
+.btn-fare[disabled]:focus, 
+fieldset[disabled] .btn-fare:focus, 
+.btn-fare.disabled:active, 
+.btn-fare[disabled]:active, 
+fieldset[disabled] .btn-fare:active, 
+.btn-fare.disabled.active, 
+.btn-fare[disabled].active, 
+fieldset[disabled] .btn-fare.active { 
+  background-color: #A5B3C0; 
+  border-color: #FFFFFF; 
+} 
+ 
+.btn-fare .badge { 
+  color: #A5B3C0; 
+  background-color: #ffffff; 
+}
+
+#air_type{
+	background-color: #A5B3C0;
+    color: white;
+}
 </style>
-<div class="container">
+<div class="container-fluid outer-cont">
+	<div class="row outerRow">
+		<div class="col-sm-4 outerCol">
+			<div class="row profileRow">
+				<div class="col-sm-5 profileDiv">
+					<%= image_tag @page_user.avatar.url, :class => "img-fluid" %>
+				</div>
+				<div class="col-sm-7 userInfo">
+					<span class="meet">Meet Your Agent:</span>
+					<h4 class="name"><%= @page_user.first %> <%= @page_user.last %></h4>
+					<p class="about"><%= @page_user.about %></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4 outerCol">
+			<div class="row specialsRow">
+				<div class="col-sm-4 specialBox s1">
+					<h4 class="specialHeader">Hawaii</h4>
+					<p>7 day Oahu trip...</p>
+					<p>10 day Island Hop...</p>
+					<p>3 day Kuai parad...</p>
+					<p>7 day 2 islands in...</p>
+				</div>
+				<div class="col-sm-4 specialBox s2">
+					<h4 class="specialHeader">Mexico</h4>
+					<p>4 day Riviera Maya...</p>
+					<p>4 day Riviera Maya...</p>
+					<p>4 day Riviera Maya...</p>
+					<p>4 day Riviera Maya...</p>
+				</div>
+				<div class="col-sm-4 specialBox s3">
+					<h4 class="specialHeader">Cruise</h4>
+					<p>Sail Europe on a...</p>
+					<p>14 day River Cruise...</p>
+					<p>7 day Carribean...</p>
+					<p>4 day Mexico wee...</p>
+				</div>	
+			</div>
+		</div>
+		<div class="col-sm-4 outerCol formOuter">
+			<div class="tabsDiv">
+
+					  <!-- Nav tabs -->
+					  <ul id="myTabs" class="nav nav-tabs" role="tablist">
+					    <li class="myTabs active" role="presentation"><a href="#flights" aria-controls="flights" role="tab" data-toggle="tab">FLIGHTS</a></li>
+					    <li class="myTabs" role="presentation"><a href="#hotels" aria-controls="hotels" role="tab" data-toggle="tab">HOTELS</a></li>
+					    <li class="myTabs" role="presentation"><a href="#cars" aria-controls="cars" role="tab" data-toggle="tab">CARS</a></li>
+					    <!-- <li class="myTabs" role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Cruises / Vacations</a></li> -->
+					  </ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+			<div role="tabpanel" class="tab-pane" id="home">
+				<form name="VPSearchForm"  method="post" action="http://www.latesttraveloffers.com/ci/enter.asp?site=VTHARC&amp;account=&amp;UseSearchApi=true" id="vacationForm" target="_blank">
+				<input type="hidden" name="srchDestText">
+				<div class="form-group">
+				    <label for="srchTravType" class="col-lg-4 col-md-6 control-label">Travel Type</label>
+				    <div class="col-lg-8 col-md-6">
+						<select name="srchTravType" class="VP-SearchInput form-control">
+							<option value="CRVA">Cruises/Vacation Pkgs</option>
+							<option value="CRUZ">Cruises Only</option>
+							<option value="PKG">Vacation Pkgs Only</option>
+							<option value="TOUR">Tours Only</option>
+							<option value="AUTO">International Auto</option>
+							<option value="LODG">Lodging</option>
+							<option value="AIR">Air Only</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+				    <label for="srchDestText1" class="col-lg-4 control-label col-md-6">Destination</label>
+				    <div class="col-lg-8 dest col-md-6 dropoffCont">
+						<select name="srchDestText1" class="VP-SearchInput form-control" onchange="document.VPSearchForm.srchDestText2.value='';">
+							<option value="">Any Destination</option>
+							<option value="Africa">Africa</option>
+							<option value="Alaska">Alaska</option>
+							<option value="Antarctica">Antarctica</option>
+							<option value="Aruba">Aruba</option>
+							<option value="Asia">Asia</option>
+							<option value="Australia">Australia</option>
+							<option value="Bahamas">Bahamas</option>
+							<option value="Baltic">Baltic</option>
+							<option value="Bermuda">Bermuda</option>
+							<option value="Britain and Ireland">Britain and Ireland</option>
+							<option value="California">California</option>
+							<option value="Canada and New England">Canada and New England</option>
+							<option value="Western Canada">Canada (Western)</option>
+							<option value="Cancun">Cancun</option>
+							<option value="Caribbean">Caribbean</option>
+							<option value="Western Caribbean">Caribbean (Western)</option>
+							<option value="Eastern Caribbean">Caribbean (Eastern)</option>
+							<option value="Southern Caribbean">Caribbean (Southern)</option>
+							<option value="Central America">Central America</option>
+							<option value="Europe">Europe</option>
+							<option value="Florida">Florida</option>
+							<option value="Hawaii">Hawaii</option>
+							<option value="Jamaica">Jamaica</option>
+							<option value="Las Vegas">Las Vegas</option>
+							<option value="Mediterranean">Mediterranean</option>
+							<option value="Mexican Riviera">Mexican Riviera</option>
+							<option value="Mexico">Mexico</option>
+							<option value="Middle East">Middle East</option>
+							<option value="New Zealand">New Zealand</option>
+							<option value="Northern Europe">Northern Europe</option>
+							<option value="Panama Canal">Panama Canal</option>
+							<option value="South America">South America</option>
+							<option value="South Pacific">South Pacific</option>
+							<option value="Transatlantic">Transatlantic</option>
+							<option value="USA">USA</option>
+							<option value="Eastern US">USA (Eastern)</option>
+							<option value="Western US">USA (Western)</option>
+						</select>
+						<span class="tiny-dropoff tiny-or">or</span>
+					</div>
+				</div>
+				<div class="form-group">
+				    <label for="srchDestText2" class="col-lg-4 control-label col-md-6">Type in Destination</label>
+				    <div class="col-lg-8 col-md-6">
+						<input id="destinationSearch" type="text" class="VP-SearchInput form-control" name="srchDestText2">
+					</div>
+				</div>
+				<div class="form-group">
+				    <label for="srchStartTravDate" class="col-lg-4 control-label col-md-6">Departure Date</label>
+				    <div class="col-lg-8 col-md-6">
+						<select name="srchStartTravDate" class="VP-SearchInput form-control">
+							<option value="">Any Date</option>
+							<option value="04*2016*">April 2016</option>
+							<option value="05*2016*">May 2016</option>
+							<option value="06*2016*">June 2016</option>
+							<option value="07*2016*">July 2016</option>
+							<option value="08*2016*">August 2016</option>
+							<option value="09*2016*">September 2016</option>
+							<option value="10*2016*">October 2016</option>
+							<option value="11*2016*">November 2016</option>
+							<option value="12*2016*">December 2016</option>
+							<option value="01*2017*">January 2017</option>
+							<option value="02*2017*">February 2017</option>
+							<option value="03*2017*">March 2017</option>
+							<option value="04*2017*">April 2017</option>
+							<option value="05*2017*">May 2017</option>
+							<option value="06*2017*">June 2017</option>
+							<option value="07*2017*">July 2017</option>
+							<option value="08*2017*">August 2017</option>
+							<option value="09*2017*">September 2017</option>
+							<option value="10*2017*">October 2017</option>
+							<option value="11*2017*">November 2017</option>
+							<option value="12*2017*">December 2017</option>
+							<option value="01*2018*">January 2018</option>
+							<option value="02*2018*">February 2018</option>
+							<option value="03*2018*">March 2018</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+				    <label for="srchTravLength" class="col-lg-4 control-label col-md-6">Travel Length</label>
+				    <div class="col-lg-8 col-md-6">
+						<select name="srchTravLength" id="srchTravLength" class="VP-SearchInput form-control">
+							<option value="">Any Length</option>
+							<option value="0*2*">0-2 nights</option>
+							<option value="3*6*">3-6 nights</option>
+							<option value="7*9*">7-9 nights</option>
+							<option value="10*14*">10-14 nights</option>
+							<option value="14**">over 14 nights</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+				    <div class="col-sm-12 btnDiv">
+						<button class="btn btn-sm sample" id="vacationButton" type="submit">Search</button>
+					</div>
+				</div>
+				</form> 
+			</div>
+			<div role="tabpanel" class="tab-pane active" id="flights">
+				<form id="regularSearchForm" method="post" action="https://evov2.faregrabbr.com/remoteflightmultisearch.php?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYXJjaGVyX2FwaUBmYXJlZ3JhYmJyLmNvbSIsImlzc3VlX3RpbWUiOiIyMDE3LTA1LTMwIDIyOjA5OjAzIiwiaXAiOiI3My4yMjMuMTg1LjUwIn0.g-7nfu7AzzO6dToyu3o6cc6T9BynnCXz3Tc26_2lT9g" novalidate target="_blank" class="form-horizontal">
+				<div class="form-group top-group">
+				    <label for="type" class="col-md-6 searchAs">Search As</label>
+				    <div class="col-md-6">
+						<select name="type" id="air_type" class="form-control">
+							<option value="roundtrip">Round Trip</option>
+							<option value="oneway">One Way</option>
+							<option value="multicity">Multi City</option>
+						</select>
+					</div>
+				</div>
+				<div class="row bottom-group hide">
+				</div>
+				<div class="form-group second-group lower-group">
+				    <!-- <label for="origin" class="col-lg-4 control-label col-md-6">Origin</label> -->
+				    <div class="col-md-6">
+						<input type="text" name="citypairs[0][origin]" class="form-control" id="origin" list="origin-list" autocomplete="off" placeholder="Origin">
+					<span class="tiny">Origin Airport Code</span>
+					</div>
+				    <div class="col-md-6">
+						<input type="text" name="citypairs[0][destination]" class="form-control" id="destination" list="dest-list" autocomplete="off" placeholder="Destination">
+						<span class="tiny">Destination Airport Code</span>
+					</div>
+				</div>
+				<div class="form-group lower-group second-row">
+				    <!-- <label for="depart" class="col-lg-4 control-label col-md-6">Depart</label> -->
+				    <div class="col-md-6">
+						<input type="date" class="form-control" name="citypairs[0][departdate]" id="depart" min="<%= Date.today %>">
+						<span class="tiny">Depart Date</span>
+					</div>
+				    <div class="col-md-6">
+						<input class="form-control" type="date" name="citypairs[0][returndate]" class="form-control" id="return" min="<%= Date.today %>">
+						<span class="tiny">Return Date</span>
+					</div>
+				</div>
+				<div class="append-div hide lower-group">
+				</div>
+				<div id="multiDiv" class="form-group col-sm-12 btnDiv multiDiv hide lower-group">
+					<button id="multiButton" class="multi-button btn btn-sm hide addOrigin btn-sample" type="button">Add City</button>
+				</div>
+				<div class="row bottom-group hide lower-group">
+				</div>
+<!-- 				<div class="form-group return-form-group">
+				    <label for="return" class="col-lg-4 control-label col-md-6">Return</label>
+				</div> -->
+				<div class="form-group lower-group last-group">
+				    <!-- <label for="adults" class="col-lg-4 control-label col-md-6">Adults</label> -->
+				    <div class="col-md-6">
+						<input placeholder="Adults" class="textbox-n form-control" type="text" onfocus="(this.type='number')" onblur="(this.type='text')" name="adults" id="adults" min="1">
+					</div>
+				    <div class="col-md-6">
+						<input placeholder="Children" class="textbox-n form-control" type="text" onfocus="(this.type='number')" onblur="(this.type='text')" name="children" id="children" min="0">
+					</div>
+				</div>
+				<input type="hidden" name="isWidget" value="true">
+				<div class="form-group lower-group">
+					<div class="col-sm-6">
+					</div>
+					<div class="col-sm-6 btnDiv">
+						<input type="submit" value="CHECK NOW" id="flightButton" class="btn btn-fare sub-btn">
+					</div>
+				</div>
+			</form>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="hotels">
+				<form id="hotelSearchForm" method="post" action="https://evov2.faregrabbr.com/remotehotelsearchwidget.php?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYXJjaGVyX2FwaUBmYXJlZ3JhYmJyLmNvbSIsImlzc3VlX3RpbWUiOiIyMDE3LTA1LTMwIDIyOjA5OjAzIiwiaXAiOiI3My4yMjMuMTg1LjUwIn0.g-7nfu7AzzO6dToyu3o6cc6T9BynnCXz3Tc26_2lT9g" novalidate target="_blank">
+					<input id="locationType" type="hidden" name="locationType" value="">
+				<div class="form-group">
+				    <label for="place" class="col-lg-4 control-label col-md-6">City / Airport</label>
+				    <div class="col-lg-8 col-md-6">
+						<input type="text" name="place" class="form-control" id="place" list="place-list" autocomplete="off">
+					</div>
+				</div>
+				<div class="form-group">
+				    <label for="checkin" class="col-lg-4 control-label col-md-6">Check In</label>
+				    <div class="col-lg-8 col-md-6">
+						<input type="date" name="checkin" class="form-control" id="checkin" min="<%= Date.today %>">
+					</div>
+				</div>
+				<div class="form-group">
+				    <label for="checkout" class="col-lg-4 control-label col-md-6">Check Out</label>
+				    <div class="col-lg-8 col-md-6">
+						<input type="date" name="checkout" class="form-control" id="checkout" min="<%= Date.today %>">
+					</div>
+				</div>
+				<div class="form-group">
+				    <label for="numrooms" class="col-lg-4 control-label col-md-6">Rooms</label>
+				    <div class="col-lg-8 col-md-6">
+						<input type="number" name="numrooms" class="form-control" id="numrooms" min="1" value="1">
+					</div>
+				</div>
+				<div class="form-group">
+				    <label for="adults-hotel" class="col-lg-4 control-label col-md-6">Guests</label>
+				    <div class="col-lg-8 col-md-6">
+						<input type="number" name="adults" class="form-control" id="adults-hotel" min="1" value="1">
+					</div>
+				</div>
+				<input type="hidden" name="isWidget" value="true">
+				<div class="form-group col-sm-12 btnDiv">
+					<input type="submit" value="Search" id="hotelButton" class="btn btn-sm btn-sample">
+				</div>
+			</form>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="cars">
+					<form id="carSearchForm" method="post" action="https://evov2.faregrabbr.com/remotecarsearchwidget.php?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYXJjaGVyX2FwaUBmYXJlZ3JhYmJyLmNvbSIsImlzc3VlX3RpbWUiOiIyMDE3LTA1LTMwIDIyOjA5OjAzIiwiaXAiOiI3My4yMjMuMTg1LjUwIn0.g-7nfu7AzzO6dToyu3o6cc6T9BynnCXz3Tc26_2lT9g" novalidate target="_blank">
+					<input id="locationType" type="hidden" name="locationType" value="">
+				<div class="form-group">
+				    <label for="pickup_location" class="col-lg-4 control-label col-md-6">Pickup Airport Code</label>
+				    <div class="col-lg-8 col-md-6">
+						<input type="text" name="pickup_location" class="form-control" id="pickup_location" list="pickup-list" autocomplete="off">
+					</div>
+				</div>
+				<input type="hidden" name="pickup_locationType" value="Airport">
+				<div class="form-group">
+				    <label for="dropoff_location" class="col-lg-4 control-label col-md-6">Dropoff Airport Code</label>
+				    <div class="col-lg-8 col-md-6 dropoffCont">
+						<input type="text" name="dropoff_location" class="form-control" id="dropoff_location" list="dropoff-list" autocomplete="off">
+						<span class="tiny-dropoff">(if different from pickup location)</span>
+					</div>
+				</div>
+				<input type="hidden" name="dropoff_locationType" value="Airport">
+				<div class="form-group">
+				    <label for="pickup_date" class="col-lg-4 control-label col-md-6">Pickup Date</label>
+				    <div class="col-lg-8 col-md-6">
+						<input type="date" name="pickup_date" class="form-control" id="pickup_date" min="<%= Date.today %>">
+					</div>
+				</div>
+				<div class="form-group">
+				    <label for="pickup_time" class="col-lg-4 control-label col-md-6">Pickup Time</label>
+				    <div class="col-lg-8 col-md-6">
+				    	<select name="pickup_time" class="form-control" id="pickup_time">
+				    		<option value="12:00:00">Noon</option>
+				    		<option value="13:00:00">1:00 PM</option>
+				    		<option value="14:00:00">2:00 PM</option>
+				    		<option value="15:00:00">3:00 PM</option>
+				    		<option value="16:00:00">4:00 PM</option>
+				    		<option value="17:00:00">5:00 PM</option>
+				    		<option value="18:00:00">6:00 PM</option>
+				    		<option value="19:00:00">7:00 PM</option>
+				    		<option value="20:00:00">8:00 PM</option>
+				    		<option value="21:00:00">9:00 PM</option>
+				    		<option value="22:00:00">10:00 PM</option>
+				    		<option value="23:00:00">11:00 PM</option>
+				    		<option value="00:00:00">Midnight</option>
+				    		<option value="01:00:00">1:00 AM</option>
+				    		<option value="02:00:00">2:00 AM</option>
+				    		<option value="03:00:00">3:00 AM</option>
+				    		<option value="04:00:00">4:00 AM</option>
+				    		<option value="05:00:00">5:00 AM</option>
+				    		<option value="06:00:00">6:00 AM</option>
+				    		<option value="07:00:00">7:00 AM</option>
+				    		<option value="08:00:00">8:00 AM</option>
+				    		<option value="09:00:00">9:00 AM</option>
+				    		<option value="10:00:00">10:00 AM</option>
+				    		<option value="11:00:00">11:00 AM</option>
+				    	</select>
+					</div>
+				</div>
+				<div class="form-group">
+				    <label for="dropoff_date" class="col-lg-4 control-label col-md-6">Dropoff Date</label>
+				    <div class="col-lg-8 col-md-6">
+						<input type="date" name="dropoff_date" class="form-control" id="dropoff_date" min="<%= Date.today %>">
+					</div>
+				</div>
+				<div class="form-group">
+				    <label for="dropoff_time" class="col-lg-4 control-label col-md-6">Dropoff Time</label>
+				    <div class="col-lg-8 col-md-6">
+				    	<select name="dropoff_time" class="form-control" id="pickup_time">
+				    		<option value="12:00:00">Noon</option>
+				    		<option value="13:00:00">1:00 PM</option>
+				    		<option value="14:00:00">2:00 PM</option>
+				    		<option value="15:00:00">3:00 PM</option>
+				    		<option value="16:00:00">4:00 PM</option>
+				    		<option value="17:00:00">5:00 PM</option>
+				    		<option value="18:00:00">6:00 PM</option>
+				    		<option value="19:00:00">7:00 PM</option>
+				    		<option value="20:00:00">8:00 PM</option>
+				    		<option value="21:00:00">9:00 PM</option>
+				    		<option value="22:00:00">10:00 PM</option>
+				    		<option value="23:00:00">11:00 PM</option>
+				    		<option value="00:00:00">Midnight</option>
+				    		<option value="01:00:00">1:00 AM</option>
+				    		<option value="02:00:00">2:00 AM</option>
+				    		<option value="03:00:00">3:00 AM</option>
+				    		<option value="04:00:00">4:00 AM</option>
+				    		<option value="05:00:00">5:00 AM</option>
+				    		<option value="06:00:00">6:00 AM</option>
+				    		<option value="07:00:00">7:00 AM</option>
+				    		<option value="08:00:00">8:00 AM</option>
+				    		<option value="09:00:00">9:00 AM</option>
+				    		<option value="10:00:00">10:00 AM</option>
+				    		<option value="11:00:00">11:00 AM</option>
+				    	</select>
+					</div>
+				</div>
+				<input type="hidden" name="isWidget" value="true">
+				<div class="form-group col-sm-12 btnDiv">
+					<input type="submit" value="Search" id="carButton" class="btn btn-sm btn-sample">
+				</div>
+				</form>
+			</div>
+			</div>
+			</div>
+		</div>
+	</div>
 	<div class="row">	
 		<div class="col-sm-6">
 		<div class="imgDiv">
@@ -89,3 +680,358 @@
 	<% end %>
 	</div>
 </div>
+
+<datalist id="origin-list">
+</datalist>
+
+<datalist id="dest-list">
+</datalist>
+
+<datalist id="place-list">
+</datalist>
+
+<datalist id="pickup-list">
+</datalist>
+
+<datalist id="dropoff-list">
+</datalist>
+
+<script type="text/javascript">
+
+$(document).on('turbolinks:load',function(){
+
+$('#place').keyup(function(e) {
+	if(e.keyCode == 8){
+		if(!$(this).val() || $(this).val().length == 1){
+			$('#place-list').empty();
+		}
+		else{
+			var text = $(this).val();
+			appendDataPlace(text);
+		}
+		// console.log('back')
+	}
+	else{
+		var text = $(this).val();
+		// console.log("key");
+		appendDataPlace(text);
+	}
+});
+
+var appendDataPlace = function(input){
+	$.ajax({
+		type: "GET",
+		url: "https://evov2.faregrabbr.com/remoteautocomplete_places.php?text=" + input + "&type=hotel",
+		success: function(data){
+			$('#place-list').empty();
+			for(var j = 0; j < data.length; j++){
+				console.log(data[j]['description'])
+				var newOption = "<option value='" + data[j]['description'] + "' data-type=" + data[j]['type'] + ">" + data[j]['description'] + "</option>";
+				$('#place-list').append(newOption);
+			}
+		}
+	})
+}
+
+$("#place").on('input', function () {
+    var val = this.value;
+    if($('#place-list option').filter(function(){
+        return this.value === val;        
+    }).length) {
+	    $('#place-list option').each(function() {
+	    if($(this).val() == val){
+	    	// change hidden input to "type" for car
+	    	// alert($(this).data('type'));
+	    	$('#locationType').val($(this).data('type'))
+		   }
+		});
+    }
+});
+
+var x = 0;
+
+$(".addOrigin").on('click', function(){
+	x++;
+	$('.append-div').removeClass('hide');
+	$('.append-div').addClass('block');
+	$('.addOrigin').addClass('margin-bottom-2');
+	$('.append-div').append("<div class='cont'><div class='row bottom-group bottom-group-border'></div><div class='row delRow'><button class='btn btn-xs btn-danger del-button'>X</button></div><div class='form-group'><label for='origin' class='col-lg-4 control-label col-md-6'>Origin</label><div class='col-lg-8 col-md-6'><input type='text' name='citypairs[" + x + "][origin]' class='form-control' id='origin" + x + "' list='origin-list" + x + "'></div></div><div class='form-group'><label for='destination' class='col-lg-4 control-label col-md-6'>Destination</label><div class='col-lg-8 col-md-6'><input type='text' name='citypairs[" + x + "][destination]' class='form-control' id='destination" + x + "' list='dest-list" + x + "'></div></div><div class='form-group'><label for='depart' class='col-lg-4 control-label col-md-6'>Depart</label><div class='col-lg-8 col-md-6'><input type='date' name='citypairs[" + x + "][departdate]' class='form-control' id='depart' min=''></div></div></div><datalist id='origin-list" + x + "'></datalist><datalist id='dest-list" + x + "'></datalist>");
+	$('.del-button').on('click', function(){
+		$(this).parent().parent().remove();
+	})
+
+		$("#origin" + x).keyup(function(e) {
+		if(e.keyCode == 8){
+			if(!$(this).val() || $(this).val().length == 1){
+				$("#origin-list" + x).empty();
+			}
+			else{
+				var text = $(this).val();
+					$.ajax({
+						type: "GET",
+						url: "https://evov2.faregrabbr.com/remoteautocomplete_places.php?text=" + text + "&type=air",
+						success: function(data){
+							$("#origin-list" + x).empty();
+							for(var i = 0; i < data.length; i++){
+								console.log(data[i]['description'])
+								var newOption = "<option value='" + data[i]['description'] + "'>" + data[i]['description'] + "</option>";
+								$("#origin-list" + x).append(newOption);
+								console.log("dynamic: I is: " + i + "X is: " + x);
+							}
+						}
+					})
+			}
+			// console.log('back')
+		}
+		else{
+			var text = $(this).val();
+			// console.log("key");
+					$.ajax({
+						type: "GET",
+						url: "https://evov2.faregrabbr.com/remoteautocomplete_places.php?text=" + text + "&type=air",
+						success: function(data){
+							$("#origin-list" + x).empty();
+							for(var i = 0; i < data.length; i++){
+								console.log(data[i]['description'])
+								var newOption = "<option value='" + data[i]['description'] + "'>" + data[i]['description'] + "</option>";
+								$("#origin-list" + x).append(newOption);
+								console.log('dynamic');
+							}
+						}
+					})
+		}
+	});
+	$("#destination" + x).keyup(function(e) {
+		if(e.keyCode == 8){
+			if(!$(this).val() || $(this).val().length == 1){
+				$("#dest-list" + x).empty();
+			}
+			else{
+				var text = $(this).val();
+			$.ajax({
+				type: "GET",
+				url: "https://evov2.faregrabbr.com/remoteautocomplete_places.php?text=" + text + "&type=air",
+				success: function(data){
+					$("#dest-list" + x).empty();
+					for(var i = 0; i < data.length; i++){
+						console.log(data[i]['description'])
+						var newOption = "<option value='" + data[i]['description'] + "'>" + data[i]['description'] + "</option>";
+						$("#dest-list" + x).append(newOption);
+					}
+				}
+			})
+			}
+			// console.log('back')
+		}
+		else{
+			var text = $(this).val();
+			$.ajax({
+				type: "GET",
+				url: "https://evov2.faregrabbr.com/remoteautocomplete_places.php?text=" + text + "&type=air",
+				success: function(data){
+					$("#dest-list" + x).empty();
+					for(var i = 0; i < data.length; i++){
+						console.log(data[i]['description'])
+						var newOption = "<option value='" + data[i]['description'] + "'>" + data[i]['description'] + "</option>";
+						$("#dest-list" + x).append(newOption);
+					}
+				}
+			})
+		}
+	});
+})
+
+var multi = false;
+
+$('#air_type').change(function(){
+	if($(this).val() == 'multicity'){
+		multi = true;
+		$('.top-group').addClass('top-group-border');
+		$('.bottom-group').addClass('bottom-group-border');
+		$('.bottom-group').removeClass('remove-bottom-margin');
+		$('.bottom-group').removeClass('hide');
+		$('.bottom-group').addClass('block');
+		$('.multi-button').addClass('button-show');
+		$('.multi-button').removeClass('hide');
+		$('.multiDiv').removeClass('hide');
+		$('.multiDiv').addClass('block');
+	}
+	else if($(this).val() == 'oneway'){
+		if(multi == true){
+			$('.append-div').empty();
+			multi = false;
+		}
+		$('.return-form-group').addClass('block');
+		$('.return-form-group').removeClass('hide');
+		$('.top-group').removeClass('top-group-border');
+		$('.bottom-group').removeClass('bottom-group-border');
+		$('.bottom-group').addClass('remove-bottom-margin');
+		$('.multi-button').addClass('hide');
+		$('.multi-button').removeClass('button-show');
+		$('.multiDiv').addClass('hide');
+		$('.multiDiv').removeClass('block');
+	}
+	else if($(this).val() == 'roundtrip'){
+		if(multi == true){
+			$('.append-div').empty();
+			multi = false;
+		}
+		$('.return-form-group').addClass('block');
+		$('.return-form-group').removeClass('hide');
+		$('.top-group').removeClass('top-group-border');
+		$('.bottom-group').removeClass('bottom-group-border');
+		$('.bottom-group').addClass('remove-bottom-margin');
+		$('.multi-button').addClass('hide');
+		$('.multi-button').removeClass('button-show');
+		$('.multiDiv').addClass('hide');
+		$('.multiDiv').removeClass('block');
+	}
+	if($(this).val() == "oneway" || $(this).val() == 'multicity'){
+		$('.return-form-group').addClass('hide');
+		$('.return-form-group').removeClass('block');
+	}
+})
+
+// Autocomplete AJAX Calls
+
+$('#pickup_location').keyup(function(e) {
+	if(e.keyCode == 8){
+		if(!$(this).val() || $(this).val().length == 1){
+			$('#pickup-list').empty();
+		}
+		else{
+			var text = $(this).val();
+			appendDataPickup(text);
+		}
+		// console.log('back')
+	}
+	else{
+		var text = $(this).val();
+		// console.log("key");
+		appendDataPickup(text);
+	}
+});
+
+var appendDataPickup = function(input){
+	$.ajax({
+		type: "GET",
+		url: "https://evov2.faregrabbr.com/remoteautocomplete_places.php?text=" + input + "&type=car",
+		success: function(data){
+			$('#pickup-list').empty();
+			for(var x = 0; x < data.length; x++){
+				console.log(data[x]['description'])
+				var newOption = "<option value='" + data[x]['description'] + "'>" + data[x]['description'] + "</option>";
+				$('#pickup-list').append(newOption);
+			}
+		}
+	})
+}
+
+$('#dropoff_location').keyup(function(e) {
+	if(e.keyCode == 8){
+		if(!$(this).val() || $(this).val().length == 1){
+			$('#dropoff-list').empty();
+		}
+		else{
+			var text = $(this).val();
+			appendDataDropoff(text);
+		}
+		// console.log('back')
+	}
+	else{
+		var text = $(this).val();
+		// console.log("key");
+		appendDataDropoff(text);
+	}
+});
+
+var appendDataDropoff = function(input){
+	$.ajax({
+		type: "GET",
+		url: "https://evov2.faregrabbr.com/remoteautocomplete_places.php?text=" + input + "&type=car",
+		success: function(data){
+			$('#dropoff-list').empty();
+			for(var x = 0; x < data.length; x++){
+				console.log(data[x]['description'])
+				var newOption = "<option value='" + data[x]['description'] + "'>" + data[x]['description'] + "</option>";
+				$('#dropoff-list').append(newOption);
+			}
+		}
+	})
+}
+
+$('#origin').keyup(function(e) {
+	if(e.keyCode == 8){
+		if(!$(this).val() || $(this).val().length == 1){
+			$('#origin-list').empty();
+		}
+		else{
+			var text = $(this).val();
+			appendDataOrigin(text);
+		}
+		// console.log('back')
+	}
+	else{
+		var text = $(this).val();
+		// console.log("key");
+		appendDataOrigin(text);
+	}
+});
+
+var appendDataOrigin = function(input){
+	$.ajax({
+		type: "GET",
+		url: "https://evov2.faregrabbr.com/remoteautocomplete_places.php?text=" + input + "&type=air",
+		success: function(data){
+			$('#origin-list').empty();
+			for(var x = 0; x < data.length; x++){
+				console.log(data[x]['description'])
+				var newOption = "<option value='" + data[x]['description'] + "'>" + data[x]['description'] + "</option>";
+				$('#origin-list').append(newOption);
+			}
+		}
+	})
+}
+
+$('#destination').keyup(function(e) {
+	if(e.keyCode == 8){
+		if(!$(this).val() || $(this).val().length == 1){
+			$('#dest-list').empty();
+		}
+		else{
+			var text = $(this).val();
+			appendDataDest(text);
+		}
+		// console.log('back')
+	}
+	else{
+		var text = $(this).val();
+		// console.log("key");
+		appendDataDest(text);
+	}
+});
+
+var appendDataDest = function(input){
+	$.ajax({
+		type: "GET",
+		url: "https://evov2.faregrabbr.com/remoteautocomplete_places.php?text=" + input + "&type=air",
+		success: function(data){
+			$('#dest-list').empty();
+			for(var x = 0; x < data.length; x++){
+				console.log(data[x]['description'])
+				var newOption = "<option value='" + data[x]['description'] + "'>" + data[x]['description'] + "</option>";
+				$('#dest-list').append(newOption);
+			}
+		}
+	})
+}
+
+// Tab Forms
+
+$('.myTabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+
+});
+</script>
