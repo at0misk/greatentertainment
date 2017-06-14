@@ -533,62 +533,166 @@ fieldset[disabled] .btn-fare.active {
 	margin-right: 30%;
 }
 
+@media (max-width: 1165px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+    .navbar-header .collapse, .navbar-toggle {
+        display:block !important;
+    }
+    .navbar-header {
+        float:none;
+    }
+}
+
+@media (max-width: 1165px) {
+	.outerCol{
+		width: 100%;
+	}
+	.profileRow{
+		background-color: #5b90b2;
+	}
+	.contactRow{
+		margin-left: -15px;
+	}
+	.blogCont{
+		margin-left: -15px;
+	}
+	.tabsDiv{
+		height: 100%;
+		max-height: 100%;
+		margin-top: 1%;
+	}
+	.arrow {
+		margin-right: 40% !important;
+	}
+	.weekly-img img{
+		float: right;
+    	margin-right: -15px;
+	    margin-right: -15px;
+	    width: 105%;
+	}
+	.weekly-img{
+		background-color: #4f4f4f;
+	}
+	.children-col{
+		margin-top: 20px;
+	}
+}
+
+@media (max-width: 767px) {
+	.blogContent{
+		width: 100%;
+	}
+	.profileDiv{
+		margin-left: -15px;
+	}
+	.specialsRow{
+		height: auto;
+	}
+	.specialBox{
+		padding-bottom: 3%;
+	}
+	.specialWeeklyRow{
+		margin-top: 0px;
+	}
+	.weekly-details h3{
+		margin-top: 0px;
+	}
+	.weekly-details{
+		padding-top: 20px;
+	}
+	.specialWeeklyRow{
+		height: 100%;
+    	background-color: #4f4f4f;
+	}
+	.special-yellow{
+		position: relative;
+		left: 0px;
+		bottom: 0px;
+	}
+	.vacationRow{
+		margin-top: 0px;
+	}
+	#multiButton{
+		margin-right: 15px
+	}
+	.dropoff{
+		margin-top: 5%
+	}
+}
+
+@media (max-width: 500px){
+	.arrow{
+		margin-right: 20% !important;
+	}
+	.profileDiv img{
+		min-height: 100%;
+	}
+	.blogImgCol img{
+		max-height: 72px;
+	}
+}
+
 </style>
 <div class="container-fluid outer-cont">
 	<div class="row outerRow">
 		<div class="col-lg-4 col-md-12 outerCol">
 			<div class="row profileRow">
-				<div class="col-sm-5 profileDiv">
+				<div class="col-sm-5 col-xs-5 profileDiv">
 					<%= image_tag @page_user.avatar.url(:medium), :class => "img-fluid" %>
 				</div>
-				<div class="col-sm-7 userInfo">
+				<div class="col-sm-7 col-xs-7 userInfo">
 					<span class="meet">Meet Your Agent:</span>
 					<h4 class="name"><%= @page_user.first %> <%= @page_user.last %></h4>
 					<p class="about"><%= @page_user.about %></p>
 				</div>
 			</div>
 			<div class="row contactRow">
-				<a href="#"><div class="col-sm-10 contact-col contact-left">
+				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left">
 					<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3>CONTACT <%= @page_user.first.upcase %></h3>
 				</div>
-				<div class="col-sm-2 contact-col arrow-col contact-arrow">
+				<div class="col-sm-2 col-xs-2 contact-col arrow-col contact-arrow">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
 				</div></a>
 			</div>
 			<div class="row blogCont">
 				<div class="row blogRowHeader">
-				<a href="#"><div class="col-sm-10 contact-col contact-left">
+				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left">
 					<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3>TRAVEL BLOG</h3>
 				</div>
-				<div class="col-sm-2 contact-col arrow-col">
+				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
 				</div></a>
 				</div>
 				<div class="row blogContent">
-					<div class="col-sm-3 blogImgCol">
+					<div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 blogImgCol">
 						<%= image_tag('athens.jpg', :class => 'img-fluid') %>
 					</div>
-					<div class="col-sm-9 blog-content-col">
+					<div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 blog-content-col">
 						<nobr><h4>3 DAYS IN ATHENS: WHAT TO DO WH...</h4></nobr>
 						<h5>Written by Markus Lelay</h5>
 						<a href="#">Read More...</a>
 					</div>
 				</div>
 				<div class="row blogContent">
-					<div class="col-sm-3 blogImgCol">
+					<div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 blogImgCol">
 						<%= image_tag('packing.jpg', :class => 'img-fluid') %>
 					</div>
-					<div class="col-sm-9 blog-content-col">
+					<div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 blog-content-col">
 						<nobr><h4>WHAT TO ALWAYS PACK FOR AN INT...</h4></nobr>
 						<h5>Written by Erin Tippins</h5>
 						<a href="#">Read More...</a>
 					</div>
 				</div>
 				<div class="row blogContent">
-					<div class="col-sm-3 blogImgCol">
+					<div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 blogImgCol">
 						<%= image_tag('golden.jpg', :class => 'img-fluid') %>
 					</div>
-					<div class="col-sm-9 blog-content-col">
+					<div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 blog-content-col">
 						<nobr><h4>GOLDEN ANNIVERSARY TRAVEL IDEAS</h4></nobr>
 						<h5>Written by Kanisha L.</h5>
 						<a href="#">Read More...</a>
@@ -598,21 +702,21 @@ fieldset[disabled] .btn-fare.active {
 		</div>
 		<div class="col-lg-4 col-md-12 outerCol">
 			<div class="row specialsRow">
-				<a href="#"><div class="col-sm-4 specialBox s1">
+				<a href="#"><div class="col-sm-4 col-xs-12 specialBox s1">
 					<h4 class="specialHeader">Hawaii</h4>
 					<p>7 day Oahu trip...</p>
 					<p>10 day Island Hop...</p>
 					<p>3 day Kuai parad...</p>
 					<p>7 day 2 islands in...</p>
 				</div></a>
-				<a href="#"><div class="col-sm-4 specialBox s2">
+				<a href="#"><div class="col-sm-4 col-xs-12 specialBox s2">
 					<h4 class="specialHeader">Mexico</h4>
 					<p>4 day Riviera Maya...</p>
 					<p>4 day Riviera Maya...</p>
 					<p>4 day Riviera Maya...</p>
 					<p>4 day Riviera Maya...</p>
 				</div></a>
-				<a href="#"><div class="col-sm-4 specialBox s3">
+				<a href="#"><div class="col-sm-4 col-xs-12 specialBox s3">
 					<h4 class="specialHeader">Cruise</h4>
 					<p>Sail Europe on a...</p>
 					<p>14 day River Cruise...</p>
@@ -621,22 +725,22 @@ fieldset[disabled] .btn-fare.active {
 				</div></a>	
 			</div>
 			<div class="row specialWeeklyRow">
-				<a href="#"><div class="col-sm-4 weekly weekly-details">
+				<a href="#"><div class="col-lg-4 col-sm-8 col-xs-6 weekly weekly-details">
 					<h3>SPECIAL OF THE WEEK</h3>
 					<h4>3 Day Guided Tour of Rome, includes dinner.</h4>
 					<h4>$180.00 pp</h4>
 					<p class="special-yellow">Click to see more</p>
 				</div>
-				<div class="col-sm-8 weekly weekly-img">
+				<div class="col-lg-8 col-sm-4 col-xs-6 weekly weekly-img">
 					<%= image_tag('colloseum', :class => 'img-fluid' ) %>
 				</div></a>
 			</div>
 			<div class="row vacationRow">
-				<a href="#"><div class="col-sm-10 contact-col contact-left-middle">
+				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left-middle">
 					<h3>I WANT TO GO ON VACATION</h3>
 					<h4>Start here with our travel quiz</h4>
 				</div>
-				<div class="col-sm-2 contact-col arrow-col">
+				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
 				</div></a>
 			</div>
@@ -707,7 +811,7 @@ fieldset[disabled] .btn-fare.active {
 				    <div class="col-md-6">
 						<input placeholder="Adults" class="textbox-n form-control" type="text" onfocus="(this.type='number')" onblur="(this.type='text')" name="adults" id="adults" min="1">
 					</div>
-				    <div class="col-md-6">
+				    <div class="col-md-6 children-col">
 						<input placeholder="Children" class="textbox-n form-control" type="text" onfocus="(this.type='number')" onblur="(this.type='text')" name="children" id="children" min="0">
 					</div>
 				</div>
@@ -894,7 +998,7 @@ fieldset[disabled] .btn-fare.active {
 						<!-- <span class="tiny">Pickup Airport Code</span> -->
 					</div>
 					<div class="col-sm-6">
-						<input type="text" name="dropoff_location" class="form-control" id="dropoff_location" list="dropoff-list" autocomplete="off" placeholder="Dropoff Airport Code">
+						<input type="text" name="dropoff_location" class="form-control dropoff" id="dropoff_location" list="dropoff-list" autocomplete="off" placeholder="Dropoff Airport Code">
 						<span class="tiny">(If different from pickup location)</span>
 					</div>
 				</div>
@@ -983,29 +1087,29 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			</div>
 			<div class="row faregrabbrRow faregrabbrWhite">
-				<a href="#"><div class="col-sm-10 contact-col contact-left-right">
+				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
 					<h4>WAIT FOR THE BEST PRICE?</h4>
 					<h5>User our flight engine Faregrabbr</h5>
 				</div>
-				<div class="col-sm-2 contact-col arrow-col">
+				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
 				</div></a>
 			</div>
 			<div class="row faregrabbrRow">
-				<a href="#"><div class="col-sm-10 contact-col contact-left-right">
+				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
 					<h4>CRUISE BOOKING ENGINE</h4>
 					<h5>Explore cruises all over the world</h5>
 				</div>
-				<div class="col-sm-2 contact-col arrow-col">
+				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
 				</div></a>
 			</div>
 			<div class="row faregrabbrRow faregrabbrProfile">
-				<a href="#"><div class="col-sm-10 contact-col contact-left-right">
+				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
 					<h4>TRAVELER PROFILE</h4>
 					<h5>Create of view a traveler profile</h5>
 				</div>
-				<div class="col-sm-2 contact-col arrow-col">
+				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
 				</div></a>
 			</div>
@@ -1127,7 +1231,7 @@ $(".addOrigin").on('click', function(){
 	$('.append-div').removeClass('hide');
 	$('.append-div').addClass('block');
 	$('.addOrigin').addClass('margin-bottom-2');
-	$('.append-div').append("<div class='cont-span'><div class='form-group second-group lower-group'><div class='row delRow'><button class='btn btn-xs btn-danger del-button'>X</button></div><div class='col-md-6'><input type='text' name='citypairs[" + x + "][origin]' class='form-control' id='origin" + x + "' list='origin-list" + x + "' autocomplete='off' placeholder='Origin'><span class='tiny'>Origin Airport Code</span></div><div class='col-md-6 destination-col'><input type='text' name='citypairs[" + x + "][destination]' class='form-control' id='destination" + x + "' list='dest-list" + x + "' autocomplete='off' placeholder='Destination'><span class='tiny'>Destination Airport Code</span></div></div><div class='form-group lower-group second-row'><div class='col-md-6'><input type'date' class='form-control' name='citypairs[" + x + "][departdate]' id='depart" + x + "' min=''><span class='tiny'>Depart Date</span></div></div><datalist id='origin-list" + x + "'></datalist><datalist id='dest-list" + x + "'></datalist></span>");
+	$('.append-div').append("<div class='cont-span'><div class='form-group second-group lower-group'><div class='row delRow'><button class='btn btn-xs btn-danger del-button'>X</button></div><div class='col-md-6'><input type='text' name='citypairs[" + x + "][origin]' class='form-control' id='origin" + x + "' list='origin-list" + x + "' autocomplete='off' placeholder='Origin'><span class='tiny'>Origin Airport Code</span></div><div class='col-md-6 destination-col'><input type='text' name='citypairs[" + x + "][destination]' class='form-control' id='destination" + x + "' list='dest-list" + x + "' autocomplete='off' placeholder='Destination'><span class='tiny'>Destination Airport Code</span></div></div><div class='form-group lower-group second-row'><div class='col-md-6'><input type='date' class='form-control' name='citypairs[" + x + "][departdate]' id='depart" + x + "' min=''><span class='tiny'>Depart Date</span></div></div><datalist id='origin-list" + x + "'></datalist><datalist id='dest-list" + x + "'></datalist></span>");
 
 	var contString = "<div class='cont-span'><div class='form-group second-group lower-group'><div class='row delRow'><button class='btn btn-xs btn-danger del-button'>X</button></div><div class='col-md-6'><input type='text' name='citypairs[" + x + "][origin]' class='form-control' id='origin" + x + "' list='origin-list" + x + "' autocomplete='off' placeholder='Origin'><span class='tiny'>Origin Airport Code</span></div><div class='col-md-6 destination-col'><input type='text' name='citypairs[" + x + "][destination]' class='form-control' id='destination" + x + "' list='dest-list" + x + "' autocomplete='off' placeholder='Destination'><span class='tiny'>Destination Airport Code</span></div></div><div class='form-group lower-group second-row'><div class='col-md-6'><input type'date' class='form-control' name='citypairs[" + x + "][departdate]' id='depart" + x + "' min=''><span class='tiny'>Depart Date</span></div></div><datalist id='origin-list" + x + "'></datalist><datalist id='dest-list" + x + "'></datalist></div>"
 
