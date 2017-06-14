@@ -265,9 +265,10 @@ fieldset[disabled] .btn-fare.active {
 }
 .arrow{
 	float: right;
-	margin-top: 20px;
+	/*margin-top: 20px;*/
 	margin-right: 15px;
 }
+
 .contactRow{
     margin-right: -15px;
     background-color: #153649;
@@ -369,7 +370,10 @@ fieldset[disabled] .btn-fare.active {
 	margin-top: 70px;
 }
 .vacationRow .arrow-col .arrow{
-	margin-top: 79px;
+	/*margin-top: 79px;*/
+}
+.vacationRow .arrow-col{
+	padding-top: 79px;
 }
 .faregrabbrRow{
 	margin-left: -15px !important;
@@ -388,7 +392,10 @@ fieldset[disabled] .btn-fare.active {
     margin-top: 25px;
 }
 .faregrabbrRow .arrow-col .arrow{
-	margin-top: 30px;
+	/*margin-top: 30px;*/
+}
+.faregrabbrRow .arrow-col{
+	padding-top: 30px;
 }
 .faregrabbrWhite{
 	background: white;
@@ -414,36 +421,139 @@ fieldset[disabled] .btn-fare.active {
 .last-group-cars{
 	/*margin-bottom: 15px;*/
 }
+.arrow-col{
+	-moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+.arrow-col:hover{
+	background-color: rgba(255, 255, 255, 0.5); 
+	font-size: 1.5em;
+	padding-top: 15px !important;
+	padding-right: 10px !important;
+}
+.hover-arrow{
+	background-color: rgba(255, 255, 255, 0.5) !important; 
+	font-size: 1.5em !important;
+	padding-top: 15px !important;
+	padding-right: 10px !important;
+}
+
+.hover-arrow-middle{
+	background-color: rgba(255, 255, 255, 0.5) !important; 
+	font-size: 1.5em !important;
+	padding-top: 75px !important;
+	padding-right: 10px !important;
+}
+
+.hover-arrow-right{
+	background-color: rgba(255, 255, 255, 0.5) !important; 
+	font-size: 1.5em !important;
+	padding-top: 25px !important;
+	padding-right: 10px !important;
+}
+
+.contactRow .arrow-col{
+	padding-top: 20px;
+}
+.blogCont .arrow-col{
+	padding-top: 20px;
+}
+.vacationRow .arrow-col:hover{
+	padding-top: 75px !important;
+}
+.faregrabbrRow .arrow-col:hover{
+	padding-top: 25px !important;
+}
+.contactRow a{
+	color: white;
+}
+.blogCont a{
+	color: white;
+}
+.vacationRow a{
+	color: white;
+}
+.faregrabbrRow a{
+	color: white;
+}
+.faregrabbrWhite a{
+	color: black;
+}
+.specialBox p{
+	font-size: 0.9em;
+}
+.myTabs a{
+	-moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
+.specialBox{
+	-moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
+.specialBox:hover{
+	opacity: 0.7;
+}
+
+.specialsRow a{
+	color: white;
+}
+
+.blog-content-col a{
+    color: #6a96c5;
+}
+
+.weekly-img{
+	-moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
+.weekly-img:hover{
+	opacity: 0.8;
+}
+
+.hover-special{
+	opacity: 0.8;
+}
+
+.contactRow .contact-col .arrow{
+	/*margin-right: 10px;*/
+}
 </style>
 <div class="container-fluid outer-cont">
 	<div class="row outerRow">
 		<div class="col-sm-4 outerCol">
 			<div class="row profileRow">
-				<div class="col-sm-6 profileDiv">
-					<%= image_tag @page_user.avatar.url, :class => "img-fluid" %>
+				<div class="col-sm-5 profileDiv">
+					<%= image_tag @page_user.avatar.url(:medium), :class => "img-fluid" %>
 				</div>
-				<div class="col-sm-6 userInfo">
+				<div class="col-sm-7 userInfo">
 					<span class="meet">Meet Your Agent:</span>
 					<h4 class="name"><%= @page_user.first %> <%= @page_user.last %></h4>
 					<p class="about"><%= @page_user.about %></p>
 				</div>
 			</div>
 			<div class="row contactRow">
-				<div class="col-sm-10 contact-col">
+				<a href="#"><div class="col-sm-10 contact-col contact-left">
 					<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3>CONTACT <%= @page_user.first.upcase %></h3>
 				</div>
-				<div class="col-sm-2 contact-col arrow-col">
+				<div class="col-sm-2 contact-col arrow-col contact-arrow">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
-				</div>
+				</div></a>
 			</div>
 			<div class="row blogCont">
 				<div class="row blogRowHeader">
-				<div class="col-sm-10 contact-col">
+				<a href="#"><div class="col-sm-10 contact-col contact-left">
 					<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3>TRAVEL BLOG</h3>
 				</div>
 				<div class="col-sm-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
-				</div>
+				</div></a>
 				</div>
 				<div class="row blogContent">
 					<div class="col-sm-3 blogImgCol">
@@ -479,30 +589,30 @@ fieldset[disabled] .btn-fare.active {
 		</div>
 		<div class="col-sm-4 outerCol">
 			<div class="row specialsRow">
-				<div class="col-sm-4 specialBox s1">
+				<a href="#"><div class="col-sm-4 specialBox s1">
 					<h4 class="specialHeader">Hawaii</h4>
 					<p>7 day Oahu trip...</p>
 					<p>10 day Island Hop...</p>
 					<p>3 day Kuai parad...</p>
 					<p>7 day 2 islands in...</p>
-				</div>
-				<div class="col-sm-4 specialBox s2">
+				</div></a>
+				<a href="#"><div class="col-sm-4 specialBox s2">
 					<h4 class="specialHeader">Mexico</h4>
 					<p>4 day Riviera Maya...</p>
 					<p>4 day Riviera Maya...</p>
 					<p>4 day Riviera Maya...</p>
 					<p>4 day Riviera Maya...</p>
-				</div>
-				<div class="col-sm-4 specialBox s3">
+				</div></a>
+				<a href="#"><div class="col-sm-4 specialBox s3">
 					<h4 class="specialHeader">Cruise</h4>
 					<p>Sail Europe on a...</p>
 					<p>14 day River Cruise...</p>
 					<p>7 day Carribean...</p>
 					<p>4 day Mexico wee...</p>
-				</div>	
+				</div></a>	
 			</div>
 			<div class="row specialWeeklyRow">
-				<div class="col-sm-4 weekly weekly-details">
+				<a href="#"><div class="col-sm-4 weekly weekly-details">
 					<h3>SPECIAL OF THE WEEK</h3>
 					<h4>3 Day Guided Tour of Rome, includes dinner.</h4>
 					<h4>$180.00 pp</h4>
@@ -510,16 +620,16 @@ fieldset[disabled] .btn-fare.active {
 				</div>
 				<div class="col-sm-8 weekly weekly-img">
 					<%= image_tag('colloseum', :class => 'img-fluid' ) %>
-				</div>
+				</div></a>
 			</div>
 			<div class="row vacationRow">
-				<div class="col-sm-10 contact-col">
+				<a href="#"><div class="col-sm-10 contact-col contact-left-middle">
 					<h3>I WANT TO GO ON VACATION</h3>
 					<h4>Start here with our travel quiz</h4>
 				</div>
 				<div class="col-sm-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
-				</div>
+				</div></a>
 			</div>
 		</div>
 		<div class="col-sm-4 outerCol formOuter">
@@ -535,7 +645,74 @@ fieldset[disabled] .btn-fare.active {
 
 			<!-- Tab panes -->
 			<div class="tab-content">
-			<div role="tabpanel" class="tab-pane" id="home">
+			<div role="tabpanel" class="tab-pane fade in active" id="flights">
+				<form id="regularSearchForm" method="post" action="https://evov2.faregrabbr.com/remoteflightmultisearch.php?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYXJjaGVyX2FwaUBmYXJlZ3JhYmJyLmNvbSIsImlzc3VlX3RpbWUiOiIyMDE3LTA1LTMwIDIyOjA5OjAzIiwiaXAiOiI3My4yMjMuMTg1LjUwIn0.g-7nfu7AzzO6dToyu3o6cc6T9BynnCXz3Tc26_2lT9g" novalidate target="_blank" class="form-horizontal">
+				<div class="form-group top-group">
+				    <label for="type" class="col-md-6 searchAs">Search As</label>
+				    <div class="col-md-6">
+						<select name="type" id="air_type" class="form-control">
+							<option value="roundtrip">Round Trip</option>
+							<option value="oneway">One Way</option>
+							<option value="multicity">Multi City</option>
+						</select>
+					</div>
+				</div>
+				<div class="row bottom-group hide">
+				</div>
+				<div class="form-group second-group lower-group">
+				    <!-- <label for="origin" class="col-lg-4 control-label col-md-6">Origin</label> -->
+				    <div class="col-md-6">
+						<input type="text" name="citypairs[0][origin]" class="form-control" id="origin" list="origin-list" autocomplete="off" placeholder="Origin">
+					<span class="tiny">Origin Airport Code</span>
+					</div>
+				    <div class="col-md-6 destination-col">
+						<input type="text" name="citypairs[0][destination]" class="form-control" id="destination" list="dest-list" autocomplete="off" placeholder="Destination">
+						<span class="tiny">Destination Airport Code</span>
+					</div>
+				</div>
+				<div class="form-group lower-group second-row">
+				    <!-- <label for="depart" class="col-lg-4 control-label col-md-6">Depart</label> -->
+				    <div class="col-md-6">
+						<input type="date" class="form-control" name="citypairs[0][departdate]" id="depart" min="<%= Date.today %>">
+						<span class="tiny">Depart Date</span>
+					</div>
+				    <div class="col-md-6">
+						<input class="form-control" type="date" name="citypairs[0][returndate]" class="form-control" id="return" min="<%= Date.today %>">
+						<span class="tiny">Return Date</span>
+					</div>
+				</div>
+				<div class="append-div hide lower-group">
+				</div>
+				<!-- <div class="row"> -->
+					<div id="multiDiv" class="form-group col-sm-12 btnDiv multiDiv hide lower-group">
+						<button id="multiButton" class="multi-button btn btn-sm hide addOrigin btn-sample btn-fare" type="button">Add City</button>
+					</div>
+				<!-- </div> -->
+				<div class="row bottom-group hide lower-group">
+				</div>
+<!-- 				<div class="form-group return-form-group">
+				    <label for="return" class="col-lg-4 control-label col-md-6">Return</label>
+				</div> -->
+				<div class="form-group lower-group last-group">
+				    <!-- <label for="adults" class="col-lg-4 control-label col-md-6">Adults</label> -->
+				    <div class="col-md-6">
+						<input placeholder="Adults" class="textbox-n form-control" type="text" onfocus="(this.type='number')" onblur="(this.type='text')" name="adults" id="adults" min="1">
+					</div>
+				    <div class="col-md-6">
+						<input placeholder="Children" class="textbox-n form-control" type="text" onfocus="(this.type='number')" onblur="(this.type='text')" name="children" id="children" min="0">
+					</div>
+				</div>
+				<input type="hidden" name="isWidget" value="true">
+				<div class="form-group lower-group">
+					<div class="col-sm-6">
+					</div>
+					<div class="col-sm-6 btnDiv">
+						<input type="submit" value="CHECK NOW" id="flightButton" class="btn btn-fare sub-btn">
+					</div>
+				</div>
+			</form>
+			</div>
+			<div role="tabpanel" class="tab-pane fade" id="home">
 				<form name="VPSearchForm"  method="post" action="http://www.latesttraveloffers.com/ci/enter.asp?site=VTHARC&amp;account=&amp;UseSearchApi=true" id="vacationForm" target="_blank">
 				<input type="hidden" name="srchDestText">
 				<div class="form-group">
@@ -656,79 +833,12 @@ fieldset[disabled] .btn-fare.active {
 				</div>
 				</form> 
 			</div>
-			<div role="tabpanel" class="tab-pane active" id="flights">
-				<form id="regularSearchForm" method="post" action="https://evov2.faregrabbr.com/remoteflightmultisearch.php?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYXJjaGVyX2FwaUBmYXJlZ3JhYmJyLmNvbSIsImlzc3VlX3RpbWUiOiIyMDE3LTA1LTMwIDIyOjA5OjAzIiwiaXAiOiI3My4yMjMuMTg1LjUwIn0.g-7nfu7AzzO6dToyu3o6cc6T9BynnCXz3Tc26_2lT9g" novalidate target="_blank" class="form-horizontal">
-				<div class="form-group top-group">
-				    <label for="type" class="col-md-6 searchAs">Search As</label>
-				    <div class="col-md-6">
-						<select name="type" id="air_type" class="form-control">
-							<option value="roundtrip">Round Trip</option>
-							<option value="oneway">One Way</option>
-							<option value="multicity">Multi City</option>
-						</select>
-					</div>
-				</div>
-				<div class="row bottom-group hide">
-				</div>
-				<div class="form-group second-group lower-group">
-				    <!-- <label for="origin" class="col-lg-4 control-label col-md-6">Origin</label> -->
-				    <div class="col-md-6">
-						<input type="text" name="citypairs[0][origin]" class="form-control" id="origin" list="origin-list" autocomplete="off" placeholder="Origin">
-					<span class="tiny">Origin Airport Code</span>
-					</div>
-				    <div class="col-md-6 destination-col">
-						<input type="text" name="citypairs[0][destination]" class="form-control" id="destination" list="dest-list" autocomplete="off" placeholder="Destination">
-						<span class="tiny">Destination Airport Code</span>
-					</div>
-				</div>
-				<div class="form-group lower-group second-row">
-				    <!-- <label for="depart" class="col-lg-4 control-label col-md-6">Depart</label> -->
-				    <div class="col-md-6">
-						<input type="date" class="form-control" name="citypairs[0][departdate]" id="depart" min="<%= Date.today %>">
-						<span class="tiny">Depart Date</span>
-					</div>
-				    <div class="col-md-6">
-						<input class="form-control" type="date" name="citypairs[0][returndate]" class="form-control" id="return" min="<%= Date.today %>">
-						<span class="tiny">Return Date</span>
-					</div>
-				</div>
-				<div class="append-div hide lower-group">
-				</div>
-				<!-- <div class="row"> -->
-					<div id="multiDiv" class="form-group col-sm-12 btnDiv multiDiv hide lower-group">
-						<button id="multiButton" class="multi-button btn btn-sm hide addOrigin btn-sample btn-fare" type="button">Add City</button>
-					</div>
-				<!-- </div> -->
-				<div class="row bottom-group hide lower-group">
-				</div>
-<!-- 				<div class="form-group return-form-group">
-				    <label for="return" class="col-lg-4 control-label col-md-6">Return</label>
-				</div> -->
-				<div class="form-group lower-group last-group">
-				    <!-- <label for="adults" class="col-lg-4 control-label col-md-6">Adults</label> -->
-				    <div class="col-md-6">
-						<input placeholder="Adults" class="textbox-n form-control" type="text" onfocus="(this.type='number')" onblur="(this.type='text')" name="adults" id="adults" min="1">
-					</div>
-				    <div class="col-md-6">
-						<input placeholder="Children" class="textbox-n form-control" type="text" onfocus="(this.type='number')" onblur="(this.type='text')" name="children" id="children" min="0">
-					</div>
-				</div>
-				<input type="hidden" name="isWidget" value="true">
-				<div class="form-group lower-group">
-					<div class="col-sm-6">
-					</div>
-					<div class="col-sm-6 btnDiv">
-						<input type="submit" value="CHECK NOW" id="flightButton" class="btn btn-fare sub-btn">
-					</div>
-				</div>
-			</form>
-			</div>
-			<div role="tabpanel" class="tab-pane" id="hotels">
+			<div role="tabpanel" class="tab-pane fade" id="hotels">
 				<form id="hotelSearchForm" method="post" action="https://evov2.faregrabbr.com/remotehotelsearchwidget.php?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYXJjaGVyX2FwaUBmYXJlZ3JhYmJyLmNvbSIsImlzc3VlX3RpbWUiOiIyMDE3LTA1LTMwIDIyOjA5OjAzIiwiaXAiOiI3My4yMjMuMTg1LjUwIn0.g-7nfu7AzzO6dToyu3o6cc6T9BynnCXz3Tc26_2lT9g" novalidate target="_blank" class="form-horizontal">
 					<input id="locationType" type="hidden" name="locationType" value="">
 				<div class="form-group top-group">
 				    <!-- <label for="place" class="col-lg-4 control-label col-md-6">City / Airport</label> -->
-				    <div class="col-sm-6">
+				    <div class="col-sm-12">
 						<input type="text" name="place" class="form-control" id="place" list="place-list" autocomplete="off" placeholder="City / Airport">
 						<span class="tiny">City / Airport</span>
 					</div>
@@ -765,7 +875,7 @@ fieldset[disabled] .btn-fare.active {
 				</div>
 			</form>
 			</div>
-			<div role="tabpanel" class="tab-pane" id="cars">
+			<div role="tabpanel" class="tab-pane fade" id="cars">
 					<form id="carSearchForm" method="post" action="https://evov2.faregrabbr.com/remotecarsearchwidget.php?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYXJjaGVyX2FwaUBmYXJlZ3JhYmJyLmNvbSIsImlzc3VlX3RpbWUiOiIyMDE3LTA1LTMwIDIyOjA5OjAzIiwiaXAiOiI3My4yMjMuMTg1LjUwIn0.g-7nfu7AzzO6dToyu3o6cc6T9BynnCXz3Tc26_2lT9g" novalidate target="_blank" class="form-horizontal">
 					<input id="locationType" type="hidden" name="locationType" value="">
 				<div class="form-group top-group top-group-car">
@@ -864,31 +974,31 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			</div>
 			<div class="row faregrabbrRow faregrabbrWhite">
-				<div class="col-sm-10 contact-col">
+				<a href="#"><div class="col-sm-10 contact-col contact-left-right">
 					<h4>WAIT FOR THE BEST PRICE?</h4>
 					<h5>User our flight engine Faregrabbr</h5>
 				</div>
 				<div class="col-sm-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
-				</div>
+				</div></a>
 			</div>
 			<div class="row faregrabbrRow">
-				<div class="col-sm-10 contact-col">
+				<a href="#"><div class="col-sm-10 contact-col contact-left-right">
 					<h4>CRUISE BOOKING ENGINE</h4>
 					<h5>Explore cruises all over the world</h5>
 				</div>
 				<div class="col-sm-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
-				</div>
+				</div></a>
 			</div>
 			<div class="row faregrabbrRow faregrabbrProfile">
-				<div class="col-sm-10 contact-col">
+				<a href="#"><div class="col-sm-10 contact-col contact-left-right">
 					<h4>TRAVELER PROFILE</h4>
 					<h5>Create of view a traveler profile</h5>
 				</div>
 				<div class="col-sm-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
-				</div>
+				</div></a>
 			</div>
 		</div>
 	</div>
@@ -912,6 +1022,46 @@ fieldset[disabled] .btn-fare.active {
 <script type="text/javascript">
 
 $(document).on('turbolinks:load',function(){
+
+$('.weekly-details').hover(
+  function() {
+  	// console.log('hovering');
+    // var arrowCol = $( this ).closest('.arrow-col');
+    $(this).siblings('div').addClass('hover-special');
+  }, function() {
+    $(this).siblings('div').removeClass('hover-special');
+  }
+);
+
+$('.contact-left').hover(
+  function() {
+  	// console.log('hovering');
+    // var arrowCol = $( this ).closest('.arrow-col');
+    $(this).siblings('div').addClass('hover-arrow');
+  }, function() {
+    $(this).siblings('div').removeClass('hover-arrow');
+  }
+);
+
+$('.contact-left-middle').hover(
+  function() {
+  	// console.log('hovering');
+    // var arrowCol = $( this ).closest('.arrow-col');
+    $(this).siblings('div').addClass('hover-arrow-middle');
+  }, function() {
+    $(this).siblings('div').removeClass('hover-arrow-middle');
+  }
+);
+
+$('.contact-left-right').hover(
+  function() {
+  	// console.log('hovering');
+    // var arrowCol = $( this ).closest('.arrow-col');
+    $(this).siblings('div').addClass('hover-arrow-right');
+  }, function() {
+    $(this).siblings('div').removeClass('hover-arrow-right');
+  }
+);
 
 $('#place').keyup(function(e) {
 	if(e.keyCode == 8){
