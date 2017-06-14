@@ -383,6 +383,10 @@ fieldset[disabled] .btn-fare.active {
 	margin-left: 15px;
     margin-top: 0px;
 }
+.faregrabbrRow h4{
+	margin-left: 15px;
+    margin-top: 25px;
+}
 .faregrabbrRow .arrow-col .arrow{
 	margin-top: 30px;
 }
@@ -396,6 +400,19 @@ fieldset[disabled] .btn-fare.active {
 .faregrabbrProfile{
 	background-color: #06b78d;
 	color: white;
+}
+.car-select{
+	background-color: #A5B3C0 !important;
+	color: white !important;
+}
+.btnDivCars{
+	padding-right: 30px;
+}
+.top-group-car{
+	padding-bottom: 5px;
+}
+.last-group-cars{
+	/*margin-bottom: 15px;*/
 }
 </style>
 <div class="container-fluid outer-cont">
@@ -707,72 +724,70 @@ fieldset[disabled] .btn-fare.active {
 			</form>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="hotels">
-				<form id="hotelSearchForm" method="post" action="https://evov2.faregrabbr.com/remotehotelsearchwidget.php?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYXJjaGVyX2FwaUBmYXJlZ3JhYmJyLmNvbSIsImlzc3VlX3RpbWUiOiIyMDE3LTA1LTMwIDIyOjA5OjAzIiwiaXAiOiI3My4yMjMuMTg1LjUwIn0.g-7nfu7AzzO6dToyu3o6cc6T9BynnCXz3Tc26_2lT9g" novalidate target="_blank">
+				<form id="hotelSearchForm" method="post" action="https://evov2.faregrabbr.com/remotehotelsearchwidget.php?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYXJjaGVyX2FwaUBmYXJlZ3JhYmJyLmNvbSIsImlzc3VlX3RpbWUiOiIyMDE3LTA1LTMwIDIyOjA5OjAzIiwiaXAiOiI3My4yMjMuMTg1LjUwIn0.g-7nfu7AzzO6dToyu3o6cc6T9BynnCXz3Tc26_2lT9g" novalidate target="_blank" class="form-horizontal">
 					<input id="locationType" type="hidden" name="locationType" value="">
-				<div class="form-group">
-				    <label for="place" class="col-lg-4 control-label col-md-6">City / Airport</label>
-				    <div class="col-lg-8 col-md-6">
-						<input type="text" name="place" class="form-control" id="place" list="place-list" autocomplete="off">
+				<div class="form-group top-group">
+				    <!-- <label for="place" class="col-lg-4 control-label col-md-6">City / Airport</label> -->
+				    <div class="col-sm-6">
+						<input type="text" name="place" class="form-control" id="place" list="place-list" autocomplete="off" placeholder="City / Airport">
+						<span class="tiny">City / Airport</span>
 					</div>
 				</div>
-				<div class="form-group">
-				    <label for="checkin" class="col-lg-4 control-label col-md-6">Check In</label>
-				    <div class="col-lg-8 col-md-6">
+				<div class="form-group lower-group second-group">
+				    <!-- <label for="checkin" class="col-lg-4 control-label col-md-6">Check In</label> -->
+				    <div class="col-sm-6">
 						<input type="date" name="checkin" class="form-control" id="checkin" min="<%= Date.today %>">
+						<span class="tiny">Check In</span>
 					</div>
-				</div>
-				<div class="form-group">
-				    <label for="checkout" class="col-lg-4 control-label col-md-6">Check Out</label>
-				    <div class="col-lg-8 col-md-6">
+				    <div class="col-sm-6">
 						<input type="date" name="checkout" class="form-control" id="checkout" min="<%= Date.today %>">
+						<span class="tiny">Check Out
 					</div>
 				</div>
-				<div class="form-group">
-				    <label for="numrooms" class="col-lg-4 control-label col-md-6">Rooms</label>
-				    <div class="col-lg-8 col-md-6">
+				<div class="form-group lower-group">
+				    <!-- <label for="numrooms" class="col-lg-4 control-label col-md-6">Rooms</label> -->
+				    <div class="col-sm-6">
 						<input type="number" name="numrooms" class="form-control" id="numrooms" min="1" value="1">
+						<span class="tiny">Rooms</span>
 					</div>
-				</div>
-				<div class="form-group">
-				    <label for="adults-hotel" class="col-lg-4 control-label col-md-6">Guests</label>
-				    <div class="col-lg-8 col-md-6">
+				    <div class="col-sm-6">
 						<input type="number" name="adults" class="form-control" id="adults-hotel" min="1" value="1">
+						<span class="tiny">Guests</span>
 					</div>
 				</div>
 				<input type="hidden" name="isWidget" value="true">
-				<div class="form-group col-sm-12 btnDiv">
-					<input type="submit" value="Search" id="hotelButton" class="btn btn-sm btn-sample">
+				<div class="form-group lower-group">
+					<div class="col-sm-6">
+					</div>
+					<div class="col-sm-6 btnDiv">
+						<input type="submit" value="CHECK NOW" id="flightButton" class="btn btn-fare sub-btn">
+					</div>
 				</div>
 			</form>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="cars">
-					<form id="carSearchForm" method="post" action="https://evov2.faregrabbr.com/remotecarsearchwidget.php?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYXJjaGVyX2FwaUBmYXJlZ3JhYmJyLmNvbSIsImlzc3VlX3RpbWUiOiIyMDE3LTA1LTMwIDIyOjA5OjAzIiwiaXAiOiI3My4yMjMuMTg1LjUwIn0.g-7nfu7AzzO6dToyu3o6cc6T9BynnCXz3Tc26_2lT9g" novalidate target="_blank">
+					<form id="carSearchForm" method="post" action="https://evov2.faregrabbr.com/remotecarsearchwidget.php?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiYXJjaGVyX2FwaUBmYXJlZ3JhYmJyLmNvbSIsImlzc3VlX3RpbWUiOiIyMDE3LTA1LTMwIDIyOjA5OjAzIiwiaXAiOiI3My4yMjMuMTg1LjUwIn0.g-7nfu7AzzO6dToyu3o6cc6T9BynnCXz3Tc26_2lT9g" novalidate target="_blank" class="form-horizontal">
 					<input id="locationType" type="hidden" name="locationType" value="">
-				<div class="form-group">
-				    <label for="pickup_location" class="col-lg-4 control-label col-md-6">Pickup Airport Code</label>
-				    <div class="col-lg-8 col-md-6">
-						<input type="text" name="pickup_location" class="form-control" id="pickup_location" list="pickup-list" autocomplete="off">
+				<div class="form-group top-group top-group-car">
+				    <!-- <label for="pickup_location" class="col-lg-4 control-label col-md-6">Pickup Airport Code</label> -->
+				    <div class="col-sm-6">
+						<input type="text" name="pickup_location" class="form-control" id="pickup_location" list="pickup-list" autocomplete="off" placeholder="Pickup Airport Code">
+						<!-- <span class="tiny">Pickup Airport Code</span> -->
+					</div>
+					<div class="col-sm-6">
+						<input type="text" name="dropoff_location" class="form-control" id="dropoff_location" list="dropoff-list" autocomplete="off" placeholder="Dropoff Airport Code">
+						<span class="tiny">(If different from pickup location)</span>
 					</div>
 				</div>
 				<input type="hidden" name="pickup_locationType" value="Airport">
-				<div class="form-group">
-				    <label for="dropoff_location" class="col-lg-4 control-label col-md-6">Dropoff Airport Code</label>
-				    <div class="col-lg-8 col-md-6 dropoffCont">
-						<input type="text" name="dropoff_location" class="form-control" id="dropoff_location" list="dropoff-list" autocomplete="off">
-						<span class="tiny-dropoff">(if different from pickup location)</span>
-					</div>
-				</div>
 				<input type="hidden" name="dropoff_locationType" value="Airport">
-				<div class="form-group">
-				    <label for="pickup_date" class="col-lg-4 control-label col-md-6">Pickup Date</label>
-				    <div class="col-lg-8 col-md-6">
+				<div class="form-group  second-group lower-group">
+				    <div class="col-sm-6">
 						<input type="date" name="pickup_date" class="form-control" id="pickup_date" min="<%= Date.today %>">
+						<span class="tiny">Pickup Date</span>
 					</div>
-				</div>
-				<div class="form-group">
-				    <label for="pickup_time" class="col-lg-4 control-label col-md-6">Pickup Time</label>
-				    <div class="col-lg-8 col-md-6">
-				    	<select name="pickup_time" class="form-control" id="pickup_time">
+					 <div class="col-sm-6">
+				    	<select name="pickup_time" class="form-control car-select" id="pickup_time">
 				    		<option value="12:00:00">Noon</option>
 				    		<option value="13:00:00">1:00 PM</option>
 				    		<option value="14:00:00">2:00 PM</option>
@@ -798,18 +813,16 @@ fieldset[disabled] .btn-fare.active {
 				    		<option value="10:00:00">10:00 AM</option>
 				    		<option value="11:00:00">11:00 AM</option>
 				    	</select>
+				    	<span class="tiny">Pickup Time</span>
 					</div>
 				</div>
-				<div class="form-group">
-				    <label for="dropoff_date" class="col-lg-4 control-label col-md-6">Dropoff Date</label>
-				    <div class="col-lg-8 col-md-6">
+				<div class="form-group lower-group last-group-cars">
+				    <div class="col-sm-6">
 						<input type="date" name="dropoff_date" class="form-control" id="dropoff_date" min="<%= Date.today %>">
+						<span class="tiny">Dropoff Date</span>
 					</div>
-				</div>
-				<div class="form-group">
-				    <label for="dropoff_time" class="col-lg-4 control-label col-md-6">Dropoff Time</label>
-				    <div class="col-lg-8 col-md-6">
-				    	<select name="dropoff_time" class="form-control" id="pickup_time">
+					<div class="col-sm-6">
+				    	<select name="dropoff_time" class="form-control car-select" id="pickup_time">
 				    		<option value="12:00:00">Noon</option>
 				    		<option value="13:00:00">1:00 PM</option>
 				    		<option value="14:00:00">2:00 PM</option>
@@ -835,11 +848,16 @@ fieldset[disabled] .btn-fare.active {
 				    		<option value="10:00:00">10:00 AM</option>
 				    		<option value="11:00:00">11:00 AM</option>
 				    	</select>
-					</div>
+				    	<span class="tiny">Dropoff Time</span>
+				    </div>
 				</div>
 				<input type="hidden" name="isWidget" value="true">
-				<div class="form-group col-sm-12 btnDiv">
-					<input type="submit" value="Search" id="carButton" class="btn btn-sm btn-sample">
+				<div class="form-group lower-group">
+					<div class="col-sm-6">
+					</div>
+					<div class="col-sm-6 btnDiv btnDivCars">
+						<input type="submit" value="CHECK NOW" id="flightButton" class="btn btn-fare sub-btn">
+					</div>
 				</div>
 				</form>
 			</div>
@@ -847,7 +865,7 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			<div class="row faregrabbrRow faregrabbrWhite">
 				<div class="col-sm-10 contact-col">
-					<h3>WAIT FOR THE BEST PRICE?</h3>
+					<h4>WAIT FOR THE BEST PRICE?</h4>
 					<h5>User our flight engine Faregrabbr</h5>
 				</div>
 				<div class="col-sm-2 contact-col arrow-col">
@@ -856,7 +874,7 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			<div class="row faregrabbrRow">
 				<div class="col-sm-10 contact-col">
-					<h3>CRUISE BOOKING ENGINER</h3>
+					<h4>CRUISE BOOKING ENGINE</h4>
 					<h5>Explore cruises all over the world</h5>
 				</div>
 				<div class="col-sm-2 contact-col arrow-col">
@@ -865,7 +883,7 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			<div class="row faregrabbrRow faregrabbrProfile">
 				<div class="col-sm-10 contact-col">
-					<h3>TRAVELER PROFILE</h3>
+					<h4>TRAVELER PROFILE</h4>
 					<h5>Create of view a traveler profile</h5>
 				</div>
 				<div class="col-sm-2 contact-col arrow-col">
