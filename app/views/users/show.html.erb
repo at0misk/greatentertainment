@@ -162,7 +162,7 @@
 		/*display: block;*/
 	}
 	datalist{
-		display: block;
+		/*display: block;*/
 	}
 	.tiny{
 	    color: white;
@@ -822,7 +822,7 @@ fieldset[disabled] .btn-fare.active {
 						<input type="date" class="form-control" name="citypairs[0][departdate]" id="depart" min="<%= Date.today %>" allowInputToggle="true">
 						<span class="tiny">Depart Date</span>
 					</div>
-				    <div class="col-md-6">
+				    <div class="col-md-6 return-col">
 						<input class="form-control" type="date" name="citypairs[0][returndate]" class="form-control" id="return" min="<%= Date.today %>">
 						<span class="tiny">Return Date</span>
 					</div>
@@ -1367,7 +1367,7 @@ $('#air_type').change(function(){
 		$('.multi-button').removeClass('hide');
 		$('.multiDiv').removeClass('hide');
 		$('.multiDiv').addClass('block');
-		$('.destination-col').removeClass('hide');
+		$('.return-col').removeClass('hide');
 		$('.tabsDiv').addClass('scrolling')
 	}
 	else if($(this).val() == 'oneway'){
@@ -1375,7 +1375,7 @@ $('#air_type').change(function(){
 			$('.append-div').empty();
 			multi = false;
 		}
-		$('.destination-col').addClass('hide');
+		$('.return-col').addClass('hide');
 		$('.return-form-group').addClass('block');
 		$('.return-form-group').removeClass('hide');
 		$('.top-group').removeClass('top-group-border');
@@ -1401,7 +1401,7 @@ $('#air_type').change(function(){
 		$('.multi-button').removeClass('button-show');
 		$('.multiDiv').addClass('hide');
 		$('.multiDiv').removeClass('block');
-		$('.destination-col').removeClass('hide');
+		$('.return-col').removeClass('hide');
 		$('.tabsDiv').removeClass('scrolling')
 	}
 	if($(this).val() == "oneway" || $(this).val() == 'multicity'){
