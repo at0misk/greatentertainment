@@ -260,7 +260,7 @@ fieldset[disabled] .btn-fare.active {
 	margin-left: 15px;
 }
 .contact-col .glyphicon{
-	font-size: 1.5em;
+	font-size: 1.3em;
 	margin-left: 15px;
 }
 .arrow{
@@ -367,7 +367,7 @@ fieldset[disabled] .btn-fare.active {
 	margin-top: 0px;
 }
 .vacationRow .contact-col h3{
-	margin-top: 70px;
+	margin-top: 77px;
 }
 .vacationRow .arrow-col .arrow{
 	/*margin-top: 79px;*/
@@ -548,7 +548,13 @@ fieldset[disabled] .btn-fare.active {
     }
 }
 
-@media (max-width: 1165px) {
+@media (max-width: 1165px){
+	.outerCol{
+		width: 31%;
+	}
+}
+
+@media (max-width: 1007px) {
 	.outerCol{
 		width: 100%;
 	}
@@ -583,7 +589,11 @@ fieldset[disabled] .btn-fare.active {
 	}
 }
 
-@media (max-width: 767px) {
+@media (max-width: 769px) {
+	.weekly-img img{
+		width: auto;
+		height: 250px;
+	}
 	.blogContent{
 		width: 100%;
 	}
@@ -606,7 +616,7 @@ fieldset[disabled] .btn-fare.active {
 		padding-top: 20px;
 	}
 	.specialWeeklyRow{
-		height: 100%;
+		/*height: 100%;*/
     	background-color: #4f4f4f;
 	}
 	.special-yellow{
@@ -626,9 +636,16 @@ fieldset[disabled] .btn-fare.active {
 	.blogContent{
 		width: 103%;
 	}
+	.specialWeeklyRow{
+		height: 100%;
+	}
 }
 
 @media (max-width: 500px){
+	.weekly-img img{
+		width: auto;
+		height: 190px;
+	}
 	.arrow{
 		margin-right: 20% !important;
 	}
@@ -644,6 +661,13 @@ fieldset[disabled] .btn-fare.active {
 	.blogRowHeader{
 		margin-right: 0px;
 	}
+	.contact-left-middle h3{
+		margin-top: 60px !important;
+	}
+}
+
+.lefth3{
+	font-size: 20px;
 }
 
 </style>
@@ -662,7 +686,7 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			<div class="row contactRow">
 				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left">
-					<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3>CONTACT <%= @page_user.first.upcase %></h3>
+					<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="lefth3">CONTACT <%= @page_user.first.upcase %></h3>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col contact-arrow">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
@@ -671,7 +695,7 @@ fieldset[disabled] .btn-fare.active {
 			<div class="row blogCont">
 				<div class="row blogRowHeader">
 				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left">
-					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span><h3>TRAVEL BLOG</h3>
+					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span><h3 class="lefth3">TRAVEL BLOG</h3>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
@@ -734,13 +758,13 @@ fieldset[disabled] .btn-fare.active {
 				</div></a>	
 			</div>
 			<div class="row specialWeeklyRow">
-				<a href="#"><div class="col-lg-4 col-sm-8 col-xs-6 weekly weekly-details">
+				<a href="#"><div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
 					<h4>SPECIAL OF THE WEEK</h4>
 					<h5>3 Day Guided Tour of Rome, includes dinner.</h5>
 					<h5>$180.00 pp</h5>
 					<p class="special-yellow">Click to see more</p>
 				</div>
-				<div class="col-lg-8 col-sm-4 col-xs-6 weekly weekly-img">
+				<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6 weekly weekly-img">
 					<%= image_tag('colloseum', :class => 'img-fluid' ) %>
 				</div></a>
 			</div>
