@@ -59,4 +59,14 @@ class UsersController < ApplicationController
 	def request_chat
 		@agent = User.find(params['id'])
 	end
+	def contact
+		puts params['user_id']
+		@user = User.find(params['user_id'])
+		puts params['email']
+		puts params['first']
+		puts params['last']
+		puts params['message']
+		flash[:sent_mail] = true
+		redirect_back(fallback_location: "/#{@user.username}")
+	end
 end

@@ -726,7 +726,7 @@ fieldset[disabled] .btn-contact.active {
     margin-left: 2%;
 }
 
-.close{
+#contact-close{
 	color: white;
 	opacity: 1;
 	-moz-transition: all 0.4s;
@@ -734,8 +734,22 @@ fieldset[disabled] .btn-contact.active {
 	transition: all 0.4s;
 }
 
-.close:hover{
+#contact-close:hover{
 	color: white;
+	text-shadow: none;
+	/*opacity: 0.6;*/
+}
+
+.confirm-close{
+	color: black;
+	opacity: 1;
+	-moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
+.confirm-close:hover{
+	color: black;
 	text-shadow: none;
 	/*opacity: 0.6;*/
 }
@@ -767,6 +781,16 @@ fieldset[disabled] .btn-contact.active {
 	-moz-transition: all 0.4s;
 	-webkit-transition: all 0.4s;
 	transition: all 0.4s;
+}
+
+#confirmModalLabel{
+	display: inline-block;
+}
+
+#confirm-header{
+	background: white;
+	color: black;
+	text-align: center;
 }
 
 </style>
@@ -1270,19 +1294,19 @@ fieldset[disabled] .btn-contact.active {
     <div class="modal-content">
       <div class="modal-header">
         <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="modal-title lefth3 modalh3" id="contactModalLabel">CONTACT <%= @page_user.first.upcase %></h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" id="contact-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-		<form action="/subscriptions" method="post" class="form-horizontal">
+		<form action="/contact" method="post" class="form-horizontal">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-			<input name="subscription[user_id]" type="hidden" value="<%= @page_user.id %>">
+			<input name="user_id" type="hidden" value="<%= @page_user.id %>">
 			<div class="row">
 				<div class="form-group">
 				    <label for="email" class="col-sm-3 control-label">Email</label>
 				    <div class="col-sm-6">
-				        <input name="subscription[email]" type="text" class="form-control" id="email" />
+				        <input name="email" type="text" class="form-control" id="email" />
 				    </div>
 				</div>
 			</div>
@@ -1290,7 +1314,7 @@ fieldset[disabled] .btn-contact.active {
 				<div class="form-group">
 				    <label for="first" class="col-sm-3 control-label">First Name</label>
 				    <div class="col-sm-6">
-				        <input name="subscription[first]" type="text" class="form-control" id="first" />
+				        <input name="first" type="text" class="form-control" id="first" />
 				    </div>
 				</div>
 			</div>
@@ -1298,7 +1322,7 @@ fieldset[disabled] .btn-contact.active {
 				<div class="form-group">
 				    <label for="last" class="col-sm-3 control-label">Last Name</label>
 				    <div class="col-sm-6">
-				        <input name="subscription[last]" type="text" class="form-control" id="last" />
+				        <input name="last" type="text" class="form-control" id="last" />
 				    </div>
 				</div>
 			</div>
@@ -1328,9 +1352,78 @@ fieldset[disabled] .btn-contact.active {
   </div>
 </div>
 
+
+<!-- Confirm Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" id="confirm-header">
+        <h3 class="modal-title" id="confirmModalLabel">Thanks!  We'll be in touch</h3>
+        <button type="button" class="close confirm-close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- <div class="modal-body">
+		<form action="/contact" method="post" class="form-horizontal">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<input name="user_id" type="hidden" value="<%= @page_user.id %>">
+			<div class="row">
+				<div class="form-group">
+				    <label for="email" class="col-sm-3 control-label">Email</label>
+				    <div class="col-sm-6">
+				        <input name="email" type="text" class="form-control" id="email" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="first" class="col-sm-3 control-label">First Name</label>
+				    <div class="col-sm-6">
+				        <input name="first" type="text" class="form-control" id="first" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="last" class="col-sm-3 control-label">Last Name</label>
+				    <div class="col-sm-6">
+				        <input name="last" type="text" class="form-control" id="last" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="last" class="col-sm-3 control-label">Message</label>
+				    <div class="col-sm-6">
+				    	<textarea name="message" class="form-control" rows="4"></textarea>
+				    </div>
+				</div>
+			</div>
+			<div class="row contact-sub">
+				<div class="form-group">
+				    <label for="submit" class="col-sm-3 control-label"></label>
+				    <div class="col-sm-6 btn-col">
+				        <button class="btn btn-contact">CONTACT</button>
+				    </div>
+				</div>
+			</div>
+		</form>
+      </div> -->
+<!--       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
 <script type="text/javascript">
 
 $(document).on('turbolinks:load',function(){
+
+<% if flash[:sent_mail] %>
+// alert("Thanks!  We'll be in touch");
+$('#confirmModal').modal('toggle');
+<% end %>
 
 $('.weekly-details').hover(
   function() {

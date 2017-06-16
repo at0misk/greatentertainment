@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 	get '/specials/new/:id' => 'specials#new'
 	post '/specials' => 'specials#create'
 	get '/specials/:id' => 'specials#view'
+	post 'contact' => 'users#contact'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
 	mount ActionCable.server => '/cable'
