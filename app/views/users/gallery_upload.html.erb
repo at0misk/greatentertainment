@@ -1,0 +1,48 @@
+<style type="text/css">
+	.btn-col{
+		text-align: center;
+	}
+	.header{
+		text-align: center;
+	}
+	.photo-group{
+		text-align: center;
+		margin-top: 25px;
+	}
+	.btn-sm{
+		display: inline-block;
+		margin-left: 15px;
+	}
+	#inputFile{
+		display: inline-block;
+	}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3">
+		</div>
+		<div class="col-sm-6">
+			<h3 class="header">Upload photos to <%= @page_user.first %> <%= @page_user.last %>'s gallery:</h3>
+				<form action="/gallery_upload" method="post" class="form-horizontal" enctype="multipart/form-data">
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					<input name="photo[user_id]" type="hidden" value="<%= @page_user.id %>">
+					<div class="form-group photo-group">
+					    <label for="exampleInputFile" class="col-sm-2 control-label">Photo</label>
+					    <div class="col-sm-10">
+					    	<input name="photo[image]" type="file" class="form-control-file" id="inputFile" aria-describedby="fileHelp">
+					    	<button class="btn btn-sm btn-primary">Submit</button>
+					    </div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+						    <!-- <label for="submit" class="col-sm-2 control-label"></label> -->
+						    <div class="col-sm-12 btn-col">
+						    </div>
+						</div>
+					</div>
+				</form>
+		</div>
+		<div class="col-sm-3">
+		</div>
+	</div>
+</div>

@@ -1,0 +1,45 @@
+<style type="text/css">
+	.photo-col{
+		height: 800px;
+		/*background-color: blue;*/
+	}
+	.photo-row{
+		margin-top: 20px;
+	}
+</style>
+<!-- Disables turbolinks on restoration -->
+<% content_for :head do %>
+  <meta name="turbolinks-cache-control" content="no-cache">
+<% end %>
+<link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
+<div class="container">
+	<div class="row photo-row">
+		<div class="col-sm-2">
+		</div>
+		<div class="col-sm-8 photo-col">
+			<h4><%= @page_user.first %> <%= @page_user.last %>'s Photo Gallery</h4>
+			<div class="fotorama" data-width="100%">
+			  <img src="http://s.fotorama.io/1.jpg">
+			  <img src="http://s.fotorama.io/2.jpg">
+			  <% @photos.each do |val| %>
+			  	<%= image_tag(val.image.url) %>
+			  <% end %>
+			</div>
+			<h4>Have you booked with <%= @page_user.first %> <%= @page_user.last %>?</h4>
+			<h5>Upload your photos <a href="/gallery_upload/<%= @page_user.username %>">here</a>!</h5>
+		</div>
+		<div class="col-sm-2">
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var x = <%= @photos.length %>
+	var fotorama = $('.fotorama').fotorama().data('fotorama')
+	// Adds thumbnails to nav if there are at least 5 photos
+	if(x > 4){
+		fotorama.setOptions({
+			nav: 'thumbs'
+		})
+	}
+</script>

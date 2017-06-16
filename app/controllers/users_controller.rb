@@ -69,4 +69,20 @@ class UsersController < ApplicationController
 		flash[:sent_mail] = true
 		redirect_back(fallback_location: "/#{@user.username}")
 	end
+	def gallery
+		@page_user = User.find_by_username(params['username'])
+		@photos = Photo.where(user_id: @page_user.id)
+	end
+	def gallery_upload
+		@page_user = User.find_by_username(params['username'])
+	end
+	def photo_create
+		@photo = Photo.new(photo_params)
+		if @photo.save
+		end
+		redirect_to "/gallery/#{@photo.user.username}"
+	end
+	def photo_params
+		params.require(:photo).permit(:image, :user_id)
+	end
 end

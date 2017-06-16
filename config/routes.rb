@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 	post '/specials' => 'specials#create'
 	get '/specials/:id' => 'specials#view'
 	post 'contact' => 'users#contact'
+	get '/gallery_upload/:username' => 'users#gallery_upload'
+	get '/gallery/:username' => 'users#gallery'
+	post '/gallery_upload' => 'users#photo_create'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
 	mount ActionCable.server => '/cable'
