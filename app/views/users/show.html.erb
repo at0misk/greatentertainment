@@ -218,7 +218,53 @@ fieldset[disabled] .btn-fare.active {
   background-color: #A5B3C0; 
   border-color: #FFFFFF; 
 } 
+
+.btn-contact { 
+  color: #ffffff; 
+  background-color: #153649; 
+  border-color: #09171F; 
+} 
  
+.btn-contact:hover, 
+.btn-contact:focus, 
+.btn-contact:active, 
+.btn-contact.active, 
+.open .dropdown-toggle.btn-contact { 
+  color: #ffffff; 
+  background-color: #0C202B; 
+  border-color: #09171F; 
+} 
+ 
+.btn-contact:active, 
+.btn-contact.active, 
+.open .dropdown-toggle.btn-contact { 
+  background-image: none; 
+} 
+ 
+.btn-contact.disabled, 
+.btn-contact[disabled], 
+fieldset[disabled] .btn-contact, 
+.btn-contact.disabled:hover, 
+.btn-contact[disabled]:hover, 
+fieldset[disabled] .btn-contact:hover, 
+.btn-contact.disabled:focus, 
+.btn-contact[disabled]:focus, 
+fieldset[disabled] .btn-contact:focus, 
+.btn-contact.disabled:active, 
+.btn-contact[disabled]:active, 
+fieldset[disabled] .btn-contact:active, 
+.btn-contact.disabled.active, 
+.btn-contact[disabled].active, 
+fieldset[disabled] .btn-contact.active { 
+  background-color: #153649; 
+  border-color: #09171F; 
+} 
+ 
+.btn-contact .badge { 
+  color: #153649; 
+  background-color: #ffffff; 
+}
+
 .btn-fare .badge { 
   color: #A5B3C0; 
   background-color: #ffffff; 
@@ -367,7 +413,7 @@ fieldset[disabled] .btn-fare.active {
 	margin-top: 0px;
 }
 .vacationRow .contact-col h3{
-	margin-top: 77px;
+	margin-top: 65px;
 }
 .vacationRow .arrow-col .arrow{
 	/*margin-top: 79px;*/
@@ -670,6 +716,59 @@ fieldset[disabled] .btn-fare.active {
 	font-size: 20px;
 }
 
+.modal-header{
+    background-color: #153649;
+    color: white;
+}
+
+.modalh3{
+    display: inline-block;
+    margin-left: 2%;
+}
+
+.close{
+	color: white;
+	opacity: 1;
+	-moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
+.close:hover{
+	color: white;
+	text-shadow: none;
+	/*opacity: 0.6;*/
+}
+
+.modal-header .glyphicon{
+	margin-left: 15px;
+	font-size: 1.3em;
+}
+
+.modal-body input{
+	margin-top: 2%;
+}
+
+.modal-body textarea{
+	margin-top: 2%;
+}
+
+.modal-body input{
+	background-color: white !important;
+	color: black !important;
+}
+
+.contact-sub{
+	text-align: right;
+	margin-top: 2%;
+}
+
+.btn{
+	-moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
 </style>
 <div class="container-fluid outer-cont">
 	<div class="row outerRow">
@@ -685,7 +784,7 @@ fieldset[disabled] .btn-fare.active {
 				</div>
 			</div>
 			<div class="row contactRow">
-				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left">
+				<a href="#" data-toggle="modal" data-target="#contactModal"><div class="col-sm-10 col-xs-10 contact-col contact-left">
 					<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="lefth3">CONTACT <%= @page_user.first.upcase %></h3>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col contact-arrow">
@@ -1120,7 +1219,7 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			</div>
 			<div class="row faregrabbrRow faregrabbrWhite">
-				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
+				<a href="https://www.faregrabbr.com" target="_blank"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
 					<h4>WAIT FOR THE BEST PRICE?</h4>
 					<h5>Use our flight engine Faregrabbr</h5>
 				</div>
@@ -1129,7 +1228,7 @@ fieldset[disabled] .btn-fare.active {
 				</div></a>
 			</div>
 			<div class="row faregrabbrRow">
-				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
+				<a href="http://www1.latesttraveloffers.com/lton/OfferGroups.asp?OfferGroupId=4880" target="_blank""><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
 					<h4>CRUISE BOOKING ENGINE</h4>
 					<h5>Explore cruises all over the world</h5>
 				</div>
@@ -1164,6 +1263,70 @@ fieldset[disabled] .btn-fare.active {
 
 <datalist id="dropoff-list">
 </datalist>
+
+<!-- Contact Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="modal-title lefth3 modalh3" id="contactModalLabel">CONTACT <%= @page_user.first.upcase %></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<form action="/subscriptions" method="post" class="form-horizontal">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<input name="subscription[user_id]" type="hidden" value="<%= @page_user.id %>">
+			<div class="row">
+				<div class="form-group">
+				    <label for="email" class="col-sm-3 control-label">Email</label>
+				    <div class="col-sm-6">
+				        <input name="subscription[email]" type="text" class="form-control" id="email" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="first" class="col-sm-3 control-label">First Name</label>
+				    <div class="col-sm-6">
+				        <input name="subscription[first]" type="text" class="form-control" id="first" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="last" class="col-sm-3 control-label">Last Name</label>
+				    <div class="col-sm-6">
+				        <input name="subscription[last]" type="text" class="form-control" id="last" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="last" class="col-sm-3 control-label">Message</label>
+				    <div class="col-sm-6">
+				    	<textarea name="message" class="form-control" rows="4"></textarea>
+				    </div>
+				</div>
+			</div>
+			<div class="row contact-sub">
+				<div class="form-group">
+				    <label for="submit" class="col-sm-3 control-label"></label>
+				    <div class="col-sm-6 btn-col">
+				        <button class="btn btn-contact">CONTACT</button>
+				    </div>
+				</div>
+			</div>
+		</form>
+      </div>
+<!--       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript">
 
