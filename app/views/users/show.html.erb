@@ -798,6 +798,15 @@ fieldset[disabled] .btn-contact.active {
 	margin-top: 15px;
 }
 
+.approve-header{
+	margin-left: 15px;
+	margin-bottom: 0px;`
+}
+
+.notificationRow{
+	text-align: center;
+}
+
 </style>
 <div class="container-fluid outer-cont">
 	<div class="row outerRow">
@@ -823,14 +832,21 @@ fieldset[disabled] .btn-contact.active {
 			<div class="row contactRow photoRow" data-no-turbolinks="true">
 				<a href="/gallery/<%= @page_user.username %>"><div class="col-sm-10 col-xs-10 contact-col contact-left">
 					<span class="glyphicon glyphicon-camera" aria-hidden="true"></span><h3 class="lefth3">PHOTO GALLERY</h3>
+					<% if @page_user.id == session[:user_id] %>
+					<% end %>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col contact-arrow">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
 				</div></a>
 			</div>
+			<% if @unapproved_photos && @unapproved_photos.length > 0 %>
+				<div class="row notificationRow">
+				<a href="/gallery/edit/<%= @current_user.username %>"><h5 class="approve-header">You have <%= @unapproved_photos.length %> photos to approve!</h5></a>
+				</div>
+			<% end %>
 			<div class="row blogCont">
 				<div class="row blogRowHeader">
-				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left">
+				<a href="/blogs/<%= @page_user.id %>"><div class="col-sm-10 col-xs-10 contact-col contact-left">
 					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span><h3 class="lefth3">TRAVEL BLOG</h3>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col">

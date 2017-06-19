@@ -1,0 +1,14 @@
+<div class="container">
+	<div class="row">
+		<% @specials.each do |val| %>
+			<div class="col-sm-6">
+				<h4>Title: <%= val.title %></h4>
+				<h5>Depart: <%= val.depart %></h5>
+				<h5>Return: <%= val.return %></h5>
+				<h5>Vacancy: <%= val.vacancy %></h5>
+				<h5>Description: <%= val.description %></h5>
+				<%= image_tag(val.image.url) %>
+			</div>
+		<% end %>
+	</div>
+</div>

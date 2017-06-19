@@ -88,6 +88,12 @@
     .navbar-header{
       background: white;
     }
+    .dropdown-toggle:active, .open .dropdown-toggle {
+        background:#f1f1f1 !important; 
+        color:#000 !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
   </style>
   </head>
 
@@ -129,8 +135,30 @@
             <li><a href="#">AIR</a></li>
             <li><a href="#">CAR</a></li>
             <li><a href="#">HOTEL</a></li>
-            <li><a href="#">AGENT</a></li>
             <li><a href="#">CONTACT</a></li>
+          <% if session[:user_id] %>
+          <% @user = User.find(session[:user_id]) %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AGENT <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/<%= @user.username %>">VIEW PROFILE</a></li>
+                <li><a href="/<%= @user.username %>/edit">EDIT PROFILE</a></li>
+                <li><a href="/gallery/<%= @user.username %>">VIEW PHOTO GALLERY</a></li>
+                <li><a href="/gallery/edit/<%= @user.username %>">EDIT PHOTO GALLERY</a></li>
+                <li><a href="/specials/all_specials/<%= @user.username %>">VIEW SPECIALS</a>
+                <li><a href="/specials/new/<%= @user.username %>">NEW SPECIAL</a></li>
+                <li><a href="/specials/edit/<%= @user.username %>">EDIT SPECIALS</a></li>
+                <li><a href="/blogs/<%= @user.id %>">VIEW BLOG POSTS</a></li>
+                <li><a href="/blogs/new/<%= @user.id %>">NEW BLOG POST</a></li>
+                <li><a href="/blogs/edit/<%= @user.id %>">EDIT BLOG POSTS</a></li>
+                <li><a href="/logout">LOGOUT</a></li>
+<!--                 <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li> -->
+              </ul>
+            <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

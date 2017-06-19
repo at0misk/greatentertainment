@@ -18,7 +18,10 @@
 		<div class="col-sm-2">
 		</div>
 		<div class="col-sm-8 photo-col">
-			<h4><%= @page_user.first %> <%= @page_user.last %>'s Photo Gallery</h4>
+			<h4><a href="/<%= @page_user.username %>"><%= @page_user.first %> <%= @page_user.last %>'s</a> Photo Gallery</h4>
+			<% if @unapproved_photos %>
+				<a href="/gallery/edit/<%= @current_user.username %>"><h5 class="approve-header">You have <%= @unapproved_photos.length %> photos to approve!</h5></a>
+			<% end %>
 			<div class="fotorama" data-width="100%">
 			  <img src="http://s.fotorama.io/1.jpg">
 			  <img src="http://s.fotorama.io/2.jpg">
@@ -27,7 +30,7 @@
 			  <% end %>
 			</div>
 			<h4>Have you booked with <%= @page_user.first %> <%= @page_user.last %>?</h4>
-			<h5>Upload your photos <a href="/gallery_upload/<%= @page_user.username %>">here</a>!</h5>
+			<h5>Upload photos from your trip <a href="/gallery_upload/<%= @page_user.username %>">here</a>!</h5>
 		</div>
 		<div class="col-sm-2">
 		</div>

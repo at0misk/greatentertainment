@@ -13,10 +13,10 @@ class BlogsController < ApplicationController
 		params.require(:blog).permit(:title, :content, :user_id)
 	end
 	def view
-		@blogs = Blog.where(user_id: params['id'])
+		@blogs = Blog.where(user_id: session[:user_id])
 	end
 	def edit
-		@blogs = Blog.where(user_id: params['id'])
+		@blogs = Blog.where(user_id: session[:user_id])
 	end
 	def update
 		@blog = Blog.find(params['id'])

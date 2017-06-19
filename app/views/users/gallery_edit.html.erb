@@ -1,0 +1,62 @@
+<style type="text/css">
+	.thumb-div{
+		width: 175px;
+		height: 150px;
+		display: inline-block;
+		margin-top: 15px;
+	}
+	.thumb-div img{
+		width: 175px;
+		height: auto;
+		display: inline-block;
+	}
+	.btn-div form{
+		display: inline-block;
+	}
+	.btn-danger{
+		/*margin-left: 10px;*/
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	.btn-div{
+		position: relative;
+	}
+</style>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-3">
+		</div>
+		<div class="col-sm-6">
+			<% @photos.each do |val| %>
+				<div class="thumb-div">
+					<%= image_tag(val.image.url) %>
+						<div class="btn-div">
+						<% if !val.allowed %>
+							<form action="/photo_allow" method="POST">
+							<input name="_method" type="hidden" value="PATCH"%>
+							<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+							<input name="photo_id" type="hidden" value="<%= val.id %>">
+							<button class="btn btn-primary">Approve</button>
+							</form>
+						<% else %>
+							<form action="/photo_remove" method="POST">
+							<input name="_method" type="hidden" value="PATCH"%>
+							<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+							<input name="photo_id" type="hidden" value="<%= val.id %>">
+							<button class="btn btn-primary">Remove</button>
+							</form>
+						<% end %>
+							<form action="/photo_destroy" method="POST">
+							<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+							<input name="photo_id" type="hidden" value="<%= val.id %>">
+							<button class="btn btn-danger" data-confirm="Really delete this photo?">Delete</button>
+							</form>
+						</div>
+				</div>
+			<% end %>
+		</div>
+		<div class="col-sm-3">
+		</div>
+	</div>
+</div>
