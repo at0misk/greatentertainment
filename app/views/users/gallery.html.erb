@@ -6,6 +6,9 @@
 	.photo-row{
 		margin-top: 20px;
 	}
+	.fotorama__caption{
+		left: initial !important;
+	}
 </style>
 <!-- Disables turbolinks on restoration -->
 <% content_for :head do %>
@@ -22,11 +25,15 @@
 			<% if @unapproved_photos %>
 				<a href="/gallery/edit/<%= @current_user.username %>"><h5 class="approve-header">You have <%= @unapproved_photos.length %> photos to approve!</h5></a>
 			<% end %>
-			<div class="fotorama" data-width="100%">
+			<div class="fotorama" data-width="100%" data-fit="cover" data-ratio="700/467" data-minwidth="400" data-maxwidth="1000" data-minheight="300" data-maxheight="100%">
 			  <img src="http://s.fotorama.io/1.jpg">
 			  <img src="http://s.fotorama.io/2.jpg">
 			  <% @photos.each do |val| %>
-			  	<%= image_tag(val.image.url) %>
+			  	<% if val.traveled_on %>
+				  	<% @date = val.traveled_on.to_formatted_s(:long) %>
+			  	<% end %>
+			  	<%# @date = val.traveled_on.strftime('%B %e at %l:%M %p') %>
+			  	<%= image_tag(val.image.url, :data => { :caption => "#{val.location} - #{val.name} - #{@date}" }) %>
 			  <% end %>
 			</div>
 			<h4>Have you booked with <%= @page_user.first %> <%= @page_user.last %>?</h4>

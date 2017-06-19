@@ -10,7 +10,7 @@ class SpecialsController < ApplicationController
 		redirect_to "/#{@special.user.username}"
 	end
 	def special_params
-		params.require(:special).permit(:title, :depart, :return, :vacancy, :description, :user_id, :image)
+		params.require(:special).permit(:title, :depart, :return, :vacancy, :description, :user_id, :image, :price)
 	end
 	def view
 		@user = User.find(session[:user_id])
@@ -40,5 +40,10 @@ class SpecialsController < ApplicationController
 	    	flash[:errors] = @special.errors.full_messages
 	    end
 	    redirect_to "/specials/edit/#{@special.user.username}"
+	end
+	def destroy
+		Special.destroy(params['id'])
+		@user = User.find(session[:user_id])
+		redirect_to "/#{@user.username}"
 	end
 end

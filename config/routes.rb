@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 	patch '/photo_remove' => 'photos#remove'
 	post '/photo_destroy' => 'photos#destroy'
 	get '/logout' => 'sessions#logout'
+	post '/specials/destroy' => 'specials#destroy'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
 	mount ActionCable.server => '/cable'

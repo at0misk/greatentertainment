@@ -807,6 +807,11 @@ fieldset[disabled] .btn-contact.active {
 	text-align: center;
 }
 
+.special-img{
+	width: auto;
+    height: 100%;
+}
+
 </style>
 <div class="container-fluid outer-cont">
 	<div class="row outerRow">
@@ -911,6 +916,16 @@ fieldset[disabled] .btn-contact.active {
 			</div>
 			<div class="row specialWeeklyRow">
 				<a href="#"><div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
+				<% if @special %>
+					<h4><%= @special.title %></h4>
+					<h5><%= @special.description %></h5>
+					<h5><%= number_to_currency(@special.price) %> pp</h5>
+					<p class="special-yellow">Click to see more</p>
+				</div>
+				<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6 weekly weekly-img">
+					<%= image_tag(@special.image.url, :class => 'img-fluid special-img' ) %>
+				</div>
+				<% else %>
 					<h4>SPECIAL OF THE WEEK</h4>
 					<h5>3 Day Guided Tour of Rome, includes dinner.</h5>
 					<h5>$180.00 pp</h5>
@@ -918,7 +933,9 @@ fieldset[disabled] .btn-contact.active {
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6 weekly weekly-img">
 					<%= image_tag('colloseum', :class => 'img-fluid' ) %>
-				</div></a>
+				</div>
+				<% end %>
+				</a>
 			</div>
 			<div class="row vacationRow">
 				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left-middle">

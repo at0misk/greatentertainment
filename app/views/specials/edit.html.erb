@@ -6,15 +6,36 @@
 		height: auto;
 		width: 100%;
 	}
+	.header{
+		display: inline-block;
+	}
+	.dest-form{
+		display: inline-block;
+		float: right;
+	}
+	.outer-form-col{
+		padding-right: 0px;
+	}
+	.btn-danger{
+		position: absolute;
+	}
+	.edit-row{
+		margin-top: 15px;
+	}
 </style>
 <div class="container">
-	<div class="row">
+	<div class="row edit-row">
 	<% @specials.each do |val| %>
-		<div class="col-sm-6">
+		<div class="col-sm-6 outer-form-col">
 			<div class="col-sm-4">
 			</div>
 			<div class="col-sm-8">
-				<h4 class="header">List a new special</h4>
+				<h4 class="header">Edit Specials</h4>
+				<form action="/specials/destroy" method="POST" data-remote="true" class="dest-form">
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					<input type="hidden" name="id" value="<%= val.id %>">
+					<button class="btn btn-danger" data-confirm="Delete Special?">X</button>
+				</form>
 			</div>
 			<form action="/specials" method="post" class="form-horizontal" enctype="multipart/form-data">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
