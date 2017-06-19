@@ -7,6 +7,7 @@
 	<div class="row">
 		<div class="col-sm-6">
 			<h3><%= @special.title %></h3>
+			<%= image_tag(@special.image.url) %>
 			<h4>Leaves on: <%= @special.depart %></h4>
 			<h4>Returns on: <%= @special.return %></h4>
 			<h4>Room available: <%= @special.vacancy %></h4>

@@ -915,8 +915,8 @@ fieldset[disabled] .btn-contact.active {
 				</div></a>	
 			</div>
 			<div class="row specialWeeklyRow">
-				<a href="#"><div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
-				<% if @special %>
+			<% if @special %>
+				<a href="/specials/<%= @special.id %>"><div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
 					<h4><%= @special.title %></h4>
 					<h5><%= @special.description %></h5>
 					<h5><%= number_to_currency(@special.price) %> pp</h5>
@@ -926,6 +926,7 @@ fieldset[disabled] .btn-contact.active {
 					<%= image_tag(@special.image.url, :class => 'img-fluid special-img' ) %>
 				</div>
 				<% else %>
+				<a href="#"><div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
 					<h4>SPECIAL OF THE WEEK</h4>
 					<h5>3 Day Guided Tour of Rome, includes dinner.</h5>
 					<h5>$180.00 pp</h5>
