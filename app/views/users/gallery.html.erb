@@ -22,7 +22,7 @@
 		</div>
 		<div class="col-sm-8 photo-col">
 			<h4><a href="/<%= @page_user.username %>"><%= @page_user.first %> <%= @page_user.last %>'s</a> Photo Gallery</h4>
-			<% if @unapproved_photos %>
+			<% if @unapproved_photos.length > 0 %>
 				<a href="/gallery/edit/<%= @current_user.username %>"><h5 class="approve-header">You have <%= @unapproved_photos.length %> photos to approve!</h5></a>
 			<% end %>
 			<div class="fotorama" data-width="100%" data-fit="cover" data-ratio="700/467" data-minwidth="400" data-maxwidth="1000" data-minheight="300" data-maxheight="100%">
