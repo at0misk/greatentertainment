@@ -104,7 +104,7 @@ class UsersController < ApplicationController
 		redirect_to "/gallery/#{@photo.user.username}"
 	end
 	def photo_params
-		params.require(:photo).permit(:image, :user_id, :name, :location, :traveled_on)
+		params.require(:photo).permit(:image, :user_id, :name, :location, :traveled_on, :description)
 	end
 	def gallery_edit
 		@photos = Photo.where(user_id: session[:user_id]).order('updated_at DESC')

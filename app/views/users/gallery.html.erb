@@ -3,11 +3,50 @@
 		height: 800px;
 		/*background-color: blue;*/
 	}
-	.photo-row{
+	.header-row{
 		margin-top: 20px;
 	}
 	.fotorama__caption{
 		left: initial !important;
+	}
+	.description-div{
+		color: white;
+    	background-color: #5b90b2;
+	    height: 566px;
+	    overflow: scroll;
+	    padding: 3%;
+		/*margin-top: 39px;*/
+	}
+	.lower-row{
+		height: 150px;
+	}
+	.approve-header{
+		display: inline-block;
+		float: right;
+	}
+	.gal-header{
+		display: inline-block;
+	}
+	.header-row .col-sm-12{
+		padding-right: 0px;
+	}
+	.fotorama__caption{
+		display: none;
+	}
+	.description-p{
+		text-align: justify;
+		margin-top: 15px;
+	}
+	.location{
+		display: inline-block;
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+	.date{
+		display: inline;
+		float: right;
+		margin-bottom: 0px;
+		margin-top: 2px;
 	}
 </style>
 <!-- Disables turbolinks on restoration -->
@@ -17,33 +56,45 @@
 <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
 <div class="container">
-	<div class="row photo-row">
-		<div class="col-sm-2">
-		</div>
-		<div class="col-sm-8 photo-col">
-			<h4><a href="/<%= @page_user.username %>"><%= @page_user.first %> <%= @page_user.last %>'s</a> Photo Gallery</h4>
+	<div class="row header-row">
+		<div class="col-sm-12">
+			<h4 class="gal-header"><a href="/<%= @page_user.username %>"><%= @page_user.first %> <%= @page_user.last %>'s</a> Photo Gallery</h4>
 			<% if @unapproved_photos.length > 0 %>
-				<a href="/gallery/edit/<%= @current_user.username %>"><h5 class="approve-header">You have <%= @unapproved_photos.length %> photos to approve!</h5></a>
+				<h5 class="approve-header"><a href="/gallery/edit/<%= @current_user.username %>">You have <%= @unapproved_photos.length %> photos to approve!</a></h5>
 			<% end %>
+		</div>
+	</div>
+	<div class="row photo-row">
+		<div class="col-sm-9 photo-col">
 			<div class="fotorama" data-width="100%" data-fit="cover" data-ratio="700/467" data-minwidth="400" data-maxwidth="1000" data-minheight="300" data-maxheight="100%">
-			  <img src="http://s.fotorama.io/1.jpg">
-			  <img src="http://s.fotorama.io/2.jpg">
+<!-- 			  <img src="http://s.fotorama.io/1.jpg">
+			  <img src="http://s.fotorama.io/2.jpg"> -->
 			  <% @photos.each do |val| %>
 			  	<% if val.traveled_on %>
 				  	<% @date = val.traveled_on.to_formatted_s(:long) %>
 			  	<% end %>
 			  	<%# @date = val.traveled_on.strftime('%B %e at %l:%M %p') %>
-			  	<%= image_tag(val.image.url, :data => { :caption => "#{val.location} - #{val.name} - #{@date}" }) %>
+			  	<%= image_tag(val.image.url, :data => { :caption => "#{val.location} - #{val.name} - #{@date}", :description => "#{val.description}", :location => "#{val.location}", :date => "#{@date}", :name => "#{val.name}" }) %>
 			  <% end %>
 			</div>
-			<h4>Have you booked with <%= @page_user.first %> <%= @page_user.last %>?</h4>
-			<h5>Upload photos from your trip <a href="/gallery_upload/<%= @page_user.username %>">here</a>!</h5>
+			<div class="row lower-row">
+				<div class="col-sm-6">
+					<h4>Have you booked with <%= @page_user.first %> <%= @page_user.last %>?</h4>
+					<h5>Upload photos from your trip <a href="/gallery_upload/<%= @page_user.username %>">here</a>!</h5>
+				</div>
+			</div>
 		</div>
-		<div class="col-sm-2">
+		<div class='description-div col-sm-3'>
+			<h4 class='location'><%= @photos[0].location %></h4>
+			<h5 class='date'><%= @photos[0].traveled_on.to_formatted_s(:long) %></h5>
+			<p class='description-p'><%= @photos[0].description %></p>
+			<p class='name'>- <%= @photos[0].name %></p>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
+
+// $('document').on('ready', function(){
 	var x = <%= @photos.length %>
 	var fotorama = $('.fotorama').fotorama().data('fotorama')
 	// Adds thumbnails to nav if there are at least 5 photos
@@ -52,4 +103,11 @@
 			nav: 'thumbs'
 		})
 	}
+	$('.fotorama').on('fotorama:showend', function(){
+		console.log(fotorama.activeFrame.description);
+		$('.description-div').html("<h4 class='location'>" + fotorama.activeFrame.location + "</h4><h5 class='date'>" + fotorama.activeFrame.date + "</h5><p class='description-p'>" + fotorama.activeFrame.description + "</p><p class='name'>-" + fotorama.activeFrame.name + "</p>");
+	})
+
+// })
+
 </script>
