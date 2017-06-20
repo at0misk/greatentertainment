@@ -289,9 +289,11 @@ fieldset[disabled] .btn-contact.active {
             <li><a href="#">AIR</a></li>
             <li><a href="#">CAR</a></li>
             <li><a href="#">HOTEL</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#contactModal">CONTACT</a></li>
+            <% if session[:page_user_id] %>
+              <li><a href="#" data-toggle="modal" data-target="#contactModal">CONTACT</a></li>
+            <% end %>
           <% if session[:user_id] %>
-          <% @user = User.find(session[:user_id]) %>
+            <% @user = User.find(session[:user_id]) %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AGENT <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -317,6 +319,7 @@ fieldset[disabled] .btn-contact.active {
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+<% if session[:page_user_id] %>
 <% @header_user = User.find(session[:page_user_id]) %>
 <!-- Contact Modal -->
 <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
@@ -396,6 +399,8 @@ fieldset[disabled] .btn-contact.active {
     </div>
   </div>
 </div>
+
+<% end %>
     <%= yield %>
   </body>
 <script type="text/javascript">
