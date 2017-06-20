@@ -6,6 +6,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-6">
+		<% if @special %>
 			<h3><%= @special.title %></h3>
 			<%= image_tag(@special.image.url) %>
 			<h4>Leaves on: <%= @special.depart %></h4>
@@ -13,6 +14,7 @@
 			<h4>Room available: <%= @special.vacancy %></h4>
 			<h4>Description: <%= @special.description %></h4>
 		</div>
+		<% end %>
 		<div class="col-sm-6">
 			<div class="col-sm-4">
 			</div>
