@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 	get '/specials/all_specials/:username' => 'specials#user_index'
 	get '/specials/new/:username' => 'specials#new'
 	post '/specials' => 'specials#create'
-	get '/specials/:id' => 'specials#view'
+	get '/specials/:user_id/:id' => 'specials#view'
 	patch '/specials' => 'specials#update'
 	post 'contact' => 'users#contact'
 	get '/gallery_upload/:username' => 'users#gallery_upload'

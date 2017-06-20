@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 	end
 	def show
 		@page_user = User.find_by_username(params['username'])
+		session[:page_user_id] = @page_user.id
 		if @page_user == nil
 			flash[:no_user] = "No user found."
 			redirect_to '/' and return

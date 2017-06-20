@@ -110,6 +110,144 @@
       width: auto;
       padding: 0px !important;
     }
+.modal-header{
+    background-color: #153649;
+    color: white;
+}
+
+.modalh3{
+    display: inline-block;
+    margin-left: 2%;
+}
+
+#contact-close{
+  color: white;
+  opacity: 1;
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+#contact-close:hover{
+  color: white;
+  text-shadow: none;
+  /*opacity: 0.6;*/
+}
+
+.confirm-close{
+  color: black;
+  opacity: 1;
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.confirm-close:hover{
+  color: black;
+  text-shadow: none;
+  /*opacity: 0.6;*/
+}
+
+.modal-header .glyphicon{
+  margin-left: 15px;
+  font-size: 1.3em;
+}
+
+.modal-body input{
+  margin-top: 2%;
+}
+
+.modal-body textarea{
+  margin-top: 2%;
+}
+
+.modal-body input{
+  background-color: white !important;
+  color: black !important;
+}
+
+.contact-sub{
+  text-align: right;
+  margin-top: 2%;
+}
+
+.btn{
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+#confirmModalLabel{
+  display: inline-block;
+}
+
+#confirm-header{
+  background: white;
+  color: black;
+  text-align: center;
+}
+
+.btn-contact { 
+  color: #ffffff; 
+  background-color: #153649; 
+  border-color: #09171F; 
+} 
+ 
+.btn-contact:hover, 
+.btn-contact:focus, 
+.btn-contact:active, 
+.btn-contact.active, 
+.open .dropdown-toggle.btn-contact { 
+  color: #ffffff; 
+  background-color: #0C202B; 
+  border-color: #09171F; 
+} 
+ 
+.btn-contact:active, 
+.btn-contact.active, 
+.open .dropdown-toggle.btn-contact { 
+  background-image: none; 
+} 
+ 
+.btn-contact.disabled, 
+.btn-contact[disabled], 
+fieldset[disabled] .btn-contact, 
+.btn-contact.disabled:hover, 
+.btn-contact[disabled]:hover, 
+fieldset[disabled] .btn-contact:hover, 
+.btn-contact.disabled:focus, 
+.btn-contact[disabled]:focus, 
+fieldset[disabled] .btn-contact:focus, 
+.btn-contact.disabled:active, 
+.btn-contact[disabled]:active, 
+fieldset[disabled] .btn-contact:active, 
+.btn-contact.disabled.active, 
+.btn-contact[disabled].active, 
+fieldset[disabled] .btn-contact.active { 
+  background-color: #153649; 
+  border-color: #09171F; 
+} 
+ 
+.btn-contact .badge { 
+  color: #153649; 
+  background-color: #ffffff; 
+}
+
+@media (max-width: 1179px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+    .navbar-header .collapse, .navbar-toggle {
+        display:block !important;
+    }
+    .navbar-header {
+        float:none;
+    }
+}
+
   </style>
   </head>
 
@@ -151,7 +289,7 @@
             <li><a href="#">AIR</a></li>
             <li><a href="#">CAR</a></li>
             <li><a href="#">HOTEL</a></li>
-            <li><a href="#">CONTACT</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#contactModal">CONTACT</a></li>
           <% if session[:user_id] %>
           <% @user = User.find(session[:user_id]) %>
             <li class="dropdown">
@@ -159,14 +297,14 @@
               <ul class="dropdown-menu">
                 <li><a href="/<%= @user.username %>">VIEW PROFILE</a></li>
                 <li><a href="/<%= @user.username %>/edit">EDIT PROFILE</a></li>
-                <li><a href="/gallery/<%= @user.username %>">VIEW PHOTO GALLERY</a></li>
+                <li><a href="/gallery/<%= @user.username %>" data-turbolinks="false">VIEW PHOTO GALLERY</a></li>
                 <li><a href="/gallery/edit/<%= @user.username %>">EDIT PHOTO GALLERY</a></li>
                 <li><a href="/specials/all_specials/<%= @user.username %>">VIEW SPECIALS</a>
                 <li><a href="/specials/new/<%= @user.username %>">NEW SPECIAL</a></li>
                 <li><a href="/specials/edit/<%= @user.username %>">EDIT SPECIALS</a></li>
-                <li><a href="/blogs/<%= @user.id %>">VIEW BLOG POSTS</a></li>
-                <li><a href="/blogs/new/<%= @user.id %>">NEW BLOG POST</a></li>
-                <li><a href="/blogs/edit/<%= @user.id %>">EDIT BLOG POSTS</a></li>
+<!--                 <li><a href="/blogs/<%#= @user.id %>">VIEW BLOG POSTS</a></li>
+                <li><a href="/blogs/new/<%#= @user.id %>">NEW BLOG POST</a></li>
+                <li><a href="/blogs/edit/<#%= @user.id %>">EDIT BLOG POSTS</a></li> -->
                 <li><a href="/logout">LOGOUT</a></li>
 <!--                 <li><a href="#">Something else here</a></li>
                 <li role="separator" class="divider"></li>
@@ -179,7 +317,97 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+<% @header_user = User.find(session[:page_user_id]) %>
+<!-- Contact Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="modal-title lefth3 modalh3" id="contactModalLabel">CONTACT <%= @header_user.first.upcase %></h3>
+        <button type="button" id="contact-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <form action="/contact" method="post" class="form-horizontal">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <input name="user_id" type="hidden" value="<%= @header_user.id %>">
+      <div class="row">
+        <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">Email</label>
+            <div class="col-sm-6">
+                <input name="email" type="text" class="form-control" id="email" />
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+            <label for="first" class="col-sm-3 control-label">First Name</label>
+            <div class="col-sm-6">
+                <input name="first" type="text" class="form-control" id="first" />
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+            <label for="last" class="col-sm-3 control-label">Last Name</label>
+            <div class="col-sm-6">
+                <input name="last" type="text" class="form-control" id="last" />
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+            <label for="last" class="col-sm-3 control-label">Message</label>
+            <div class="col-sm-6">
+              <textarea name="message" class="form-control" rows="4"></textarea>
+            </div>
+        </div>
+      </div>
+      <div class="row contact-sub">
+        <div class="form-group">
+            <label for="submit" class="col-sm-3 control-label"></label>
+            <div class="col-sm-6 btn-col">
+                <button class="btn btn-contact">CONTACT</button>
+            </div>
+        </div>
+      </div>
+    </form>
+      </div>
+<!--       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
 
+
+<!-- Confirm Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" id="confirm-header">
+        <h3 class="modal-title" id="confirmModalLabel">Thanks!  We'll be in touch</h3>
+        <button type="button" class="close confirm-close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
     <%= yield %>
   </body>
+<script type="text/javascript">
+  $(document).on('turbolinks:load',function(){
+
+    <% if flash[:sent_mail] %>
+    // alert("Thanks!  We'll be in touch");
+    $('#confirmModal').modal('toggle');
+    <% flash[:sent_mail] = nil %>
+    <% end %>
+
+  });
+
+</script>
 </html>

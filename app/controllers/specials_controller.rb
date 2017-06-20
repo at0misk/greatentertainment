@@ -13,7 +13,7 @@ class SpecialsController < ApplicationController
 		params.require(:special).permit(:title, :depart, :return, :vacancy, :description, :user_id, :image, :price)
 	end
 	def view
-		@user = User.find(session[:user_id])
+		@user = User.find(params['user_id'])
 		@special = Special.find(params['id'])
 	end
 	def user_index

@@ -223,51 +223,6 @@ fieldset[disabled] .btn-fare.active {
   border-color: #FFFFFF; 
 } 
 
-.btn-contact { 
-  color: #ffffff; 
-  background-color: #153649; 
-  border-color: #09171F; 
-} 
- 
-.btn-contact:hover, 
-.btn-contact:focus, 
-.btn-contact:active, 
-.btn-contact.active, 
-.open .dropdown-toggle.btn-contact { 
-  color: #ffffff; 
-  background-color: #0C202B; 
-  border-color: #09171F; 
-} 
- 
-.btn-contact:active, 
-.btn-contact.active, 
-.open .dropdown-toggle.btn-contact { 
-  background-image: none; 
-} 
- 
-.btn-contact.disabled, 
-.btn-contact[disabled], 
-fieldset[disabled] .btn-contact, 
-.btn-contact.disabled:hover, 
-.btn-contact[disabled]:hover, 
-fieldset[disabled] .btn-contact:hover, 
-.btn-contact.disabled:focus, 
-.btn-contact[disabled]:focus, 
-fieldset[disabled] .btn-contact:focus, 
-.btn-contact.disabled:active, 
-.btn-contact[disabled]:active, 
-fieldset[disabled] .btn-contact:active, 
-.btn-contact.disabled.active, 
-.btn-contact[disabled].active, 
-fieldset[disabled] .btn-contact.active { 
-  background-color: #153649; 
-  border-color: #09171F; 
-} 
- 
-.btn-contact .badge { 
-  color: #153649; 
-  background-color: #ffffff; 
-}
 
 .btn-fare .badge { 
   color: #A5B3C0; 
@@ -583,7 +538,16 @@ fieldset[disabled] .btn-contact.active {
 	margin-right: 30%;
 }
 
-@media (max-width: 1165px) {
+@media (max-width: 1435px) {
+	.contact-left-middle h3{
+		font-size: 18px;
+	}
+	.contact-left-middle h4{
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 1179px) {
     .navbar-collapse.collapse {
         display: none !important;
     }
@@ -605,6 +569,12 @@ fieldset[disabled] .btn-contact.active {
 }
 
 @media (max-width: 1007px) {
+	.contact-left-middle h3{
+		font-size: 24px;
+	}
+	.contact-left-middle h4{
+		font-size: 18px;
+	}
 	.outerCol{
 		width: 100%;
 	}
@@ -855,7 +825,7 @@ fieldset[disabled] .btn-contact.active {
 				</div></a>
 			</div>
 			<div class="row contactRow photoRow" data-no-turbolinks="true">
-				<a href="/gallery/<%= @page_user.username %>"><div class="col-sm-10 col-xs-10 contact-col contact-left">
+				<a href="/gallery/<%= @page_user.username %>" data-turbolinks="false"><div class="col-sm-10 col-xs-10 contact-col contact-left">
 					<span class="glyphicon glyphicon-camera" aria-hidden="true"></span><h3 class="lefth3">PHOTO GALLERY</h3>
 					<% if @page_user.id == session[:user_id] %>
 					<% end %>
@@ -936,7 +906,7 @@ fieldset[disabled] .btn-contact.active {
 			</div>
 			<div class="row specialWeeklyRow">
 			<% if @special %>
-				<a href="/specials/<%= @special.id %>"><div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
+				<a href="/specials/<%= @page_user.id %>/<%= @special.id %>"><div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
 					<h4><%= @special.title %></h4>
 					<h5><%= @special.description %></h5>
 					<h5><%= number_to_currency(@special.price) %> pp</h5>
@@ -961,7 +931,8 @@ fieldset[disabled] .btn-contact.active {
 			<div class="row vacationRow">
 				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left-middle">
 					<h3>I WANT TO GO ON VACATION!</h3>
-					<h4>Tell us where you want to go</h4>
+					<h4>Tell us where you want to go, get a quote now</h4>
+					<!-- <h4>Get a quote now</h4> -->
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
@@ -1329,8 +1300,8 @@ fieldset[disabled] .btn-contact.active {
 			</div>
 			<div class="row faregrabbrRow faregrabbrProfile">
 				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
-					<h4>TRAVELER PROFILE</h4>
-					<h5>Create or view a traveler profile</h5>
+					<h4>NEWS LETTER</h4>
+					<h5>subscribe to get the latest specials</h5>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
@@ -1355,92 +1326,9 @@ fieldset[disabled] .btn-contact.active {
 <datalist id="dropoff-list">
 </datalist>
 
-<!-- Contact Modal -->
-<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="modal-title lefth3 modalh3" id="contactModalLabel">CONTACT <%= @page_user.first.upcase %></h3>
-        <button type="button" id="contact-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-		<form action="/contact" method="post" class="form-horizontal">
-			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-			<input name="user_id" type="hidden" value="<%= @page_user.id %>">
-			<div class="row">
-				<div class="form-group">
-				    <label for="email" class="col-sm-3 control-label">Email</label>
-				    <div class="col-sm-6">
-				        <input name="email" type="text" class="form-control" id="email" />
-				    </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group">
-				    <label for="first" class="col-sm-3 control-label">First Name</label>
-				    <div class="col-sm-6">
-				        <input name="first" type="text" class="form-control" id="first" />
-				    </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group">
-				    <label for="last" class="col-sm-3 control-label">Last Name</label>
-				    <div class="col-sm-6">
-				        <input name="last" type="text" class="form-control" id="last" />
-				    </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group">
-				    <label for="last" class="col-sm-3 control-label">Message</label>
-				    <div class="col-sm-6">
-				    	<textarea name="message" class="form-control" rows="4"></textarea>
-				    </div>
-				</div>
-			</div>
-			<div class="row contact-sub">
-				<div class="form-group">
-				    <label for="submit" class="col-sm-3 control-label"></label>
-				    <div class="col-sm-6 btn-col">
-				        <button class="btn btn-contact">CONTACT</button>
-				    </div>
-				</div>
-			</div>
-		</form>
-      </div>
-<!--       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div> -->
-    </div>
-  </div>
-</div>
-
-
-<!-- Confirm Modal -->
-<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header" id="confirm-header">
-        <h3 class="modal-title" id="confirmModalLabel">Thanks!  We'll be in touch</h3>
-        <button type="button" class="close confirm-close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
 <script type="text/javascript">
 
 $(document).on('turbolinks:load',function(){
-
-<% if flash[:sent_mail] %>
-// alert("Thanks!  We'll be in touch");
-$('#confirmModal').modal('toggle');
-<% end %>
 
 $('.weekly-details').hover(
   function() {
