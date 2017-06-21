@@ -16,11 +16,7 @@ class TopicsController < ApplicationController
 			@current_user = User.find(session[:user_id])
 		end
 		if @current_user && @current_user.id == @topic.user.id
-			# # ActionCable.server.broadcast 'messages',
-	  #       message: "The agent has joined the channel",
-	  #       username: "System",
-	  #       topic_id: @topic.id,
-	  #       user_id: @user.id
+
 		end
 	end
 	def topic_params
