@@ -7,6 +7,7 @@
 				<h5>Return: <%= val.return %></h5>
 				<h5>Vacancy: <%= val.vacancy %></h5>
 				<h5>Description: <%= val.description %></h5>
+				<h5><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//52.24.144.110/specials/<%= val.user.id %>/<%= val.id %>">Share on Facebook</a>
 				<%= image_tag(val.image.url) %>
 			</div>
 		<% end %>
