@@ -8,8 +8,6 @@ Rails.application.configure do
   config.cache_classes = false
 
   # Do not eager load code on boot.
-  config.action_cable.allowed_request_origins = ['http://52.24.144.110/']
-  ActionCable.server.config.disable_request_forgery_protection = true
   config.eager_load = false
   # Show full error reports.
   config.consider_all_requests_local = true

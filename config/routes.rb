@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 	get '/gallery/edit/:username' => 'users#gallery_edit'
 	get '/gallery/:username' => 'users#gallery'
 	post '/gallery_upload' => 'users#photo_create'
+	patch '/gallery_edit/:id' => 'users#gallery_update'
 	patch '/photo_allow' => 'photos#allow'
 	patch '/photo_remove' => 'photos#remove'
 	post '/photo_destroy' => 'photos#destroy'
@@ -38,6 +39,5 @@ Rails.application.routes.draw do
 	post '/specials/destroy' => 'specials#destroy'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
-	mount ActionCable.server => '/cable'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

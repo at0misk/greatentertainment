@@ -113,4 +113,18 @@ class UsersController < ApplicationController
 		@unapproved_photos = Photo.where(user_id: session[:user_id], allowed: false).order('updated_at DESC')
 		@user = User.find(session[:user_id])
 	end
+	def gallery_update
+		@user = User.find(session[:user_id])
+		@photo = Photo.find(params['id'])
+		if @photo.id == session[:user_id]
+		    if @photo.update(photo_params)
+		    	flash[:errors] = nil
+		    else
+		    	flash[:errors] = @photo.errors.full_messages
+		    end
+		else
+			redirect_to '/' and return
+		end
+		    redirect_to "/gallery/#{@user.username}"
+	end
 end
