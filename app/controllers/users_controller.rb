@@ -109,7 +109,8 @@ class UsersController < ApplicationController
 		params.require(:photo).permit(:image, :user_id, :name, :location, :traveled_on, :description)
 	end
 	def gallery_edit
-		@photos = Photo.where(user_id: session[:user_id]).order('updated_at DESC')
+		@approved_photos = Photo.where(user_id: session[:user_id], allowed: true).order('updated_at DESC')
+		@unapproved_photos = Photo.where(user_id: session[:user_id], allowed: false).order('updated_at DESC')
 		@user = User.find(session[:user_id])
 	end
 end

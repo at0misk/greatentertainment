@@ -143,6 +143,17 @@
 		font-size: 18px;
 	}
 }
+
+.none-found{
+	text-align: center;
+}
+.no-photo-row{
+	margin-right: 0px !important;
+}
+
+.modal-upload-btn-col{
+	text-align: center;
+}
 </style>
 <!-- Disables turbolinks on restoration -->
 <% content_for :head do %>
@@ -154,42 +165,53 @@
 	<div class="row header-row">
 		<div class="col-sm-9 gal-col">
 			<span class="glyphicon glyphicon-camera" aria-hidden="true"></span><h4 class="gal-header"><a href="/<%= @page_user.username %>"><%= @page_user.first.upcase %> <%= @page_user.last.upcase %>'S</a> PHOTO GALLERY</h4>
-			<% if @unapproved_photos.length > 0 %>
-			<% end %>
 		</div>
 		<div class="col-sm-3 gal-col-right">
-			<% if @unapproved_photos.length > 0 %>
+			<% if @unapproved_photos && @unapproved_photos.length > 0 %>
 				<h5 class="approve-header"><a href="/gallery/edit/<%= @current_user.username %>">You have <%= @unapproved_photos.length %> photos to approve!</a></h5>
 			<% end %>
 		</div>
 	</div>
 	<div class="row photo-row">
-		<div class="col-sm-9 photo-col">
-			<div class="fotorama" data-width="100%" data-fit="cover" data-ratio="700/467" data-minwidth="400" data-maxwidth="1000" data-minheight="300" data-maxheight="100%">
-			  <img src="http://s.fotorama.io/1.jpg">
-			  <img src="http://s.fotorama.io/2.jpg">
-			  <% @photos.each do |val| %>
-			  	<% if val.traveled_on %>
-				  	<% @date = val.traveled_on.to_formatted_s(:long) %>
-			  	<% end %>
-			  	<%# @date = val.traveled_on.strftime('%B %e at %l:%M %p') %>
-			  	<%= image_tag(val.image.url, :data => { :caption => "#{val.location} - #{val.name} - #{@date}", :description => "#{val.description}", :location => "#{val.location}", :date => "#{@date}", :name => "#{val.name}" }) %>
-			  <% end %>
+		<% if @photos.length > 0 %>
+			<div class="col-sm-9 photo-col">
+				<div class="fotorama" data-width="100%" data-fit="cover" data-ratio="700/467" data-minwidth="400" data-maxwidth="1000" data-minheight="300" data-maxheight="100%">
+				  <img src="http://s.fotorama.io/1.jpg">
+				  <img src="http://s.fotorama.io/2.jpg">
+				  <% @photos.each do |val| %>
+				  	<% if val.traveled_on %>
+					  	<% @date = val.traveled_on.to_formatted_s(:long) %>
+				  	<% end %>
+				  	<%# @date = val.traveled_on.strftime('%B %e at %l:%M %p') %>
+				  	<%= image_tag(val.image.url, :data => { :caption => "#{val.location} - #{val.name} - #{@date}", :description => "#{val.description}", :location => "#{val.location}", :date => "#{@date}", :name => "#{val.name}" }) %>
+				  <% end %>
+				</div>
+			</div>
+			<div class='description-div col-sm-3'>
+				<div class="content">
+				<div class="content-header">
+					<h4 class='location'><%= @photos[0].location %></h4>
+					<h5 class='date'><%= @photos[0].traveled_on.to_formatted_s(:long) %></h5>
+				</div>
+				<p class='description-p'><%= @photos[0].description %></p>
+				<p class='name'>- <%= @photos[0].name %></p>
+				</div>
+				<div class="booked-div">
+					<h5 class="booked">Have you booked with <%= @page_user.first %> <%= @page_user.last %>? Upload photos from your trip <a href="#" data-toggle="modal" data-target="#galleryModal">here!</a></h5>
+				</div>
+			</div>
+		<% else %>
+		<div class="row photo-row no-photo-row">
+			<div class="col-sm-9 photo-col">
+				<h4 class="none-found">No photos found</h4>
+			</div>
+			<div class="description-div col-sm-3">
+				<div class="booked-div">
+					<h5 class="booked">Have you booked with <%= @page_user.first %> <%= @page_user.last %>? Upload photos from your trip <a href="#" data-toggle="modal" data-target="#galleryModal">here!</a></h5>
+				</div>
 			</div>
 		</div>
-		<div class='description-div col-sm-3'>
-			<div class="content">
-			<div class="content-header">
-				<h4 class='location'><%= @photos[0].location %></h4>
-				<h5 class='date'><%= @photos[0].traveled_on.to_formatted_s(:long) %></h5>
-			</div>
-			<p class='description-p'><%= @photos[0].description %></p>
-			<p class='name'>- <%= @photos[0].name %></p>
-			</div>
-			<div class="booked-div">
-				<h5 class="booked">Have you booked with <%= @page_user.first %> <%= @page_user.last %>? Upload photos from your trip <a href="#" data-toggle="modal" data-target="#galleryModal">here!</a></h5>
-			</div>
-		</div>
+		<% end %>
 	</div>
 <!-- 	<div class="row lower-row">
 		<div class="col-sm-9">
@@ -245,8 +267,8 @@
 		</div>
       <div class="row contact-sub">
         <div class="form-group">
-            <label for="submit" class="col-sm-3 control-label"></label>
-            <div class="col-sm-6 btn-col">
+            <!-- <label for="submit" class="col-sm-3 control-label"></label> -->
+            <div class="col-sm-12 btn-col modal-upload-btn-col">
                 <button class="btn btn-contact">UPLOAD</button>
             </div>
         </div>
