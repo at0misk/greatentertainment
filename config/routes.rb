@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 	post '/topics/destroy' => 'topics#destroy'
 	get '/topics/:id' => 'topics#view'
 	post '/messages' => 'messages#create'
+	get '/blogs' => 'blogs#index'
 	get '/blogs/edit/:id' => 'blogs#edit'
 	get '/blogs/new/:id' => 'blogs#new'
 	post 'blogs' => 'blogs#create'

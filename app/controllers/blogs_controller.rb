@@ -13,7 +13,7 @@ class BlogsController < ApplicationController
 		params.require(:blog).permit(:title, :content, :user_id)
 	end
 	def view
-		@blogs = Blog.where(user_id: session[:user_id])
+		@blog = Blog.find(params[:id])
 	end
 	def edit
 		@blogs = Blog.where(user_id: session[:user_id])
@@ -28,5 +28,8 @@ class BlogsController < ApplicationController
 		@blog = Blog.find(params['id'])
 		Blog.find(params['id']).destroy
 		redirect_to "/blogs/#{@blog.user_id}"
+	end
+	def index
+		@blogs = Blog.all
 	end
 end
