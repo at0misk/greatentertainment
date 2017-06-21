@@ -1,107 +1,146 @@
-<div class="container">
-	<div class="row">
+<style type="text/css">
+	.header-row{
+		background-color: #153649;
+		color: white;
+		margin-top: 0px;
+		margin-right: -30px;
+		margin-left: -30px;
+	}
+	.edit-form{
+		margin-top: 15px;
+	}
+	.btn-col{
+		text-align: center;
+	}
+	.form-row{
+		height: 400px;
+		margin-bottom: 100px;
+	}
+	.right-col{
+		height: 100%;
+	}
+	.edit-container{
+		background-color: white;
+		padding: 0px 30px;
+		margin-top: 15px;
+	}
+	.img-fluid{
+		max-width: 100%;
+		height: auto;
+	}
+
+	@media (max-width: 767px){
+		body{
+		    padding-bottom: 548px;
+		}
+	}
+</style>
+<div class="container edit-container">
+	<div class="row header-row">
+		<div class="col-sm-12">
+			<h3 class="form-header">EDIT PROFILE</h3>
+		</div>
+	</div>
+	<form action="/<%= @user.username %>" method="post" class="form-horizontal edit-form" enctype="multipart/form-data">
+	<div class="row form-row">
 		<div class="col-sm-6">
-			<div class="row">
-				<div class="col-sm-4">
-					<h3 class="form-header">Edit</h3>
-				</div>
-				<div class="col-sm-8">
-				</div>
-			</div>
-				<form action="/<%= @user.username %>" method="post" class="form-horizontal" enctype="multipart/form-data">
 					<input name="_method" type="hidden" value="PATCH"%>
 					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 				<div class="row">
 					<div class="form-group">
-					    <label for="first" class="col-sm-4 control-label">First Name</label>
-					    <div class="col-sm-8">
+					    <label for="first" class="col-sm-3 control-label">First Name</label>
+					    <div class="col-sm-9">
 					        <input name="user[first]" type="text" class="form-control" id="first" value="<%= @user.first %>"/>
 					    </div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group">
-					    <label for="last" class="col-sm-4 control-label">Last Name</label>
-					    <div class="col-sm-8">
+					    <label for="last" class="col-sm-3 control-label">Last Name</label>
+					    <div class="col-sm-9">
 					        <input name="user[last]" type="text" class="form-control" id="last" value="<%= @user.last %>" />
 					    </div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group">
-					    <label for="email" class="col-sm-4 control-label">Email</label>
-					    <div class="col-sm-8">
+					    <label for="email" class="col-sm-3 control-label">Email</label>
+					    <div class="col-sm-9">
 					        <input name="user[email]" type="text" class="form-control" id="email" value="<%= @user.email %>"/>
 					    </div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group">
-					    <label for="username" class="col-sm-4 control-label">Username</label>
-					    <div class="col-sm-8">
+					    <label for="username" class="col-sm-3 control-label">Username</label>
+					    <div class="col-sm-9">
 					        <input name="user[username]" type="text" class="form-control" id="username" value="<%= @user.username %>"/>
 					    </div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group">
-					    <label for="phone_number" class="col-sm-4 control-label">Phone Number</label>
-					    <div class="col-sm-8">
+					    <label for="phone_number" class="col-sm-3 control-label">Phone Number</label>
+					    <div class="col-sm-9">
 					        <input name="user[phone_number]" type="text" class="form-control" id="phone_number" value="<%= @user.phone_number %>" />
 					    </div>
 					</div>
 				</div>
-				<% if @user.avatar.url %>
 				<div class="row">
 					<div class="form-group">
-						<label for="current_image" class="col-sm-4 control-label">Current Photo</label>
-						<div class="col-sm-8">
-							<%= image_tag @user.avatar.url , :size => "100x100"%>
+					    <label for="about" class="col-sm-3 control-label">About Me:</label>
+					    <div class="col-sm-9">
+					    	<textarea name="user[about]" class="form-control" id="about" rows="10"><%= @user.about %></textarea>
+					    </div>
+					</div>
+				</div>
+		</div>
+		<div class="col-sm-6 right-col">
+			<% if @user.avatar.url %>
+				<div class="row">
+					<div class="form-group">
+						<label for="current_image" class="col-sm-3 control-label">Current Photo</label>
+						<div class="col-sm-9 img-col">
+							<%= image_tag @user.avatar.url, :class => "img-fluid" %>
 						</div>
 					</div>
 				</div>
 				<% end %>
+				<div class="row">
 				  <div class="form-group">
-				    <label for="exampleInputFile" class="col-sm-4 control-label">Photo</label>
-				    <div class="col-sm-8">
+				    <label for="exampleInputFile" class="col-sm-3 control-label">Photo</label>
+				    <div class="col-sm-9">
 				    	<input name="user[avatar]" type="file" class="form-control-file" id="inputFile" aria-describedby="fileHelp" value="<%= @user.avatar %>">
 				    </div>
 				  </div>
-				<div class="row">
-					<div class="form-group">
-					    <label for="about" class="col-sm-4 control-label">About Me:</label>
-					    <div class="col-sm-8">
-					    	<textarea name="user[about]" class="form-control" id="about" rows="6"><%= @user.about %></textarea>
-					    </div>
-					</div>
 				</div>
 				<div class="row">
 					<div class="form-group">
-					    <label for="password" class="col-sm-4 control-label">Password</label>
-					    <div class="col-sm-8">
+					    <label for="password" class="col-sm-3 control-label">Password</label>
+					    <div class="col-sm-9">
 					        <input name="user[password]" type="password" class="form-control" id="password" />
 					    </div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group">
-					    <label for="password_confirmation" class="col-sm-4 control-label">Password Confirmation</label>
-					    <div class="col-sm-8">
+					    <label for="password_confirmation" class="col-sm-3 control-label">Password Confirmation</label>
+					    <div class="col-sm-9">
 					        <input name="user[password_confirmation]" type="password" class="form-control" id="password_confirmation" />
 					    </div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="form-group">
-					    <label for="submit" class="col-sm-4 control-label"></label>
-					    <div class="col-sm-8 btn-col">
-					        <button class="btn btn-primary">Submit</button>
-					    </div>
-					</div>
+		</div>
+	</div>
+					<div class="row">
+						<div class="form-group">
+						    <div class="col-sm-12 btn-col">
+						        <button class="btn btn-contact">UPDATE PROFILE</button>
+						    </div>
+						</div>
+					</form>
 				</div>
-				</form>
-			</div>
-			<div class="col-sm-6">
+<!-- 			<div class="col-sm-6">
 				<div class="row">
 					<div class="col-sm-4">
 						<h3 class="form-header">Destroy</h3>
@@ -121,7 +160,7 @@
 					</div>
 				</div>
 				</form>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </div>

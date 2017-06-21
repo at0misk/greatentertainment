@@ -20,12 +20,16 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style type="text/css">
     html, body {
+        position: relative;
+        min-height: 100%;
         margin: 0;
-        height: 100%;
+        /*height: 100%;*/
     }
     body{
       height: auto;
       background-color: #f1f1f1;
+      /*height: 100%;*/
+      padding-bottom: 175px;
       /*padding-bottom: 5%;*/
     }
     .navbar{
@@ -113,6 +117,7 @@
 .modal-header{
     background-color: #153649;
     color: white;
+    text-align: center;
 }
 
 .modalh3{
@@ -232,6 +237,72 @@ fieldset[disabled] .btn-contact.active {
   color: #153649; 
   background-color: #ffffff; 
 }
+
+    footer{
+      /*background-color: #0275d8;*/
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+      margin-top: 5%;
+      height: 100px;
+      background-color: white;
+    }
+    .logo img{
+      display: inline-block;
+      width: 250px;
+    }
+    .fa{
+      font-size: 22px;
+      margin-left: 11px;
+    }
+    .rightFooter{
+      bottom: 15px;
+      position: absolute;
+      right: 15px;
+      text-align: right;
+    }
+    .copy p{
+      margin: 0px;
+    }
+    .copy{
+      margin-top: 5px;
+      font-size: 11px;
+    }
+    .footerCont a{
+      transition: all 0.3s;
+      color: #333;
+    }
+    .footerCont a:hover{
+      opacity: 0.8;
+    }
+    .footerLinks a:hover{
+      text-decoration: none;
+    }
+    .footerCont{
+      bottom: 25px;
+      position: relative;
+/*      margin: 0px 15px;*/
+      background-color: white;
+      padding-top: 10px;
+    }
+    .evo-footer img{
+      width: 180px;
+      margin-right: 25px;
+    }
+    .evo-copy{
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .copy-right{
+      margin-top: 15px;
+    }
+
+    .footer-row .col-sm-4{
+      text-align: center;
+    }
 
 @media (max-width: 1179px) {
     .navbar-collapse.collapse {
@@ -402,6 +473,38 @@ fieldset[disabled] .btn-contact.active {
 
 <% end %>
     <%= yield %>
+
+<footer class="footer">
+  <div class="container-fluid footerCont">
+  <div class="row footer-row">
+    <div class="col-sm-4">
+      <span class="logo evo-footer"><%= image_tag('evologo-words.png') %></span>
+        <div class="copy evo-copy">
+          <p>Headquarters:</p>
+          <p>6671 Las Vegas Blvd South</p>
+          <p>Suite D-210,</p>
+          <p>Las Vegas NV 89119</p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+      <span class="logo"><%= image_tag('logo.png') %></span>
+        <div class="copy evo-copy">
+          <p>Evolution Travel is an affiliate of</p>
+          <p>Archer Travel Service, Inc.</p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="copy copy-right">
+          <p>Copyrights &copy; 2017 All Rights Reserved by Evolution Travel LLC. - <%= link_to "Privacy Polyicy", asset_path("PrivacyPolicy.pdf"), target: "_blank" %></p>
+          <p>"Registered in all states that require Seller of Travel Registration."</p>
+          <p>Seller of Travel: CA 2001330-10, FL 35395</p>
+          <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Support@myevolutiontravel.com</p>
+          <p> <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>(800) 272-4377</p>
+        </div>
+      </div>
+  </div>
+  </div>
+</footer>
   </body>
 <script type="text/javascript">
   $(document).on('turbolinks:load',function(){

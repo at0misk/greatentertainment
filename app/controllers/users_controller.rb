@@ -93,7 +93,7 @@ class UsersController < ApplicationController
 				@unapproved_photos = Photo.where(user_id: @current_user.id, allowed: false)
 			end
 		end
-		@photos = Photo.where(user_id: @page_user.id, allowed: true).order('updated_at DESC')
+		@photos = Photo.where(user_id: @page_user.id, allowed: true)
 	end
 	def gallery_upload
 		@page_user = User.find_by_username(params['username'])
@@ -101,6 +101,7 @@ class UsersController < ApplicationController
 	def photo_create
 		@photo = Photo.new(photo_params)
 		if @photo.save
+			flash[:photo_confirm] = true
 		end
 		redirect_to "/gallery/#{@photo.user.username}"
 	end
