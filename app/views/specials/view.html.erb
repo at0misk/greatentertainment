@@ -20,6 +20,8 @@
 			<h4>Returns on: <%= @special.return %></h4>
 			<h4>Room available: <%= @special.vacancy %></h4>
 			<h4>Description: <%= @special.description %></h4>
+			<h5><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank">Share on Facebook</a></h5>
+			<h5><a href="https://twitter.com/home?status=http%253A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank">Share on Twitter</a></h5>
 		</div>
 		<% end %>
 		<div class="col-sm-6">

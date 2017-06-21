@@ -22,11 +22,11 @@ class UsersController < ApplicationController
 	end
 	def show
 		@page_user = User.find_by_username(params['username'])
-		session[:page_user_id] = @page_user.id
 		if @page_user == nil
 			flash[:no_user] = "No user found."
 			redirect_to '/' and return
 		else
+			session[:page_user_id] = @page_user.id
 			@current_user = User.find(session[:user_id]) if session[:user_id]
 			@request_count = Topic.where(user_id: session[:user_id]).length if session[:user_id]
 				if @request_count && @request_count > 0
