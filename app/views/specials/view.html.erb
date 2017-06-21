@@ -1,9 +1,14 @@
+<head>
 <style type="text/css">
 	.btn-col{
 		text-align: right;
 	}
 </style>
-<title><%= @special.title %></title>
+<meta property="og:title" content="<%= @special.title %>" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://52.24.144.110/<%= @special.user.id %>/<%= @special.id %>" />
+<meta property="og:image" content="<%= @special.image.url %>" />
+</head>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-6">
