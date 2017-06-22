@@ -837,7 +837,6 @@ fieldset[disabled] .btn-fare.active {
 				<% if @page_user.avatar.url == '/avatars/original/missing.png' %>
 					<%= image_tag 'placeholder_user', :class => "img-fluid" %>
 				<% else %>
-					<%= @page_user.avatar.url %>
 					<%= image_tag @page_user.avatar.url(:medium), :class => "img-fluid" %>
 				<% end %>
 				</div>
