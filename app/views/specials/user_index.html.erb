@@ -56,7 +56,7 @@
 	.btn-row button{
 		width: 100%;
 	}
-	.btn-row .col-sm-6{
+	.btn-row .col-sm-4{
 		padding: 0px;
 	}
 	.social-media:hover{
@@ -70,9 +70,24 @@
 	.weekly-img img{
 		min-height: 275px;
 	}
+	.form-header{
+		margin-bottom: 20px;
+	}
+	.header-row{
+		color: white;
+		background-color: #153649;
+	}
+	.specials-row{
+		margin-top: 15px;
+	}
 </style>
 <div class="container">
-	<div class="row">
+	<div class="row header-row">
+		<div class="col-sm-12">
+			<h3 class="form-header">YOUR SPECIALS</h3>
+		</div>
+	</div>
+	<div class="row specials-row">
 	<% if @specials.length > 0 %>
 		<% @specials.each do |val| %>
 			<div class="col-sm-6 example-col">
@@ -92,14 +107,17 @@
 						</div>
 				</div>
 				<div class="row btn-row">
-					<div class="col-sm-6">
+					<div class="col-sm-4">
 					<% if val.featured %>
 						<button class="btn btn btn-contact" disabled="disabled">FEATURED</button>
 					<% else %>
 						<a href="/specials/feature/<%= val.id %>"><button class="btn btn-contact">FEATURE</button></a>
 					<% end %>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-4">
+						<a href="/specials/edit/<%= val.user.username %>"><button class="btn btn-green">EDIT</button></a>
+					</div>
+					<div class="col-sm-4">
 						<a href="/specials/destroy/<%= val.id %>"><button class="btn btn-red">DELETE</button></a>
 					</div>
 				</div>

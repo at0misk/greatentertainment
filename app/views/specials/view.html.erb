@@ -26,7 +26,7 @@
 	}
 	.weekly-img{
 		height: 100%;
-		padding-left: 0px;
+		padding-right: 0px;
 		overflow: hidden; 
 	}
 	.example-col{
@@ -56,6 +56,14 @@
 	.interest-col{
 		/*text-align: center;*/
 	}
+	.social-media:hover{
+		opacity: 0.6;
+	}
+	.social-media{
+		-moz-transition: all 0.4s;
+		-webkit-transition: all 0.4s;
+		transition: all 0.4s;
+	}
 </style>
 <% content_for :head do %>
 <meta property="og:title" content="<%= @special.title %>" />
@@ -65,22 +73,21 @@
 <meta property="og:description" content="<%= @special.description %>" />
 <% end %>
 <div class="container">
-	<div class="row">
+		<div class="row">
 			<div class="col-sm-12 example-col">
 				<div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
-						<h4><%= @special.title %></h4>
-						<h5><%= number_to_currency(@special.price) %> pp</h5>
-						<h5 class="dates"><%= @special.depart.strftime('%m/%d/%y') %> - <%= @special.return.strftime('%m/%d/%y') %></h5>
-						<h5><%= @special.description %></h5>
-						<div class="social-div">
-							<h5 class="social-media"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></h5>
-							<h5 class="social-media"><a href="https://twitter.com/home?status=http%253A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></h5>
-						</div>
+					<h4><%= @special.title %></h4>
+					<h5><%= number_to_currency(@special.price) %> pp</h5>
+					<h5 class="dates"><%= @special.depart.strftime('%m/%d/%y') %> - <%= @special.return.strftime('%m/%d/%y') %></h5>
+					<h5><%= @special.description %></h5>
+					<div class="social-div">
+						<h5 class="social-media"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></h5>
+						<h5 class="social-media"><a href="https://twitter.com/home?status=http%253A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></h5>
 					</div>
-					<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6 weekly weekly-img">
-						<%= image_tag(@special.image.url, :class => 'img-fluid' ) %>
-					</div>
-				</a>
+				</div>
+				<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6 weekly weekly-img">
+					<%= image_tag(@special.image.url, :class => 'img-fluid' ) %>
+				</div>
 			</div>
 		</div>
 		<div class="row">
