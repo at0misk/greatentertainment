@@ -945,7 +945,7 @@ fieldset[disabled] .btn-fare.active {
 					<p class="special-yellow">Click to see more</p>
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6 weekly weekly-img">
-					<%= image_tag(@special.image.url, :class => 'img-fluid special-img' ) %>
+					<%= image_tag(@special.image.url(:medium), :class => 'img-fluid special-img' ) %>
 				</div>
 				<% else %>
 				<a href="#"><div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
