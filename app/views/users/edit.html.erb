@@ -47,7 +47,7 @@
 	<form action="/<%= @user.username %>" method="post" class="form-horizontal edit-form" enctype="multipart/form-data">
 	<div class="row form-row">
 		<div class="col-sm-6">
-					<input name="_method" type="hidden" value="PATCH"%>
+					<input name="_method" type="hidden" value="PATCH">
 					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 				<div class="row">
 					<div class="form-group">
@@ -145,8 +145,8 @@
 						        <button class="btn btn-contact">UPDATE PROFILE</button>
 						    </div>
 						</div>
-					</form>
-				</div>
+					</div>
+				</form>
 <!-- 			<div class="col-sm-6">
 				<div class="row">
 					<div class="col-sm-4">
