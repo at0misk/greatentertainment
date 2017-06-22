@@ -802,6 +802,24 @@ fieldset[disabled] .btn-fare.active {
     overflow: hidden;
 }
 
+.blog-a{
+	color: #333 !important;
+}
+
+.blog-a:hover{
+	text-decoration: none;
+}
+
+.blue{
+	color: #337ab7;
+}
+
+.blog-image{
+	-moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
 </style>
 <div class="container-fluid outer-cont">
 	<div class="row outerRow">
@@ -836,7 +854,7 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			<% if @unapproved_photos && @unapproved_photos.length > 0 %>
 				<div class="row notificationRow">
-				<a href="/gallery/edit/<%= @current_user.username %>"><h5 class="approve-header">You have <%= @unapproved_photos.length %> photos to approve!</h5></a>
+				<a href="/gallery/edit/<%= @current_user.username %>"><h5 class="approve-header">You have <%= @unapproved_photos.length %> photo(s) to approve!</h5></a>
 				</div>
 			<% end %>
 			<div class="row blogCont">
@@ -848,26 +866,26 @@ fieldset[disabled] .btn-fare.active {
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
 				</div></a>
 				</div>
-				<div class="row blogContent">
+				<a href="/blogs/<%= @blogs[0].id %>" class="blog-a"><div class="row blogContent">
 					<div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 blogImgCol">
-						<%= image_tag('athens.jpg', :class => 'img-fluid') %>
+						<%= image_tag(@blogs[0].image.url, :class => 'img-fluid blog-image') %>
 					</div>
 					<div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 blog-content-col">
-						<nobr><h4 class="blog-header">3 DAYS IN ATHENS: WHAT TO DO WHEN YOU GO.</h4></nobr>
-						<h5>Written by Markus Lelay</h5>
-						<a href="#">Read More...</a>
+						<nobr><h4 class="blog-header"><%= @blogs[0].title.upcase %></h4></nobr>
+						<h5>Written by <%= @blogs[0].author %></h5>
+						<p class="blue">Read More...</p>
 					</div>
-				</div>
-				<div class="row blogContent">
+				</div></a>
+				<a href="/blogs/<%= @blogs[1].id %>" class="blog-a"><div class="row blogContent">
 					<div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 blogImgCol">
-						<%= image_tag('packing.jpg', :class => 'img-fluid') %>
+						<%= image_tag(@blogs[1].image.url, :class => 'img-fluid blog-image') %>
 					</div>
 					<div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 blog-content-col">
-						<nobr><h4 class="blog-header">WHAT TO ALWAYS PACK FOR AN INTERNATIONAL TRIP</h4></nobr>
-						<h5>Written by Erin Tippins</h5>
-						<a href="#">Read More...</a>
+						<nobr><h4 class="blog-header"><%= @blogs[1].title.upcase %></h4></nobr>
+						<h5>Written by <%= @blogs[1].author %></h5>
+						<p class="blue">Read More...</p>
 					</div>
-				</div>
+				</div></a>
 <!-- 				<div class="row blogContent">
 					<div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 blogImgCol">
 						<%#= image_tag('golden.jpg', :class => 'img-fluid') %>
@@ -1329,6 +1347,16 @@ fieldset[disabled] .btn-fare.active {
 <script type="text/javascript">
 
 $(document).on('turbolinks:load',function(){
+
+$('.blog-a').hover(
+  function() {
+  	// console.log('hovering');
+    // var arrowCol = $( this ).closest('.arrow-col');
+    $(this).find('img').addClass('hover-special');
+  }, function() {
+    $(this).find('img').removeClass('hover-special');
+  }
+);
 
 $('.weekly-details').hover(
   function() {

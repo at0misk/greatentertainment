@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 	post '/messages' => 'messages#create'
 	get '/blogs' => 'blogs#index'
 	get '/blogs/edit/:id' => 'blogs#edit'
-	get '/blogs/new/:id' => 'blogs#new'
+	get '/blogs/new' => 'blogs#new'
 	post 'blogs' => 'blogs#create'
 	post 'blogs/destroy' => 'blogs#destroy'
 	patch '/blogs/:id' => 'blogs#update'

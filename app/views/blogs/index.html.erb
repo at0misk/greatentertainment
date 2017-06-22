@@ -18,7 +18,7 @@
 		padding-top: 10px;
 	}
 	.blog-box{
-		height: 300px;
+		height: 314px;
 		border: 1px solid #cccccc;
 		margin: 2%;
 		width: 29.3%;
@@ -42,7 +42,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		padding: 0px 2%;
-	    height: 46px;
+	    height: 30px;
 	    background: #f1f1f1;
 	    margin: 0px;
 	    padding-top: 4%;
@@ -50,6 +50,7 @@
 		-moz-transition: all 0.4s;
 		-webkit-transition: all 0.4s;
 		transition: all 0.4s;
+		text-align: center;
 	}
 	.content a{
 		color: black;
@@ -61,42 +62,58 @@
 	.hover-blog{
 		background-color: white !important;
 	}
+	.blog-header a{
+		color: white;
+	}
+	.sub-col{
+		text-align: center;
+	    padding-right: 30px;
+	    padding-bottom: 15px;
+	}
+	.sub-col a{
+		color: #337ab7;
+	}
+	.sub-col a:hover{
+		color: #337ab7;
+		text-decoration: none;
+	}
+	.blog-author{
+		/*text-align: left;*/
+    	padding-top: 3px;
+    	font-weight: normal;
+	}
 </style>
 <div class="container">
-	<div class="row header-row">
+	<a href="/blogs" class="blog-a"><div class="row header-row">
 		<div class="col-sm-12 header-col">
 			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span><h4 class="blog-header">TRAVEL BLOG</h4>
 		</div>
-	</div>
-	<div class="row content">
-		<a href="/blogs/11"><div class="col-sm-4 blog-box">
-			<%= image_tag('packing', :class => 'img-fluid') %>
-			<h4 class="blog-title">WHAT TO PACK ON AN INTERNATIONAL TRIP</h4>
+	</div></a>
+	<% x = 0 %>
+	<% @blogs.each do |val| %>
+		<% if x == 0 %>
+		<div class="row content">
+		<% end %>
+		<a href="/blogs/<%= val.id %>"><div class="col-sm-4 blog-box">
+			<%= image_tag(val.image.url, :class => 'img-fluid') %>
+			<h5 class="blog-title"><%= val.title.upcase %></h5>
+			<h5 class="blog-title blog-author">Written by <%= val.author %></h5>
 		</div></a>
-		<a href="#"><div class="col-sm-4 blog-box">
-			<%= image_tag('golden', :class => 'img-fluid') %>
-			<h4 class="blog-title">GOLDEN ANNIVERSARY TRAVEL IDEAS</h4>
-		</div></a>
-		<a href="#"><div class="col-sm-4 blog-box">
-			<%= image_tag('athens', :class => 'img-fluid') %>
-			<h4 class="blog-title">3 DAYS IN ATHENS: WHAT TO DO WHEN YOU GO</h4>
-		</div></a>
-	</div>
-	<div class="row content">
-		<a href="#"><div class="col-sm-4 blog-box">
-			<%= image_tag('zipline', :class => 'img-fluid') %>
-			<h4 class="blog-title">ZIP LINING IN PLAYA DEL CARMEN MEXICO</h4>
-		</div></a>
-		<a href="#"><div class="col-sm-4 blog-box">
-			<%= image_tag('sicily.png', :class => 'img-fluid') %>
-			<h4 class="blog-title">VISIT RAGUSA, SICILY</h4>
-		</div></a>
-		<a href="#"><div class="col-sm-4 blog-box">
-			<%= image_tag('bahamas', :class => 'img-fluid') %>
-			<h4 class="blog-title">TOP 10 BAHAMAS EXPERIENCES</h4>
-		</div></a>
+		<% if x == 2 %>
+			</div>
+			<% x = 0 %>
+		<% else %>
+			<% x += 1 %>
+		<% end %>
+	<% end %>
+	<div class="row">
+		<div class="col-sm-12 sub-col">
+			<h5>Would you like to submit a blog?</h5><small> To submit a blog, please email blogs@evolutiontravel.com</small>
+		</div>
 	</div>
 </div>
+
+
 
 <script type="text/javascript">
 	$(document).on('turbolinks:load',function(){
@@ -105,9 +122,9 @@
 	  function() {
 	  	console.log('hovering');
 	    // var arrowCol = $( this ).closest('.arrow-col');
-	    $(this).children('h4').addClass('hover-blog');
+	    $(this).children('h5').addClass('hover-blog');
 	  }, function() {
-	    $(this).children('h4').removeClass('hover-blog');
+	    $(this).children('h5').removeClass('hover-blog');
 	  }
 	);
 

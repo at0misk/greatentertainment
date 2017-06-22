@@ -36,6 +36,7 @@ class UsersController < ApplicationController
 		@latest = Blog.where(user_id: @page_user.id).last
 		@cruise = Cruise.where(user_id: @page_user.id).last
 		@special = Special.where(user_id: @page_user.id).last
+		@blogs = Blog.all.limit(2).order(created_at: "DESC")
 		if @current_user && @current_user.id == @page_user.id
 			@unapproved_photos = Photo.where(user_id: @current_user.id, allowed: false)
 		end

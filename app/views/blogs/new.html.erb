@@ -1,9 +1,18 @@
+<style type="text/css">
+	.btn-col{
+		text-align: right;
+	}
+</style>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-6">
-			<h4><%= @user.first %> <%= @user.last %>'s Blog - New Blog Post</h4>
+			<div class="col-sm-4">
+			</div>
+			<div class="col-sm-8">
+				<h4>New Blog Post</h4>
+			</div>
 			<!-- <h5>New Blog Post:</h5> -->
-			<form action="/blogs" method="post" class="form-horizontal">
+			<form action="/blogs" method="post" class="form-horizontal" enctype="multipart/form-data">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 			<input name="blog[user_id]" type="hidden" value="<%= @user.id %>">
 			<div class="row">
@@ -13,6 +22,20 @@
 				        <input name="blog[title]" type="text" class="form-control" id="title" />
 				    </div>
 				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="title" class="col-sm-4 control-label">Author</label>
+				    <div class="col-sm-8">
+				        <input name="blog[author]" type="text" class="form-control" id="title" />
+				    </div>
+				</div>
+			</div>
+			<div class="form-group photo-group">
+			    <label for="inputFile" class="col-sm-4 control-label">Image</label>
+			    <div class="col-sm-8">
+			    	<input name="blog[image]" type="file" class="form-control-file" id="inputFile" aria-describedby="fileHelp">
+			    </div>
 			</div>
 			<div class="row">
 				<div class="form-group">
@@ -26,7 +49,7 @@
 				<div class="form-group">
 				    <label for="submit" class="col-sm-4 control-label"></label>
 				    <div class="col-sm-8 btn-col">
-				        <button class="btn btn-primary">Submit</button>
+				        <button class="btn btn-contact">CREATE</button>
 				    </div>
 				</div>
 			</div>

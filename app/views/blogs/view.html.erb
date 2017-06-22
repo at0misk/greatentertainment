@@ -41,41 +41,28 @@
 	.headers-div{
 		display: inline-block;
 	}
+	.author-header{
+/*		text-align: right;
+    	margin-top: 0px;*/
+	}
+	.blog-header a{
+		color: white;
+	}
 </style>
-<div class="container-fluid blog-cont">
-	<div class="row header-row">
+<div class="container blog-cont">
+	<a href="/blogs"><div class="row header-row">
 		<div class="col-sm-12 header-col">
 			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span><h4 class="blog-header">TRAVEL BLOG</h4>
 		</div>
-	</div>
+	</div></a>
 	<div class="row img-row">
 		<div class="col-sm-12 header-text">
 			<div class="headers-div">
-				<h3 class="big-header">WHAT TO ALWAYS PACK FOR AN INTERNATIONAL TRIP</h3>
-				<h4>Written by Erin Tippins<small><%= @blog.created_at.to_time.strftime('%B %e at %l:%M %p') %></small></h4>
+				<h3 class="big-header"><%= @blog.title.upcase %></h3>
+				<h5 class="author-header">Written by <%= @blog.author %><small><%= @blog.created_at.to_time.strftime('%B %e at %l:%M %p') %></small></h5>
 			</div>
-			<%= image_tag('packing', :class => 'img-fluid') %>
-			<%= simple_format("Vestibulum hendrerit nisi eu faucibus dapibus. Curabitur volutpat lacus id hendrerit mattis. In facilisis euismod tincidunt. Phasellus eu nisi ex. Aliquam commodo pulvinar metus, in volutpat dui interdum vitae. Phasellus vulputate diam vel suscipit scelerisque. Phasellus mattis mi ipsum, in laoreet mauris efficitur ac. Pellentesque velit odio, molestie eu rutrum venenatis, facilisis non turpis. Nunc porta diam diam, vel imperdiet orci sollicitudin vitae. Nullam ut ipsum et nisi sollicitudin viverra. Mauris at lobortis erat. Donec tristique ligula quis odio euismod efficitur. Nunc orci sem, dignissim vitae purus ac, molestie blandit magna. Nulla lacinia velit erat, eu cursus turpis fermentum id.
-
-Sed condimentum malesuada nisi non scelerisque. Vivamus eget sem vel nulla posuere venenatis at sit amet urna. Quisque a maximus lorem. Maecenas vehicula nulla ante, id consectetur odio iaculis a. Nulla vestibulum dolor felis, nec convallis arcu efficitur sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et molestie neque, a consequat dolor. Suspendisse mollis, dui eget ornare suscipit, felis justo consequat augue, in porta lectus metus non magna. Ut nec purus ipsum. Integer eleifend ex dui, a viverra lacus bibendum quis. Nam nec erat aliquet, eleifend lorem ac, dapibus felis. Ut non lacinia enim. Etiam accumsan mauris vel metus pulvinar pulvinar.
-
-Nulla sollicitudin nulla erat, aliquet sodales nisl ultrices a. Nam in pretium diam. Praesent in pulvinar neque. Fusce eget tempus ligula. Ut congue lorem risus, nec porttitor nulla cursus eu. Mauris commodo eros sit amet dapibus accumsan. Suspendisse sit amet pretium est. Donec id sapien lacus. In hac habitasse platea dictumst. Aenean a risus sit amet tortor finibus rhoncus varius et urna. Nam at placerat erat, sed tempus enim. Curabitur vehicula neque at ligula viverra interdum. Ut blandit eleifend mollis. Nulla a pellentesque diam, a dignissim dolor.
-
-Praesent blandit, purus ut viverra bibendum, mauris leo congue nisl, vitae maximus eros urna nec odio. Pellentesque molestie sodales dapibus. Nullam vehicula metus imperdiet magna pellentesque semper. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras blandit fermentum urna, id finibus erat vulputate eget. Duis consequat tellus purus, sit amet rutrum magna hendrerit sollicitudin. Proin diam dui, euismod quis arcu ac, ornare sollicitudin elit. Vestibulum ullamcorper elementum tortor sit amet varius. Pellentesque non risus eu orci tempus laoreet non id diam.
-
-Sed suscipit nibh eget metus dapibus sagittis. Maecenas enim orci, consectetur sed nibh ac, interdum ullamcorper nunc. In sed nisl vitae ipsum pretium scelerisque et id velit. Duis elementum odio vel lacus scelerisque commodo a eu turpis. Phasellus felis arcu, luctus vehicula feugiat eu, luctus vel sapien. Vivamus eget cursus eros. Nam volutpat augue ante, a aliquet felis lobortis non. Sed laoreet libero vel purus feugiat, in placerat metus rutrum. Sed condimentum sed dui ut pretium. Vivamus gravida hendrerit dui, vitae congue magna faucibus id. Curabitur sit amet posuere justo, vitae volutpat sem. Suspendisse ut elit eu velit interdum feugiat. Nam eu lacinia diam, et sodales nisi. Sed lobortis nibh nec erat commodo gravida. Aliquam ullamcorper odio nulla, sit amet vestibulum libero elementum aliquet.
-
-Nulla quis dui non nunc placerat bibendum. Suspendisse ac pharetra nisi, eget cursus magna. Sed vitae condimentum lectus, quis dignissim enim. Nunc lacinia ipsum nec orci vestibulum, vel pretium diam semper. Proin eget ultricies enim, ut accumsan eros. Sed euismod orci at consequat vestibulum. Fusce porta fermentum neque. Nullam semper sapien tortor, at cursus leo pulvinar in. Vestibulum sapien diam, eleifend ut cursus at, feugiat vel ante. Etiam semper nisi vitae nisl finibus, sed sodales quam bibendum. Maecenas eu fermentum ante. Quisque eu diam tempus, tempor velit sed, dapibus nibh.
-
-Nulla lacinia porta urna, sit amet elementum mi faucibus sit amet. Proin sed sapien a enim dictum iaculis sit amet ultricies dui. Vivamus tortor ligula, mattis finibus libero ac, condimentum volutpat eros. Suspendisse et ipsum massa. Aenean quis est sit amet urna mollis interdum in sed neque. Vivamus leo dolor, vulputate a sapien ut, euismod feugiat orci. Proin convallis, justo eget pulvinar viverra, velit turpis mattis mauris, eget vulputate nibh nunc non leo. In laoreet, elit eget dictum efficitur, turpis urna ultrices augue, non euismod eros risus sit amet nibh. Suspendisse potenti. Etiam tincidunt erat massa, quis rutrum risus cursus non. Sed rhoncus condimentum velit, at viverra ante maximus in. Mauris auctor eros ac neque consectetur, ut tincidunt odio tincidunt.
-
-Morbi sapien dui, vestibulum condimentum leo sed, laoreet dictum felis. Sed bibendum quam vel turpis gravida ultricies. Proin fermentum et dolor eu placerat. Proin gravida lorem id quam vulputate, ut porttitor eros mollis. Pellentesque et scelerisque nunc, a placerat diam. Pellentesque malesuada semper nibh, in dictum orci. Vestibulum et ultrices eros, consectetur convallis sem. Mauris finibus, nibh et posuere blandit, ligula risus tristique nulla, eu laoreet ex velit sed dui. Phasellus eget aliquet tortor. Praesent eu ante sit amet magna convallis tempus sodales sit amet ex. Ut orci metus, facilisis vel ante quis, placerat ultricies tortor.") %>
+			<%= image_tag(@blog.image.url, :class => 'img-fluid') %>
+			<%= simple_format(@blog.content) %>
 		</div>
 	</div>
-<!-- 	<div class="row">
-		<div class="col-sm-6">
-			<h4><%#= @blog.title %><small><%#= @blog.created_at.to_time.strftime('%B %e at %l:%M %p') %></small></h4>
-			<p><%#= @blog.content %></p>
-		</div>
-	</div> -->
 </div>
