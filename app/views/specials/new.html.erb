@@ -2,18 +2,58 @@
 	.btn-col{
 		text-align: right;
 	}
+	.container{
+		min-height: 550px;
+		background: white;
+		margin-top: 15px;
+	}
+	.header-row{
+		color: white;
+		background-color: #e84c3d;
+		height: 60px;
+		padding-top: 10px;
+		text-align: center;
+		/*margin-top: 15px;*/
+	}
+	.form-row{
+		margin-top: 15px;
+	}
+	.specialWeeklyRow{
+		height: 300px;
+		/*border: 1px solid black;*/
+		margin-top: 15px;
+	}
+	.weekly-details{
+		position: relative;
+		background-color: #4f4f4f;
+		height: 100%;
+		color: white;
+	}
+	.weekly-img{
+		height: 100%;
+		padding-left: 0px;
+		overflow: hidden; 
+	}
+	.example-col{
+		background-color: #4f4f4f;
+	    width: 45%;
+	    margin: 0% 2%;
+	    color: white;
+	    padding-right: 0px;
+	}
 </style>
 <div class="container">
-	<div class="row">
+	<div class="row header-row">
+		<div class="col-sm-12 gal-col">
+			<h4>LIST A NEW SPECIAL</h4>
+		</div>
+	</div>
+	<div class="row form-row">
 		<div class="col-sm-6">
-			<div class="col-sm-4">
-			</div>
-			<div class="col-sm-8">
-				<h4 class="header">List a new special</h4>
-			</div>
 			<form action="/specials" method="post" class="form-horizontal" enctype="multipart/form-data">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 			<input name="special[user_id]" type="hidden" value="<%= @user.id %>">
+			<input name="special[featured]" type="hidden" value="true">
 			<div class="row">
 				<div class="form-group">
 				    <label for="title" class="col-sm-4 control-label">Title</label>
@@ -72,7 +112,7 @@
 				<div class="form-group">
 				    <label for="submit" class="col-sm-4 control-label"></label>
 				    <div class="col-sm-8 btn-col">
-				        <button class="btn btn-primary">Create</button>
+				        <button class="btn btn-red">CREATE</button>
 				    </div>
 				</div>
 			</div>
@@ -88,7 +128,17 @@
 				<% flash[:sub] = nil %>
 			<% end %>
 		</div>
-		<div class="col-sm-6">
+		<div class="col-sm-6 example-col">
+			<div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
+					<h4>EXAMPLE SPECIAL</h4>
+					<h5>3 Day Guided Tour of Rome, includes dinner.</h5>
+					<h5>$180.00 pp</h5>
+					<p class="special-yellow">Click to see more</p>
+				</div>
+				<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6 weekly weekly-img">
+					<%= image_tag('colloseum', :class => 'img-fluid' ) %>
+				</div>
+			</a>
 		</div>
 	</div>
 </div>

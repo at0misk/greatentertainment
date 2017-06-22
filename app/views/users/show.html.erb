@@ -820,13 +820,26 @@ fieldset[disabled] .btn-fare.active {
 	transition: all 0.4s;
 }
 
+.hover-blog{
+	opacity: 0.65;
+}
+
+.notificationRow a:hover{
+	text-decoration: none;
+}
+
 </style>
 <div class="container-fluid outer-cont">
 	<div class="row outerRow">
 		<div class="col-lg-4 col-md-12 outerCol">
 			<div class="row profileRow">
 				<div class="col-sm-4 col-md-6 col-xs-5 profileDiv">
+				<% if @page_user.avatar.url == '/avatars/original/missing.png' %>
+					<%= image_tag 'placeholder_user', :class => "img-fluid" %>
+				<% else %>
+					<%= @page_user.avatar.url %>
 					<%= image_tag @page_user.avatar.url(:medium), :class => "img-fluid" %>
+				<% end %>
 				</div>
 				<div class="col-sm-8 col-md-6 col-xs-7 userInfo">
 					<span class="meet">Meet Your Agent:</span>
@@ -866,26 +879,28 @@ fieldset[disabled] .btn-fare.active {
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
 				</div></a>
 				</div>
-				<a href="/blogs/<%= @blogs[0].id %>" class="blog-a"><div class="row blogContent">
-					<div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 blogImgCol">
-						<%= image_tag(@blogs[0].image.url, :class => 'img-fluid blog-image') %>
-					</div>
-					<div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 blog-content-col">
-						<nobr><h4 class="blog-header"><%= @blogs[0].title.upcase %></h4></nobr>
-						<h5>Written by <%= @blogs[0].author %></h5>
-						<p class="blue">Read More...</p>
-					</div>
-				</div></a>
-				<a href="/blogs/<%= @blogs[1].id %>" class="blog-a"><div class="row blogContent">
-					<div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 blogImgCol">
-						<%= image_tag(@blogs[1].image.url, :class => 'img-fluid blog-image') %>
-					</div>
-					<div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 blog-content-col">
-						<nobr><h4 class="blog-header"><%= @blogs[1].title.upcase %></h4></nobr>
-						<h5>Written by <%= @blogs[1].author %></h5>
-						<p class="blue">Read More...</p>
-					</div>
-				</div></a>
+				<% if @blogs && @blogs.length != 0 %>
+					<a href="/blogs/<%= @blogs[0].id %>" class="blog-a"><div class="row blogContent">
+						<div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 blogImgCol">
+							<%= image_tag(@blogs[0].image.url, :class => 'img-fluid blog-image') %>
+						</div>
+						<div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 blog-content-col">
+							<nobr><h4 class="blog-header"><%= @blogs[0].title.upcase %></h4></nobr>
+							<h5>Written by <%= @blogs[0].author %></h5>
+							<p class="blue">Read More...</p>
+						</div>
+					</div></a>
+					<a href="/blogs/<%= @blogs[1].id %>" class="blog-a"><div class="row blogContent">
+						<div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 blogImgCol">
+							<%= image_tag(@blogs[1].image.url, :class => 'img-fluid blog-image') %>
+						</div>
+						<div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 blog-content-col">
+							<nobr><h4 class="blog-header"><%= @blogs[1].title.upcase %></h4></nobr>
+							<h5>Written by <%= @blogs[1].author %></h5>
+							<p class="blue">Read More...</p>
+						</div>
+					</div></a>
+				<% end %>
 <!-- 				<div class="row blogContent">
 					<div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 blogImgCol">
 						<%#= image_tag('golden.jpg', :class => 'img-fluid') %>
@@ -1352,9 +1367,9 @@ $('.blog-a').hover(
   function() {
   	// console.log('hovering');
     // var arrowCol = $( this ).closest('.arrow-col');
-    $(this).find('img').addClass('hover-special');
+    $(this).find('img').addClass('hover-blog');
   }, function() {
-    $(this).find('img').removeClass('hover-special');
+    $(this).find('img').removeClass('hover-blog');
   }
 );
 

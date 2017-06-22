@@ -3,6 +3,8 @@ class SpecialsController < ApplicationController
 		@user = User.find(session[:user_id])
 	end
 	def create
+		@featured = Special.where(user_id: session[:user_id], featured: true).first
+		@featured.update_attribute(:featured, false)
 		@special = Special.new(special_params)
 		if @special.save
 		else
@@ -10,7 +12,7 @@ class SpecialsController < ApplicationController
 		redirect_to "/#{@special.user.username}"
 	end
 	def special_params
-		params.require(:special).permit(:title, :depart, :return, :vacancy, :description, :user_id, :image, :price)
+		params.require(:special).permit(:title, :depart, :return, :vacancy, :description, :user_id, :image, :price, :featured)
 	end
 	def view
 		@user = User.find(params['user_id'])
@@ -19,7 +21,7 @@ class SpecialsController < ApplicationController
 	def user_index
 		if session[:user_id]
 			@user = User.find(session[:user_id])
-			@specials = Special.where(user_id: @user.id)
+			@specials = Special.where(user_id: @user.id).order('created_at DESC')
 		else
 			redirect_to '/' and return
 		end
@@ -45,5 +47,12 @@ class SpecialsController < ApplicationController
 		Special.destroy(params['id'])
 		@user = User.find(session[:user_id])
 		redirect_to "/#{@user.username}"
+	end
+	def feature
+		@featured = Special.where(user_id: session[:user_id], featured: true).first
+		@featured.update_attribute(:featured, false)
+		@new_feature = Special.find(params['id'])
+		@new_feature.update_attribute(:featured, true)
+		redirect_to "/#{@featured.user.username}"
 	end
 end

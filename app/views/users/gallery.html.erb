@@ -154,6 +154,17 @@
 .modal-upload-btn-col{
 	text-align: center;
 }
+
+.approve-header a:hover{
+	text-decoration: none;
+	opacity: 0.6;
+}
+
+.booked a:hover{
+	text-decoration: none;
+	opacity: 0.6;
+}
+
 </style>
 <!-- Disables turbolinks on restoration -->
 <% content_for :head do %>
@@ -176,8 +187,8 @@
 		<% if @photos.length > 0 %>
 			<div class="col-sm-9 photo-col">
 				<div class="fotorama" data-width="100%" data-fit="cover" data-ratio="700/467" data-minwidth="400" data-maxwidth="1000" data-minheight="300" data-maxheight="100%">
-				  <img src="http://s.fotorama.io/1.jpg">
-				  <img src="http://s.fotorama.io/2.jpg">
+<!-- 				  <img src="http://s.fotorama.io/1.jpg">
+				  <img src="http://s.fotorama.io/2.jpg"> -->
 				  <% @photos.each do |val| %>
 				  	<% if val.traveled_on %>
 					  	<% @date = val.traveled_on.to_formatted_s(:long) %>

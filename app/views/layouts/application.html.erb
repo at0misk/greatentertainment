@@ -18,6 +18,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   <style type="text/css">
     html, body {
         position: relative;
@@ -31,6 +32,11 @@
       /*height: 100%;*/
       padding-bottom: 175px;
       /*padding-bottom: 5%;*/
+    }
+    a{
+      -moz-transition: all 0.4s;
+      -webkit-transition: all 0.4s;
+      transition: all 0.4s;
     }
     .navbar{
       margin-bottom: 0px;
@@ -281,6 +287,52 @@ fieldset[disabled] .btn-green.active {
  
 .btn-green .badge { 
   color: #06B78D; 
+  background-color: #ffffff; 
+}
+
+.btn-red { 
+  color: #ffffff; 
+  background-color: #E84C3D; 
+  border-color: #913128; 
+} 
+ 
+.btn-red:hover, 
+.btn-red:focus, 
+.btn-red:active, 
+.btn-red.active, 
+.open .dropdown-toggle.btn-red { 
+  color: #ffffff; 
+  background-color: #63231E; 
+  border-color: #913128; 
+} 
+ 
+.btn-red:active, 
+.btn-red.active, 
+.open .dropdown-toggle.btn-red { 
+  background-image: none; 
+} 
+ 
+.btn-red.disabled, 
+.btn-red[disabled], 
+fieldset[disabled] .btn-red, 
+.btn-red.disabled:hover, 
+.btn-red[disabled]:hover, 
+fieldset[disabled] .btn-red:hover, 
+.btn-red.disabled:focus, 
+.btn-red[disabled]:focus, 
+fieldset[disabled] .btn-red:focus, 
+.btn-red.disabled:active, 
+.btn-red[disabled]:active, 
+fieldset[disabled] .btn-red:active, 
+.btn-red.disabled.active, 
+.btn-red[disabled].active, 
+fieldset[disabled] .btn-red.active { 
+  background-color: #E84C3D; 
+  border-color: #913128; 
+} 
+ 
+.btn-red .badge { 
+  color: #E84C3D; 
   background-color: #ffffff; 
 }
 

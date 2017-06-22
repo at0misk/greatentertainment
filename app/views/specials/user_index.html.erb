@@ -1,16 +1,115 @@
+<style type="text/css">
+	.container{
+		min-height: 550px;
+		margin-top: 15px;
+		background-color: white;
+	}
+	.none-found{
+		text-align: center;
+	}
+	a:hover{
+		text-decoration: none;
+	}
+	.specialWeeklyRow{
+		height: 300px;
+		/*border: 1px solid black;*/
+		margin-top: 15px;
+	}
+	.weekly-details{
+		position: relative;
+		background-color: #4f4f4f;
+		height: 100%;
+		color: white;
+	}
+	.weekly-img{
+		height: 100%;
+		padding: 0px;
+		overflow: hidden; 
+	}
+	.example-col{
+		background-color: #4f4f4f;
+	    width: 45%;
+	    margin: 0% 2%;
+	    color: white;
+	    padding-right: 0px;
+	    margin-bottom: 15px;
+	}
+	.img-fluid{
+		width: 100%;
+		height: auto;
+	}
+	.social-media a{
+		color: white;
+	}
+	.social-media{
+		display: inline-block;
+	}
+	.social-div{
+	    /*position: absolute;*/
+	    /*bottom: -110px;*/
+	    /*left: 0;*/
+	    margin-left: -10px;
+	}
+	.btn-row{
+		/*background: white;*/
+	}
+	.btn-row button{
+		width: 100%;
+	}
+	.btn-row .col-sm-6{
+		padding: 0px;
+	}
+	.social-media:hover{
+		opacity: 0.6;
+	}
+	.social-media{
+		-moz-transition: all 0.4s;
+		-webkit-transition: all 0.4s;
+		transition: all 0.4s;
+	}
+	.weekly-img img{
+		min-height: 275px;
+	}
+</style>
 <div class="container">
 	<div class="row">
+	<% if @specials.length > 0 %>
 		<% @specials.each do |val| %>
-			<div class="col-sm-6">
-				<h4>Title: <%= val.title %></h4>
-				<h5>Depart: <%= val.depart %></h5>
-				<h5>Return: <%= val.return %></h5>
-				<h5>Vacancy: <%= val.vacancy %></h5>
-				<h5>Description: <%= val.description %></h5>
-				<h5><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//52.24.144.110/specials/<%= val.user.id %>/<%= val.id %>" target="_blank">Share on Facebook</a></h5>
-				<h5><a href="https://twitter.com/home?status=http%253A//52.24.144.110/specials/<%= val.user.id %>/<%= val.id %>" target="_blank">Share on Twitter</a></h5>
-				<%= image_tag(val.image.url) %>
+			<div class="col-sm-6 example-col">
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
+							<h4><%= val.title %></h4>
+							<h5><%= number_to_currency(val.price) %> pp</h5>
+							<h5 class="dates"><%= val.depart.strftime('%m/%d/%y') %> - <%= val.return.strftime('%m/%d/%y') %></h5>
+							<h5><%= val.description %></h5>
+							<div class="social-div">
+								<h5 class="social-media"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//52.24.144.110/specials/<%= val.user.id %>/<%= val.id %>" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></h5>
+								<h5 class="social-media"><a href="https://twitter.com/home?status=http%253A//52.24.144.110/specials/<%= val.user.id %>/<%= val.id %>" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></h5>
+							</div>
+						</div>
+						<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6 weekly weekly-img">
+							<%= image_tag(val.image.url, :class => 'img-fluid' ) %>
+						</div>
+				</div>
+				<div class="row btn-row">
+					<div class="col-sm-6">
+					<% if val.featured %>
+						<button class="btn btn btn-contact" disabled="disabled">FEATURED</button>
+					<% else %>
+						<a href="/specials/feature/<%= val.id %>"><button class="btn btn-contact">FEATURE</button></a>
+					<% end %>
+					</div>
+					<div class="col-sm-6">
+						<a href="/specials/destroy/<%= val.id %>"><button class="btn btn-red">DELETE</button></a>
+					</div>
+				</div>
 			</div>
 		<% end %>
+	<% else %>
+		<div class="col-sm-12 none-found">
+			<h3>No specials found</h3>
+			<h4><a href="/specials/new/<%= @user.username %>">Click Here</a> to create a new special.</h4>
+		</div>
+	<% end %>
 	</div>
 </div>

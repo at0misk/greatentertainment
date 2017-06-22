@@ -2,6 +2,60 @@
 	.btn-col{
 		text-align: right;
 	}
+	.container{
+		min-height: 550px;
+		margin-top: 15px;
+		background-color: white;
+	}
+	.none-found{
+		text-align: center;
+	}
+	a:hover{
+		text-decoration: none;
+	}
+	.specialWeeklyRow{
+		height: 300px;
+		/*border: 1px solid black;*/
+		margin-top: 15px;
+	}
+	.weekly-details{
+		position: relative;
+		background-color: #4f4f4f;
+		height: 100%;
+		color: white;
+	}
+	.weekly-img{
+		height: 100%;
+		padding-left: 0px;
+		overflow: hidden; 
+	}
+	.example-col{
+		background-color: #4f4f4f;
+	    /*width: 45%;*/
+	    /*margin: 0% 2%;*/
+	    color: white;
+	    padding-right: 0px;
+	    /*margin-top: 15px;*/
+	}
+	.img-fluid{
+		width: 100%;
+		height: auto;
+	}
+	.social-media a{
+		color: white;
+	}
+	.social-media{
+		display: inline-block;
+	}
+	.social-div{
+	    /*position: absolute;*/
+	    /*bottom: -110px;*/
+	    /*left: 0;*/
+	    margin-left: -10px;
+	}
+	.interest-col{
+		/*text-align: center;*/
+	}
 </style>
 <% content_for :head do %>
 <meta property="og:title" content="<%= @special.title %>" />
@@ -12,22 +66,30 @@
 <% end %>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-6">
-		<% if @special %>
-			<h3><%= @special.title %></h3>
-			<%= image_tag(@special.image.url) %>
-			<h4>Leaves on: <%= @special.depart %></h4>
-			<h4>Returns on: <%= @special.return %></h4>
-			<h4>Room available: <%= @special.vacancy %></h4>
-			<h4>Description: <%= @special.description %></h4>
-			<h5><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank">Share on Facebook</a></h5>
-			<h5><a href="https://twitter.com/home?status=http%253A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank">Share on Twitter</a></h5>
-		</div>
-		<% end %>
-		<div class="col-sm-6">
-			<div class="col-sm-4">
+			<div class="col-sm-12 example-col">
+				<div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
+						<h4><%= @special.title %></h4>
+						<h5><%= number_to_currency(@special.price) %> pp</h5>
+						<h5 class="dates"><%= @special.depart.strftime('%m/%d/%y') %> - <%= @special.return.strftime('%m/%d/%y') %></h5>
+						<h5><%= @special.description %></h5>
+						<div class="social-div">
+							<h5 class="social-media"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></h5>
+							<h5 class="social-media"><a href="https://twitter.com/home?status=http%253A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></h5>
+						</div>
+					</div>
+					<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6 weekly weekly-img">
+						<%= image_tag(@special.image.url, :class => 'img-fluid' ) %>
+					</div>
+				</a>
 			</div>
-			<div class="col-sm-8">
+		</div>
+		<div class="row">
+		<div class="col-sm-3">
+		</div>
+		<div class="col-sm-6">
+			<div class="col-sm-3">
+			</div>
+			<div class="col-sm-9 interest-col">
 				<h4 class="header">Interested in this special?</h4>
 				<h5>Fill out this form to get in touch</h5>
 			</div>
@@ -36,48 +98,47 @@
 			<input name="subscription[user_id]" type="hidden" value="<%= @user.id %>">
 			<div class="row">
 				<div class="form-group">
-				    <label for="first" class="col-sm-4 control-label">First Name</label>
-				    <div class="col-sm-8">
+				    <label for="first" class="col-sm-3 control-label">First Name</label>
+				    <div class="col-sm-9">
 				        <input name="subscription[first]" type="text" class="form-control" id="first" />
 				    </div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group">
-				    <label for="last" class="col-sm-4 control-label">Last Name</label>
-				    <div class="col-sm-8">
+				    <label for="last" class="col-sm-3 control-label">Last Name</label>
+				    <div class="col-sm-9">
 				        <input name="subscription[last]" type="text" class="form-control" id="last" />
 				    </div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group">
-				    <label for="email" class="col-sm-4 control-label">Email</label>
-				    <div class="col-sm-8">
+				    <label for="email" class="col-sm-3 control-label">Email</label>
+				    <div class="col-sm-9">
 				        <input name="subscription[email]" type="text" class="form-control" id="email" />
 				    </div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group">
-				    <label for="email" class="col-sm-4 control-label">Phone Number</label>
-				    <div class="col-sm-8">
+				    <label for="email" class="col-sm-3 control-label">Phone Number</label>
+				    <div class="col-sm-9">
 				        <input name="subscription[email]" type="text" class="form-control" id="email" />
 				    </div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group">
-				    <label for="message" class="col-sm-4 control-label">Message</label>
-				    <div class="col-sm-8">
+				    <label for="message" class="col-sm-3 control-label">Message</label>
+				    <div class="col-sm-9">
 				        <textarea name="interest[message]" class="form-control" id="message"></textarea>
 				    </div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group">
-				    <label for="submit" class="col-sm-4 control-label"></label>
-				    <div class="col-sm-8 btn-col">
+				    <div class="col-sm-12 btn-col">
 				        <button class="btn btn-primary">Submit</button>
 				    </div>
 				</div>
@@ -93,6 +154,8 @@
 				</div>
 				<% flash[:sub] = nil %>
 			<% end %>
+		</div>
+		<div class="col-sm-3">
 		</div>
 	</div>
 </div>

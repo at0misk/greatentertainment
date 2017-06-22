@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 	get '/specials/all_specials/:username' => 'specials#user_index'
 	get '/specials/new/:username' => 'specials#new'
 	post '/specials' => 'specials#create'
+	get '/specials/destroy/:id' => 'specials#destroy'
+	get '/specials/feature/:id' => 'specials#feature'
 	get '/specials/:user_id/:id' => 'specials#view'
 	patch '/specials' => 'specials#update'
 	post 'contact' => 'users#contact'
@@ -37,7 +39,6 @@ Rails.application.routes.draw do
 	patch '/photo_remove' => 'photos#remove'
 	post '/photo_destroy' => 'photos#destroy'
 	get '/logout' => 'sessions#logout'
-	post '/specials/destroy' => 'specials#destroy'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
