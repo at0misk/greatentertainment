@@ -858,6 +858,10 @@ fieldset[disabled] .btn-fare.active {
 	margin-left: 15px;
 }
 
+.tiny-phone{
+	font-size: 12px !important;
+}
+
 </style>
 <div class="container-fluid outer-cont">
 	<div class="row outerRow">
@@ -881,7 +885,7 @@ fieldset[disabled] .btn-fare.active {
 				<a href="#" data-toggle="modal" data-target="#contactModal"><div class="col-sm-10 col-xs-10 contact-col contact-left">
 					<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="lefth3">CONTACT <%= @page_user.first.upcase %></h3>
 					<div class="phone-div">
-						<small class="phone"><%= @page_user.phone_number %></small>
+						<small class="phone"><span class="glyphicon glyphicon-earphone phone-glyphicon tiny-phone" aria-hidden="true"></span> <%= @page_user.phone_number %></small>
 					</div>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col contact-arrow">
