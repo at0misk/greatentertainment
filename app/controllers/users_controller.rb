@@ -1,9 +1,9 @@
 require 'twilio-ruby'
 
 class UsersController < ApplicationController
-  @@twilio_sid = ENV['AC181e8543ebb9d284eb206ac11cf3760e']
-  @@twilio_token = ENV['7c7ce2c4ffeee5dc9e56e47bef28620d']
-  @@twilio_number = ENV['+18623079249']
+  @@twilio_sid = 'AC181e8543ebb9d284eb206ac11cf3760e'
+  @@twilio_token = '7c7ce2c4ffeee5dc9e56e47bef28620d'
+  @@twilio_number = '+15005550006'
 
   # Handle a POST from our web form and connect a call via REST API
   def call
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       @call = @client.calls.create(
         :from => @@twilio_number,
         :to => @userPhone,
-        :url => "http://52.24.144.110/connect/#{@salesPhone}" # Fetch instructions from this URL when the call connects
+        :url => "https://api.twilio.com/connect/#{@salesPhone}" # Fetch instructions from this URL when the call connects
       )
 
     #   # Let's respond to the ajax call with some positive reinforcement
@@ -32,7 +32,8 @@ class UsersController < ApplicationController
     # respond_to do |format|
     #   format.json { render :json => @msg }
     # end
-    redirect_to '/'
+ 	@page_user = User.find(session[:page_user_id])
+    redirect_to "/#{@page_user.username}"
   end
 
   # This URL contains instructions for the call that is connected with a lead
