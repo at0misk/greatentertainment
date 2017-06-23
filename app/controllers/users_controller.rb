@@ -99,7 +99,7 @@ class UsersController < ApplicationController
 		dates = doc.css('.b-OnSaleItem__details__departures')
 		flights_nights = doc.css('.b-OnSaleCTA__nightsType')
 		# 
-		@first_ref = "http://www.funjet.com/#{refs[0]['href']}"
+		@first_ref = "http://www.funjet.com#{refs[0]['href']}"
 		@first_title = titles[0].text
 		@first_location = locations[0].text
 		@first_price = prices[0].text
@@ -109,7 +109,7 @@ class UsersController < ApplicationController
 		@first_date.slice! " for this Price"
 		@first_flights_nights = flights_nights[0].text
 		# 
-		@second_ref = "http://www.funjet.com/#{refs[0]['href']}"
+		@second_ref = "http://www.funjet.com#{refs[0]['href']}"
 		@second_title = titles[2].text
 		@second_location = locations[1].text
 		@second_price = prices[1].text
@@ -119,7 +119,7 @@ class UsersController < ApplicationController
 		@second_date.slice! " for this Price"
 		@second_flights_nights = flights_nights[1].text
 		#
-		@third_ref = "http://www.funjet.com/#{refs[0]['href']}"
+		@third_ref = "http://www.funjet.com#{refs[0]['href']}"
 		@third_title = titles[4].text
 		@third_location = locations[2].text
 		@third_price = prices[2].text
