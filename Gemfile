@@ -32,8 +32,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'hirb'
 gem 'paperclip'
 gem 'local_time'
-gem 'twilio-ruby', '~> 5.0.0.rc21'
-gem 'libxml-ruby', '~> 2.9'
+gem 'twilio-ruby'
+gem 'libxml-ruby'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
