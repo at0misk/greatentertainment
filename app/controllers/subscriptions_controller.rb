@@ -2,6 +2,9 @@ class SubscriptionsController < ApplicationController
 	def subscribe
 		@user = User.find(params[:id])
 	end
+	def new
+		@page_user = User.find(session[:page_user_id])
+	end
 	def create
 		subscription = Subscription.new(subscription_params)
 		if Subscription.find_by(user_id: subscription.user_id, email: subscription.email)

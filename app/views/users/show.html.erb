@@ -862,6 +862,20 @@ fieldset[disabled] .btn-fare.active {
 	font-size: 12px !important;
 }
 
+.specialBox p{
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.specialHeader{
+	margin-bottom: 0px;
+}
+
+.price-p{
+	font-size: 20px !important;
+}
+
 </style>
 <div class="container-fluid outer-cont">
 	<div class="row outerRow">
@@ -952,26 +966,26 @@ fieldset[disabled] .btn-fare.active {
 		</div>
 		<div class="col-lg-4 col-md-12 outerCol">
 			<div class="row specialsRow">
-				<a href="#"><div class="col-sm-4 col-xs-12 specialBox s1">
-					<h4 class="specialHeader">Hawaii</h4>
-					<p>7 day Oahu trip...</p>
-					<p>10 day Island Hop...</p>
-					<p>3 day Kuai parad...</p>
-					<p>7 day 2 islands in...</p>
+				<a href="<%= @first_ref %>" target="_blank"><div class="col-sm-4 col-xs-12 specialBox s1">
+				<h4 class="specialHeader"><%= @first_location %></h4>
+				<p><%= @first_title %></p>
+				<p class="price-p"><%= @first_price %></p>
+				<p><%= @first_flights_nights %></p>
+				<p><%= @first_date %></p>
 				</div></a>
-				<a href="#"><div class="col-sm-4 col-xs-12 specialBox s2">
-					<h4 class="specialHeader">Mexico</h4>
-					<p>4 day Riviera Maya...</p>
-					<p>4 day Riviera Maya...</p>
-					<p>4 day Riviera Maya...</p>
-					<p>4 day Riviera Maya...</p>
+				<a href="<%= @second_ref %>" target="_blank"><div class="col-sm-4 col-xs-12 specialBox s2">
+				<h4 class="specialHeader"><%= @second_location %></h4>
+				<p><%= @second_title %></p>
+				<p class="price-p"><%= @second_price %></p>
+				<p><%= @second_flights_nights %></p>
+				<p><%= @second_date %></p>
 				</div></a>
-				<a href="#"><div class="col-sm-4 col-xs-12 specialBox s3">
-					<h4 class="specialHeader">Cruise</h4>
-					<p>Sail Europe on a...</p>
-					<p>14 day River Cruise...</p>
-					<p>7 day Carribean...</p>
-					<p>4 day Mexico wee...</p>
+				<a href="<%= @third_ref %>" target="_blank"><div class="col-sm-4 col-xs-12 specialBox s3">
+				<h4 class="specialHeader"><%= @third_location %></h4>
+				<p><%= @third_title %></p>
+				<p class="price-p"><%= @third_price %></p>
+				<p><%= @third_flights_nights %></p>
+				<p><%= @third_date %></p>
 				</div></a>	
 			</div>
 			<div class="row specialWeeklyRow">
@@ -999,7 +1013,7 @@ fieldset[disabled] .btn-fare.active {
 				</a>
 			</div>
 			<div class="row vacationRow">
-				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left-middle">
+				<a href="/quote"><div class="col-sm-10 col-xs-10 contact-col contact-left-middle">
 					<h3>I WANT TO GO ON VACATION!</h3>
 					<h4>Tell us where you want to go, get a quote now</h4>
 					<!-- <h4>Get a quote now</h4> -->
@@ -1369,7 +1383,7 @@ fieldset[disabled] .btn-fare.active {
 				</div></a>
 			</div>
 			<div class="row faregrabbrRow faregrabbrProfile">
-				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
+				<a href="/subscriptions/new"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
 					<h4>NEWS LETTER</h4>
 					<h5>subscribe to get the latest specials</h5>
 				</div>

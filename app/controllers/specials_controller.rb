@@ -4,7 +4,9 @@ class SpecialsController < ApplicationController
 	end
 	def create
 		@featured = Special.where(user_id: session[:user_id], featured: true).first
-		@featured.update_attribute(:featured, false)
+		if @featured
+			@featured.update_attribute(:featured, false)
+		end
 		@special = Special.new(special_params)
 		if @special.save
 		else
@@ -50,7 +52,9 @@ class SpecialsController < ApplicationController
 	end
 	def feature
 		@featured = Special.where(user_id: session[:user_id], featured: true).first
-		@featured.update_attribute(:featured, false)
+		if @featured 
+			@featured.update_attribute(:featured, false)
+		end
 		@new_feature = Special.find(params['id'])
 		@new_feature.update_attribute(:featured, true)
 		redirect_to "/#{@featured.user.username}"

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 	patch '/blogs/:id' => 'blogs#update'
 	get '/blogs/:id' => 'blogs#view'
 	get '/subscriptions' => 'subscriptions#index'
+	get '/subscriptions/new' => 'subscriptions#new'
 	get '/subscriptions/:id' => 'subscriptions#subscribe'
 	post '/subscriptions' => 'subscriptions#create'
 	get '/cruises/new/:id' => 'cruises#new'
@@ -41,6 +42,7 @@ Rails.application.routes.draw do
 	get '/logout' => 'sessions#logout'
 	post '/call' => 'users#call'
 	get '/connect/:sales_number' => 'users#connect'
+	get '/quote' => 'sessions#quote'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

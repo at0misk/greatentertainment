@@ -1,0 +1,85 @@
+<style type="text/css">
+	.container{
+		min-height: 550px;
+		background-color: white;
+		margin-top: 15px;
+	}
+	.btn-col{
+		text-align: center;
+	}
+	.sub-header{
+		display: inline-block;
+		margin-left: 10px;
+	}
+	.header-col{
+		text-align: center;
+	}
+	.header-row{
+		color: white;
+		background-color: #e84c3d;
+		height: 60px;
+		padding-top: 10px;
+	}
+	.form-row{
+		margin-top: 15px;
+	}
+</style>
+<div class="container">
+	<div class="row header-row">
+		<div class="col-sm-12 header-col">
+			<h4 class="sub-header">GET A QUOTE FROM <%= @page_user.first.upcase %> <%= @page_user.last.upcase %></h4>
+		</div>
+	</div>
+	<div class="row form-row">
+		<div class="col-sm-6" data-no-turbolinks="true">
+			<form action="/subscriptions" method="post" class="form-horizontal">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<input name="subscription[user_id]" type="hidden" value="<%= @page_user.id %>">
+			<div class="row">
+				<div class="form-group">
+				    <label for="email" class="col-sm-4 control-label">Email</label>
+				    <div class="col-sm-8">
+				        <input name="subscription[email]" type="text" class="form-control" id="email" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="first" class="col-sm-4 control-label">First Name</label>
+				    <div class="col-sm-8">
+				        <input name="subscription[first]" type="text" class="form-control" id="first" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="last" class="col-sm-4 control-label">Last Name</label>
+				    <div class="col-sm-8">
+				        <input name="subscription[last]" type="text" class="form-control" id="last" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="submit" class="col-sm-4 control-label"></label>
+				    <div class="col-sm-8 btn-col">
+				        <button class="btn btn-red">GET QUOTE</button>
+				    </div>
+				</div>
+			</div>
+			</form>
+			<% if flash[:sub] %>
+				<div class="row">
+					<div class="col-sm-4">
+					</div>
+					<div class="col-sm-6">
+						<h4><%= flash[:sub] %></h4>
+					</div>
+				</div>
+				<% flash[:sub] = nil %>
+			<% end %>
+		</div>
+		<div class="col-sm-6">
+		</div>
+	</div>
+</div>

@@ -1,6 +1,8 @@
 require 'twilio-ruby'
+require 'open-uri'
 
 class UsersController < ApplicationController
+# Temp test credentials until live account
   @@twilio_sid = 'AC181e8543ebb9d284eb206ac11cf3760e'
   @@twilio_token = '7c7ce2c4ffeee5dc9e56e47bef28620d'
   @@twilio_number = '+15005550006'
@@ -88,6 +90,45 @@ class UsersController < ApplicationController
 		@cruise = Cruise.where(user_id: @page_user.id).last
 		@special = Special.where(user_id: @page_user.id, featured: true).first
 		@blogs = Blog.all.limit(2).order(created_at: "DESC")
+		# Funjet Scrape
+		doc = Nokogiri::HTML(open("http://www.funjet.com/deals/all-deals"))
+		titles = doc.css('.b-OnSaleProduct__name>a')
+		refs = doc.css('.b-OnSaleCTA__button')
+		locations = doc.css('#OnSaleItemRollUpDetailHeader>h3')
+		prices = doc.css('.b-OnSaleCTA__amount')
+		dates = doc.css('.b-OnSaleItem__details__departures')
+		flights_nights = doc.css('.b-OnSaleCTA__nightsType')
+		# 
+		@first_ref = "http://www.funjet.com/#{refs[0]['href']}"
+		@first_title = titles[0].text
+		@first_location = locations[0].text
+		@first_price = prices[0].text
+		@first_location.slice! "Hotels"
+		@first_date = dates[0].text
+		@first_date.slice! "more"
+		@first_date.slice! " for this Price"
+		@first_flights_nights = flights_nights[0].text
+		# 
+		@second_ref = "http://www.funjet.com/#{refs[0]['href']}"
+		@second_title = titles[2].text
+		@second_location = locations[1].text
+		@second_price = prices[1].text
+		@second_location.slice! "Hotels"
+		@second_date = dates[1].text
+		@second_date.slice! "more"
+		@second_date.slice! " for this Price"
+		@second_flights_nights = flights_nights[1].text
+		#
+		@third_ref = "http://www.funjet.com/#{refs[0]['href']}"
+		@third_title = titles[4].text
+		@third_location = locations[2].text
+		@third_price = prices[2].text
+		@third_location.slice! "Hotels"
+		@third_date = dates[2].text
+		@third_date.slice! "more"
+		@third_date.slice! " for this Price"
+		@third_flights_nights = flights_nights[2].text
+		# 
 		if @current_user && @current_user.id == @page_user.id
 			@unapproved_photos = Photo.where(user_id: @current_user.id, allowed: false)
 		end
