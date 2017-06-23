@@ -855,6 +855,15 @@ fieldset[disabled] .btn-fare.active {
 					<h4 class="name"><%= @page_user.first %> <%= @page_user.last %></h4>
 					<p class="about"><%= @page_user.about %></p>
 					<small class="phone"><%= @page_user.phone_number %></small>
+					<!-- Twilio Form -->
+			          <form id="contactform" role="form" action="/call" method="POST">
+			          	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			            <div class="form-group">
+			            </div>
+		                 <input type="hidden" name="userPhone" id="userPhone" value="(651) 555-7889">
+		                 <input type="hidden" name="salesPhone" id="salesPhone" value="(651) 555-7889">
+			            <button type="submit" class="btn btn-default">CALL</button>
+			          </form>
 				</div>
 			</div>
 			<div class="row contactRow">

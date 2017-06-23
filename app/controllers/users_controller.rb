@@ -1,4 +1,54 @@
+require 'twilio-ruby'
+
 class UsersController < ApplicationController
+  @@twilio_sid = ENV['AC181e8543ebb9d284eb206ac11cf3760e']
+  @@twilio_token = ENV['7c7ce2c4ffeee5dc9e56e47bef28620d']
+  @@twilio_number = ENV['+18623079249']
+
+  # Handle a POST from our web form and connect a call via REST API
+  def call
+    @userPhone  = params[:userPhone]
+    @salesPhone = params[:salesPhone]
+
+    # Validate contact
+    # if contact.valid?
+
+      @client = Twilio::REST::Client.new @@twilio_sid, @@twilio_token
+      # Connect an outbound call to the number submitted
+      @call = @client.calls.create(
+        :from => @@twilio_number,
+        :to => @userPhone,
+        :url => "http://52.24.144.110/connect/#{@salesPhone}" # Fetch instructions from this URL when the call connects
+      )
+
+    #   # Let's respond to the ajax call with some positive reinforcement
+    #   @msg = { :message => 'Phone call incoming!', :status => 'ok' }
+
+    # else
+
+    #   # Oops there was an error, lets return the validation errors
+    #   @msg = { :message => contact.errors.full_messages, :status => 'ok' }
+    # end
+    # respond_to do |format|
+    #   format.json { render :json => @msg }
+    # end
+    redirect_to '/'
+  end
+
+  # This URL contains instructions for the call that is connected with a lead
+  # that is using the web form.
+  def connect
+    # Our response to this request will be an XML document in the "TwiML"
+    # format. Our Ruby library provides a helper for generating one
+    # of these documents
+    response = Twilio::TwiML::Response.new do |r|
+      r.Say 'Thanks for contacting our sales department. Our ' +
+        'next available representative will take your call.', :voice => 'alice'
+      r.Dial params[:sales_number]
+    end
+    render text: response.text
+  end
+
 	def create
 		@user = User.new(user_params)
 		@dupe_user = User.find_by_username(@user.username)

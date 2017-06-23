@@ -64,6 +64,12 @@
 		-webkit-transition: all 0.4s;
 		transition: all 0.4s;
 	}
+	.special-form{
+		padding-right: 30px;
+	}
+	.special-button{
+		margin: 20px auto;
+	}
 </style>
 <% content_for :head do %>
 <meta property="og:title" content="<%= @special.title %>" />
@@ -97,60 +103,10 @@
 			<div class="col-sm-3">
 			</div>
 			<div class="col-sm-9 interest-col">
-				<h4 class="header">Interested in this special?</h4>
-				<h5>Fill out this form to get in touch</h5>
+<!-- 				<h4 class="header">Interested in this special?</h4>
+				<h5>Fill out this form to get in touch</h5> -->
+				<button class="btn btn-contact special-button" data-toggle="modal" data-target="#specialModal">I'm interested in this special</button>
 			</div>
-			<form action="/subscriptions" method="post" class="form-horizontal">
-			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-			<input name="subscription[user_id]" type="hidden" value="<%= @user.id %>">
-			<div class="row">
-				<div class="form-group">
-				    <label for="first" class="col-sm-3 control-label">First Name</label>
-				    <div class="col-sm-9">
-				        <input name="subscription[first]" type="text" class="form-control" id="first" />
-				    </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group">
-				    <label for="last" class="col-sm-3 control-label">Last Name</label>
-				    <div class="col-sm-9">
-				        <input name="subscription[last]" type="text" class="form-control" id="last" />
-				    </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group">
-				    <label for="email" class="col-sm-3 control-label">Email</label>
-				    <div class="col-sm-9">
-				        <input name="subscription[email]" type="text" class="form-control" id="email" />
-				    </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group">
-				    <label for="email" class="col-sm-3 control-label">Phone Number</label>
-				    <div class="col-sm-9">
-				        <input name="subscription[email]" type="text" class="form-control" id="email" />
-				    </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group">
-				    <label for="message" class="col-sm-3 control-label">Message</label>
-				    <div class="col-sm-9">
-				        <textarea name="interest[message]" class="form-control" id="message"></textarea>
-				    </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group">
-				    <div class="col-sm-12 btn-col">
-				        <button class="btn btn-primary">Submit</button>
-				    </div>
-				</div>
-			</div>
-			</form>
 			<% if flash[:sub] %>
 				<div class="row">
 					<div class="col-sm-4">
@@ -165,4 +121,75 @@
 		<div class="col-sm-3">
 		</div>
 	</div>
+</div>
+
+<div class="modal fade" id="specialModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="modal-title lefth3 modalh3" id="contactModalLabel">CONTACT <%= @special.user.first.upcase %></h3>
+        <button type="button" id="contact-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <form action="/subscriptions" method="post" class="form-horizontal special-form">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<input name="user_id" type="hidden" value="<%= @user.id %>">
+			<input name="special_id" type="hidden" value="<%= @special.id %>">
+			<div class="row">
+				<div class="form-group">
+				    <label for="first" class="col-sm-3 control-label">First Name</label>
+				    <div class="col-sm-9">
+				        <input name="first" type="text" class="form-control" id="first" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="last" class="col-sm-3 control-label">Last Name</label>
+				    <div class="col-sm-9">
+				        <input name="last" type="text" class="form-control" id="last" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="email" class="col-sm-3 control-label">Email</label>
+				    <div class="col-sm-9">
+				        <input name="email" type="text" class="form-control" id="email" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="phone_number" class="col-sm-3 control-label">Phone Number</label>
+				    <div class="col-sm-9">
+				        <input name="phone_number" type="text" class="form-control" id="phone_number" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="message" class="col-sm-3 control-label">Message</label>
+				    <div class="col-sm-9">
+				        <textarea name="message" class="form-control" id="message"></textarea>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <div class="col-sm-12 btn-col">
+				        <button class="btn btn-contact">Submit</button>
+				    </div>
+				</div>
+			</div>
+			</form>
+      </div>
+<!--       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
 </div>
