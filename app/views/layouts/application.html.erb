@@ -417,6 +417,28 @@ fieldset[disabled] .btn-red.active {
     }
 }
 
+.form-row-login{
+  padding-right: 15px;
+}
+
+.btn-col-login{
+  text-align: center;
+  margin-top: 5px;
+}
+
+.btn-col-contact{
+  text-align: center;
+}
+
+.navbar-right{
+  height: 60px !important;
+}
+
+.nav-li{
+  height: 60px !important;
+  padding-top: 5px !important;
+}
+
   </style>
   </head>
 
@@ -434,6 +456,14 @@ fieldset[disabled] .btn-red.active {
           <span class="navbar-brand"><a href="/"><%= image_tag('evologo.png') %><span class="logo-text"><span class="evo">EVOLUTION</span><span class="travel">TRAVEL</span></span></a></span>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <% if session[:user_id] %>
+            <li><a href="/logout"><button class="btn btn-sm btn-contact">LOGOUT</button></a></li>
+          <% else %>
+            <li><a data-toggle="modal" data-target="#loginModal"><button class="btn btn-sm btn-contact">LOGIN</button></a></li>
+            <li><a href="#"><button class="btn btn-sm btn-contact">REGISTER</button></a></li>
+          <% end %>
+        </ul>
 <!--           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -452,18 +482,18 @@ fieldset[disabled] .btn-red.active {
             </li>
           </ul> -->
           <ul class="nav navbar-nav navbar-right">
-            <li class="condo"><a href="#">CONDOS</a></li>
-            <li><a href="#">CRUISES</a></li>
-            <li><a href="#">SPECIALS</a></li>
-            <li><a href="#">AIR</a></li>
-            <li><a href="#">CAR</a></li>
-            <li><a href="#">HOTEL</a></li>
+            <li class="condo nav-li"><a href="#">CONDOS</a></li>
+            <li class="nav-li"><a href="#">CRUISES</a></li>
+            <li class="nav-li"><a href="#">SPECIALS</a></li>
+            <li class="nav-li"><a href="#">AIR</a></li>
+            <li class="nav-li"><a href="#">CAR</a></li>
+            <li class="nav-li"><a href="#">HOTEL</a></li>
             <% if session[:page_user_id] %>
-              <li><a href="#" data-toggle="modal" data-target="#contactModal">CONTACT</a></li>
+              <li class="nav-li"><a href="#" data-toggle="modal" data-target="#contactModal">CONTACT</a></li>
             <% end %>
           <% if session[:user_id] %>
             <% @user = User.find(session[:user_id]) %>
-            <li class="dropdown">
+            <li class="dropdown nav-li">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AGENT <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/<%= @user.username %>">VIEW PROFILE</a></li>
@@ -489,6 +519,54 @@ fieldset[disabled] .btn-red.active {
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="modal-title lefth3 modalh3" id="loginModalLabel">LOGIN</h3>
+        <button type="button" id="contact-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="/sessions" method="post" class="form-horizontal">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <div class="row form-row-login">
+        <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">Email</label>
+            <div class="col-sm-6">
+                <input name="email" type="text" class="form-control" id="email-login" />
+            </div>
+        </div>
+      </div>
+      <div class="row form-row-login">
+        <div class="form-group">
+            <label for="password" class="col-sm-3 control-label">Password</label>
+            <div class="col-sm-6">
+                <input name="password" type="password" class="form-control" id="password-login" />
+            </div>
+        </div>
+      </div>
+      <div class="row form-row-login">
+        <div class="form-group">
+            <label for="submit" class="col-sm-3 control-label"></label>
+            <div class="col-sm-6 btn-col btn-col-login">
+                <button class="btn btn-contact">LOGIN</button>
+            </div>
+        </div>
+      </div>
+      </form>
+      </div>
+<!--       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
 <% if session[:page_user_id] %>
 <% @header_user = User.find(session[:page_user_id]) %>
 <!-- Contact Modal -->
@@ -539,8 +617,8 @@ fieldset[disabled] .btn-red.active {
       </div>
       <div class="row contact-sub">
         <div class="form-group">
-            <label for="submit" class="col-sm-3 control-label"></label>
-            <div class="col-sm-6 btn-col">
+            <!-- <label for="submit" class="col-sm-3 control-label"></label> -->
+            <div class="col-sm-12 btn-col btn-col-contact">
                 <button class="btn btn-contact">CONTACT</button>
             </div>
         </div>
@@ -554,7 +632,6 @@ fieldset[disabled] .btn-red.active {
     </div>
   </div>
 </div>
-
 
 <!-- Confirm Modal -->
 <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">

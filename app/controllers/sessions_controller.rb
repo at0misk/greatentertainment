@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 		# 	@page_user = User.find(session[:page_user_id])
 		# 	redirect_to "/#{@page_user.username}" and return
 		# end
+		session[:page_user_id] = nil
 	end
 	def create
 		@user = User.find_by(email: params['email'])
@@ -21,6 +22,7 @@ class SessionsController < ApplicationController
 	end
 	def logout
 		session[:user_id] = nil
+		session[:page_user_id] = nil
 		redirect_to '/'
 	end
 	def quote
