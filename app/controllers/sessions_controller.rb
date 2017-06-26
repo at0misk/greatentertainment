@@ -26,4 +26,9 @@ class SessionsController < ApplicationController
 	def quote
 		@page_user = User.find(session[:page_user_id])
 	end
+	def quote_process
+		# Send email for quote here
+		@user = User.find(session[:user_id])
+		redirect_to "/#{@user.username}"
+	end
 end

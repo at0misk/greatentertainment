@@ -44,6 +44,7 @@ Rails.application.routes.draw do
 	post '/call' => 'users#call'
 	get '/connect/:sales_number' => 'users#connect'
 	get '/quote' => 'sessions#quote'
+	post '/quote' => 'sessions#quote_process'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

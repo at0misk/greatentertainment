@@ -30,13 +30,10 @@
 		margin-top: 0px;
 	}
 	.header-text img{
-		width: 50%;
+		/*width: 50%;*/
 		height: auto;
-		float: right;
-		margin-left: 2%;
-	}
-	p{
-		text-align: justify;
+/*		float: right;
+		margin-left: 2%;*/
 	}
 	.headers-div{
 		display: inline-block;
@@ -48,6 +45,17 @@
 	.blog-header a{
 		color: white;
 	}
+	.img-row{
+		margin-top: 15px;
+	}
+	.img-col img{
+		width: 100%;
+	}
+	.content-row p{
+		font-size: 19px;
+		margin: 30px 0px;
+		text-align: justify;
+	}
 </style>
 <div class="container blog-cont">
 	<a href="/blogs"><div class="row header-row">
@@ -57,13 +65,25 @@
 	</div></a>
 	<% if @blog %>
 		<div class="row img-row">
-			<div class="col-sm-12 header-text">
+			<div class="col-sm-2">
+			</div>
+			<div class="col-sm-8 img-col">
+				<%= image_tag(@blog.image.url, :class => 'img-fluid') %>
+			</div>
+			<div class="col-sm-2">
+			</div>
+		</div>
+		<div class="row content-row">
+			<div class="col-sm-2">
+			</div>
+			<div class="col-sm-8 header-text">
 				<div class="headers-div">
-					<h3 class="big-header"><%= @blog.title.upcase %></h3>
+					<h2 class="big-header"><%= @blog.title.upcase %></h2>
 					<h5 class="author-header">Written by <%= @blog.author %><small><%= @blog.created_at.to_time.strftime('%B %e at %l:%M %p') %></small></h5>
 				</div>
-				<%= image_tag(@blog.image.url, :class => 'img-fluid') %>
 				<%= simple_format(@blog.content) %>
+			</div>
+			<div class="col-sm-2">
 			</div>
 		</div>
 	<% end %>
