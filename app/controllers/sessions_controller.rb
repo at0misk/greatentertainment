@@ -31,4 +31,9 @@ class SessionsController < ApplicationController
 		@user = User.find(session[:user_id])
 		redirect_to "/#{@user.username}"
 	end
+	def interested
+		# Send email for interest in special here
+		@user = User.find(session[:user_id])
+		redirect_to "/#{@user.username}"
+	end
 end

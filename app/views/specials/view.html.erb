@@ -133,7 +133,7 @@
         </button>
       </div>
       <div class="modal-body">
-    <form action="/subscriptions" method="post" class="form-horizontal special-form">
+    <form action="/interested" method="post" class="form-horizontal special-form">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 			<input name="user_id" type="hidden" value="<%= @user.id %>">
 			<input name="special_id" type="hidden" value="<%= @special.id %>">
@@ -173,7 +173,7 @@
 				<div class="form-group">
 				    <label for="message" class="col-sm-3 control-label">Message</label>
 				    <div class="col-sm-9">
-				        <textarea name="message" class="form-control" id="message"></textarea>
+				        <textarea name="message" class="form-control" id="message" rows="6"></textarea>
 				    </div>
 				</div>
 			</div>
