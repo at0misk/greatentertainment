@@ -80,6 +80,13 @@
 	.specials-row{
 		margin-top: 15px;
 	}
+
+@media (max-width: 991px) {
+  .example-col{
+  	width: 95%;
+  }
+}
+
 </style>
 <div class="container">
 	<div class="row header-row">
@@ -90,7 +97,7 @@
 	<div class="row specials-row">
 	<% if @specials.length > 0 %>
 		<% @specials.each do |val| %>
-			<div class="col-sm-6 example-col">
+			<div class="col-md-6 example-col">
 				<div class="row">
 					<div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
 							<h4><%= val.title %></h4>

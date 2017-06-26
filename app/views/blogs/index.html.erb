@@ -82,6 +82,61 @@
     	padding-top: 3px;
     	font-weight: normal;
 	}
+
+@media (max-width: 1199px) {
+  .blog-box img{
+  	min-height: 200px;
+    height: 200px !important;
+  }
+  .blog-box{
+  	min-height: 262px;
+    height: 262px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .blog-box img{
+  	min-height: 160px;
+    height: 160px !important;
+  }
+  .blog-box{
+  	min-height: 222px;
+    height: 222px !important;
+  }
+}
+
+@media (max-width: 776px) {
+  .blog-box img{
+  	min-height: 160px;
+    height: 160px !important;
+  }
+  .blog-box{
+  	width: 28%;
+  	display: inline-block;
+  	min-height: 222px;
+    height: 222px !important;
+  }
+}
+
+@media (max-width: 550px) {
+  .blog-box img{
+  	/*min-height: 304px;*/
+    height: 304px !important;
+  }
+  .blog-box{
+  	width: 100%;
+  	display: inline-block;
+/*  	min-height: 376px;*/
+    height: 376px !important;
+  }
+  .blog-title{
+  	height: 35px;
+  	padding: 0px;
+  	padding-top: 2%;
+  	padding-bottom: 3%;
+  }
+}
+
 </style>
 <div class="container">
 	<a href="/blogs" class="blog-a"><div class="row header-row">
@@ -100,7 +155,7 @@
 				<h5 class="blog-title"><%= val.title.upcase %></h5>
 				<h5 class="blog-title blog-author">Written by <%= val.author %></h5>
 			</div></a>
-			<% if x == 2 %>
+			<% if x == 3 %>
 				</div>
 				<% x = 0 %>
 			<% else %>
