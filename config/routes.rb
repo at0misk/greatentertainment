@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 	patch '/blogs/:id' => 'blogs#update'
 	get '/blogs/:id' => 'blogs#view'
 	get '/subscriptions' => 'subscriptions#index'
+	get '/subscriptions/destroy/:id' => 'subscriptions#destroy'
 	get '/subscriptions/new' => 'subscriptions#new'
 	get '/subscriptions/:id' => 'subscriptions#subscribe'
 	post '/subscriptions' => 'subscriptions#create'

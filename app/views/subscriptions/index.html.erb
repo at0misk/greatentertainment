@@ -2,15 +2,51 @@
 	.btn-col{
 		text-align: right;
 	}
+	.header-row{
+		background: #153649;
+		color: white;
+		text-align: center;
+		height: 60px;
+		padding-top: 10px;
+		margin-top: 15px;
+	}
+	.cont-row{
+		margin-top: 15px;
+	}
+	.main-cont{
+		background: white;
+	}
+	.form-row{
+		padding-right: 15px;
+	}
 </style>
-<div class="container">
-	<div class="row">
+<div class="container main-cont">
+	<div class="row header-row">
+		<div class="col-sm-12 header-col">
+			</span><h4 class="blog-header">SUBSCRIBERS</h4>
+		</div>
+	</div>
+	<div class="row cont-row">
 		<div class="col-sm-6">
 			<% if @subscriptions.length > 0 %>
-				<h4>Your subscribers:</h4>
-				<% @subscriptions.each do |val| %>
-				<b><%= val.email %>: </b><p><%= val.first %> <%= val.last %></p>
-				<% end %>
+			<table class="table table-sm table-responsive">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @subscriptions.each do |val| %>
+					<tr>
+						<td><%= val.first %> <%= val.last %></td>
+						<td><%= val.email %></td>
+						<td><a href="/subscriptions/destroy/<%= val.id %>" data-confirm="Delete this subscriber?"><button class="btn btn-red">DELETE</button></a></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
 			<% else %>
 				<h4>Currently No Subscribers</h4>
 			<% end %>
@@ -27,7 +63,7 @@
 			<form action="/mail_subscribers" method="post" class="form-horizontal">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 			<input name="user_id" type="hidden" value="<%= session[:user_id] %>">
-			<div class="row">
+			<div class="row form-row">
 				<div class="form-group">
 				    <label for="subject" class="col-sm-4 control-label">Subject</label>
 				    <div class="col-sm-8">
@@ -35,7 +71,7 @@
 				    </div>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row form-row">
 				<div class="form-group">
 				    <label for="content" class="col-sm-4 control-label">Content</label>
 				    <div class="col-sm-8">
@@ -43,7 +79,7 @@
 				    </div>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row form-row">
 				<div class="form-group">
 				    <label for="submit" class="col-sm-4 control-label"></label>
 				    <div class="col-sm-8 btn-col">

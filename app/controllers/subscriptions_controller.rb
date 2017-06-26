@@ -25,4 +25,8 @@ class SubscriptionsController < ApplicationController
 		@user = User.find(session[:user_id])
 		@subscriptions = Subscription.where(user_id: @user.id)
 	end
+	def destroy
+		Subscription.find(params['id']).destroy
+		redirect_back fallback_location: "/subscriptions"
+	end
 end
