@@ -16,6 +16,8 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js" crossorigin="anonymous"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
@@ -467,6 +469,22 @@ fieldset[disabled] .btn-red.active {
   padding-top: 5px !important;
 }
 
+.error{
+  color: red;
+}
+
+.success{
+  color: green;
+}
+
+.has-success{
+  margin-bottom: 0px;
+}
+
+.has-error{
+  margin-bottom: 0px;
+}
+
   </style>
   </head>
 
@@ -525,12 +543,12 @@ fieldset[disabled] .btn-red.active {
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AGENT <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/<%= @user.username %>">VIEW PROFILE</a></li>
-                <li><a href="/<%= @user.username %>/edit">EDIT PROFILE</a></li>
+                <li><a href="/<%= @user.username %>/edit" data-turbolinks="false">EDIT PROFILE</a></li>
                 <li><a href="/gallery/<%= @user.username %>" data-turbolinks="false">VIEW PHOTO GALLERY</a></li>
-                <li><a href="/gallery/edit/<%= @user.username %>">EDIT PHOTO GALLERY</a></li>
+                <li><a href="/gallery/edit/<%= @user.username %>" data-turbolinks="false">EDIT PHOTO GALLERY</a></li>
                 <li><a href="/specials/all_specials/<%= @user.username %>">VIEW SPECIALS</a>
                 <li><a href="/specials/new/<%= @user.username %>">NEW SPECIAL</a></li>
-                <li><a href="/specials/edit/<%= @user.username %>">EDIT SPECIALS</a></li>
+                <li><a href="/specials/edit/<%= @user.username %>" data-turbolinks="false">EDIT SPECIALS</a></li>
                 <li><a href="/subscriptions">VIEW SUBSCRIBERS</a></li>
 <!--                 <li><a href="/blogs/<%#= @user.id %>">VIEW BLOG POSTS</a></li>
                 <li><a href="/blogs/new/<%#= @user.id %>">NEW BLOG POST</a></li>

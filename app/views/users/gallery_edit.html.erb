@@ -192,19 +192,19 @@
 		<div class="form-group photo-group">
 		    <label for="name" class="col-sm-3 control-label">Name</label>
 		    <div class="col-sm-8">
-		    	<input name="photo[name]" type="text" class="form-control" id="name" aria-describedby="fileHelp">
+		    	<input name="photo[name]" type="text" class="form-control" id="name" aria-describedby="fileHelp" required>
 		    </div>
 		</div>
 		<div class="form-group photo-group">
 		    <label for="location" class="col-sm-3 control-label">Location</label>
 		    <div class="col-sm-8">
-		    	<input name="photo[location]" type="text" class="form-control" id="location" aria-describedby="fileHelp">
+		    	<input name="photo[location]" type="text" class="form-control" id="location" aria-describedby="fileHelp" required>
 		    </div>
 		</div>
 		<div class="form-group photo-group">
 		    <label for="traveled_on" class="col-sm-3 control-label">Date Taken</label>
 		    <div class="col-sm-8">
-		    	<input name="photo[traveled_on]" type="date" class="form-control" id="traveled_on" aria-describedby="fileHelp">
+		    	<input name="photo[traveled_on]" type="date" class="form-control" id="traveled_on" aria-describedby="fileHelp" required>
 		    </div>
 		</div>
 <!-- 		<div class="form-group photo-group">
@@ -216,7 +216,7 @@
 		<div class="form-group photo-group">
 		    <label for="description" class="col-sm-3 control-label">Description</label>
 		    <div class="col-sm-8">
-		    	<textarea rows="4" name="photo[description]" class="form-control" id="description" aria-describedby="description"></textarea>
+		    	<textarea rows="4" name="photo[description]" class="form-control" id="description" aria-describedby="description" required></textarea>
 		    </div>
 		</div>
 		<div class="row">
@@ -240,6 +240,19 @@
 
 <script type="text/javascript">
 	$('document').ready(function(){
+			$('#editForm').validate({
+				rules: {
+					'photo[description]': {
+						required: true
+					}
+				},
+		        highlight: function (element) {
+		            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+		        },
+		        success: function (element) {
+		            element.closest('.form-group').removeClass('has-error').addClass('has-success');
+		        }
+			});
 		$('.thumb-div img').on('click', function(){
 			$('#name').val($(this).attr('data-name'))
 			$('#location').val($(this).attr('data-location'))

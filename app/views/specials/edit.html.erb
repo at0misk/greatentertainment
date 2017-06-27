@@ -66,7 +66,7 @@
 					<button class="btn btn-danger" data-confirm="Delete Special?">X</button>
 				</form>
 			</div> -->
-			<form action="/specials" method="post" class="form-horizontal update-form" enctype="multipart/form-data">
+			<form action="/specials" method="post" class="form-horizontal update-form" enctype="multipart/form-data" id="edit-special-form">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 			<input name="id" value="<%= val.id %>" type="hidden">
 			<input name="_method" value="PATCH" type="hidden">
@@ -86,7 +86,7 @@
 				<div class="form-group">
 				    <label for="title" class="col-sm-3 control-label">Title</label>
 				    <div class="col-sm-9">
-				        <input name="special[title]" type="text" class="form-control" id="title" value="<%= val.title %>"/>
+				        <input name="special[title]" type="text" class="form-control" id="title" value="<%= val.title %>" required/>
 				    </div>
 				</div>
 			</div>
@@ -94,7 +94,7 @@
 				<div class="form-group">
 				    <label for="departure" class="col-sm-3 control-label">Depart</label>
 				    <div class="col-sm-9">
-				        <input name="special[depart]" type="date" class="form-control" id="departure" min="<%= Date.today %>" value="<%= val.depart %>"/>
+				        <input name="special[depart]" type="date" class="form-control" id="departure" min="<%= Date.today %>" value="<%= val.depart %>" required/>
 				    </div>
 				</div>
 			</div>
@@ -102,7 +102,7 @@
 				<div class="form-group">
 				    <label for="return" class="col-sm-3 control-label">Return</label>
 				    <div class="col-sm-9">
-				        <input name="special[return]" type="date" class="form-control" id="return" value="<%= val.return %>"/>
+				        <input name="special[return]" type="date" class="form-control" id="return" value="<%= val.return %>" required/>
 				    </div>
 				</div>
 			</div>
@@ -110,7 +110,7 @@
 				<div class="form-group">
 				    <label for="vacancy" class="col-sm-3 control-label">Vacancy</label>
 				    <div class="col-sm-9">
-				        <input name="special[vacancy]" type="number" class="form-control" id="vacancy" min="0" value="<%= val.vacancy %>"/>
+				        <input name="special[vacancy]" type="number" class="form-control" id="vacancy" min="0" value="<%= val.vacancy %>" required/>
 				    </div>
 				</div>
 			</div>
@@ -118,7 +118,7 @@
 				<div class="form-group">
 				    <label for="description" class="col-sm-3 control-label">Description</label>
 				    <div class="col-sm-9">
-				        <textarea name="special[description]" type="text" class="form-control" id="description" rows="8"><%= val.description %></textarea>
+				        <textarea name="special[description]" type="text" class="form-control" id="description" rows="8" required><%= val.description %></textarea>
 				    </div>
 				</div>
 			</div>
@@ -145,3 +145,24 @@
 		<% end %>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(document).on('turbolinks:load',function(){
+		$('#edit-special-form').validate({
+			rules: {
+				'special[vacancy]': {
+					digits: true
+				},
+				'special[price]': {
+					digits: true
+				}
+			},
+	        highlight: function (element) {
+	            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+	        },
+	        success: function (element) {
+	            element.closest('.form-group').removeClass('has-error').addClass('has-success');
+	        }
+		});
+	})
+</script>
