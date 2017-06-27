@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 	get '/topics/:id' => 'topics#view'
 	post '/messages' => 'messages#create'
 	get '/blogs' => 'blogs#index'
-	get '/blogs/edit/:id' => 'blogs#edit'
+	get '/blogs/edit' => 'blogs#edit'
 	get '/blogs/new' => 'blogs#new'
 	post 'blogs' => 'blogs#create'
 	post 'blogs/destroy' => 'blogs#destroy'

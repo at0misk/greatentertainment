@@ -11,6 +11,7 @@ class User < ApplicationRecord
 	has_many :specials
 	has_many :photos
 	has_attached_file :avatar, styles: { medium: "300x300", thumb: "100x100" }
+	validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 2.megabytes
 
 	def find_by_username(username)
 		@found = User.find_by(username: username)

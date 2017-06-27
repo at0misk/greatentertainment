@@ -309,14 +309,30 @@
   </div>
 </div>
 
+<div class="modal fade" id="failedPhotoModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header photo-modal-header" id="confirm-header">
+        <h3 class="modal-title" id="confirmModalLabel">Oops!  The max photo size is 2MB.  Your photo was not uploaded.</h3>
+        <button type="button" class="close confirm-close photo-close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
 
 $('document').ready(function(){
 
-    <% if flash[:photo_confirm] %>
+    <% if flash[:photo_confirm] == true %>
     // alert("Thanks!  We'll be in touch");
     $('#confirmPhotoModal').modal('toggle');
     <% flash[:photo_confirm] = nil %>
+    <% elsif flash[:photo_confirm] == false %>
+    // alert("Thanks!  We'll be in touch");
+    $('#failedPhotoModal').modal('toggle');
     <% end %>
 
 	var x = <%= @photos.length %>

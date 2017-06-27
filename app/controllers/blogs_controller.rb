@@ -11,7 +11,8 @@ class BlogsController < ApplicationController
 		@blog = Blog.new(blog_params)
 		if @blog.save
 		else
-			redirect_to '/' and return
+	    	flash[:errors] = @blog.errors.full_messages
+			redirect_to '/blogs/new' and return
 		end
 		redirect_to "/blogs/#{@blog.id}"
 	end
@@ -22,7 +23,7 @@ class BlogsController < ApplicationController
 		@blog = Blog.find(params[:id])
 	end
 	def edit
-		@blogs = Blog.where(user_id: session[:user_id])
+		@blogs = Blog.all
 	end
 	def update
 		@blog = Blog.find(params['id'])

@@ -11,6 +11,7 @@
 	}
 	.btn-col{
 		text-align: center;
+		margin-bottom: 15px;
 	}
 	.form-row{
 		height: 400px;
@@ -45,7 +46,14 @@
 			margin-bottom: 0px;
 		}
 	}
+	.errors{
+		text-align: center;
+		color: red;
+	}
 </style>
+<% content_for :head do %>
+  <meta name="turbolinks-cache-control" content="no-cache">
+<% end %>
 <div class="container edit-container">
 	<div class="row header-row">
 		<div class="col-sm-12">
@@ -145,6 +153,15 @@
 					    </div>
 					</div>
 				</div>
+				<% if flash[:errors] %>
+					<div class="row">
+						<div class="col-sm-12 errors">
+							<% flash[:errors].each do |val| %>
+								<p><%= val %></p>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
 		</div>
 	</div>
 	<div class="row">

@@ -147,9 +147,9 @@ class UsersController < ApplicationController
 		    	flash[:errors] = nil
 		    else
 		    	flash[:errors] = @user.errors.full_messages
+		    	redirect_to "/#{@user.username}/edit" and return
 		    end
 		else
-			redirect_to '/' and return
 		end
 		    redirect_to "/#{@user.username}"
 	end
@@ -195,6 +195,8 @@ class UsersController < ApplicationController
 		@photo = Photo.new(photo_params)
 		if @photo.save
 			flash[:photo_confirm] = true
+		else
+			flash[:photo_confirm] = false
 		end
 		redirect_to "/gallery/#{@photo.user.username}"
 	end

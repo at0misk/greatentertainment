@@ -48,7 +48,7 @@ class SpecialsController < ApplicationController
 	def destroy
 		Special.destroy(params['id'])
 		@user = User.find(session[:user_id])
-		redirect_to "/#{@user.username}"
+		redirect_to "/specials/all_specials/#{@user.username}"
 	end
 	def feature
 		@featured = Special.where(user_id: session[:user_id], featured: true).first

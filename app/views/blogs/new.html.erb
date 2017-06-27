@@ -2,6 +2,11 @@
 	.btn-col{
 		text-align: right;
 	}
+	.errors{
+		text-align: center;
+		color: red;
+		margin-top: 15px;
+	}
 </style>
 <div class="container">
 	<div class="row">
@@ -54,6 +59,13 @@
 				</div>
 			</div>
 			</form>
+		</div>
+		<div class="col-sm-6 errors">
+			<% if flash[:errors] %>
+				<% flash[:errors].each do |val| %>
+					<p><%= val %></p>
+				<% end %>
+			<% end %>
 		</div>
 	</div>
 </div>
