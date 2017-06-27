@@ -53,7 +53,7 @@
 		</div>
 	</div>
 	<div class="row form-row">
-	<form action="/<%= @user.username %>" method="POST" data-remote="true" class="form-horizontal" enctype="multipart/form-data">
+	<form action="/<%= @user.username %>" method="POST" class="form-horizontal" enctype="multipart/form-data">
 		<div class="col-sm-6">
 					<input name="_method" type="hidden" value="PATCH">
 					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
