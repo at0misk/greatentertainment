@@ -21,9 +21,10 @@ class SessionsController < ApplicationController
 		redirect_to "/"
 	end
 	def logout
+		@last_user = User.find(session[:user_id])
 		session[:user_id] = nil
 		session[:page_user_id] = nil
-		redirect_to '/'
+		redirect_to "/#{@last_user.username}"
 	end
 	def quote
 		@page_user = User.find(session[:page_user_id])
