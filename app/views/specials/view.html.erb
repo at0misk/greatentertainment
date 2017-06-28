@@ -1,5 +1,5 @@
 <style type="text/css">
-	.btn-col{
+	.btn-col-special{
 		text-align: right;
 	}
 	.container{
@@ -67,8 +67,14 @@
 	.special-form{
 		padding-right: 30px;
 	}
-	.special-button{
+	.btn-green{
 		margin: 20px auto;
+	}
+	.special-modal-header{
+		font-size: 20px;
+	}
+	.special-modal-header-background{
+		background-color: #06B78D;
 	}
 </style>
 <% content_for :head do %>
@@ -105,7 +111,7 @@
 			<div class="col-sm-9 interest-col">
 <!-- 				<h4 class="header">Interested in this special?</h4>
 				<h5>Fill out this form to get in touch</h5> -->
-				<button class="btn btn-contact special-button" data-toggle="modal" data-target="#specialModal">I'm interested in this special</button>
+				<button class="btn btn-green" data-toggle="modal" data-target="#specialModal">I'M INTERESTED IN THIS SPECIAL!</button>
 			</div>
 			<% if flash[:sub] %>
 				<div class="row">
@@ -126,8 +132,8 @@
 <div class="modal fade" id="specialModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="modal-title lefth3 modalh3" id="contactModalLabel">CONTACT <%= @special.user.first.upcase %></h3>
+      <div class="modal-header special-modal-header-background">
+        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="modal-title modalh3 special-modal-header" id="contactModalLabel">CONTACT <%= @special.user.first.upcase %> ABOUT <%= @special.title.upcase %></h3>
         <button type="button" id="contact-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -179,8 +185,8 @@
 			</div>
 			<div class="row">
 				<div class="form-group">
-				    <div class="col-sm-12 btn-col">
-				        <button class="btn btn-contact">Submit</button>
+				    <div class="col-sm-12 btn-col btn-col-special">
+				        <button class="btn btn-green">SEND</button>
 				    </div>
 				</div>
 			</div>

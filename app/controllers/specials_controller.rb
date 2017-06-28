@@ -51,12 +51,13 @@ class SpecialsController < ApplicationController
 		redirect_to "/specials/all_specials/#{@user.username}"
 	end
 	def feature
+		@user = User.find(session[:user_id])
 		@featured = Special.where(user_id: session[:user_id], featured: true).first
 		if @featured 
 			@featured.update_attribute(:featured, false)
 		end
 		@new_feature = Special.find(params['id'])
 		@new_feature.update_attribute(:featured, true)
-		redirect_to "/#{@featured.user.username}"
+		redirect_to "/#{@user.username}"
 	end
 end
