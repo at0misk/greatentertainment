@@ -91,7 +91,7 @@
 <div class="container">
 	<div class="row header-row">
 		<div class="col-sm-12">
-			<h3 class="form-header">YOUR SPECIALS</h3>
+			<h3 class="form-header">Your Specials</h3>
 		</div>
 	</div>
 	<div class="row specials-row">
@@ -116,16 +116,16 @@
 				<div class="row btn-row">
 					<div class="col-sm-4">
 					<% if val.featured %>
-						<button class="btn btn btn-contact" disabled="disabled">FEATURED</button>
+						<button class="btn btn btn-contact" disabled="disabled">Featured</button>
 					<% else %>
-						<a href="/specials/feature/<%= val.id %>"><button class="btn btn-contact">FEATURE</button></a>
+						<a href="/specials/feature/<%= val.id %>"><button class="btn btn-contact">Feature</button></a>
 					<% end %>
 					</div>
 					<div class="col-sm-4">
-						<a href="/specials/edit/<%= val.user.username %>"><button class="btn btn-green">EDIT</button></a>
+						<a href="/specials/edit/<%= val.user.username %>"><button class="btn btn-green">Edit</button></a>
 					</div>
 					<div class="col-sm-4">
-						<a href="/specials/destroy/<%= val.id %>"><button class="btn btn-red">DELETE</button></a>
+						<a href="/specials/destroy/<%= val.id %>"><button class="btn btn-red">Delete</button></a>
 					</div>
 				</div>
 			</div>

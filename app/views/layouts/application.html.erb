@@ -517,10 +517,10 @@ fieldset[disabled] .btn-red.active {
         <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav log-reg-nav">
           <% if session[:user_id] %>
-            <li><a href="/logout"><button class="btn btn-sm btn-contact">LOGOUT <%= flash[:sent_mail] %></button></a></li>
+            <li><a href="/logout"><button class="btn btn-sm btn-contact">Logout <%= flash[:sent_mail] %></button></a></li>
           <% else %>
-            <li><a data-toggle="modal" data-target="#loginModal"><button class="btn btn-sm btn-contact">LOGIN</button></a></li>
-            <li><a href="#"><button class="btn btn-sm btn-contact">REGISTER</button></a></li>
+            <li><a data-toggle="modal" data-target="#loginModal"><button class="btn btn-sm btn-contact">Login</button></a></li>
+            <li><a href="#"><button class="btn btn-sm btn-contact">Regster</button></a></li>
           <% end %>
         </ul>
 <!--           <ul class="nav navbar-nav">
@@ -541,32 +541,32 @@ fieldset[disabled] .btn-red.active {
             </li>
           </ul> -->
           <ul class="nav navbar-nav navbar-right">
-            <li class="condo nav-li"><a href="#">CONDOS</a></li>
-            <li class="nav-li"><a href="http://www1.latesttraveloffers.com/lton/OfferGroups.asp?OfferGroupId=4880" target="_blank">CRUISES</a></li>
-            <li class="nav-li"><a href="#">SPECIALS</a></li>
-            <li class="nav-li"><a href="https://www.faregrabbr.com/#/flight" target="_blank">AIR</a></li>
-            <li class="nav-li"><a href="https://www.faregrabbr.com/#/car" target="_blank">CAR</a></li>
-            <li class="nav-li"><a href="https://www.faregrabbr.com/#/hotel" target="_blank">HOTEL</a></li>
+            <li class="condo nav-li"><a href="#">Condos</a></li>
+            <li class="nav-li"><a href="http://www1.latesttraveloffers.com/lton/OfferGroups.asp?OfferGroupId=4880" target="_blank">Cruises</a></li>
+            <li class="nav-li"><a href="#">Specials</a></li>
+            <li class="nav-li"><a href="https://www.faregrabbr.com/#/flight" target="_blank">Air</a></li>
+            <li class="nav-li"><a href="https://www.faregrabbr.com/#/car" target="_blank">Car</a></li>
+            <li class="nav-li"><a href="https://www.faregrabbr.com/#/hotel" target="_blank">Hotel</a></li>
             <% if session[:page_user_id] %>
-              <li class="nav-li"><a href="#" data-toggle="modal" data-target="#contactModal">CONTACT</a></li>
+              <li class="nav-li"><a href="#" data-toggle="modal" data-target="#contactModal">Contact</a></li>
             <% end %>
           <% if session[:user_id] %>
             <% @user = User.find(session[:user_id]) %>
             <li class="dropdown nav-li">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AGENT <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Agent <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/<%= @user.username %>">VIEW PROFILE</a></li>
-                <li><a href="/<%= @user.username %>/edit" data-turbolinks="false">EDIT PROFILE</a></li>
-                <li><a href="/gallery/<%= @user.username %>" data-turbolinks="false">VIEW PHOTO GALLERY</a></li>
-                <li><a href="/gallery/edit/<%= @user.username %>" data-turbolinks="false">EDIT PHOTO GALLERY</a></li>
-                <li><a href="/specials/all_specials/<%= @user.username %>">VIEW SPECIALS</a>
-                <li><a href="/specials/new/<%= @user.username %>">NEW SPECIAL</a></li>
-                <li><a href="/specials/edit/<%= @user.username %>" data-turbolinks="false">EDIT SPECIALS</a></li>
-                <li><a href="/subscriptions">VIEW SUBSCRIBERS</a></li>
+                <li><a href="/<%= @user.username %>">View Profile</a></li>
+                <li><a href="/<%= @user.username %>/edit" data-turbolinks="false">Edit Profile</a></li>
+                <li><a href="/gallery/<%= @user.username %>" data-turbolinks="false">View Photo Gallery</a></li>
+                <li><a href="/gallery/edit/<%= @user.username %>" data-turbolinks="false">Edit Photo Gallery</a></li>
+                <li><a href="/specials/all_specials/<%= @user.username %>">View Specials</a>
+                <li><a href="/specials/new/<%= @user.username %>">New Special</a></li>
+                <li><a href="/specials/edit/<%= @user.username %>" data-turbolinks="false">Edit Specials</a></li>
+                <li><a href="/subscriptions">View Subscribers</a></li>
 <!--                 <li><a href="/blogs/<%#= @user.id %>">VIEW BLOG POSTS</a></li>
                 <li><a href="/blogs/new/<%#= @user.id %>">NEW BLOG POST</a></li>
                 <li><a href="/blogs/edit/<#%= @user.id %>">EDIT BLOG POSTS</a></li> -->
-                <li><a href="/logout">LOGOUT</a></li>
+                <li><a href="/logout">Logout</a></li>
 <!--                 <li><a href="#">Something else here</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
@@ -584,7 +584,7 @@ fieldset[disabled] .btn-red.active {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="modal-title modalh3" id="loginModalLabel">LOGIN</h3>
+        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="modal-title modalh3" id="loginModalLabel">Login</h3>
         <button type="button" id="contact-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -612,7 +612,7 @@ fieldset[disabled] .btn-red.active {
         <div class="form-group">
             <label for="submit" class="col-sm-3 control-label"></label>
             <div class="col-sm-6 btn-col btn-col-login">
-                <button class="btn btn-contact">LOGIN</button>
+                <button class="btn btn-contact">Login</button>
             </div>
         </div>
       </div>
@@ -633,7 +633,7 @@ fieldset[disabled] .btn-red.active {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="modal-title modalh3" id="contactModalLabel">CONTACT <%= @header_user.first.upcase %></h3>
+        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="modal-title modalh3" id="contactModalLabel">Contact <%= @header_user.first %></h3>
         <button type="button" id="contact-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -678,7 +678,7 @@ fieldset[disabled] .btn-red.active {
         <div class="form-group">
             <!-- <label for="submit" class="col-sm-3 control-label"></label> -->
             <div class="col-sm-12 btn-col btn-col-contact">
-                <button class="btn btn-contact">CONTACT</button>
+                <button class="btn btn-contact">Contact</button>
             </div>
         </div>
       </div>

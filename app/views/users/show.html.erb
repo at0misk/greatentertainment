@@ -907,7 +907,7 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			<div class="row contactRow">
 				<a href="#" data-toggle="modal" data-target="#contactModal"><div class="col-sm-10 col-xs-10 contact-col contact-left">
-					<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 id="contacth3" class="lefth3">CONTACT <%= @page_user.first.upcase %></h3>
+					<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 id="contacth3" class="lefth3">Contact <%= @page_user.first %></h3>
 					<div class="phone-div">
 						<small class="phone"><span class="glyphicon glyphicon-earphone phone-glyphicon tiny-phone" aria-hidden="true"></span> <%= @page_user.phone_number %></small>
 					</div>
@@ -918,7 +918,7 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			<div class="row contactRow photoRow" data-no-turbolinks="true">
 				<a href="/gallery/<%= @page_user.username %>" data-turbolinks="false"><div class="col-sm-10 col-xs-10 contact-col contact-left">
-					<span class="glyphicon glyphicon-camera" aria-hidden="true"></span><h3 class="lefth3">PHOTO GALLERY</h3>
+					<span class="glyphicon glyphicon-camera" aria-hidden="true"></span><h3 class="lefth3">Photo Gallery</h3>
 					<% if @page_user.id == session[:user_id] %>
 					<% end %>
 				</div>
@@ -934,7 +934,7 @@ fieldset[disabled] .btn-fare.active {
 			<div class="row blogCont">
 				<div class="row blogRowHeader">
 				<a href="/blogs"><div class="col-sm-10 col-xs-10 contact-col contact-left">
-					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span><h3 class="lefth3">TRAVEL BLOG</h3>
+					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span><h3 class="lefth3">Travel Blog</h3>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
@@ -946,7 +946,7 @@ fieldset[disabled] .btn-fare.active {
 							<%= image_tag(@blogs[0].image.url, :class => 'img-fluid blog-image') %>
 						</div>
 						<div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 blog-content-col">
-							<nobr><h4 class="blog-header"><%= @blogs[0].title.upcase %></h4></nobr>
+							<nobr><h4 class="blog-header"><%= @blogs[0].title %></h4></nobr>
 							<h5>Written by <%= @blogs[0].author %></h5>
 							<p class="blue">Read More...</p>
 						</div>
@@ -956,7 +956,7 @@ fieldset[disabled] .btn-fare.active {
 							<%= image_tag(@blogs[1].image.url, :class => 'img-fluid blog-image') %>
 						</div>
 						<div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 blog-content-col">
-							<nobr><h4 class="blog-header"><%= @blogs[1].title.upcase %></h4></nobr>
+							<nobr><h4 class="blog-header"><%= @blogs[1].title %></h4></nobr>
 							<h5>Written by <%= @blogs[1].author %></h5>
 							<p class="blue">Read More...</p>
 						</div>
@@ -1011,7 +1011,7 @@ fieldset[disabled] .btn-fare.active {
 				</div>
 				<% else %>
 				<a href="#"><div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
-					<h4>SPECIAL OF THE WEEK</h4>
+					<h4>Special Of The Week</h4>
 					<h5>3 Day Guided Tour of Rome, includes dinner.</h5>
 					<h5>$180.00 pp</h5>
 					<p class="special-yellow">Details</p>
@@ -1024,7 +1024,7 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			<div class="row vacationRow">
 				<a href="/quote"><div class="col-sm-10 col-xs-10 contact-col contact-left-middle">
-					<h3>I WANT TO GO ON VACATION!</h3>
+					<h3>I Want to go on Vacation!</h3>
 					<h4>Tell us where you want to go, get a quote now</h4>
 					<!-- <h4>Get a quote now</h4> -->
 				</div>
@@ -1038,9 +1038,9 @@ fieldset[disabled] .btn-fare.active {
 
 					  <!-- Nav tabs -->
 					  <ul id="myTabs" class="nav nav-tabs" role="tablist">
-					    <li class="myTabs active" role="presentation"><a href="#flights" aria-controls="flights" role="tab" data-toggle="tab">FLIGHTS</a></li>
-					    <li class="myTabs" role="presentation"><a href="#hotels" aria-controls="hotels" role="tab" data-toggle="tab">HOTELS</a></li>
-					    <li class="myTabs" role="presentation"><a href="#cars" aria-controls="cars" role="tab" data-toggle="tab">CARS</a></li>
+					    <li class="myTabs active" role="presentation"><a href="#flights" aria-controls="flights" role="tab" data-toggle="tab">Flights</a></li>
+					    <li class="myTabs" role="presentation"><a href="#hotels" aria-controls="hotels" role="tab" data-toggle="tab">Hotels</a></li>
+					    <li class="myTabs" role="presentation"><a href="#cars" aria-controls="cars" role="tab" data-toggle="tab">Cars</a></li>
 					    <!-- <li class="myTabs" role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Cruises / Vacations</a></li> -->
 					  </ul>
 
@@ -1376,7 +1376,7 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			<div class="row faregrabbrRow faregrabbrWhite">
 				<a href="https://www.faregrabbr.com" target="_blank"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
-					<h4>WAIT FOR THE BEST PRICE?</h4>
+					<h4>Wait for the Best Price?</h4>
 					<h5>Use our flight engine Faregrabbr</h5>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
@@ -1385,7 +1385,7 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			<div class="row faregrabbrRow">
 				<a href="http://www1.latesttraveloffers.com/lton/OfferGroups.asp?OfferGroupId=4880" target="_blank""><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
-					<h4>CRUISE BOOKING ENGINE</h4>
+					<h4>Cruise Booking Engine</h4>
 					<h5>Explore cruises all over the world</h5>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
@@ -1394,8 +1394,8 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			<div class="row faregrabbrRow faregrabbrProfile">
 				<a href="/subscriptions/new"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
-					<h4>NEWS LETTER</h4>
-					<h5>subscribe to get the latest specials</h5>
+					<h4>News Letter</h4>
+					<h5>Subscribe to get the latest specials</h5>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>

@@ -93,7 +93,7 @@
 		<div class="col-sm-6">
 			<div class="row header-row">
 				<div class="col-sm-12">
-					<h3>CURRENT GALLERY PHOTOS</h3>
+					<h3>Current Gallery Photos</h3>
 				</div>
 			</div>
 			<% if @approved_photos.length == 0 %>
@@ -109,20 +109,20 @@
 								<input name="_method" type="hidden" value="PATCH"%>
 								<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 								<input name="photo_id" type="hidden" value="<%= val.id %>">
-								<button class="btn btn-contact">APPROVE</button>
+								<button class="btn btn-contact">Approve</button>
 								</form>
 							<% else %>
 								<form action="/photo_remove" method="POST">
 								<input name="_method" type="hidden" value="PATCH"%>
 								<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 								<input name="photo_id" type="hidden" value="<%= val.id %>">
-								<button class="btn btn-contact">REMOVE</button>
+								<button class="btn btn-contact">Remove</button>
 								</form>
 							<% end %>
 								<form action="/photo_destroy" method="POST">
 								<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 								<input name="photo_id" type="hidden" value="<%= val.id %>">
-								<button class="btn btn-red" data-confirm="Really delete this photo?">DELETE</button>
+								<button class="btn btn-red" data-confirm="Really delete this photo?">Delete</button>
 								</form>
 							</div>
 					</div>
@@ -132,7 +132,7 @@
 		<div class="col-sm-6">
 			<div class="row header-row header-approve">
 				<div class="col-sm-12">
-					<h3>PHOTOS TO APPROVE</h3>
+					<h3>Photos to Approve</h3>
 				</div>
 			</div>
 			<% if @unapproved_photos.length == 0 %>
@@ -147,20 +147,20 @@
 								<input name="_method" type="hidden" value="PATCH"%>
 								<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 								<input name="photo_id" type="hidden" value="<%= val.id %>">
-								<button class="btn btn-green">APPROVE</button>
+								<button class="btn btn-green">Approve</button>
 								</form>
 							<% else %>
 								<form action="/photo_remove" method="POST">
 								<input name="_method" type="hidden" value="PATCH"%>
 								<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 								<input name="photo_id" type="hidden" value="<%= val.id %>">
-								<button class="btn btn-green">REMOVE</button>
+								<button class="btn btn-green">Rremove</button>
 								</form>
 							<% end %>
 								<form action="/photo_destroy" method="POST">
 								<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 								<input name="photo_id" type="hidden" value="<%= val.id %>">
-								<button class="btn btn-red" data-confirm="Really delete this photo?">DELETE</button>
+								<button class="btn btn-red" data-confirm="Really delete this photo?">Delete</button>
 								</form>
 							</div>
 					</div>
@@ -236,7 +236,7 @@
 			<div class="form-group">
 			    <!-- <label for="submit" class="col-sm-2 control-label"></label> -->
 			    <div class="col-sm-12 btn-col">
-			    	<button class="btn btn-contact">EDIT</button>
+			    	<button class="btn btn-contact">Edit</button>
 			    </div>
 			</div>
 		</div>
