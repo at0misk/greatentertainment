@@ -471,6 +471,7 @@ fieldset[disabled] .btn-red.active {
 
 .error{
   color: #a94442;
+  margin-top: 15px;
 }
 
 .success{
@@ -478,15 +479,19 @@ fieldset[disabled] .btn-red.active {
 }
 
 .has-success{
-  margin-bottom: 0px;
+  margin-bottom: -15px !important;
 }
 
-.has-error{
-  margin-bottom: 0px;
+.valid{
+  margin-bottom: -15px !important;
 }
 
 .has-error .control-label{
   /*color: #e84c3d !important;*/
+}
+
+.hide-error{
+  display: none !important;
 }
 
   </style>
@@ -508,7 +513,7 @@ fieldset[disabled] .btn-red.active {
         <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav log-reg-nav">
           <% if session[:user_id] %>
-            <li><a href="/logout"><button class="btn btn-sm btn-contact">LOGOUT</button></a></li>
+            <li><a href="/logout"><button class="btn btn-sm btn-contact">LOGOUT <%= flash[:sent_mail] %></button></a></li>
           <% else %>
             <li><a data-toggle="modal" data-target="#loginModal"><button class="btn btn-sm btn-contact">LOGIN</button></a></li>
             <li><a href="#"><button class="btn btn-sm btn-contact">REGISTER</button></a></li>
@@ -630,14 +635,14 @@ fieldset[disabled] .btn-red.active {
         </button>
       </div>
       <div class="modal-body">
-    <form action="/contact" method="post" class="form-horizontal">
+    <form action="/contact" method="post" class="form-horizontal" id="contactform">
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <input name="user_id" type="hidden" value="<%= @header_user.id %>">
       <div class="row">
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-6">
-                <input name="email" type="text" class="form-control" id="email" />
+                <input name="email" type="text" class="form-control" id="email" required/>
             </div>
         </div>
       </div>
@@ -645,7 +650,7 @@ fieldset[disabled] .btn-red.active {
         <div class="form-group">
             <label for="first" class="col-sm-3 control-label">First Name</label>
             <div class="col-sm-6">
-                <input name="first" type="text" class="form-control" id="first" />
+                <input name="first" type="text" class="form-control" id="first" required/>
             </div>
         </div>
       </div>
@@ -653,7 +658,7 @@ fieldset[disabled] .btn-red.active {
         <div class="form-group">
             <label for="last" class="col-sm-3 control-label">Last Name</label>
             <div class="col-sm-6">
-                <input name="last" type="text" class="form-control" id="last" />
+                <input name="last" type="text" class="form-control" id="last" required/>
             </div>
         </div>
       </div>
@@ -661,7 +666,7 @@ fieldset[disabled] .btn-red.active {
         <div class="form-group">
             <label for="message" class="col-sm-3 control-label">Message</label>
             <div class="col-sm-6">
-              <textarea id="message" name="message" class="form-control" rows="4"></textarea>
+              <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
             </div>
         </div>
       </div>
@@ -749,11 +754,26 @@ fieldset[disabled] .btn-red.active {
           }
   });
 
-    <% if flash[:sent_mail] %>
-    // alert("Thanks!  We'll be in touch");
-    $('#confirmModal').modal('toggle');
-    <% flash[:sent_mail] = nil %>
-    <% end %>
+      $('#contactform').validate({
+      rules: {
+        'email': {
+          email: true
+        }
+      },
+          highlight: function (element) {
+              $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+              // element.closest('.error').removeClass('hide-error');
+          },
+          success: function (element) {
+              element.closest('.form-group').removeClass('has-error').addClass('has-success');
+              // element.closest('.error').addClass('hide-error');
+          }
+  });
+
+    // $('#confirmModal').on('hidden.bs.modal', function () {
+        // alert("CLOSED")
+        <%# flash[:sent_mail] = nil %>
+    // })
 
   });
 

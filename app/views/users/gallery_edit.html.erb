@@ -68,6 +68,18 @@
     	height: auto;
     	margin-bottom: 15px;
 	}
+
+	.thumb-div img{
+		-moz-transition: all 0.4s;
+		-webkit-transition: all 0.4s;
+		transition: all 0.4s;
+	}
+
+	.thumb-div img:hover{
+		opacity: 0.6;
+		cursor: pointer;
+	}
+
 @media (max-width: 767px) {
 	.content .col-sm-6{
 		min-height: 400px;
@@ -158,7 +170,7 @@
 	<div class="row instruction-row">
 		<div class="col-sm-12">
 			<ul>
-				<li>Clck and image to edit it</li>
+				<li>Clck an image to edit it</li>
 				<li>Approve - adds a photo to your gallery</li>
 				<li>Remove - removes a photo from your gallery</li>
 				<li>Delete - deletes a photo <em>permanently</em> from your gallery</li>
@@ -172,7 +184,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <span class="glyphicon glyphicon-camera" aria-hidden="true"></span><h3 class="modal-title lefth3 modalh3" id="contactModalLabel">EDIT IMAGE </h3>
+        <span class="glyphicon glyphicon-camera" aria-hidden="true"></span><h3 class="modal-title modalh3" id="contactModalLabel">EDIT IMAGE </h3>
         <button type="button" id="contact-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

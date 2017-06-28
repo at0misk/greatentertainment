@@ -176,7 +176,7 @@ class UsersController < ApplicationController
 		puts params['last']
 		puts params['message']
 		flash[:sent_mail] = true
-		redirect_back(fallback_location: "/#{@user.username}")
+		redirect_to "/#{@user.username}"
 	end
 	def gallery
 		@page_user = User.find_by_username(params['username'])
