@@ -152,8 +152,8 @@
 			<% end %>
 			<a href="/blogs/<%= val.id %>"><div class="col-sm-4 blog-box">
 				<%= image_tag(val.image.url, :class => 'img-fluid') %>
-				<h5 class="blog-title"><%= val.title %></h5>
-				<h5 class="blog-title blog-author">Written by <%= val.author %></h5>
+				<h5 class="blog-title"><%= val.title.titleize %></h5>
+				<h5 class="blog-title blog-author">Written by <%= val.author.titleize %></h5>
 			</div></a>
 			<% if x == 3 %>
 				</div>

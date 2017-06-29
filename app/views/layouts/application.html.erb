@@ -502,6 +502,14 @@ button:hover{
   transform: translateY(1px);
 }
 
+.contact-col .arrow-col{
+  padding-top: 23px !important;
+}
+
+.blogCont .arrow-col{
+  padding-top: 23px !important;
+}
+
   </style>
   </head>
 
@@ -637,7 +645,7 @@ button:hover{
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="modal-title modalh3" id="contactModalLabel">Contact <%= @header_user.first %></h3>
+        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="modal-title modalh3" id="contactModalLabel">Contact <%= @header_user.first.capitalize %></h3>
         <button type="button" id="contact-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

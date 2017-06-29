@@ -78,8 +78,8 @@
 			</div>
 			<div class="col-sm-8 header-text">
 				<div class="headers-div">
-					<h2 class="big-header"><%= @blog.title %></h2>
-					<h5 class="author-header">Written by <%= @blog.author %><small><%= @blog.created_at.to_time.strftime('%B %e at %l:%M %p') %></small></h5>
+					<h2 class="big-header"><%= @blog.title.titleize %></h2>
+					<h5 class="author-header">Written by <%= @blog.author.titleize %><small><%= @blog.created_at.to_time.strftime('%B %e at %l:%M %p') %></small></h5>
 				</div>
 				<%= simple_format(@blog.content) %>
 			</div>
