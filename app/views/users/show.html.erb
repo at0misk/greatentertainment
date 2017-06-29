@@ -441,6 +441,13 @@ fieldset[disabled] .btn-fare.active {
 	padding-right: 13px !important;
 }
 
+.hover-arrow-left{
+	background-color: rgba(255, 255, 255, 0.5) !important; 
+	font-size: 1.2em !important;
+	padding-top: 20px !important;
+	padding-right: 13px !important;
+}
+
 .hover-arrow-middle{
 	background-color: rgba(255, 255, 255, 0.5) !important; 
 	font-size: 1.2em !important;
@@ -463,7 +470,7 @@ fieldset[disabled] .btn-fare.active {
 }
 
 .contact-left-arrow: hover{
-	background-color: rgba(255, 255, 255, 0.5); 
+	background-color: rgba(255, 255, 255, 0.5) !important; 
 	font-size: 1.2em !important;
 	padding-top: 20px !important;
 	padding-right: 13px !important;
@@ -1531,9 +1538,9 @@ $('.contact-left').hover(
   function() {
   	// console.log('hovering');
     // var arrowCol = $( this ).closest('.arrow-col');
-    $(this).siblings('div').addClass('hover-arrow');
+    $(this).siblings('div').addClass('hover-arrow-left');
   }, function() {
-    $(this).siblings('div').removeClass('hover-arrow');
+    $(this).siblings('div').removeClass('hover-arrow-left');
   }
 );
 
