@@ -28,10 +28,8 @@
 		height: 100%;
 	}
 	.userInfo{
-		color: white;
    		height: 100%;
 		vertical-align: top;
-		background-color: #5b90b2;
 		overflow: scroll;
 	}
 	.profileHeader{
@@ -183,7 +181,7 @@
 	}
 
 .btn-fare { 
-  color: #ffffff; 
+  color: #FFFFFF; 
   background-color: #A5B3C0; 
   border-color: #FFFFFF; 
 } 
@@ -193,8 +191,8 @@
 .btn-fare:active, 
 .btn-fare.active, 
 .open .dropdown-toggle.btn-fare { 
-  color: #ffffff; 
-  background-color: #608CAB; 
+  color: #FFFFFF; 
+  background-color: #C8CED4; 
   border-color: #FFFFFF; 
 } 
  
@@ -222,11 +220,10 @@ fieldset[disabled] .btn-fare.active {
   background-color: #A5B3C0; 
   border-color: #FFFFFF; 
 } 
-
-
+ 
 .btn-fare .badge { 
   color: #A5B3C0; 
-  background-color: #ffffff; 
+  background-color: #FFFFFF; 
 }
 
 #air_type{
@@ -1004,7 +1001,7 @@ fieldset[disabled] .btn-fare.active {
 					<h4><%= @special.title %></h4>
 					<h5><%= @special.description %></h5>
 					<h5><%= number_to_currency(@special.price) %> pp</h5>
-					<p class="special-yellow">Details</p>
+					<button class="special-yellow btn">Details</button>
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6 weekly weekly-img">
 					<%= image_tag(@special.image.url(:medium), :class => 'img-fluid special-img' ) %>
@@ -1108,7 +1105,7 @@ fieldset[disabled] .btn-fare.active {
 					<div class="col-sm-6">
 					</div>
 					<div class="col-sm-6 btnDiv">
-						<input type="submit" value="CHECK NOW" id="flightButton" class="btn btn-fare sub-btn">
+						<button type="submit" id="flightButton" class="btn btn-fare sub-btn">CHECK NOW</button>
 					</div>
 				</div>
 			</form>
@@ -1271,7 +1268,7 @@ fieldset[disabled] .btn-fare.active {
 					<div class="col-sm-6">
 					</div>
 					<div class="col-sm-6 btnDiv">
-						<input type="submit" value="CHECK NOW" id="flightButton" class="btn btn-fare sub-btn">
+						<button type="submit" id="flightButton" class="btn btn-fare sub-btn">CHECK NOW</button>
 					</div>
 				</div>
 			</form>
@@ -1367,7 +1364,7 @@ fieldset[disabled] .btn-fare.active {
 					<div class="col-sm-6">
 					</div>
 					<div class="col-sm-6 btnDiv btnDivCars">
-						<input type="submit" value="CHECK NOW" id="flightButton" class="btn btn-fare sub-btn">
+						<button type="submit" id="flightButton" class="btn btn-fare sub-btn">CHECK NOW</button>
 					</div>
 				</div>
 				</form>
