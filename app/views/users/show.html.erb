@@ -821,7 +821,7 @@ fieldset[disabled] .btn-fare.active {
 	padding-right: 0px;
 }
 
-.blog-header{
+.blog-header-front{
 	text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -971,7 +971,7 @@ fieldset[disabled] .btn-fare.active {
 							<%= image_tag(@blogs[0].image.url, :class => 'img-fluid blog-image') %>
 						</div>
 						<div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 blog-content-col">
-							<nobr><h4 class="blog-header-front"><%= @blogs[0].title.titleize %></h4></nobr>
+							<h4 class="blog-header-front"><%= @blogs[0].title.titleize %></h4>
 							<h5>Written by <%= @blogs[0].author.titleize %></h5>
 							<p class="blue">Read More...</p>
 						</div>
@@ -981,7 +981,7 @@ fieldset[disabled] .btn-fare.active {
 							<%= image_tag(@blogs[1].image.url, :class => 'img-fluid blog-image') %>
 						</div>
 						<div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 blog-content-col">
-							<nobr><h4 class="blog-header-front"><%= @blogs[1].title.titleize %></h4></nobr>
+							<h4 class="blog-header-front"><%= @blogs[1].title.titleize %></h4>
 							<h5>Written by <%= @blogs[1].author.titleize %></h5>
 							<p class="blue">Read More...</p>
 						</div>
@@ -1122,10 +1122,12 @@ fieldset[disabled] .btn-fare.active {
 				<div class="form-group lower-group last-group">
 				    <!-- <label for="adults" class="col-lg-4 control-label col-md-6">Adults</label> -->
 				    <div class="col-md-6">
-						<input placeholder="Adults" class="textbox-n form-control" type="text" onfocus="(this.type='number')" onblur="(this.type='text')" name="adults" id="adults" min="1">
+						<input placeholder="1" class="textbox-n form-control" type="number" name="adults" id="adults" min="1">
+						<span class="tiny">Adults</span>
 					</div>
 				    <div class="col-md-6 children-col">
-						<input placeholder="Children" class="textbox-n form-control" type="text" onfocus="(this.type='number')" onblur="(this.type='text')" name="children" id="children" min="0">
+						<input placeholder="0" class="textbox-n form-control" type="number" name="children" id="children" min="0">
+						<span class="tiny">Children</span>
 					</div>
 				</div>
 				<input type="hidden" name="isWidget" value="true">
