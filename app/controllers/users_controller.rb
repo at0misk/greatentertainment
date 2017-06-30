@@ -34,8 +34,8 @@ class UsersController < ApplicationController
     # respond_to do |format|
     #   format.json { render :json => @msg }
     # end
- 	# @page_user = User.find(session[:page_user_id])
-  #   redirect_to "/#{@page_user.username}"
+ 	@page_user = User.find(session[:page_user_id])
+    redirect_to "/#{@page_user.username}"
   end
 
   # This URL contains instructions for the call that is connected with a lead
