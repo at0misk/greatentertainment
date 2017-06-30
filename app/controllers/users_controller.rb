@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 @client = Twilio::REST::Client.new(@@twilio_sid, @@twilio_token)
 message = @client.messages.create(
     :to => "+19739192402",    # Replace with your phone number
-    :from => "+18623079249",
+    :from => @@twilio_number,
     :body => "Hello from Ruby"
     )  # Replace with your Twilio number
 
