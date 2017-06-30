@@ -23,11 +23,13 @@ class UsersController < ApplicationController
       # )
 
 @client = Twilio::REST::Client.new(@@twilio_sid, @@twilio_token)
-message = @client.messages.create(
+@message = @client.messages.create(
     :to => "+19739192402",    # Replace with your phone number
-    :from => @@twilio_number,
+    :from => "@@twilio_number",
     :body => "Hello from Ruby"
     )  # Replace with your Twilio number
+	puts "========================"
+	puts @message.subresource_uris
 
     #   # Let's respond to the ajax call with some positive reinforcement
     #   @msg = { :message => 'Phone call incoming!', :status => 'ok' }
