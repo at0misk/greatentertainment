@@ -23,9 +23,11 @@ class UsersController < ApplicationController
       # )
 
 @client = Twilio::REST::Client.new @@twilio_sid, @@twilio_token
-message = @client.account.messages.create(:body => "Hello from Ruby",
+message = @client.account.messages.create(
     :to => "+19739192402",    # Replace with your phone number
-    :from => "+18623079249")  # Replace with your Twilio number
+    :from => "+18623079249",
+    :body => "Hello from Ruby"
+    )  # Replace with your Twilio number
 
     #   # Let's respond to the ajax call with some positive reinforcement
     #   @msg = { :message => 'Phone call incoming!', :status => 'ok' }
@@ -38,8 +40,8 @@ message = @client.account.messages.create(:body => "Hello from Ruby",
     # respond_to do |format|
     #   format.json { render :json => @msg }
     # end
- 	# @page_user = User.find(session[:page_user_id])
-  #   redirect_to "/#{@page_user.username}"
+ 	@page_user = User.find(session[:page_user_id])
+    redirect_to "/#{@page_user.username}"
   end
 
   # This URL contains instructions for the call that is connected with a lead
