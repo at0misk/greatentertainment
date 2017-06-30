@@ -22,8 +22,8 @@ class UsersController < ApplicationController
       #   :url => "http://52.24.144.110/connect/#{@salesPhone}" # Fetch instructions from this URL when the call connects
       # )
 
-@client = Twilio::REST::Client.new(@@twilio_sid, @@twilio_token)
-@message = @client.messages.create(
+	@client = Twilio::REST::Client.new(@@twilio_sid, @@twilio_token)
+	@message = @client.messages.create(
     :to => "+19739192402",    # Replace with your phone number
     :from => @@twilio_number,
     :body => "Hello from Ruby"
