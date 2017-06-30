@@ -11,7 +11,7 @@ class SpecialsController < ApplicationController
 		if @special.save
 		else
 		end
-		redirect_to "/#{@special.user.username}"
+		redirect_to "/specials/#{@special.user.id}/#{@special.id}"
 	end
 	def special_params
 		params.require(:special).permit(:title, :depart, :return, :vacancy, :description, :user_id, :image, :price, :featured)
