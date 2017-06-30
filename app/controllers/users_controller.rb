@@ -15,13 +15,18 @@ class UsersController < ApplicationController
     # Validate contact
     # if contact.valid?
 
-      @client = Twilio::REST::Client.new @@twilio_sid, @@twilio_token
-      # Connect an outbound call to the number submitted
-      @call = @client.calls.create(
-        :from => @@twilio_number,
-        :to => @userPhone,
-        :url => "http://52.24.144.110/connect/#{@salesPhone}" # Fetch instructions from this URL when the call connects
-      )
+      # @client = Twilio::REST::Client.new @@twilio_sid, @@twilio_token
+      # # Connect an outbound call to the number submitted
+      # @call = @client.calls.create(
+      #   :from => @@twilio_number,
+      #   :to => @userPhone,
+      #   :url => "http://52.24.144.110/connect/#{@salesPhone}" # Fetch instructions from this URL when the call connects
+      # )
+
+@client = Twilio::REST::Client.new account_sid, auth_token
+message = @client.account.messages.create(:body => "Hello from Ruby",
+    :to => "+19739192402",    # Replace with your phone number
+    :from => "+15005550006")  # Replace with your Twilio number
 
     #   # Let's respond to the ajax call with some positive reinforcement
     #   @msg = { :message => 'Phone call incoming!', :status => 'ok' }
