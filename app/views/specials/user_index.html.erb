@@ -102,22 +102,22 @@
 		<% @specials.each do |val| %>
 			<div class="col-md-6 example-col">
 				<div class="row">
-					<div class="col-lg-12 weekly weekly-details">
-							<h4><%= val.title %></h4>
-							<h5><%= number_to_currency(val.price) %> pp</h5>
-							<h5 class="dates"><%= val.depart.strftime('%m/%d/%y') %> - <%= val.return.strftime('%m/%d/%y') %></h5>
-							<h5><%= val.description %></h5>
-							<div class="social-div">
-								<h5 class="social-media"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//52.24.144.110/specials/<%= val.user.id %>/<%= val.id %>" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></h5>
-								<h5 class="social-media"><a href="https://twitter.com/home?status=http%253A//52.24.144.110/specials/<%= val.user.id %>/<%= val.id %>" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></h5>
-							</div>
+				<div class="col-lg-12 weekly weekly-details">
+						<h4><%= val.title %></h4>
+						<h5><%= number_to_currency(val.price) %> pp</h5>
+						<h5 class="dates"><%= val.depart.strftime('%m/%d/%y') %> - <%= val.return.strftime('%m/%d/%y') %></h5>
+						<h5><%= val.description %></h5>
+						<div class="social-div">
+							<h5 class="social-media"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//52.24.144.110/specials/<%= val.user.id %>/<%= val.id %>" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></h5>
+							<h5 class="social-media"><a href="https://twitter.com/home?status=http%253A//52.24.144.110/specials/<%= val.user.id %>/<%= val.id %>" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></h5>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-lg-12 weekly weekly-img">
-							<%= image_tag(val.image.url, :class => 'img-fluid' ) %>
-						</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 weekly weekly-img">
+						<%= image_tag(val.image.url, :class => 'img-fluid' ) %>
 					</div>
+				</div>
 				<div class="row btn-row">
 					<div class="col-sm-4">
 					<% if val.featured %>
