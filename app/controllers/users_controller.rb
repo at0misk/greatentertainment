@@ -1,4 +1,3 @@
-require 'twilio-ruby'
 require 'open-uri'
 
 class UsersController < ApplicationController
