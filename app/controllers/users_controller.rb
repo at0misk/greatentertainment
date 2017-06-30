@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       @call = @client.calls.create(
         :from => @@twilio_number,
         :to => @userPhone,
-        :url => "https://api.twilio.com/connect/#{@salesPhone}" # Fetch instructions from this URL when the call connects
+        :url => "http://52.24.144.110//connect/#{@salesPhone}" # Fetch instructions from this URL when the call connects
       )
 
     #   # Let's respond to the ajax call with some positive reinforcement
@@ -34,8 +34,8 @@ class UsersController < ApplicationController
     # respond_to do |format|
     #   format.json { render :json => @msg }
     # end
- 	@page_user = User.find(session[:page_user_id])
-    redirect_to "/#{@page_user.username}"
+ 	# @page_user = User.find(session[:page_user_id])
+  #   redirect_to "/#{@page_user.username}"
   end
 
   # This URL contains instructions for the call that is connected with a lead
