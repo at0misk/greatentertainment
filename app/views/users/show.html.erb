@@ -571,6 +571,12 @@ fieldset[disabled] .btn-fare.active {
 	}
 }
 
+@media (max-width: 1331px){
+	.specialWeeklyRow h4{
+		font-size: 20px !important;
+	}
+}
+
 @media (max-width: 1179px) {
     .navbar-collapse.collapse {
         display: none !important;
@@ -954,7 +960,7 @@ fieldset[disabled] .btn-fare.active {
 				<a href="#" data-toggle="modal" data-target="#contactModal"><div class="col-sm-10 col-xs-10 contact-col contact-left">
 					<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 id="contacth3" class="lefth3">Contact <%= @page_user.first.capitalize %></h3>
 					<div class="phone-div">
-						<small class="phone"><span class="glyphicon glyphicon-earphone phone-glyphicon tiny-phone" aria-hidden="true"></span> <%= @page_user.phone_number %></small>
+						<small class="phone"><span class="glyphicon glyphicon-earphone phone-glyphicon tiny-phone" aria-hidden="true"></span> <%= number_to_phone(@page_user.phone_number) %></small>
 					</div>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col contact-arrow contact-left-arrow">
@@ -1047,7 +1053,7 @@ fieldset[disabled] .btn-fare.active {
 			<% if @special %>
 				<a href="/specials/<%= @page_user.id %>/<%= @special.id %>"><div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
 					<h4><%= @special.title %></h4>
-					<h5><%= @special.description %></h5>
+					<h5><%= truncate(@special.description, :length => 100) %></h5>
 					<h5><%= number_to_currency(@special.price) %> pp</h5>
 					<button class="special-yellow btn">Details</button>
 				</div>

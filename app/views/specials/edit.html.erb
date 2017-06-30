@@ -66,7 +66,7 @@
 					<button class="btn btn-danger" data-confirm="Delete Special?">X</button>
 				</form>
 			</div> -->
-			<form action="/specials" method="post" class="form-horizontal update-form" enctype="multipart/form-data" id="edit-special-form">
+			<form action="/specials" method="post" class="form-horizontal update-form" enctype="multipart/form-data" id="edit-special-form<%= val.id %>">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 			<input name="id" value="<%= val.id %>" type="hidden">
 			<input name="_method" value="PATCH" type="hidden">
@@ -118,7 +118,7 @@
 				<div class="form-group">
 				    <label for="description" class="col-sm-3 control-label">Description</label>
 				    <div class="col-sm-9">
-				        <textarea name="special[description]" type="text" class="form-control" id="description" rows="8" required><%= val.description %></textarea>
+				        <textarea name="special[description]" type="text" class="form-control" id="description" rows="8" maxlength="950" required><%= val.description %></textarea>
 				    </div>
 				</div>
 			</div>
@@ -148,13 +148,17 @@
 
 <script type="text/javascript">
 	$(document).on('turbolinks:load',function(){
-		$('#edit-special-form').validate({
+		<% @specials.each do |val| %>
+		$('#edit-special-form<%= val.id %>').validate({
 			rules: {
 				'special[vacancy]': {
 					digits: true
 				},
 				'special[price]': {
 					digits: true
+				},
+				'special[description]': {
+					maxlength: 950
 				}
 			},
 	        highlight: function (element) {
@@ -164,5 +168,6 @@
 	            element.closest('.form-group').removeClass('has-error').addClass('has-success');
 	        }
 		});
+		<% end %>
 	})
 </script>

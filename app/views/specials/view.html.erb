@@ -51,7 +51,10 @@
 	    /*position: absolute;*/
 	    /*bottom: -110px;*/
 	    /*left: 0;*/
-	    margin-left: -10px;
+	    /*margin-left: -10px;*/
+	    position: absolute;
+    	bottom: 5px;
+    	right: 5px;
 	}
 	.interest-col{
 		/*text-align: center;*/
@@ -67,11 +70,12 @@
 	.special-form{
 		padding-right: 30px;
 	}
-	.btn-yellow{
+	.outer-col .btn-yellow{
 	    position: absolute;
 	    bottom: 0;
 	    /* text-align: center; */
-	    margin: 15px 40px;
+	    margin: 15px 0px;
+	    margin-bottom: 10px;
 	}
 	.special-modal-header{
 		font-size: 20px;
@@ -88,10 +92,19 @@
 			height: 470px;
 			min-height: 470px;
 		}
+		.outer-col .btn-yellow{
+			position: relative;
+		}
+		.weekly-details{
+			overflow: scroll;
+		}
+		.social-div{
+			position: relative;
+		}
 	}
 	@media (max-width: 991px){
-		.btn-yellow{
-			position: relative;
+		.outer-col .btn-yellow{
+			/*position: relative;*/
 			margin: 0px;
 		}
 		.outer-col{
@@ -101,12 +114,22 @@
 		.container{
 			height: auto;
 			min-height: 770px;
+			background-color: #4f4f4f;
 		}
 		.weekly-img{
 			height: auto;
 		    padding: 0px;
 		    padding-left: 0px;
 		    margin-left: -15px;
+		}
+		.weekly-details{
+			height: auto;
+			overflow: none;
+		}
+	}
+	@media (max-width: 767px){
+		form .row{
+			padding-left: 15px;
 		}
 	}
 </style>
@@ -124,7 +147,7 @@
 					<h4><%= @special.title %></h4>
 					<h5><%= number_to_currency(@special.price) %> pp</h5>
 					<h5 class="dates"><%= @special.depart.strftime('%m/%d/%y') %> - <%= @special.return.strftime('%m/%d/%y') %></h5>
-					<h5><%= @special.description %></h5>
+					<%= simple_format(@special.description) %>
 					<div class="social-div">
 						<h5 class="social-media"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></h5>
 						<h5 class="social-media"><a href="https://twitter.com/home?status=http%253A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></h5>
