@@ -47,6 +47,18 @@
 			padding: 0px 15px;
 		}
 	}
+	.characters{
+		display: inline-block;
+	    float: right;
+	    margin-right: 15px;
+	    margin-top: 15px;
+	}
+	.green{
+		color: #3c763d;
+	}
+	.red{
+		color: #a94442;
+	}
 </style>
 <div class="container">
 	<div class="row header-row">
@@ -118,7 +130,8 @@
 				<div class="form-group">
 				    <label for="description" class="col-sm-3 control-label">Description</label>
 				    <div class="col-sm-9">
-				        <textarea name="special[description]" type="text" class="form-control" id="description" rows="8" maxlength="950" required><%= val.description %></textarea>
+				        <textarea name="special[description]" type="text" class="form-control" id="description" rows="8" required><%= val.description %></textarea>
+				        <div id="characters<%= val.id %>" class="characters">0/950</div>
 				    </div>
 				</div>
 			</div>
@@ -148,7 +161,28 @@
 
 <script type="text/javascript">
 	$(document).on('turbolinks:load',function(){
+
 		<% @specials.each do |val| %>
+		$('#characters<%= val.id %>').html(<%= val.description.length %> + "/950")
+
+		$('#edit-special-form<%= val.id %>').keyup(function(){
+			var len = $(this).find('textarea').val().length;
+			$('#characters<%= val.id %>').html(len + "/950")
+			if(len >= 950){
+				$('#characters<%= val.id %>').addClass('red');
+				$('#characters<%= val.id %>').removeClass('green');
+
+			}
+			else if(len == 0 ){
+				$('#characters<%= val.id %>').addClass('red');
+				$('#characters<%= val.id %>').removeClass('green');
+			}
+			else{
+				$('#characters<%= val.id %>').addClass('green');
+				$('#characters<%= val.id %>').removeClass('red');
+			}
+		})
+
 		$('#edit-special-form<%= val.id %>').validate({
 			rules: {
 				'special[vacancy]': {

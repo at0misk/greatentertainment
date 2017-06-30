@@ -57,6 +57,18 @@
 			min-height: 300px;
 		}
 	}
+	#characters{
+		display: inline-block;
+	    float: right;
+	    margin-right: 15px;
+	    margin-top: 15px;
+	}
+	.green{
+		color: #3c763d;
+	}
+	.red{
+		color: #a94442;
+	}
 </style>
 <div class="container">
 	<div class="row header-row">
@@ -106,7 +118,8 @@
 				<div class="form-group">
 				    <label for="description" class="col-sm-4 control-label">Description</label>
 				    <div class="col-sm-8">
-				        <textarea name="special[description]" class="form-control" id="special[description]" rows="8" required></textarea>
+				        <textarea name="special[description]" class="form-control" class="description-textarea" id="special[description]" rows="8" required></textarea>
+				        <div id="characters">0/950</div>
 				    </div>
 				</div>
 			</div>
@@ -121,7 +134,7 @@
 			<div class="form-group">
 			    <label for="exampleInputFile" class="col-sm-4 control-label">Photo</label>
 			    <div class="col-sm-8">
-			    	<input name="special[image]" type="file" class="form-control-file" id="inputFile" aria-describedby="fileHelp"required>
+			    	<input name="special[image]" type="file" class="form-control-file" id="inputFile" aria-describedby="fileHelp" required>
 			    </div>
 			</div>
 			<div class="row">
@@ -161,6 +174,25 @@
 
 <script type="text/javascript">
 	$(document).on('turbolinks:load',function(){
+
+		$('#new-special-form').keyup(function(){
+			var len = $(this).find('textarea').val().length;
+			$('#characters').html(len + "/950")
+			if(len >= 950){
+				$('#characters').addClass('red');
+				$('#characters').removeClass('green');
+
+			}
+			else if(len == 0 ){
+				$('#characters').addClass('red');
+				$('#characters').removeClass('green');
+			}
+			else{
+				$('#characters').addClass('green');
+				$('#characters').removeClass('red');
+			}
+		})
+
 		$('#new-special-form').validate({
 			rules: {
 				'special[vacancy]': {
