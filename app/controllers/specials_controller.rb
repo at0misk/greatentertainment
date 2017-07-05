@@ -71,7 +71,7 @@ class SpecialsController < ApplicationController
 			desc_doc = Nokogiri::HTML(open("#{@fj.ref}"))
 			desc = desc_doc.css('#overviewHotelProperty>p')
 			@description = desc.text
-			puts @fj.dates
+			@page_user = User.find(session[:page_user_id])
 		else
 			redirect_to '/'
 		end

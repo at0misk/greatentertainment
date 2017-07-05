@@ -52,6 +52,25 @@
 	.box-row .col-sm-6{
 		height: 100%;
 	}
+	.special-modal-header{
+		font-size: 20px;
+	}
+	.special-modal-header-background{
+		background-color: #EBA10A;
+	}
+	.modal-target{
+		color: white !important;
+	}
+	.modal-target:hover{
+		color: white;
+		opacity: 0.7;
+	}
+	.btn-yellow{
+		float: right;
+	}
+	.special-form{
+		padding-right: 30px;
+	}
 </style>
 <div class="container">
 	<div class="row header-row">
@@ -69,13 +88,83 @@
 					<h4><%= @fj.flights %></h4>
 					<h5><%= @fj.dates %></h5>
 				</div>
-				<div class="interest-info col-sm-6">
+				<a href="#" data-toggle="modal" data-target="#specialModal" class="modal-target"><div class="interest-info col-sm-6">
 					<h4>I'm interested in this special!</h4>
-				</div>
+				</div></a>
 			</div>
 		</div>
 		<div class="col-sm-6">
-			<p class="description"><%= @description %></p>
+			<p class="description"><%= simple_format(@description) %></p>
 		</div>
 	</div>
+</div>
+
+<div class="modal fade" id="specialModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header special-modal-header-background">
+        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 class="modal-title modalh3 special-modal-header" id="contactModalLabel">Contact <%= @page_user.first %> <%= @page_user.last %></h3>
+        <button type="button" id="contact-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <form action="/interested" method="post" class="form-horizontal special-form">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<input name="user_id" type="hidden" value="<%= @page_user.id %>">
+			<div class="row">
+				<div class="form-group">
+				    <label for="first" class="col-sm-3 control-label">First Name</label>
+				    <div class="col-sm-9">
+				        <input name="first" type="text" class="form-control" id="first" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="last" class="col-sm-3 control-label">Last Name</label>
+				    <div class="col-sm-9">
+				        <input name="last" type="text" class="form-control" id="last" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="email" class="col-sm-3 control-label">Email</label>
+				    <div class="col-sm-9">
+				        <input name="email" type="text" class="form-control" id="email" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="phone_number" class="col-sm-3 control-label">Phone Number</label>
+				    <div class="col-sm-9">
+				        <input name="phone_number" type="text" class="form-control" id="phone_number" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="message" class="col-sm-3 control-label">Message</label>
+				    <div class="col-sm-9">
+				        <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <div class="col-sm-12 btn-col btn-col-special">
+				        <button class="btn btn-yellow">Send</button>
+				    </div>
+				</div>
+			</div>
+			</form>
+      </div>
+<!--       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
 </div>
