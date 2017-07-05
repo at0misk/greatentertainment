@@ -137,6 +137,11 @@ class UsersController < ApplicationController
 		@third_date.slice! " for this Price"
 		@third_flights_nights = flights_nights[2].text
 		# 
+		# desc_doc = Nokogiri::HTML(open("http://www.funjet.com/Deals/HotelOnly.aspx?onsaleid=470953&nights=5&price=70"))
+		# description = doc.css('.b-tabPane__description>p')
+		# puts description[0]
+		# fail
+		# 
 		if @current_user && @current_user.id == @page_user.id
 			@unapproved_photos = Photo.where(user_id: @current_user.id, allowed: false)
 		end
