@@ -85,8 +85,8 @@
 				<div class="price-info col-sm-6">
 					<h5>From</h5>
 					<h4><%= @fj.price %></h4>
-					<h4><%= @fj.flights %></h4>
-					<h5><%= @fj.dates %></h5>
+					<h5><%= @fj.flights.titleize %></h5>
+					<h5>Available <%= @fj.dates %></h5>
 				</div>
 				<a href="#" data-toggle="modal" data-target="#specialModal" class="modal-target"><div class="interest-info col-sm-6">
 					<h4>I'm interested in this special!</h4>
@@ -94,7 +94,7 @@
 			</div>
 		</div>
 		<div class="col-sm-6">
-			<p class="description"><%= simple_format(@description) %></p>
+			<p class="description"><%= @description %></p>
 		</div>
 	</div>
 </div>
