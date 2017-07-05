@@ -577,6 +577,15 @@ fieldset[disabled] .btn-fare.active {
 	}
 }
 
+@media (max-width: 1244px){
+	.weekly-details h5{
+		font-size: 11px;
+	}
+	.specialWeeklyRow h4{
+		font-size: 16px !important;
+	}
+}
+
 @media (max-width: 1179px) {
     .navbar-collapse.collapse {
         display: none !important;
@@ -656,6 +665,12 @@ fieldset[disabled] .btn-fare.active {
 	.profileDiv img{
 		width: auto;
 		max-height: 200px;
+	}
+	.weekly-details h5{
+		font-size: 14px !important;
+	}
+	.specialWeeklyRow h4{
+		font-size: 28px !important;
 	}
 }
 
@@ -1027,21 +1042,21 @@ fieldset[disabled] .btn-fare.active {
 		</div>
 		<div class="col-lg-4 col-md-12 outerCol">
 			<div class="row specialsRow">
-				<a href="<%= @first_ref %>" target="_blank"><div class="col-sm-4 col-xs-12 specialBox s1">
+				<a href="<%= @first_detail_link %>" target="_blank"><div class="col-sm-4 col-xs-12 specialBox s1">
 				<h4 class="specialHeader"><%= @first_location %></h4>
 				<p><%= @first_title %></p>
 				<p class="price-p"><%= @first_price %></p>
 				<p><%= @first_flights_nights %></p>
 				<p><%= @first_date %></p>
 				</div></a>
-				<a href="<%= @second_ref %>" target="_blank"><div class="col-sm-4 col-xs-12 specialBox s2">
+				<a href="<%= @second_detail_link %>" target="_blank"><div class="col-sm-4 col-xs-12 specialBox s2">
 				<h4 class="specialHeader"><%= @second_location %></h4>
 				<p><%= @second_title %></p>
 				<p class="price-p"><%= @second_price %></p>
 				<p><%= @second_flights_nights %></p>
 				<p><%= @second_date %></p>
 				</div></a>
-				<a href="<%= @third_ref %>" target="_blank"><div class="col-sm-4 col-xs-12 specialBox s3">
+				<a href="<%= @third_detail_link %>" target="_blank"><div class="col-sm-4 col-xs-12 specialBox s3">
 				<h4 class="specialHeader"><%= @third_location %></h4>
 				<p><%= @third_title %></p>
 				<p class="price-p"><%= @third_price %></p>

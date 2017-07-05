@@ -106,9 +106,11 @@ class UsersController < ApplicationController
 		prices = doc.css('.b-OnSaleCTA__amount')
 		dates = doc.css('.b-OnSaleItem__details__departures')
 		flights_nights = doc.css('.b-OnSaleCTA__nightsType')
+		photos = doc.css('.b-OnSaleItem__photo>img')
 		# 
 		@first_ref = "http://www.funjet.com#{refs[0]['href']}"
 		@first_title = titles[0].text
+		@first_detail_link = titles[0]['href']
 		@first_location = locations[0].text
 		@first_price = prices[0].text
 		@first_location.slice! "Hotels"
@@ -116,9 +118,11 @@ class UsersController < ApplicationController
 		@first_date.slice! "more"
 		@first_date.slice! " for this Price"
 		@first_flights_nights = flights_nights[0].text
+		@first_image_src = photos[0]['ng-src']
 		# 
 		@second_ref = "http://www.funjet.com#{refs[1]['href']}"
 		@second_title = titles[2].text
+		@second_detail_link = titles[2]['href']
 		@second_location = locations[1].text
 		@second_price = prices[1].text
 		@second_location.slice! "Hotels"
@@ -126,9 +130,11 @@ class UsersController < ApplicationController
 		@second_date.slice! "more"
 		@second_date.slice! " for this Price"
 		@second_flights_nights = flights_nights[1].text
+		@second_image_src = photos[1]['ng-src']
 		#
 		@third_ref = "http://www.funjet.com#{refs[2]['href']}"
 		@third_title = titles[4].text
+		@third_detail_link = titles[4]['href']
 		@third_location = locations[2].text
 		@third_price = prices[2].text
 		@third_location.slice! "Hotels"
@@ -136,10 +142,13 @@ class UsersController < ApplicationController
 		@third_date.slice! "more"
 		@third_date.slice! " for this Price"
 		@third_flights_nights = flights_nights[2].text
+		@third_image_src = photos[2]['ng-src']
 		# 
-		# desc_doc = Nokogiri::HTML(open("http://www.funjet.com/Deals/HotelOnly.aspx?onsaleid=470953&nights=5&price=70"))
-		# description = doc.css('.b-tabPane__description>p')
-		# puts description[0]
+		desc_doc = Nokogiri::HTML(open("http://www.funjet.com/HotelInformation/HotelInformation.aspx?VendorCode=FJ1&RemoteSourceCode=LtmsHotel&DestinationCode=PVR&HotelId=PVRGSMH&OnSaleId=470953"))
+		description = desc_doc.css('#overviewHotelProperty>p')
+		# description.each do |val|
+		# 	puts val.text
+		# end
 		# fail
 		# 
 		if @current_user && @current_user.id == @page_user.id
