@@ -114,7 +114,7 @@
 	}
 	.lower-group{
 		background-color: #486880;
-		padding-bottom: 15px;
+		padding-bottom: 5px;
 	}
 	.formOuter{
 		/*background-color: white;*/
@@ -172,11 +172,11 @@
 	}
 	.second-row{
 		/*padding-top: 10px;*/
-		padding-bottom: 10px;
+		padding-bottom: 5px;
 	}
 
 	.last-group{
-		padding-bottom: 20px;
+		padding-bottom: 10px;
 	}
 
 .btn-fare { 
@@ -949,6 +949,10 @@ fieldset[disabled] .btn-fare.active {
 	margin-top: 15px;
 }
 
+.fare-sub-row{
+	margin-bottom: 10px;
+}
+
 </style>
 <% content_for :head do %>
   <meta name="turbolinks-cache-control" content="no-cache">
@@ -1172,10 +1176,10 @@ fieldset[disabled] .btn-fare.active {
 					</div>
 				</div>
 				<input type="hidden" name="isWidget" value="true">
-				<div class="form-group lower-group">
+				<div class="form-group lower-group fare-sub-row">
 					<div class="col-sm-6">
 					</div>
-					<div class="col-sm-6 btnDiv">
+					<div class="col-sm-6 btnDiv fare-sub-row">
 						<button type="submit" id="flightButton" class="btn btn-fare sub-btn">CHECK NOW</button>
 					</div>
 				</div>
@@ -1338,7 +1342,7 @@ fieldset[disabled] .btn-fare.active {
 				<div class="form-group lower-group">
 					<div class="col-sm-6">
 					</div>
-					<div class="col-sm-6 btnDiv">
+					<div class="col-sm-6 btnDiv fare-sub-row">
 						<button type="submit" id="flightButton" class="btn btn-fare sub-btn">CHECK NOW</button>
 					</div>
 				</div>
@@ -1434,7 +1438,7 @@ fieldset[disabled] .btn-fare.active {
 				<div class="form-group lower-group">
 					<div class="col-sm-6">
 					</div>
-					<div class="col-sm-6 btnDiv btnDivCars">
+					<div class="col-sm-6 btnDiv btnDivCars fare-sub-row">
 						<button type="submit" id="flightButton" class="btn btn-fare sub-btn">CHECK NOW</button>
 					</div>
 				</div>
