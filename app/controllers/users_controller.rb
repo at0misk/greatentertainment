@@ -195,6 +195,10 @@ class UsersController < ApplicationController
 		puts params['first']
 		puts params['last']
 		puts params['message']
+		if params['subscribe']
+			subscription = Subscription.new(user_id: session[:user_id], email: params['email'], first: params['first'], last: params['last'])
+			subscription.save
+		end
 		flash[:sent_mail] = true
 		redirect_to "/#{@user.username}"
 	end
@@ -222,6 +226,9 @@ class UsersController < ApplicationController
 	end
 	def photo_params
 		params.require(:photo).permit(:image, :user_id, :name, :location, :traveled_on, :description)
+	end
+	def subscription_params
+		params.require(:subscription).permit(:user_id, :email, :first, :last)
 	end
 	def gallery_edit
 		@approved_photos = Photo.where(user_id: session[:user_id], allowed: true).order('updated_at DESC')

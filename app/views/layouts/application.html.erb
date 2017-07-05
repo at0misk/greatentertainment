@@ -556,6 +556,14 @@ button:hover{
   padding-top: 23px !important;
 }
 
+.custom-checkbox{
+  text-align: center;
+}
+
+.modal-btn-col{
+  margin-top: 15px;
+}
+
   </style>
 <%= yield :head %>
   </head>
@@ -579,7 +587,7 @@ button:hover{
             <li><a href="/logout"><button class="btn btn-sm btn-contact">Logout <%= flash[:sent_mail] %></button></a></li>
           <% else %>
             <li><a data-toggle="modal" data-target="#loginModal"><button class="btn btn-sm btn-contact">Login</button></a></li>
-            <li><a href="#"><button class="btn btn-sm btn-contact">Regster</button></a></li>
+            <!-- <li><a href="#"><button class="btn btn-sm btn-contact">Register</button></a></li> -->
           <% end %>
         </ul>
 <!--           <ul class="nav navbar-nav">
@@ -601,7 +609,7 @@ button:hover{
           </ul> -->
           <ul class="nav navbar-nav navbar-right">
             <li class="condo nav-li"><a href="#">Condos</a></li>
-            <li class="nav-li"><a href="http://www1.latesttraveloffers.com/lton/OfferGroups.asp?OfferGroupId=4880" target="_blank">Cruises</a></li>
+            <li class="nav-li"><a href="http://www1.latesttraveloffers.com/lton/OfferGroups.asp?site=VTHARC&OfferGroupId=4880" target="_blank">Cruises</a></li>
             <li class="nav-li"><a href="#">Specials</a></li>
             <li class="nav-li"><a href="https://www.faregrabbr.com/#/flight" target="_blank">Air</a></li>
             <li class="nav-li"><a href="https://www.faregrabbr.com/#/car" target="_blank">Car</a></li>
@@ -733,10 +741,15 @@ button:hover{
             </div>
         </div>
       </div>
+      <label class="custom-control custom-checkbox form-group col-sm-12">
+        <input type="checkbox" name="subscribe" class="custom-control-input" checked>
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Contact me about specials</span>
+      </label>
       <div class="row contact-sub">
         <div class="form-group">
             <!-- <label for="submit" class="col-sm-3 control-label"></label> -->
-            <div class="col-sm-12 btn-col btn-col-contact">
+            <div class="col-sm-12 btn-col btn-col-contact modal-btn-col">
                 <button class="btn btn-contact">Contact</button>
             </div>
         </div>
@@ -837,6 +850,11 @@ button:hover{
         // alert("CLOSED")
         <%# flash[:sent_mail] = nil %>
     // })
+
+  <% if flash[:sent_mail] %>
+    // alert("Thanks!  We'll be in touch");
+      $('#confirmModal').modal('toggle');
+  <% end %>
 
   });
 
