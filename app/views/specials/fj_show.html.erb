@@ -1,0 +1,81 @@
+<style type="text/css">
+	.top-row{
+		margin-top: 15px;
+	}
+	.container{
+		min-height: 550px;
+		color: white;
+		background-color: #4f4f4f;
+		margin-top: 25px;
+	}
+	.header-row{
+		margin-top: 25px;
+	}
+	.title{
+		margin-top: 0px;
+		text-align: center;
+	}
+	.img-fluid{
+		max-width: 100%;
+		height: auto;
+	}
+	.price-info{
+		text-align: center;
+		padding: 10px 0px;
+		margin: 35px 10px;
+		width: 46%;
+		background: grey;
+	}
+	.interest-info{
+		text-align: center;
+		padding: 15px;
+		padding-top: 40px;
+		margin: 35px 10px;
+		width: 46%;
+		background: #eba10a;
+	}
+	.header-col h3, h4{
+		/*display: inline-block;*/
+/*		margin-bottom: 0px;
+		margin-top: 0px;*/
+	}
+	.header-col h4{
+		/*color: #eba10a;*/
+		margin-top: 4px;
+	}
+	.description{
+		text-align: justify;
+	}
+	.box-row{
+		height: 150px;
+	}
+	.box-row .col-sm-6{
+		height: 100%;
+	}
+</style>
+<div class="container">
+	<div class="row header-row">
+		<div class="col-sm-12 header-col">
+			<h3 class="title"><%= @fj.title %> - <%= @fj.location %></h3>
+		</div>
+	</div>
+	<div class="row top-row">
+		<div class="col-sm-6">
+			<img class="img-fluid" src="<%= @fj.img_src %>">
+			<div class="row box-row">
+				<div class="price-info col-sm-6">
+					<h5>From</h5>
+					<h4><%= @fj.price %></h4>
+					<h4><%= @fj.flights %></h4>
+					<h5><%= @fj.dates %></h5>
+				</div>
+				<div class="interest-info col-sm-6">
+					<h4>I'm interested in this special!</h4>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<p class="description"><%= @description %></p>
+		</div>
+	</div>
+</div>

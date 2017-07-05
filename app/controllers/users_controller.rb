@@ -144,8 +144,6 @@ class UsersController < ApplicationController
 		@third_flights_nights = flights_nights[2].text
 		@third_image_src = photos[2]['ng-src']
 		# 
-		desc_doc = Nokogiri::HTML(open("http://www.funjet.com/HotelInformation/HotelInformation.aspx?VendorCode=FJ1&RemoteSourceCode=LtmsHotel&DestinationCode=PVR&HotelId=PVRGSMH&OnSaleId=470953"))
-		description = desc_doc.css('#overviewHotelProperty>p')
 		# description.each do |val|
 		# 	puts val.text
 		# end

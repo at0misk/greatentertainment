@@ -1,4 +1,5 @@
 class SpecialsController < ApplicationController
+@@fj = {}
 	def new
 		@user = User.find(session[:user_id])
 	end
@@ -60,4 +61,32 @@ class SpecialsController < ApplicationController
 		@new_feature.update_attribute(:featured, true)
 		redirect_to "/#{@user.username}"
 	end
+	def fj_create
+		@@fj = Fj_special.new(params['title'], params['location'], params['price'], params['flights'], params['date'], params['ref'], params['img_src'])
+		redirect_to '/fj_show'
+	end
+	def fj_show
+		if @@fj.present?
+			@fj = @@fj
+			desc_doc = Nokogiri::HTML(open("#{@fj.ref}"))
+			desc = desc_doc.css('#overviewHotelProperty>p')
+			@description = desc.text
+			puts @fj.dates
+		else
+			redirect_to '/'
+		end
+	end
+end
+
+class Fj_special
+	def initialize(title, location, price, flights, dates, ref, img_src)
+		@title = title
+		@location = location
+		@price = price
+		@flights = flights
+		@dates = dates
+		@ref = ref
+		@img_src = img_src
+	end
+	attr_reader :title, :location, :price, :flights, :dates, :ref, :img_src
 end
