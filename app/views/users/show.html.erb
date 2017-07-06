@@ -50,22 +50,27 @@
 		margin-bottom: 0px;
 	}
 	.specialsRow{
-		height: 145px;
+		/*height: 145px;*/
 	}
 	.specialBox{
 		/*border: 1px solid black;*/
 		height: 100%;
+		min-height: 200px;
 		color: white;
 		overflow: hidden;
+		padding-top: 15px !important;
 	}
 	.s1{
-		background-color: #1eba9b
+		background-color: #1eba9b;
 	}
 	.s2{
 		background-color: #5b90b2;
 	}
 	.s3{
 		background-color: #eba10a;
+	}
+	.s4{
+		background-color: #153649;
 	}
 	.outerCol{
 		margin-right: 15px;
@@ -587,6 +592,15 @@ fieldset[disabled] .btn-fare.active {
 	}
 }
 
+@media (max-width: 1214px){
+	#contacth3{
+		padding: 10px;
+	}
+	.phone{
+		padding-left: 10px;
+	}
+}
+
 @media (max-width: 1179px) {
     .navbar-collapse.collapse {
         display: none !important;
@@ -608,16 +622,23 @@ fieldset[disabled] .btn-fare.active {
 	}
 }
 
-@media (max-width: 1214px){
-	#contacth3{
-		padding: 10px;
+@media (max-width: 1146px){
+	.faregrabbr_h4{
+		font-size: 18px;
 	}
-	.phone{
-		padding-left: 10px;
+}
+
+@media (max-width: 1049px){
+	.faregrabbr_h4{
+		font-size: 14px;
 	}
 }
 
 @media (max-width: 1007px) {
+	#fareH4{
+		font-size: 20px;
+		margin-top: 15px !important;
+	}
 	#contacth3{
 		padding: 25px 15px;
 	}
@@ -756,6 +777,12 @@ fieldset[disabled] .btn-fare.active {
 	}
 	.contact-left-middle h3{
 		margin-top: 60px !important;
+	}
+}
+
+@media (max-width: 473px){
+	#fareH4{
+		font-size: 18px;
 	}
 }
 
@@ -944,10 +971,12 @@ fieldset[disabled] .btn-fare.active {
 	text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    text-align: center;
 }
 
 .price-p{
-	font-size: 20px !important;
+	font-size: 26px !important;
+	text-align: center;
 }
 
 .approve-header{
@@ -961,16 +990,32 @@ fieldset[disabled] .btn-fare.active {
 .faregrabbr_logo{
 	width: 100px;
 	display: inline-block;
-	margin-left: 15px;
+	/*margin-left: 15px;*/
 }
 
 .faregrabbr_text{
-	display: inline-block;
+	display: inline;
 	margin-left: 3px !important;
 }
 
 .faregrabbr_h4{
 	margin-bottom: 0px;
+	/*margin-top: 15px !important*/
+	margin-top: 5px !important;
+	margin-left: 0px !important;
+}
+
+.faregrabbr_col{
+	padding-left: 30px;
+}
+
+.special-box-p{
+	text-align: center;
+	font-size: 14px !important;
+}
+
+.specialBox p{
+	text-align: center;
 }
 
 </style>
@@ -1072,6 +1117,7 @@ fieldset[disabled] .btn-fare.active {
 				<input name="flights" type="hidden" value="<%= @first_flights_nights %>">
 				<input name="date" type="hidden" value="<%= @first_date %>">
 				<input name="ref" type="hidden" value="<%= @first_detail_link %>">
+				<input name="agent_ref" type="hidden" value="<%=  @first_agent_ref %>">
 				<input name="img_src" type="hidden" value="<%= @first_image_src %>">
 				</form>
 				<form action="/fj_special" method="post" class="second_special_form">
@@ -1082,6 +1128,7 @@ fieldset[disabled] .btn-fare.active {
 				<input name="flights" type="hidden" value="<%= @second_flights_nights %>">
 				<input name="date" type="hidden" value="<%= @second_date %>">
 				<input name="ref" type="hidden" value="<%= @second_detail_link %>">
+				<input name="agent_ref" type="hidden" value="<%=  @second_agent_ref %>">
 				<input name="img_src" type="hidden" value="<%= @second_image_src %>">
 				</form>
 				<form action="/fj_special" method="post" class="third_special_form">
@@ -1092,44 +1139,65 @@ fieldset[disabled] .btn-fare.active {
 				<input name="flights" type="hidden" value="<%= @third_flights_nights %>">
 				<input name="date" type="hidden" value="<%= @third_date %>">
 				<input name="ref" type="hidden" value="<%= @third_detail_link %>">
+				<input name="agent_ref" type="hidden" value="<%=  @third_agent_ref %>">
 				<input name="img_src" type="hidden" value="<%= @third_image_src %>">
 				</form>
-		<div class="col-lg-4 col-md-12 outerCol">
+				<form action="/fj_special" method="post" class="fourth_special_form">
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input name="location" type="hidden" value="<%= @fourth_location %>">
+				<input name="title" type="hidden" value="<%= @fourth_title %>">
+				<input name="price" type="hidden" value="<%= @fourth_price %>">
+				<input name="flights" type="hidden" value="<%= @fourth_flights_nights %>">
+				<input name="date" type="hidden" value="<%= @fourth_date %>">
+				<input name="ref" type="hidden" value="<%= @fourth_detail_link %>">
+				<input name="agent_ref" type="hidden" value="<%=  @fourth_agent_ref %>">
+				<input name="img_src" type="hidden" value="<%= @fourth_image_src %>">
+				</form>
+		<div class="col-lg-4 col-md-12 outerCol" data-no-turbolinks="true">
 			<div class="row specialsRow">
-				<div class="col-sm-4 col-xs-12 specialBox s1 first_special_a">
+				<div class="col-sm-6 col-xs-12 specialBox s1 first_special_a">
 				<h4 class="specialHeader"><%= @first_location %></h4>
 				<p><%= @first_title %></p>
 				<p class="price-p"><%= @first_price %></p>
-				<p><%= @first_flights_nights %></p>
-				<p><%= @first_date %></p>
+				<p class="special-box-p"><%= @first_flights_nights %></p>
+				<p class="special-box-p"><%= @first_date %></p>
 				</div>
-				<div class="col-sm-4 col-xs-12 specialBox s2 second_special_a">
+				<div class="col-sm-6 col-xs-12 specialBox s2 second_special_a">
 				<h4 class="specialHeader"><%= @second_location %></h4>
 				<p><%= @second_title %></p>
 				<p class="price-p"><%= @second_price %></p>
-				<p><%= @second_flights_nights %></p>
-				<p><%= @second_date %></p>
+				<p class="special-box-p"><%= @second_flights_nights %></p>
+				<p class="special-box-p"><%= @second_date %></p>
 				</div>
-				<div class="col-sm-4 col-xs-12 specialBox s3 third_special_a">
+			</div>
+			<div class="row specialsRow">
+				<div class="col-sm-6 col-xs-12 specialBox s3 third_special_a">
 				<h4 class="specialHeader"><%= @third_location %></h4>
 				<p><%= @third_title %></p>
 				<p class="price-p"><%= @third_price %></p>
-				<p><%= @third_flights_nights %></p>
-				<p><%= @third_date %></p>
-				</div>	
-			</div>
-			<div class="row specialWeeklyRow">
-			<% if @special %>
+				<p class="special-box-p"><%= @third_flights_nights %></p>
+				<p class="special-box-p"><%= @third_date %></p>
+				</div>
+				<div class="col-sm-6 col-xs-12 specialBox s4 fourth_special_a">
+				<h4 class="specialHeader"><%= @fourth_location %></h4>
+				<p><%= @fourth_title %></p>
+				<p class="price-p"><%= @fourth_price %></p>
+				<p class="special-box-p"><%= @fourth_flights_nights %></p>
+				<p class="special-box-p"><%= @fourth_date %></p>
+				</div>
+			</div>	
+<!-- 			<div class="row specialWeeklyRow">
+			<%# if @special %>
 				<a href="/specials/<%= @page_user.id %>/<%= @special.id %>"><div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
-					<h4><%= @special.title %></h4>
-					<h5><%= truncate(@special.description, :length => 100) %></h5>
-					<h5><%= number_to_currency(@special.price) %> pp</h5>
+					<h4><%#= @special.title %></h4>
+					<h5><%#= truncate(@special.description, :length => 100) %></h5>
+					<h5><%#= number_to_currency(@special.price) %> pp</h5>
 					<button class="special-yellow btn">Details</button>
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6 weekly weekly-img">
-					<%= image_tag(@special.image.url(:medium), :class => 'img-fluid special-img' ) %>
+					<%#= image_tag(@special.image.url(:medium), :class => 'img-fluid special-img' ) %>
 				</div>
-				<% else %>
+				<%# else %>
 				<a href="#"><div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 weekly weekly-details">
 					<h4>Special Of The Week</h4>
 					<h5>3 Day Guided Tour of Rome, includes dinner.</h5>
@@ -1137,11 +1205,11 @@ fieldset[disabled] .btn-fare.active {
 					<p class="special-yellow">Details</p>
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6 weekly weekly-img">
-					<%= image_tag('colloseum', :class => 'img-fluid' ) %>
+					<%#= image_tag('colloseum', :class => 'img-fluid' ) %>
 				</div>
-				<% end %>
+				<%# end %>
 				</a>
-			</div>
+			</div> -->
 			<div class="row vacationRow">
 				<a href="/quote"><div class="col-sm-10 col-xs-10 contact-col contact-left-middle">
 					<h3>I Want to go on Vacation!</h3>
@@ -1497,8 +1565,8 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			</div>
 			<div class="row faregrabbrRow faregrabbrWhite">
-				<a href="https://www.faregrabbr.com" target="_blank"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
-					<h4 class="faregrabbr_h4">Looking for a Lower Airfare?</h4>
+				<a href="https://www.faregrabbr.com" target="_blank"><div class="col-sm-10 col-xs-10 contact-col contact-left-right faregrabbr_col">
+					<h4 class="faregrabbr_h4" id="fareH4">Looking for a Lower Airfare?</h4>
 					<%= image_tag('faregrabbr.png', class: "faregrabbr_logo") %><h5 class="faregrabbr_text"> can search all airlines for up to 30 days</h5>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
@@ -1614,6 +1682,10 @@ $('.second_special_a').click(function(){
 
 $('.third_special_a').click(function(){
 	$('.third_special_form').submit();
+})
+
+$('.fourth_special_a').click(function(){
+	$('.fourth_special_form').submit();
 })
 
 $('#callform').validate({

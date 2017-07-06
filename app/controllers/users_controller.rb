@@ -107,8 +107,10 @@ class UsersController < ApplicationController
 		dates = doc.css('.b-OnSaleItem__details__departures')
 		flights_nights = doc.css('.b-OnSaleCTA__nightsType')
 		photos = doc.css('.b-OnSaleItem__photo>img')
+		agent_ref = doc.css('.b-OnSaleCTA__button')
 		# 
 		@first_ref = "http://www.funjet.com#{refs[0]['href']}"
+		@first_agent_ref = "http://www.funjet.com#{agent_ref[0]['href']}"
 		@first_title = titles[0].text
 		@first_detail_link = titles[0]['href']
 		@first_location = locations[0].text
@@ -121,6 +123,7 @@ class UsersController < ApplicationController
 		@first_image_src = photos[0]['ng-src']
 		# 
 		@second_ref = "http://www.funjet.com#{refs[1]['href']}"
+		@second_agent_ref = "http://www.funjet.com#{agent_ref[1]['href']}"
 		@second_title = titles[2].text
 		@second_detail_link = titles[2]['href']
 		@second_location = locations[1].text
@@ -133,6 +136,7 @@ class UsersController < ApplicationController
 		@second_image_src = photos[1]['ng-src']
 		#
 		@third_ref = "http://www.funjet.com#{refs[2]['href']}"
+		@third_agent_ref = "http://www.funjet.com#{agent_ref[2]['href']}"
 		@third_title = titles[4].text
 		@third_detail_link = titles[4]['href']
 		@third_location = locations[2].text
@@ -144,6 +148,18 @@ class UsersController < ApplicationController
 		@third_flights_nights = flights_nights[2].text
 		@third_image_src = photos[2]['ng-src']
 		# 
+		@fourth_ref = "http://www.funjet.com#{refs[5]['href']}"
+		@fourth_agent_ref = "http://www.funjet.com#{agent_ref[5]['href']}"
+		@fourth_title = titles[10].text
+		@fourth_detail_link = titles[10]['href']
+		@fourth_location = locations[5].text
+		@fourth_price = prices[5].text
+		@fourth_location.slice! "Hotels"
+		@fourth_date = dates[5].text
+		@fourth_date.slice! "more"
+		@fourth_date.slice! " for this Price"
+		@fourth_flights_nights = flights_nights[5].text
+		@fourth_image_src = photos[5]['ng-src']
 		# description.each do |val|
 		# 	puts val.text
 		# end

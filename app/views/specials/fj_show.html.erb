@@ -73,6 +73,9 @@
 		padding-right: 30px;
 	}
 </style>
+<% content_for :head do %>
+  <meta name="turbolinks-cache-control" content="no-cache">
+<% end %>
 <div class="container">
 	<div class="row header-row">
 		<div class="col-sm-12 header-col">
@@ -110,9 +113,10 @@
         </button>
       </div>
       <div class="modal-body">
-    <form action="/interested" method="post" class="form-horizontal special-form" id="fj-special-form">
+    <form action="/interested/funjet" method="post" class="form-horizontal special-form" id="fj-special-form">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 			<input name="user_id" type="hidden" value="<%= @page_user.id %>">
+			<input name="agent_ref" type="hidden" value="<%= @fj.agent_ref %>">
 			<div class="row">
 				<div class="form-group">
 				    <label for="first" class="col-sm-3 control-label">First Name</label>

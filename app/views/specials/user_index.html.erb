@@ -121,7 +121,7 @@
 				<div class="row btn-row">
 					<div class="col-sm-4">
 					<% if val.featured %>
-						<button class="btn btn btn-contact" disabled="disabled">Featured</button>
+						<a href="/specials/unfeature/<%= val.id %>"><button class="btn btn btn-contact">Remove From Profile</button>
 					<% else %>
 						<a href="/specials/feature/<%= val.id %>"><button class="btn btn-contact">Feature</button></a>
 					<% end %>
