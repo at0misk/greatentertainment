@@ -70,7 +70,7 @@ class SpecialsController < ApplicationController
 		redirect_to "/specials/all_specials/#{@user.username}"
 	end
 	def fj_create
-		@@fj = Fj_special.new(params['title'], params['location'], params['price'], params['flights'], params['date'], params['ref'], params['img_src'])
+		@@fj = Fj_special.new(params['title'], params['location'], params['price'], params['flights'], params['date'], params['ref'], params['agent_ref'], params['img_src'])
 		redirect_to '/fj_show'
 	end
 	def fj_show
