@@ -48,6 +48,7 @@ Rails.application.routes.draw do
 	post '/interested' => 'sessions#interested'
 	post '/fj_special' => 'specials#fj_create'
 	get '/fj_show' => 'specials#fj_show'
+	get '/user_guide' => 'sessions#user_guide'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

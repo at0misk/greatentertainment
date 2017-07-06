@@ -564,6 +564,11 @@ button:hover{
   margin-top: 15px;
 }
 
+.interested_agent{
+    font-size: 11px;
+    margin-top: 5px;
+}
+
   </style>
 <%= yield :head %>
   </head>
@@ -589,6 +594,7 @@ button:hover{
             <li><a data-toggle="modal" data-target="#loginModal"><button class="btn btn-sm btn-contact">Login</button></a></li>
             <!-- <li><a href="#"><button class="btn btn-sm btn-contact">Register</button></a></li> -->
           <% end %>
+          <li><a href="#" class="interested_agent">Interested in becoming an agent?</a></li>
         </ul>
 <!--           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
@@ -622,6 +628,7 @@ button:hover{
             <li class="dropdown nav-li">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Agent <span class="caret"></span></a>
               <ul class="dropdown-menu">
+                <li><a href="/user_guide">User Guide</a></li>
                 <li><a href="/<%= @user.username %>">View Profile</a></li>
                 <li><a href="/<%= @user.username %>/edit" data-turbolinks="false">Edit Profile</a></li>
                 <li><a href="/gallery/<%= @user.username %>" data-turbolinks="false">View Photo Gallery</a></li>

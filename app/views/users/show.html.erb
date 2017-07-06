@@ -958,6 +958,21 @@ fieldset[disabled] .btn-fare.active {
 	margin-bottom: 10px;
 }
 
+.faregrabbr_logo{
+	width: 100px;
+	display: inline-block;
+	margin-left: 15px;
+}
+
+.faregrabbr_text{
+	display: inline-block;
+	margin-left: 3px !important;
+}
+
+.faregrabbr_h4{
+	margin-bottom: 0px;
+}
+
 </style>
 <% content_for :head do %>
   <meta name="turbolinks-cache-control" content="no-cache">
@@ -1483,8 +1498,8 @@ fieldset[disabled] .btn-fare.active {
 			</div>
 			<div class="row faregrabbrRow faregrabbrWhite">
 				<a href="https://www.faregrabbr.com" target="_blank"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
-					<h4>Looking for a Lower Airfare?</h4>
-					<h5>Faregrabbr can search all airlines for up to 30 days</h5>
+					<h4 class="faregrabbr_h4">Looking for a Lower Airfare?</h4>
+					<%= image_tag('faregrabbr.png', class: "faregrabbr_logo") %><h5 class="faregrabbr_text"> can search all airlines for up to 30 days</h5>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>

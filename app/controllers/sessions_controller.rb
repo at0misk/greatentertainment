@@ -39,4 +39,6 @@ class SessionsController < ApplicationController
 		@user = User.find(session[:user_id])
 		redirect_to "/#{@user.username}"
 	end
+	def user_guide
+	end
 end
