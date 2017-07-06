@@ -5,9 +5,10 @@
     <style>
       /* Email styles need to be inline  */
     </style>
+    <%= stylesheet_link_tag "mailer" %>
   </head>
 
-  <body>
+  <body style="padding: 0; background: #f7f7f7; text-align: center;">
     <%= yield %>
   </body>
 </html>

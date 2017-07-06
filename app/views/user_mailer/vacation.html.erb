@@ -1,0 +1,25 @@
+<table class="email-table" style="width: 538px; padding: 20px; background: #fff; margin: 40px auto; text-align: left; font-family: 'Helvetica Neue'">
+  <tbody>
+    <tr class="header-row">
+      <td>
+        <h1 style="font-size: 20px">Hello, <%= @user.first %> <%= @user.last %>!</h1>
+        <h4><%= @first %> <%= @last %> wants to go on vacation!</h4>
+        <p>Here's the details:</p>
+      </td>
+    </tr>
+    <tr class="body-row">
+      <td>
+        <p>Name: <%= @first %> <%= @last %></p>
+        <p>Email: <%= @email %></p>
+        <p>Phone Number: <%= @number %></p>
+        <p>Prefered Airport: <%= @airport %></p>
+        <p>Destination: <%= @destination %></p>
+        <p>Depart: <%= @depart_date %></p>
+        <p>Return: <%= @return_date %></p>
+        <p>Adults: <%= @adults %></p>
+        <p>Children: <%= @children %><p>
+        <p>Comments: <%= @comments %></p>
+      </td>
+    </tr>
+  </tbody>
+</table>

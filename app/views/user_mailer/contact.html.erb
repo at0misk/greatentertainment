@@ -1,0 +1,15 @@
+<table class="email-table" style="width: 538px; padding: 20px; background: #fff; margin: 40px auto; text-align: left; font-family: 'Helvetica Neue'">
+  <tbody>
+    <tr class="header-row">
+      <td>
+        <h1 style="font-size: 20px">Hello, <%= @user.first %> <%= @user.last %>!</h1>
+        <h4><%= @first %> <%= @last %> sent you the following message:</h4>
+      </td>
+    </tr>
+    <tr class="body-row">
+      <td>
+        <%= simple_format(@message) %>
+      </td>
+    </tr>
+  </tbody>
+</table>
