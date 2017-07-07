@@ -51,4 +51,11 @@ class UserMailer < ApplicationMailer
   	mail(to: @user.email, subject: "#{first} #{last} is interested in your special!")
   end
 
+  def mail_subscribers(user, recipient, subject, message)
+    @user = user
+    @recipient = recipient
+    @message = message
+    mail(to: recipient.email, subject: "#{subject}")
+  end
+
 end

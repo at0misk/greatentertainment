@@ -3,7 +3,7 @@
     <tr class="header-row">
       <td>
         <h1 style="font-size: 20px">Hello, <%= @user.first %> <%= @user.last %>!</h1>
-        <h4><%= @first %> <%= @last %> is interested in your special: <a href="http://52.24.144.110/specials/<%= @user.id %>/<%= @special.id %>"><%= @special.title %></a>!</h4>
+        <h4><%= @first %> <%= @last %> is interested in your special: <%= @special.title %></a>!</h4>
         <p>Here's the details:</p>
       </td>
     </tr>

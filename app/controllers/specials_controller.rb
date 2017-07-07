@@ -90,6 +90,8 @@ class SpecialsController < ApplicationController
 	def interested_funjet
 		@user = User.find(session[:page_user_id])
 		# mail here
+		UserMailer.funjet_special(@user, params['agent_ref'], params['first'], params['last'], params['email'], params['phone_number'], params['message']).deliver_now
+		flash[:sent_mail] = true
 		redirect_to "/#{@user.username}"
 	end
 end

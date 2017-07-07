@@ -219,6 +219,7 @@ class UsersController < ApplicationController
 			subscription = Subscription.new(user_id: session[:user_id], email: params['email'], first: params['first'], last: params['last'])
 			subscription.save
 		end
+		UserMailer.contact(@user, params['first'], params['last'], params['message']).deliver_now
 		flash[:sent_mail] = true
 		redirect_to "/#{@user.username}"
 	end

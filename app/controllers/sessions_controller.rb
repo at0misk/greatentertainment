@@ -32,11 +32,16 @@ class SessionsController < ApplicationController
 	def quote_process
 		# Send email for quote here
 		@user = User.find(session[:user_id])
+		UserMailer.vacation(@user, params['first'], params['last'], params['airport'], params['email'], params['phone'], params['destination'], params['departure'], params['return'], params['adults'], params['children'], params['comments']).deliver_now
+		flash[:sent_mail] = true
 		redirect_to "/#{@user.username}"
 	end
 	def interested
 		# Send email for interest in special here
 		@user = User.find(session[:user_id])
+		@special = Special.find(params['special_id'])
+		UserMailer.user_special(@user, @special, params['first'], params['last'], params['email'], params['phone_number'], params['message']).deliver_now
+		flash[:sent_mail] = true
 		redirect_to "/#{@user.username}"
 	end
 	def user_guide

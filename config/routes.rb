@@ -51,6 +51,9 @@ Rails.application.routes.draw do
 	post '/fj_special' => 'specials#fj_create'
 	get '/fj_show' => 'specials#fj_show'
 	get '/user_guide' => 'sessions#user_guide'
+	post 'mail_subscribers' => 'subscriptions#mail_subscribers'
+	get '/commissions' => 'commissions#index'
+	get '/commissions/tracker' => 'commissions#tracker'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

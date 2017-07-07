@@ -589,7 +589,7 @@ button:hover{
         <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav log-reg-nav">
           <% if session[:user_id] %>
-            <li><a href="/logout"><button class="btn btn-sm btn-contact">Logout <%= flash[:sent_mail] %></button></a></li>
+            <li><a href="/logout"><button class="btn btn-sm btn-contact">Logout</button></a></li>
           <% else %>
             <li><a data-toggle="modal" data-target="#loginModal"><button class="btn btn-sm btn-contact">Login</button></a></li>
             <!-- <li><a href="#"><button class="btn btn-sm btn-contact">Register</button></a></li> -->
@@ -636,6 +636,8 @@ button:hover{
                 <li><a href="/specials/all_specials/<%= @user.username %>">Edit Specials</a>
                 <li><a href="/specials/new/<%= @user.username %>">New Special</a></li>
                 <li><a href="/subscriptions">View Subscribers</a></li>
+                <li><a href="/commissions">View Comissions</a></li>
+                <li><a href="/commissions/tracker">Commission Tracking Form</a></li>
 <!--                 <li><a href="/blogs/<%#= @user.id %>">VIEW BLOG POSTS</a></li>
                 <li><a href="/blogs/new/<%#= @user.id %>">NEW BLOG POST</a></li>
                 <li><a href="/blogs/edit/<#%= @user.id %>">EDIT BLOG POSTS</a></li> -->
@@ -860,6 +862,7 @@ button:hover{
   <% if flash[:sent_mail] %>
     // alert("Thanks!  We'll be in touch");
       $('#confirmModal').modal('toggle');
+      <% flash[:sent_mail] = nil %>
   <% end %>
 
   });

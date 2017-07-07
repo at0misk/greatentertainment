@@ -29,4 +29,12 @@ class SubscriptionsController < ApplicationController
 		Subscription.find(params['id']).destroy
 		redirect_back fallback_location: "/subscriptions"
 	end
+	def mail_subscribers
+		@user = User.find(session[:user_id])
+		@recipients = Subscription.where(user_id: @user.id)
+		@recipients.each do |val|
+			UserMailer.mail_subscribers(@user, val, params['subject'], params['content']).deliver_later
+		end
+		redirect_to "/#{@user.username}"
+	end
 end
