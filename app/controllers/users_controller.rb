@@ -96,9 +96,10 @@ class UsersController < ApplicationController
 		end
 		@latest = Blog.where(user_id: @page_user.id).last
 		@cruise = Cruise.where(user_id: @page_user.id).last
-		@special = Special.where(user_id: @page_user.id, featured: true).first
 		@blogs = Blog.all.limit(2).order(created_at: "DESC")
+		# 
 		# Funjet Scrape
+		# 
 		doc = Nokogiri::HTML(open("http://www.funjet.com/deals/all-deals"))
 		titles = doc.css('.b-OnSaleProduct__name>a')
 		refs = doc.css('.b-OnSaleCTA__button')
@@ -165,6 +166,9 @@ class UsersController < ApplicationController
 		# end
 		# fail
 		# 
+		# Specials
+		# 
+		@specials = Special.where(user_id: @page_user.id, featured: true)
 		if @current_user && @current_user.id == @page_user.id
 			@unapproved_photos = Photo.where(user_id: @current_user.id, allowed: false)
 		end

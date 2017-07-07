@@ -104,6 +104,14 @@
 			</div>
 			<div class="row">
 				<div class="form-group">
+				    <label for="location" class="col-sm-3 control-label">Location</label>
+				    <div class="col-sm-9">
+				        <input name="special[location]" type="text" class="form-control" id="location" value="<%= val.location %>" required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
 				    <label for="departure" class="col-sm-3 control-label">Depart</label>
 				    <div class="col-sm-9">
 				        <input name="special[depart]" type="date" class="form-control" id="departure" min="<%= Date.today %>" value="<%= val.depart %>" required/>

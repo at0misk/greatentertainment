@@ -104,6 +104,7 @@
 				<div class="row">
 				<div class="col-lg-12 weekly weekly-details">
 						<h4><%= val.title %></h4>
+						<h5><%= val.location %></h5>
 						<h5><%= number_to_currency(val.price) %> pp</h5>
 						<h5 class="dates"><%= val.depart.strftime('%m/%d/%y') %> - <%= val.return.strftime('%m/%d/%y') %></h5>
 						<h5><%= val.description %></h5>
@@ -130,7 +131,7 @@
 						<a href="/specials/edit/<%= val.user.username %>"><button class="btn btn-green">Edit</button></a>
 					</div>
 					<div class="col-sm-4">
-						<a href="/specials/destroy/<%= val.id %>"><button class="btn btn-red">Delete</button></a>
+						<a href="/specials/destroy/<%= val.id %>" data-confirm="Delete this special?"><button class="btn btn-red">Delete</button></a>
 					</div>
 				</div>
 			</div>

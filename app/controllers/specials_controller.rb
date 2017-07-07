@@ -16,7 +16,7 @@ class SpecialsController < ApplicationController
 		redirect_to "/specials/all_specials/#{@user.username}"
 	end
 	def special_params
-		params.require(:special).permit(:title, :depart, :return, :vacancy, :description, :user_id, :image, :price, :featured)
+		params.require(:special).permit(:title, :depart, :return, :vacancy, :description, :user_id, :image, :price, :featured, :location)
 	end
 	def view
 		@user = User.find(params['user_id'])
@@ -56,7 +56,7 @@ class SpecialsController < ApplicationController
 		@user = User.find(session[:user_id])
 		@featured = Special.where(user_id: session[:user_id], featured: true)
 		if @featured.length > 3 
-			@featured.first.update_attribute(:featured, false)
+			@featured.last.update_attribute(:featured, false)
 		end
 		@new_feature = Special.find(params['id'])
 		@new_feature.update_attribute(:featured, true)
