@@ -23,6 +23,18 @@
 	.form-row{
 		margin-top: 15px;
 	}
+	.guide-header{
+		text-align: center;
+	}
+	.tab-content{
+		padding: 15px;
+	}
+	.url-header{
+		margin: 20px 0px;
+	}
+	a{
+		color: #001537 !important;
+	}
 </style>
 <div class="container">
 	<div class="row header-row">
@@ -35,12 +47,61 @@
 		</div>
 	</div>
 	<div class="row form-row">
-		<div class="col-sm-3">
+		<div class="col-md-6">
+
+		  <!-- Nav tabs -->
+		  <ul class="nav nav-tabs" role="tablist">
+		    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Your Profile</a></li>
+		    <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Photo Gallery</a></li>
+		    <li role="presentation"><a href="#specials" aria-controls="specials" role="tab" data-toggle="tab">Specials</a></li>
+		    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Subscribers</a></li>
+		    <li role="presentation"><a href="#commissions" aria-controls="commissions" role="tab" data-toggle="tab">Commissions</a></li>
+		  </ul>
+
+		  <!-- Tab panes -->
+		  <div class="tab-content">
+		    <div role="tabpanel" class="tab-pane active" id="profile">
+			    <!-- <h4 class="guide-header">Your Profile</h4> -->
+				<p>To view your Profile, click the Agent tab in the top right corner of the screen, then click <b>View Profile</b>.  Alternatively, you can view your profile by visiting:</p> 
+				<h4 class="guide-header url-header">www.rooturl.com/<b>your_username</b></h4>
+				<p>This is the address that you should give others to view your website.  To edit your username, click <b>Edit Profile</b> in the Agent tab.</p>
+				<p>In the <b>Edit Profile</b> tab, you can also update your bio, phone number, picture, and other information that will display on your profile page.</p>
+			    </div>
+		    <div role="tabpanel" class="tab-pane" id="gallery">
+		    	<p>Your Photo Gallery is a place for your clients to upload photos from their trips, and share their experiences with eachother and potential new clients.</p>
+		    	<p>To view your gallery, click on <b>Client Photo Gallery</b> from your profile, or <b>View Photo Gallery</b> from the Agent tab.</p>
+		    	<p>Here you can view your pictures, and upload new photos by clicking <b>Upload Photos Here</b> on the bottom of the page.</p>
+		    	<p>When a client uploads a photo to your gallery, you will have to approve of the photo before it is viewable.  To do this, click <b>Edit Photo Gallery</b> in the agents tab.</p>
+		    	<p>You will also be notified if you have photos that are waiting to be approved on your Profile page, and also on your Gallery page</p>
+		    	<p>In the <b>Edit Photo Gallery</b> section, you can:</p>
+		    		<ul>
+		    		<li><b>Approve</b> photos, which will add them to your current gallery.</li>
+		    		<li><b>Remove</b> photos, which will remove a photo from your gallery.</li>
+		    		<li>and <b>Delete</b> photos, which will <i>permanently</i> delete a photo from your gallery</li>
+		    		</ul>
+		    	<p>You can also edit photo info by clicking on an image.</p>
+		    </div>
+		    <div role="tabpanel" class="tab-pane" id="specials">
+		    	<p>Your <b>Profile</b> has space for 4 specials</p>
+		    	<p>By default, if you do not upload your own specials, daily specials generated from Funjet vacations will be provided.</p>
+		    	<p>You can upload your own specials by clicking on <b>New Special</b> in the Agent tab.</p>
+		    	<p>To edit the current specials on your page, click on <b>Edit Specials</b> in the Agent tab.</p>
+		    	<p>From the <b>Edit Specials</b> page, you can control which specials are on your <b>Profile</b>, edit details of specials, or delete specials entirely.</p>
+		    	<p>You can list up to 4 specials, and if you list less than 4 specials, the remaining specials will be populated from Funjet vacations.</p>
+		    	<p>When a client is interested in a special, they will contact you through the request form found on that special's page.  This will send an email to you with their details, along with a link to the specific special that they are interested in.</p>
+		    </div>
+		    <div role="tabpanel" class="tab-pane" id="settings">
+		    	<p>When contacting you through the various contact forms through the site, visitors will be asked if they want to be updated regarding information about travel specials.</p>
+		    	<p>The <b>View Subscribers</b> page, found in the Agent tab, will provide you with a list of visitors who wish to recieve news from you.</p>
+		    	<p>You can contact them by filling out the <b>Email Subscribers</b> form found on this page.</p>
+		    </div>
+		    <div role="tabpanel" class="tab-pane" id="commissions">
+		    	<p>Commission tracking form and viewing. (placeholder)</p>
+		    </div>
+		  </div>
+
 		</div>
-		<div class="col-sm-6">
-		
-		</div>
-		<div class="col-sm-3">
+		<div class="col-sm-2">
 		</div>
 	</div>
 </div>

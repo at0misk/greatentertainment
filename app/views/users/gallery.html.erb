@@ -17,7 +17,7 @@
 	.description-div{
 		color: white;
     	background-color: #5b90b2;
-	    height: 586px;
+	    height: 537px;
 	    overflow: scroll;
 	    padding: 2%;
 		/*margin-top: 39px;*/
@@ -69,9 +69,10 @@
 		color: white;
 	}
 	.booked-div{
-		position: absolute;
-		bottom: 10px;
-		left: 20px;
+	    float: right;
+	    text-align: center;
+	    background: #5b90b2;
+	    padding-bottom: 15px;
 	}
 	.booked a{
 		color: #153649;
@@ -101,14 +102,14 @@
 	}
 @media (max-width: 1199px){
 	.description-div{
-		height: 486px;
+		height: 437px;
 		padding: 2%;
 	}
 }
 
 @media (max-width: 991px){
 	.description-div{
-		height: 376px;
+		height: 327px;
 		padding: 1%;
 	}
 	.location{
@@ -129,7 +130,8 @@
 	}
 	.booked-div{
 		position: relative;
-		margin-top: 40px;
+	    width: 100%;
+	    margin-top: 0px;
 		margin-bottom: 0px;
 		display: block;
 		/*padding: 2%;*/
@@ -212,9 +214,9 @@
 				<p class='description-p'><%= @photos[0].description %></p>
 				<p class='name'>- <%= @photos[0].name %></p>
 				</div>
-				<div class="booked-div">
-					<h5 class="booked">Have you booked with <%= @page_user.first %> <%= @page_user.last %>? Upload photos from your trip <a href="#" data-toggle="modal" data-target="#galleryModal">here!</a></h5>
-				</div>
+			</div>
+			<div class="booked-div col-sm-3">
+				<a href="#" data-toggle="modal" data-target="#galleryModal"><button class="btn btn-contact">Upload Photos Here!</button></a>
 			</div>
 		<% else %>
 		<div class="row photo-row no-photo-row">
@@ -224,7 +226,7 @@
 			</div>
 			<div class="description-div col-sm-3">
 				<div class="booked-div">
-					<h5 class="booked">Have you booked with <%= @page_user.first %> <%= @page_user.last %>? Upload photos from your trip <a href="#" data-toggle="modal" data-target="#galleryModal">here!</a></h5>
+					<a href="#" data-toggle="modal" data-target="#galleryModal"><button class="btn btn-contact">Upload Photos Here!</button></a>
 				</div>
 			</div>
 		</div>

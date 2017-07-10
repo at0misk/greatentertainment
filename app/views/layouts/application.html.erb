@@ -568,7 +568,12 @@ button:hover{
     font-size: 11px;
     margin-top: 5px;
 }
-
+.green{
+  color: #3c763d;
+}
+.red{
+  color: #a94442;
+}
   </style>
 <%= yield :head %>
   </head>
@@ -633,10 +638,10 @@ button:hover{
                 <li><a href="/<%= @user.username %>/edit" data-turbolinks="false">Edit Profile</a></li>
                 <li><a href="/gallery/<%= @user.username %>" data-turbolinks="false">View Photo Gallery</a></li>
                 <li><a href="/gallery/edit/<%= @user.username %>" data-turbolinks="false">Edit Photo Gallery</a></li>
-                <li><a href="/specials/all_specials/<%= @user.username %>">Edit Specials</a>
                 <li><a href="/specials/new/<%= @user.username %>">New Special</a></li>
+                <li><a href="/specials/all_specials/<%= @user.username %>">Edit Specials</a>
                 <li><a href="/subscriptions">View Subscribers</a></li>
-                <li><a href="/commissions">View Comissions</a></li>
+                <!-- <li><a href="/commissions">View Comissions</a></li> -->
                 <li><a href="/commissions/tracker">Commission Tracking Form</a></li>
 <!--                 <li><a href="/blogs/<%#= @user.id %>">VIEW BLOG POSTS</a></li>
                 <li><a href="/blogs/new/<%#= @user.id %>">NEW BLOG POST</a></li>
