@@ -864,12 +864,6 @@ button:hover{
         <%# flash[:sent_mail] = nil %>
     // })
 
-  <% if flash[:sent_mail] %>
-    // alert("Thanks!  We'll be in touch");
-      $('#confirmModal').modal('toggle');
-      <% flash[:sent_mail] = nil %>
-  <% end %>
-
   });
 
 </script>

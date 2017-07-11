@@ -149,18 +149,18 @@ class UsersController < ApplicationController
 		@third_flights_nights = flights_nights[2].text
 		@third_image_src = photos[2]['ng-src']
 		# 
-		@fourth_ref = "http://www.funjet.com#{refs[5]['href']}"
-		@fourth_agent_ref = "http://www.funjet.com#{agent_ref[5]['href']}"
-		@fourth_title = titles[10].text
-		@fourth_detail_link = titles[10]['href']
-		@fourth_location = locations[5].text
-		@fourth_price = prices[5].text
+		@fourth_ref = "http://www.funjet.com#{refs[3]['href']}"
+		@fourth_agent_ref = "http://www.funjet.com#{agent_ref[3]['href']}"
+		@fourth_title = titles[6].text
+		@fourth_detail_link = titles[6]['href']
+		@fourth_location = locations[3].text
+		@fourth_price = prices[3].text
 		@fourth_location.slice! "Hotels"
-		@fourth_date = dates[5].text
+		@fourth_date = dates[3].text
 		@fourth_date.slice! "more"
 		@fourth_date.slice! " for this Price"
-		@fourth_flights_nights = flights_nights[5].text
-		@fourth_image_src = photos[5]['ng-src']
+		@fourth_flights_nights = flights_nights[3].text
+		@fourth_image_src = photos[3]['ng-src']
 		# description.each do |val|
 		# 	puts val.text
 		# end

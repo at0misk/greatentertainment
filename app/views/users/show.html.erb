@@ -2218,5 +2218,11 @@ $('.myTabs a').click(function (e) {
   $(this).tab('show')
 })
 
+  <% if flash[:sent_mail] %>
+    // alert("Thanks!  We'll be in touch");
+      $('#confirmModal').modal('toggle');
+      <% flash[:sent_mail] = nil %>
+  <% end %>
+
 });
 </script>

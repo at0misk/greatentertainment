@@ -78,7 +78,7 @@ class SpecialsController < ApplicationController
 			@fj = @@fj
 			desc_doc = Nokogiri::HTML(open("#{@fj.ref}"))
 			puts @fj.ref
-			desc = desc_doc.css('#overviewHotelProperty>p')
+			desc = desc_doc.css('#overviewHotelProperty')
 			@description = desc.text
 			puts @description
 			# fail
