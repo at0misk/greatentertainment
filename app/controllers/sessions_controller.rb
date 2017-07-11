@@ -34,6 +34,10 @@ class SessionsController < ApplicationController
 		@user = User.find(session[:user_id])
 		UserMailer.vacation(@user, params['first'], params['last'], params['airport'], params['email'], params['phone'], params['destination'], params['departure'], params['return'], params['adults'], params['children'], params['comments']).deliver_now
 		flash[:sent_mail] = true
+		if params['subscribe']
+			subscription = Subscription.new(user_id: session[:user_id], email: params['email'], first: params['first'], last: params['last'])
+			subscription.save
+		end
 		redirect_to "/#{@user.username}"
 	end
 	def interested
