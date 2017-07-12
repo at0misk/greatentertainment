@@ -1,0 +1,218 @@
+<style type="text/css">
+	.header-row{
+		background-color: #153649;
+		color: white;
+		margin-top: 0px;
+		margin-right: -30px;
+		margin-left: -30px;
+	}
+	.edit-form{
+		margin-top: 15px;
+	}
+	.btn-col{
+		text-align: center;
+		margin-bottom: 15px;
+	}
+	.form-row{
+		height: 400px;
+		margin-bottom: 100px;
+		margin-top: 15px;
+	}
+	.right-col{
+		height: 100%;
+	}
+	.edit-container{
+		background-color: white;
+		padding: 0px 30px;
+		margin-top: 15px;
+	}
+	.img-fluid{
+		max-width: 100%;
+		height: auto;
+	}
+	.form-header{
+		margin-bottom: 20px;
+	}
+
+	@media (max-width: 767px){
+		body{
+		    /*padding-bottom: 548px;*/
+		}
+		.edit-container{
+			min-height: 1400px;
+		}
+		.form-row{
+			height: auto;
+			margin-bottom: 0px;
+		}
+	}
+	.errors{
+		text-align: center;
+		color: red;
+	}
+</style>
+<% content_for :head do %>
+  <meta name="turbolinks-cache-control" content="no-cache">
+<% end %>
+<div class="container edit-container">
+	<div class="row header-row">
+		<div class="col-sm-12">
+			<h3 class="form-header">Edit Profile</h3>
+		</div>
+	</div>
+	<div class="row form-row">
+	<form action="/admins/<%= @user.username %>" method="POST" class="form-horizontal" enctype="multipart/form-data" id="user-edit-form">
+		<div class="col-sm-6">
+					<input name="_method" type="hidden" value="PATCH">
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<div class="row">
+					<div class="form-group">
+					    <label for="first" class="col-sm-3 control-label">First Name</label>
+					    <div class="col-sm-9">
+					        <input name="user[first]" type="text" class="form-control" id="first" value="<%= @user.first %>" required/>
+					    </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+					    <label for="last" class="col-sm-3 control-label">Last Name</label>
+					    <div class="col-sm-9">
+					        <input name="user[last]" type="text" class="form-control" id="last" value="<%= @user.last %>" required/>
+					    </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+					    <label for="email" class="col-sm-3 control-label">Email</label>
+					    <div class="col-sm-9">
+					        <input name="user[email]" type="text" class="form-control" id="email" value="<%= @user.email %>" required/>
+					    </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+					    <label for="username" class="col-sm-3 control-label">Username</label>
+					    <div class="col-sm-9">
+					        <input name="user[username]" type="text" class="form-control" id="username" value="<%= @user.username %>" required/>
+					    </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+					    <label for="phone_number" class="col-sm-3 control-label">Phone Number</label>
+					    <div class="col-sm-9">
+					        <input name="user[phone_number]" type="text" class="form-control" id="phone_number" value="<%= @user.phone_number %>" required/>
+					    </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+					    <label for="about" class="col-sm-3 control-label">About Me:</label>
+					    <div class="col-sm-9">
+					    	<textarea name="user[about]" class="form-control" id="about" rows="10" required><%= @user.about %></textarea>
+					    </div>
+					</div>
+				</div>
+		</div>
+		<div class="col-sm-6 right-col">
+			<% if @user.avatar.url %>
+				<div class="row">
+					<div class="form-group">
+						<label for="current_image" class="col-sm-3 control-label">Current Photo</label>
+						<div class="col-sm-9 img-col">
+							<% if @user.avatar.url == '/avatars/original/missing.png' %>
+								<%= image_tag 'placeholder_user', :class => "img-fluid", :size => '150x150' %>
+							<% else %>
+								<%= image_tag @user.avatar.url, :class => "img-fluid" %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<% end %>
+				<div class="row">
+				  <div class="form-group">
+				    <label for="exampleInputFile" class="col-sm-3 control-label">Photo</label>
+				    <div class="col-sm-9">
+				    	<input name="user[avatar]" type="file" class="form-control-file" id="inputFile" aria-describedby="fileHelp" value="<%= @user.avatar %>">
+				    </div>
+				  </div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+					    <label for="password" class="col-sm-3 control-label">Password</label>
+					    <div class="col-sm-9">
+					        <input name="user[password]" type="password" class="form-control" id="password"/>
+					    </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+					    <label for="password_confirmation" class="col-sm-3 control-label">Password Confirmation</label>
+					    <div class="col-sm-9">
+					        <input name="user[password_confirmation]" type="password" class="form-control" id="password_confirmation"/>
+					    </div>
+					</div>
+				</div>
+				<% if flash[:errors] %>
+					<div class="row">
+						<div class="col-sm-12 errors">
+							<% flash[:errors].each do |val| %>
+								<p><%= val %></p>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group">
+		    <div class="col-sm-12 btn-col">
+		        <button class="btn btn-contact">Update Profile</button>
+		    </div>
+		</div>
+	</div>
+</form>
+<!-- 			<div class="col-sm-6">
+				<div class="row">
+					<div class="col-sm-4">
+						<h3 class="form-header">Destroy</h3>
+					</div>
+					<div class="col-sm-8">
+					</div>
+				</div>
+				<form action="/<%= @user.username %>" method="post" class="form-horizontal">
+					<input name="_method" type="hidden" value="DELETE"%>
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<div class="row">
+					<div class="form-group">
+					    <label for="submit" class="col-sm-4 control-label"></label>
+					    <div class="col-sm-8 btn-col">
+					        <button class="btn btn-danger" data-confirm="are you sure?">Destroy</button>
+					    </div>
+					</div>
+				</div>
+				</form>
+			</div> -->
+<!-- 		</div>
+	</div> -->
+</div>
+<script type="text/javascript">
+	$(document).on('turbolinks:load',function(){
+		$('#user-edit-form').validate({
+			rules: {
+				'user[email]': {
+					email: true
+				},
+				'user[phone_number]': {
+					digits: true
+				}
+			},
+	        highlight: function (element) {
+	            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+	        },
+	        success: function (element) {
+	            element.closest('.form-group').removeClass('has-error').addClass('has-success');
+	        }
+		});
+	})
+</script>

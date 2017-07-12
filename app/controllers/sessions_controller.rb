@@ -13,7 +13,21 @@ class SessionsController < ApplicationController
 				session[:user_id] = @user.id
 				redirect_to "/#{@user.username}" and return 
 			else
-				flash[:errors] = "Incorrect password"
+				flash[:errors] = "Incorrect Password"
+			end
+		else
+			flash[:errors] = "User Doesn't Exist"
+		end
+		redirect_to "/"
+	end
+	def admins_login
+		@user = User.find_by(email: params['email'])
+		if @user
+			if @user.authenticate(params['password']) && @user.permod
+				session[:user_id] = @user.id
+				redirect_to "/admin_dash" and return 
+			else
+				flash[:errors] = "Incorrect Password / User Not An Admin"
 			end
 		else
 			flash[:errors] = "User doesn't exist"

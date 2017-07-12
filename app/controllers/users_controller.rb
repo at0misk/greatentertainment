@@ -1,6 +1,7 @@
 require 'open-uri'
 
 class UsersController < ApplicationController
+@@search_users = {}
 # Temp test credentials until live account
   @@twilio_sid = 'AC181e8543ebb9d284eb206ac11cf3760e'
   @@twilio_token = '7c7ce2c4ffeee5dc9e56e47bef28620d'
@@ -269,5 +270,77 @@ class UsersController < ApplicationController
 			redirect_to '/' and return
 		end
 		    redirect_to "/gallery/#{@user.username}"
+	end
+	def admins
+		session[:user_id] = nil
+	end
+	def admin_dash
+	end
+	def user_search
+		@users = User.where("email LIKE ? OR first LIKE ? OR last LIKE ? OR username LIKE ?", "%#{params['search']}%","%#{params['search']}%","%#{params['search']}%","%#{params['search']}%")
+		if @users
+			@@search_users = @users
+			redirect_to "/users_found"
+		else
+			flash[:errors] = "No Users Found"
+			redirect_to "/admin_dash" and return
+		end
+	end
+	def users_found
+		@users = @@search_users
+	end
+	def recover
+		@user = User.find_by(email: params['email'])
+		if !@user
+			flash[:errors] = "Email not found"
+		else
+			random_password = Array.new(10).map { (65 + rand(58)).chr }.join
+			@user.password = random_password
+			@user.save!
+			UserMailer.create_and_deliver_password_change(@user, random_password).deliver_now
+			flash[:errors] = "Email sent"
+		end
+		redirect_to "/"
+	end
+	def forgot_password
+	end
+	def admins_edit_user
+		@user = User.find(params[:id])
+		if @user
+		else
+			flash[:errors] = "No User Found"
+		end
+	end
+	def admins_update
+		@user = User.find_by_username(params['username'])
+		# if @user.id == session[:user_id]
+	    if @user.update(user_params)
+	    	flash[:errors] = nil
+	    else
+	    	flash[:errors] = @user.errors.full_messages
+	    	redirect_to "/#{@user.username}/edit" and return
+	    end
+		# else
+		# end
+		redirect_to "/#{@user.username}"
+	end
+	def admins_destroy_user
+		User.find(params[:id]).destroy
+		flash[:errors] = "User Destroyed"
+		redirect_to "/admin_dash"
+	end
+	def admins_edit_gallery
+		@approved_photos = Photo.where(user_id: params['id'], allowed: true).order('updated_at DESC')
+		@unapproved_photos = Photo.where(user_id: params['id'], allowed: false).order('updated_at DESC')
+		@user = User.find(params['id'])
+	end
+	def admins_gallery_update
+		@photo = Photo.find(params['id'])
+		    if @photo.update(photo_params)
+		    	flash[:errors] = nil
+		    else
+		    	flash[:errors] = @photo.errors.full_messages
+		    end
+		redirect_to "/gallery/#{@photo.user.username}"
 	end
 end

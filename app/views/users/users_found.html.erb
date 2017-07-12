@@ -1,0 +1,61 @@
+<style type="text/css">
+	.header-col{
+		padding: 0px;
+	}
+	.admin-dash-cont{
+		min-height: 550px;
+		background-color: white;
+		margin-top: 15px;
+	}
+	.lookup-col{
+		text-align: center;
+		margin-top: 30px;
+	}
+	td{
+		text-align: left;
+	}
+</style>
+<div class="container admin-dash-cont">
+	<div class="row">
+	    <div class="col-sm-12 header-col">
+	      <div class="modal-header">
+	        <h3 class="modal-title modalh3" id="loginModalLabel">Admin Dashboard</h3>
+	      </div>
+	    </div>
+    </div>
+    <div class="row">
+    	<div class="col-sm-2">
+    	</div>
+    	<div class="col-sm-8 lookup-col">
+    		<h4 class="lookup-header">Users Found</h4>
+			<table class="table table-responsive table-striped">
+				<thead>
+					<tr>
+						<!-- <th>ID</th> -->
+						<th>Name</th>
+						<th>Email</th>
+						<th>Actions</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @users.each do |val| %>
+					<tr>
+						<!-- <td></td> -->
+						<td><a href="/<%= val.username %>"><%= val.first %> <%= val.last %></a></td>
+						<td><%= val.email %></td>
+						<td><a href="/forgot_password" target="_blank">Reset Password</a></td>
+						<td><a href="/admins/edit_user/<%= val.id %>">Edit User Info</a></td>
+						<td><a href="/admins/edit_gallery/<%= val.id %>">Edit Gallery</a></td>
+						<td><a href="/admins/edit_specials/<%= val.id %>">Edit Specials</a></td>
+						<td><a href="/admins/user_destroy/<%= val.id %>" data-confirm="Really delete this user?"><button class="btn btn-danger btn-sm">Delete User</button></a></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+    	</div>
+    	<div class="col-sm-2">
+    	</div>
+    </div>
+</div>

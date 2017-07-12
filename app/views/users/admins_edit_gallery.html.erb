@@ -1,0 +1,282 @@
+<style type="text/css">
+	.thumb-div{
+		width: 175px;
+		height: 150px;
+		display: inline-block;
+		margin: 0px 3px;
+		margin-bottom: 45px;
+	    /*margin: 0px 5px;*/
+	    vertical-align: top;	}
+	.thumb-div img{
+		width: 175px;
+		height: auto;
+		display: inline-block;
+	    min-height: 150px;
+	}
+	.btn-div form{
+		display: inline-block;
+	}
+	.btn-danger{
+		/*margin-left: 10px;*/
+/*		position: absolute;
+		right: 0;
+		top: 0;*/
+		display: inline-block;
+		/*width: 87px;*/
+	}
+	.btn-div{
+		position: relative;
+		margin-top: 5px;
+		text-align: center;
+	}
+	.btn-green{
+		width: 90px;
+		padding: 6px 10px;
+	}
+	.thumb-div .btn{
+		width: 85px;
+	}
+	.view-cont{
+		min-height: 600px;
+		height: auto;
+		margin-top: 15px;
+	}
+	.header-row{
+		text-align: center;
+		background-color: #153649;
+		color: white;
+		padding-bottom: 10px;
+		margin-bottom: 15px;
+	}
+	.header-approve{
+		background-color: #06b78d;
+	}
+	.content .col-sm-6{
+		background-color: white;
+		min-height: 500px;
+	}
+	.none-found{
+		text-align: center;
+	}
+	.instruction-row{
+		background-color: white;
+	}
+	.btn-col{
+		text-align: center;
+	}
+
+	#modal-image{
+		width: 100%;
+    	height: auto;
+    	margin-bottom: 15px;
+	}
+
+	.thumb-div img{
+		-moz-transition: all 0.4s;
+		-webkit-transition: all 0.4s;
+		transition: all 0.4s;
+	}
+
+	.thumb-div img:hover{
+		opacity: 0.6;
+		cursor: pointer;
+	}
+
+@media (max-width: 767px) {
+	.content .col-sm-6{
+		min-height: 400px;
+	}
+}
+
+</style>
+<div class="container view-cont">
+	<div class="row content">
+		<div class="col-sm-6">
+			<div class="row header-row">
+				<div class="col-sm-12">
+					<h3>Current Gallery Photos</h3>
+				</div>
+			</div>
+			<% if @approved_photos.length == 0 %>
+				<h3 class="none-found">You currently have no photos in your gallery</h3>
+				<h4 class="none-found">View your <a href="/gallery/<%= @user.username %>">gallery</a> to upload photos</h4>
+			<% else %>
+				<% @approved_photos.each do |val| %>
+					<div class="thumb-div thumb-div-right">
+				  	<%= image_tag(val.image.url, :data => { :caption => "#{val.location} - #{val.name} - #{@date}", :description => "#{val.description}", :location => "#{val.location}", :date => "#{val.traveled_on}", :name => "#{val.name}", :id => "#{val.id}" }) %>
+							<div class="btn-div">
+							<% if !val.allowed %>
+								<form action="/photo_allow" method="POST">
+								<input name="_method" type="hidden" value="PATCH"%>
+								<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+								<input name="photo_id" type="hidden" value="<%= val.id %>">
+								<button class="btn btn-contact">Approve</button>
+								</form>
+							<% else %>
+								<form action="/photo_remove" method="POST">
+								<input name="_method" type="hidden" value="PATCH"%>
+								<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+								<input name="photo_id" type="hidden" value="<%= val.id %>">
+								<button class="btn btn-contact">Remove</button>
+								</form>
+							<% end %>
+								<form action="/photo_destroy" method="POST">
+								<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+								<input name="photo_id" type="hidden" value="<%= val.id %>">
+								<button class="btn btn-red" data-confirm="Really delete this photo?">Delete</button>
+								</form>
+							</div>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="col-sm-6">
+			<div class="row header-row header-approve">
+				<div class="col-sm-12">
+					<h3>Photos to Approve</h3>
+				</div>
+			</div>
+			<% if @unapproved_photos.length == 0 %>
+				<h4 class="none-found">You currently have no unapproved photos</h4>
+			<% else %>
+				<% @unapproved_photos.each do |val| %>
+					<div class="thumb-div">
+				  	<%= image_tag(val.image.url, :data => { :caption => "#{val.location} - #{val.name} - #{@date}", :description => "#{val.description}", :location => "#{val.location}", :date => "#{val.traveled_on}", :name => "#{val.name}" }) %>
+							<div class="btn-div btn-div-left">
+							<% if !val.allowed %>
+								<form action="/photo_allow" method="POST">
+								<input name="_method" type="hidden" value="PATCH"%>
+								<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+								<input name="photo_id" type="hidden" value="<%= val.id %>">
+								<button class="btn btn-green">Approve</button>
+								</form>
+							<% else %>
+								<form action="/photo_remove" method="POST">
+								<input name="_method" type="hidden" value="PATCH"%>
+								<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+								<input name="photo_id" type="hidden" value="<%= val.id %>">
+								<button class="btn btn-green">Rremove</button>
+								</form>
+							<% end %>
+								<form action="/photo_destroy" method="POST">
+								<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+								<input name="photo_id" type="hidden" value="<%= val.id %>">
+								<button class="btn btn-red" data-confirm="Really delete this photo?">Delete</button>
+								</form>
+							</div>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+	<div class="row instruction-row">
+		<div class="col-sm-12">
+			<ul>
+				<li>Clck an image to edit it</li>
+				<li>Approve - adds a photo to your gallery</li>
+				<li>Remove - removes a photo from your gallery</li>
+				<li>Delete - deletes a photo <em>permanently</em> from your gallery</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- Contact Modal -->
+<div class="modal fade" id="editImageModal" tabindex="-1" role="dialog" aria-labelledby="editImageModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="glyphicon glyphicon-camera" aria-hidden="true"></span><h3 class="modal-title modalh3" id="contactModalLabel">EDIT IMAGE </h3>
+        <button type="button" id="contact-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="row">
+      	<div class="col-sm-3">
+      	</div>
+      	<div class="col-sm-8">
+	      <%= image_tag('logo', :id => 'modal-image', :class => 'img-fluid') %>
+	    </div>
+      </div>
+		<form action="/admins/gallery_upload" method="post" class="form-horizontal" enctype="multipart/form-data" id="editForm">
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		<input name="photo[user_id]" type="hidden" value="<%= @user.id %>">
+		<input name="_method" type="hidden" value="PATCH">
+		<div class="form-group photo-group">
+		    <label for="name" class="col-sm-3 control-label">Name</label>
+		    <div class="col-sm-8">
+		    	<input name="photo[name]" type="text" class="form-control" id="name" aria-describedby="fileHelp" required>
+		    </div>
+		</div>
+		<div class="form-group photo-group">
+		    <label for="location" class="col-sm-3 control-label">Location</label>
+		    <div class="col-sm-8">
+		    	<input name="photo[location]" type="text" class="form-control" id="location" aria-describedby="fileHelp" required>
+		    </div>
+		</div>
+		<div class="form-group photo-group">
+		    <label for="traveled_on" class="col-sm-3 control-label">Date Taken</label>
+		    <div class="col-sm-8">
+		    	<input name="photo[traveled_on]" type="date" class="form-control" id="traveled_on" aria-describedby="fileHelp" required>
+		    </div>
+		</div>
+<!-- 		<div class="form-group photo-group">
+		    <label for="inputFile" class="col-sm-3 control-label">Photo</label>
+		    <div class="col-sm-8">
+		    	<input name="photo[image]" type="file" class="form-control-file" id="inputFile" aria-describedby="fileHelp">
+		    </div>
+		</div> -->
+		<div class="form-group photo-group">
+		    <label for="description" class="col-sm-3 control-label">Description</label>
+		    <div class="col-sm-8">
+		    	<textarea rows="4" name="photo[description]" class="form-control" id="description" aria-describedby="description" required></textarea>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+			    <!-- <label for="submit" class="col-sm-2 control-label"></label> -->
+			    <div class="col-sm-12 btn-col">
+			    	<button class="btn btn-contact">Edit</button>
+			    </div>
+			</div>
+		</div>
+	</form>
+      </div>
+<!--       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+	$('document').ready(function(){
+			$('#editForm').validate({
+				rules: {
+					'photo[description]': {
+						required: true
+					}
+				},
+		        highlight: function (element) {
+		            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+		        },
+		        success: function (element) {
+		            element.closest('.form-group').removeClass('has-error').addClass('has-success');
+		        }
+			});
+		$('.thumb-div img').on('click', function(){
+			$('#name').val($(this).attr('data-name'))
+			$('#location').val($(this).attr('data-location'))
+			$('#description').val($(this).attr('data-description'))
+			$('#traveled_on').val($(this).attr('data-date'))
+			// $('#inputFile').val($(this).attr('src'))
+			$('#editImageModal').modal('toggle');
+			$('#editForm').attr('action', '/admins/gallery_upload/' + $(this).attr('data-id'))
+			$('#modal-image').attr('src', $(this).attr('src'))
+			// alert($(this).attr('data-description'));
+		})
+	})
+</script>

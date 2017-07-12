@@ -54,6 +54,18 @@ Rails.application.routes.draw do
 	post 'mail_subscribers' => 'subscriptions#mail_subscribers'
 	get '/commissions' => 'commissions#index'
 	get '/commissions/tracker' => 'commissions#tracker'
+	get '/admins' => 'users#admins'
+	post '/admins' => 'sessions#admins_login'
+	get '/admin_dash' => 'users#admin_dash'
+	post '/users/search' => 'users#user_search'
+	get 'users_found' => 'users#users_found'
+	get '/forgot_password' => 'users#forgot_password'
+	post '/recover' => 'users#recover'
+	get '/admins/edit_user/:id' => 'users#admins_edit_user'
+	patch '/admins/:username' => 'users#admins_update'
+	get '/admins/user_destroy/:id' => 'users#admins_destroy_user'
+	get '/admins/edit_gallery/:id' => 'users#admins_edit_gallery'
+	patch '/admins/gallery_upload/:id' => 'users#admins_gallery_update'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

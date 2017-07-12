@@ -574,6 +574,14 @@ button:hover{
 .red{
   color: #a94442;
 }
+.pw-col{
+  text-align: center;
+}
+
+.forgot-small{
+  display: block;
+}
+
   </style>
 <%= yield :head %>
   </head>
@@ -683,8 +691,9 @@ button:hover{
       <div class="row form-row-login">
         <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Password</label>
-            <div class="col-sm-6">
+            <div class="col-sm-6 pw-col">
                 <input name="password" type="password" class="form-control" id="password-login" required/>
+                <small class="forgot-small"><a href="/forgot_password">Forgot Password?</a></small>
             </div>
         </div>
       </div>

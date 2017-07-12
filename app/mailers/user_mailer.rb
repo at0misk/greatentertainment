@@ -58,4 +58,10 @@ class UserMailer < ApplicationMailer
     mail(to: recipient.email, subject: "#{subject}")
   end
 
+  def create_and_deliver_password_change(user, random_password)
+    @user = user
+    @random_password = random_password
+    mail(to: "#{@user.email}", subject: 'Password Recovery')
+  end
+
 end
