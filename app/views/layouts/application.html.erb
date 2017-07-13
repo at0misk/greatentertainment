@@ -62,13 +62,14 @@
     }
     .navbar-brand{
       padding: 3px;
-      width: 300px;
+      width: 170px;
       margin-left: -30px !important;
     }
     .evo{
-      margin-top: 5px;
+      margin-top: 10px;
       display: block;
       color: #001537;
+      text-align: center;
     }
     .travel{
       display: block;
@@ -458,7 +459,10 @@ fieldset[disabled] .btn-yellow.active {
       text-align: center;
     }
 
-@media (max-width: 1256px) {
+@media (max-width: 1296px) {
+    .evo{
+      margin-top: 5px;
+    }
     .navbar-collapse.collapse {
         display: none !important;
     }
@@ -472,7 +476,14 @@ fieldset[disabled] .btn-yellow.active {
         float:none;
     }
 }
-@media (max-width: 756px) {
+
+@media (max-width: 767px){
+  .interested_agent{
+    margin-left: 15px;
+  }
+}
+
+@media (max-width: 767px) {
   .navbar-collapse{
     min-height: 590px !important;
     height: 100%;
@@ -665,8 +676,8 @@ button:hover{
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li> -->
               </ul>
+           </li>
             <% end %>
-          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
