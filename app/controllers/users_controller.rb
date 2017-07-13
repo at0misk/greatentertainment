@@ -343,4 +343,27 @@ class UsersController < ApplicationController
 		    end
 		redirect_to "/gallery/#{@photo.user.username}"
 	end
+	def admins_edit_specials
+		@user = User.find(session[:user_id])
+		@specials = Special.where(user_id: @user.id)
+	end
+	def admins_feature
+		@special = Special.find(params['id'])
+		@user = @special.user
+		@featured = Special.where(user_id: @user.id, featured: true)
+		if @featured.length > 3 
+			@featured.last.update_attribute(:featured, false)
+		end
+		@new_feature = Special.find(params['id'])
+		@new_feature.update_attribute(:featured, true)
+		redirect_to "/specials/all_specials/#{@user.username}"
+	end
+	def admins_unfeature
+		@special = Special.find(params['id'])
+		@user = @special.user
+		@featured = Special.find(params['id'])
+		@featured.update_attribute(:featured, false)
+		@featured.save
+		redirect_to "/specials/all_specials/#{@user.username}"
+	end
 end

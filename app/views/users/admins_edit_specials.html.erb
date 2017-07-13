@@ -1,0 +1,233 @@
+<style type="text/css">
+	.btn-col-update{
+		text-align: right;
+	}
+	.img-div img{
+		height: auto;
+		width: 100%;
+		min-height: 250px;
+	}
+	.header{
+		display: inline-block;
+	}
+	.dest-form{
+		display: inline-block;
+		float: right;
+	}
+	.outer-form-col{
+		padding-right: 30px;
+	}
+	.btn-danger{
+		position: absolute;
+		right: -15px;
+	}
+	.edit-row{
+		margin-top: 15px;
+	}
+	.container{
+		min-height: 550px;
+		background: white;
+		margin-top: 15px;
+	}
+	.update-form{
+		margin-top: 15px;
+	}
+	.form-header{
+		margin-bottom: 20px;
+	}
+	.header-row{
+		color: white;
+		background-color: #153649;
+	}
+	.specials-row{
+		margin-top: 15px;
+	}
+	@media (max-width: 767px){
+		.form-group{
+			padding: 0px 15px;
+		}
+	}
+	.characters{
+		display: inline-block;
+	    float: right;
+	    margin-right: 15px;
+	    margin-top: 15px;
+	}
+	.green{
+		color: #3c763d;
+	}
+	.red{
+		color: #a94442;
+	}
+	.btn-row button{
+		width: 100%;
+	}
+	.btn-row .col-sm-6{
+		padding: 0px;
+	}
+</style>
+<div class="container">
+	<div class="row header-row">
+		<div class="col-sm-12">
+			<h3 class="form-header">Edit Specials</h3>
+		</div>
+	</div>
+	<div class="row edit-row">
+	<% @specials.each do |val| %>
+		<div class="col-sm-6 outer-form-col">
+<!-- 			<div class="col-sm-4">
+			</div>
+			<div class="col-sm-8">
+				<form action="/specials/destroy" method="POST" data-remote="true" class="dest-form">
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					<input type="hidden" name="id" value="<%= val.id %>">
+					<button class="btn btn-danger" data-confirm="Delete Special?">X</button>
+				</form>
+			</div> -->
+			<form action="/specials" method="post" class="form-horizontal update-form" enctype="multipart/form-data" id="edit-special-form<%= val.id %>">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<input name="id" value="<%= val.id %>" type="hidden">
+			<input name="_method" value="PATCH" type="hidden">
+			<input name="special[user_id]" type="hidden" value="<%= @user.id %>">
+			<div class="form-group col-sm-4">
+			</div>
+			<div class="form-group col-sm-8 img-div">
+				<%= image_tag(val.image.url) %>
+			</div>
+			<div class="form-group">
+			    <label for="exampleInputFile" class="col-sm-3 control-label">Photo</label>
+			    <div class="col-sm-9">
+			    	<input name="special[image]" type="file" class="form-control-file" id="inputFile" aria-describedby="fileHelp">
+			    </div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="title" class="col-sm-3 control-label">Title</label>
+				    <div class="col-sm-9">
+				        <input name="special[title]" type="text" class="form-control" id="title" value="<%= val.title %>" required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="location" class="col-sm-3 control-label">Location</label>
+				    <div class="col-sm-9">
+				        <input name="special[location]" type="text" class="form-control" id="location" value="<%= val.location %>" required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="departure" class="col-sm-3 control-label">Depart</label>
+				    <div class="col-sm-9">
+				        <input name="special[depart]" type="date" class="form-control" id="departure" min="<%= Date.today %>" value="<%= val.depart %>" required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="return" class="col-sm-3 control-label">Return</label>
+				    <div class="col-sm-9">
+				        <input name="special[return]" type="date" class="form-control" id="return" value="<%= val.return %>" required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="vacancy" class="col-sm-3 control-label">Vacancy</label>
+				    <div class="col-sm-9">
+				        <input name="special[vacancy]" type="number" class="form-control" id="vacancy" min="0" value="<%= val.vacancy %>" required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="description" class="col-sm-3 control-label">Description</label>
+				    <div class="col-sm-9">
+				        <textarea name="special[description]" type="text" class="form-control" id="description" rows="8" required><%= val.description %></textarea>
+				        <div id="characters<%= val.id %>" class="characters">0/950</div>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="submit" class="col-sm-3 control-label"></label>
+				    <div class="col-sm-9 btn-col btn-col-update">
+				        <button class="btn btn-green btn-update">Update</button>
+				    </div>
+				</div>
+			</div>
+			</form>
+				<div class="row btn-row">
+					<div class="col-sm-6">
+					<% if val.featured %>
+						<a href="/admins_specials/unfeature/<%= val.id %>"><button class="btn btn btn-contact">Remove From Profile</button>
+					<% else %>
+						<a href="/admins_specials/feature/<%= val.id %>"><button class="btn btn-contact">Feature</button></a>
+					<% end %>
+					</div>
+					<div class="col-sm-6">
+						<a href="/specials/destroy/<%= val.id %>" data-confirm="Delete this special?"><button class="btn btn-red">Delete</button></a>
+					</div>
+				</div>
+			<% if flash[:sub] %>
+				<div class="row">
+					<div class="col-sm-4">
+					</div>
+					<div class="col-sm-6">
+						<h4><%= flash[:sub] %></h4>
+					</div>
+				</div>
+				<% flash[:sub] = nil %>
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).on('turbolinks:load',function(){
+
+		<% @specials.each do |val| %>
+		$('#characters<%= val.id %>').html(<%= val.description.length %> + "/950")
+
+		$('#edit-special-form<%= val.id %>').keyup(function(){
+			var len = $(this).find('textarea').val().length;
+			$('#characters<%= val.id %>').html(len + "/950")
+			if(len >= 950){
+				$('#characters<%= val.id %>').addClass('red');
+				$('#characters<%= val.id %>').removeClass('green');
+
+			}
+			else if(len == 0 ){
+				$('#characters<%= val.id %>').addClass('red');
+				$('#characters<%= val.id %>').removeClass('green');
+			}
+			else{
+				$('#characters<%= val.id %>').addClass('green');
+				$('#characters<%= val.id %>').removeClass('red');
+			}
+		})
+
+		$('#edit-special-form<%= val.id %>').validate({
+			rules: {
+				'special[vacancy]': {
+					digits: true
+				},
+				'special[price]': {
+					digits: true
+				},
+				'special[description]': {
+					maxlength: 950
+				}
+			},
+	        highlight: function (element) {
+	            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+	        },
+	        success: function (element) {
+	            element.closest('.form-group').removeClass('has-error').addClass('has-success');
+	        }
+		});
+		<% end %>
+	})
+</script>

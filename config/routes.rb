@@ -65,8 +65,12 @@ Rails.application.routes.draw do
 	patch '/admins/:username' => 'users#admins_update'
 	get '/admins/user_destroy/:id' => 'users#admins_destroy_user'
 	get '/admins/edit_gallery/:id' => 'users#admins_edit_gallery'
+	get '/admins/edit_specials/:id' => 'users#admins_edit_specials'
+	get '/admins_specials/feature/:id' => 'users#admins_feature'
+	get '/admins_specials/unfeature/:id' => 'users#admins_unfeature'
 	patch '/admins/gallery_upload/:id' => 'users#admins_gallery_update'
 	get 'privacy_policy' => 'sessions#privacy_policy'
+	post '/commissions' => 'commissions#create'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

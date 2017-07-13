@@ -141,7 +141,7 @@
 			<% else %>
 				<% @unapproved_photos.each do |val| %>
 					<div class="thumb-div">
-				  	<%= image_tag(val.image.url, :data => { :caption => "#{val.location} - #{val.name} - #{@date}", :description => "#{val.description}", :location => "#{val.location}", :date => "#{val.traveled_on}", :name => "#{val.name}" }) %>
+				  	<%= image_tag(val.image.url, :data => { :caption => "#{val.location} - #{val.name} - #{@date}", :description => "#{val.description}", :location => "#{val.location}", :date => "#{val.traveled_on}", :name => "#{val.name}", :id => "#{val.id}" }) %>
 							<div class="btn-div btn-div-left">
 							<% if !val.allowed %>
 								<form action="/photo_allow" method="POST">
