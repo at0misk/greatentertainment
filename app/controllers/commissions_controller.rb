@@ -6,8 +6,13 @@ class CommissionsController < ApplicationController
 		@user = User.find(session[:user_id])
 	end
 	def create
+		@user = User.find(session[:user_id])
 		@commission = Commission.new(commission_params)
 		if @commission.save
+			@user.address = @commission.address
+			@user.city = @commission.city
+			@user.state = @commission.state
+			@user.country = @commission.country
 			# email commission here
 		else
 			flash[:errors] = "Something went wrong!"

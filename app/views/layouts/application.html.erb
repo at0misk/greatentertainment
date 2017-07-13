@@ -597,6 +597,10 @@ button:hover{
     margin-left: 30px !important;
 }
 
+.nav-height{
+  height: 900px;
+}
+
   </style>
 <%= yield :head %>
   </head>
@@ -654,7 +658,7 @@ button:hover{
           <% if session[:user_id] %>
             <% @user = User.find(session[:user_id]) %>
             <li class="dropdown nav-li">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Agent <span class="caret"></span></a>
+              <a id="agent-drop" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Agent <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/user_guide">User Guide</a></li>
                 <li><a href="/<%= @user.username %>">View Profile</a></li>
@@ -841,6 +845,12 @@ button:hover{
   </body>
 <script type="text/javascript">
   $(document).on('turbolinks:load',function(){
+
+$('#agent-drop').click(function () {
+    if ($(window).width() < 768) {
+        $('#navbar').toggleClass('nav-height');
+    }
+});
 
     $('#login-form').validate({
       rules: {
