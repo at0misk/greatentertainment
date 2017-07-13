@@ -80,7 +80,7 @@ class UsersController < ApplicationController
 		redirect_to '/'
 	end
 	def user_params
-  		params.require(:user).permit(:first, :last, :email, :username, :password, :password_confirmation, :phone_number, :avatar, :about) 
+  		params.require(:user).permit(:first, :last, :email, :username, :password, :password_confirmation, :phone_number, :avatar, :about, :address, :city, :state, :country) 
 	end
 	def show
 		@page_user = User.find_by_username(params['username'])

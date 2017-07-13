@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706204753) do
+ActiveRecord::Schema.define(version: 20170713180544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,37 @@ ActiveRecord::Schema.define(version: 20170706204753) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.index ["user_id"], name: "index_blogs_on_user_id", using: :btree
+  end
+
+  create_table "commissions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "first"
+    t.string   "last"
+    t.string   "email"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "traveler_names"
+    t.string   "traveler_phone"
+    t.string   "traveler_email"
+    t.date     "depart"
+    t.date     "return"
+    t.string   "itinerary"
+    t.string   "ticket"
+    t.string   "supplier"
+    t.string   "airline"
+    t.string   "hotel"
+    t.string   "car_rental"
+    t.string   "form"
+    t.integer  "last_4"
+    t.string   "comments"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.decimal  "trip_total",     precision: 8, scale: 4
+    t.decimal  "estimate",       precision: 8, scale: 4
+    t.string   "agent_id"
+    t.index ["user_id"], name: "index_commissions_on_user_id", using: :btree
   end
 
   create_table "cruises", force: :cascade do |t|
@@ -121,9 +152,15 @@ ActiveRecord::Schema.define(version: 20170706204753) do
     t.datetime "avatar_updated_at"
     t.string   "about"
     t.boolean  "permod"
+    t.string   "agent_id"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
   end
 
   add_foreign_key "blogs", "users"
+  add_foreign_key "commissions", "users"
   add_foreign_key "cruises", "users"
   add_foreign_key "messages", "topics"
   add_foreign_key "messages", "users"

@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  first: MyString
+  last: MyString
+  id: 1
+  email: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  traveler_names: MyString
+  traveler_phone: MyString
+  traveler_email: MyString
+  depart: 2017-07-13
+  return: 2017-07-13
+  itinerary: MyString
+  ticket: MyString
+  supplier: MyString
+  airline: MyString
+  hotel: MyString
+  car_rental: MyString
+  form: MyString
+  last_4: 1
+  comments: MyString
+
+two:
+  user: two
+  first: MyString
+  last: MyString
+  id: 1
+  email: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  traveler_names: MyString
+  traveler_phone: MyString
+  traveler_email: MyString
+  depart: 2017-07-13
+  return: 2017-07-13
+  itinerary: MyString
+  ticket: MyString
+  supplier: MyString
+  airline: MyString
+  hotel: MyString
+  car_rental: MyString
+  form: MyString
+  last_4: 1
+  comments: MyString

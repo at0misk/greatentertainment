@@ -34,7 +34,7 @@
 			<h4 class="sub-header">Commission Tracking Form</h4>
 		</div>
 	</div>
-	<form action="/specials" method="post" class="form-horizontal" enctype="multipart/form-data" id="tracker-form">
+	<form action="/commissions" method="post" class="form-horizontal" enctype="multipart/form-data" id="tracker-form">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 			<input name="special[user_id]" type="hidden" value="<%= @user.id %>">
 			<input name="special[featured]" type="hidden" value="false">
@@ -42,7 +42,7 @@
 				<div class="form-group">
 				    <label for="agent_first_name" class="col-sm-2 control-label">Agent First Name</label>
 				    <div class="col-sm-8">
-				        <input name="commission[agent_first_name]" type="text" class="form-control" id="agent_first_name" required/>
+				        <input name="commission[agent_first_name]" type="text" class="form-control" id="agent_first_name" value="<%= @user.first %>" required/>
 				    </div>
 				</div>
 			</div>
@@ -50,7 +50,7 @@
 				<div class="form-group">
 				    <label for="agent_last_name" class="col-sm-2 control-label">Agent Last Name</label>
 				    <div class="col-sm-8">
-				        <input name="commission[agent_last_name]" type="text" class="form-control" id="agent_last_name" required/>
+				        <input name="commission[agent_last_name]" type="text" class="form-control" id="agent_last_name" value="<%= @user.last %>" required/>
 				    </div>
 				</div>
 			</div>
@@ -58,7 +58,7 @@
 				<div class="form-group">
 				    <label for="agent_id_number" class="col-sm-2 control-label">Agent ID Number</label>
 				    <div class="col-sm-8">
-				        <input name="commission[agent_id_number]" type="number" class="form-control" id="agent_id_number" required/>
+				        <input name="commission[agent_id_number]" type="number" class="form-control" id="agent_id_number" value="<%= @user.id %>" required/>
 				    </div>
 				</div>
 			</div>
@@ -66,7 +66,7 @@
 				<div class="form-group">
 				    <label for="agent_email" class="col-sm-2 control-label">Agent Email</label>
 				    <div class="col-sm-8">
-				        <input name="commission[agent_email]" type="text" class="form-control" id="agent_email" required/>
+				        <input name="commission[agent_email]" type="text" class="form-control" id="agent_email" value="<%= @user.email %>" required/>
 				    </div>
 				</div>
 			</div>
@@ -74,7 +74,7 @@
 				<div class="form-group">
 				    <label for="agent_address" class="col-sm-2 control-label">Address</label>
 				    <div class="col-sm-8">
-				        <input name="commission[agent_address]" type="text" class="form-control" id="agent_address" required/>
+				        <input name="commission[agent_address]" type="text" class="form-control" id="agent_address" value="<%= @user.address %>" required/>
 				    </div>
 				</div>
 			</div>
@@ -82,7 +82,7 @@
 				<div class="form-group">
 				    <label for="agent_city" class="col-sm-2 control-label">City</label>
 				    <div class="col-sm-8">
-				        <input name="commission[agent_city]" type="text" class="form-control" id="agent_city" required/>
+				        <input name="commission[agent_city]" type="text" class="form-control" id="agent_city" value="<%= @user.city %>" required/>
 				    </div>
 				</div>
 			</div>
@@ -90,7 +90,7 @@
 				<div class="form-group">
 				    <label for="agent_state" class="col-sm-2 control-label">State</label>
 				    <div class="col-sm-8">
-				        <input name="commission[agent_state]" type="text" class="form-control" id="agent_state" required/>
+				        <input name="commission[agent_state]" type="text" class="form-control" id="agent_state" value="<%= @user.state %>" required/>
 				    </div>
 				</div>
 			</div>
@@ -98,7 +98,7 @@
 				<div class="form-group">
 				    <label for="agent_country" class="col-sm-2 control-label">Country</label>
 				    <div class="col-sm-8">
-				        <input name="commission[agent_country]" type="text" class="form-control" id="agent_country" required/>
+				        <input name="commission[agent_country]" type="text" class="form-control" id="agent_country" value="<%= @user.country %>" required/>
 				    </div>
 				</div>
 			</div>
@@ -172,7 +172,7 @@
 				<div class="form-group">
 				    <label for="airline" class="col-sm-2 control-label">Airline</label>
 				    <div class="col-sm-8">
-				        <input name="commission[airline]" type="text" class="form-control" id="airline" required/>
+				        <input name="commission[airline]" type="text" class="form-control" id="airline"/>
 				    </div>
 				</div>
 			</div>
@@ -180,7 +180,7 @@
 				<div class="form-group">
 				    <label for="hotel" class="col-sm-2 control-label">Hotel</label>
 				    <div class="col-sm-8">
-				        <input name="commission[hotel]" type="text" class="form-control" id="hotel" required/>
+				        <input name="commission[hotel]" type="text" class="form-control" id="hotel"/>
 				    </div>
 				</div>
 			</div>
@@ -188,11 +188,11 @@
 				<div class="form-group">
 				    <label for="car_rental" class="col-sm-2 control-label">Car Rental Agency</label>
 				    <div class="col-sm-8">
-				        <input name="commission[car_rental]" type="text" class="form-control" id="car_rental" required/>
+				        <input name="commission[car_rental]" type="text" class="form-control" id="car_rental"/>
 				    </div>
 				</div>
 			</div>
-			<div class="row">
+<!-- 			<div class="row">
 				<div class="form-group">
 				    <label for="c2go" class="col-sm-2 control-label">C2GO ID #</label>
 				    <div class="col-sm-8">
@@ -200,7 +200,7 @@
 				        <small class="form-text text-muted c2go-text">Use the 5 digit number after CG found on the front of your card.</small>
 				    </div>
 				</div>
-			</div>
+			</div> -->
 			<div class="row">
 				<div class="form-group">
 				    <label for="total_price" class="col-sm-2 control-label">Trip Total Price</label>
@@ -213,7 +213,7 @@
 				<div class="form-group">
 				    <label for="estimate" class="col-sm-2 control-label">Estimated Commission Total</label>
 				    <div class="col-sm-8">
-				        <input name="commission[estimate]" type="text" class="form-control" id="estimate" required/>
+				        <input name="commission[estimate]" type="number" class="form-control" id="estimate" required/>
 				    </div>
 				</div>
 			</div>

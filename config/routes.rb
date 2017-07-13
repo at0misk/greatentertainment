@@ -66,6 +66,7 @@ Rails.application.routes.draw do
 	get '/admins/user_destroy/:id' => 'users#admins_destroy_user'
 	get '/admins/edit_gallery/:id' => 'users#admins_edit_gallery'
 	patch '/admins/gallery_upload/:id' => 'users#admins_gallery_update'
+	get 'privacy_policy' => 'sessions#privacy_policy'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
