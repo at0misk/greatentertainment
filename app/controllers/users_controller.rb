@@ -344,8 +344,8 @@ class UsersController < ApplicationController
 		redirect_to "/gallery/#{@photo.user.username}"
 	end
 	def admins_edit_specials
-		@user = User.find(session[:user_id])
-		@specials = Special.where(user_id: @user.id)
+		@user = User.find(params['id'])
+		@specials = Special.where(user_id: params['id'])
 	end
 	def admins_feature
 		@special = Special.find(params['id'])

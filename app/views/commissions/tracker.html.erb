@@ -36,7 +36,8 @@
 	</div>
 	<form action="/commissions" method="post" class="form-horizontal" enctype="multipart/form-data" id="tracker-form">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-			<input name="commission[user_id" value="<%= @user.id %>" type="hidden">
+			<input name="commission[user_id]" value="<%= @user.id %>" type="hidden">
+			<input name="commission[processed]" value="false" type="hidden">
 			<div class="row">
 				<div class="form-group">
 				    <label for="agent_first_name" class="col-sm-2 control-label">Agent First Name</label>

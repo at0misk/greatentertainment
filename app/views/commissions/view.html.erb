@@ -1,0 +1,52 @@
+<style type="text/css">
+	.container{
+		background-color: white;
+		min-height: 550px;
+		margin-top: 15px;
+	}
+	.header{
+		/*text-align: center;*/
+	}
+	.right{
+		margin-top: 45px;
+	}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<h4 class="header">Commission #<%= @commission.id %></h4>
+		<p>Agent: <%= @commission.first %> <%= @commission.last %></p>
+		<p>Email: <%= @commission.email %></p>
+		<p>Address: <%= @commission.address %></p>
+		<p>City: <%= @commission.city %></p>
+		<p>State: <%= @commission.state %></p>
+		<p>Zip Code: <%= @commission.zip %></p>
+		<p>Travelers: <%= @commission.traveler_names %></p>
+		<p>Traveler Phone: <%= @commission.traveler_phone %></p>
+		<p>Traveler Email: <%= @commission.traveler_email %></p>
+		<p>Depart: <%= @commission.depart.strftime("#%m/%d/%y") %></p>
+		<p>Return: <%= @commission.return.strftime("%m/%d/%y") %></p>
+		</div>
+		<div class="col-sm-6 right">
+		<p>Itinerary: <%= @commission.itinerary %></p>
+		<p>Ticket / Confirmation #: <%= @commission.ticket %></p>
+		<p>Supplier: <%= @commission.supplier %></p>
+		<p>Airline: <%= @commission.airline %></p>
+		<p>Hotel: <%= @commission.hotel %></p>
+		<p>Car Rental: <%= @commission.car_rental %></p>
+		<p>Payment Form: <%= @commission.form %></p>
+		<p>Trip Total: <%= number_to_currency(@commission.trip_total) %></p>
+		<p>Estimated Commission: <%= number_to_currency(@commission.estimate) %></p>
+		<p>Last 4 of Credit Card: <%= @commission.last_4 %></p>
+		<% if @commission.processed %>
+		<td><a href="/commissions/unprocess/<%= @commission.id %>" data-confirm="Really re-open this commission?"><button class="btn btn-contact btn-sm">Re-Open</button></a></td>
+		<% else %>
+		<td><a href="/commissions/process/<%= @commission.id %>" data-confirm="Really process this commission?"><button class="btn btn-contact btn-sm">Process</button></a></td>
+		<% end %>
+		</div>
+	</div>
+</div>

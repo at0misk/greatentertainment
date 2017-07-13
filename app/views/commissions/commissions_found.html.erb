@@ -1,0 +1,65 @@
+<style type="text/css">
+	.header-col{
+		padding: 0px;
+	}
+	.admin-dash-cont{
+		min-height: 550px;
+		background-color: white;
+		margin-top: 15px;
+	}
+	.lookup-col{
+		text-align: center;
+		margin-top: 30px;
+	}
+	td{
+		text-align: left;
+	}
+</style>
+<div class="container admin-dash-cont">
+	<div class="row">
+	    <div class="col-sm-12 header-col">
+	      <div class="modal-header">
+	        <h3 class="modal-title modalh3" id="loginModalLabel">Admin Dashboard</h3>
+	      </div>
+	    </div>
+    </div>
+    <div class="row">
+    	<div class="col-sm-12 lookup-col">
+    		<h4 class="lookup-header">Commissions Found</h4>
+			<table class="table table-responsive table-striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Agent ID</th>
+						<th>Trip Total</th>
+						<th>Estimated Commission</th>
+						<th>Agent</th>
+						<th>Travelers</th>
+						<th>Traveler Phone</th>
+						<th>Traveler Email</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @commissions.each do |val| %>
+					<tr>
+						<td><a href="/commissions/<%= val.id %>"><%= val.id %></a></td>
+						<td><%= val.agent_id %></td>
+						<td><%= number_to_currency(val.trip_total) %></td>
+						<td><%= number_to_currency(val.estimate) %></td>
+						<td><%= val.first %> <%= val.last %></a></td>
+						<td><%= val.traveler_names %></td>
+						<td><%= val.traveler_phone %></td>
+						<td><%= val.traveler_email %></td>
+						<% if val.processed %>
+						<td><a href="/commissions/unprocess/<%= val.id %>" data-confirm="Really re-open this commission?"><button class="btn btn-contact btn-sm">Re-Open</button></a></td>
+						<% else %>
+						<td><a href="/commissions/process/<%= val.id %>" data-confirm="Really process this commission?"><button class="btn btn-contact btn-sm">Process</button></a></td>
+						<% end %>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+    	</div>
+    </div>
+</div>
