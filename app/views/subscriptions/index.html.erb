@@ -6,9 +6,8 @@
 		background: #153649;
 		color: white;
 		text-align: center;
-		height: 60px;
-		padding-top: 10px;
-		margin-top: 15px;
+		height: 66px;
+		/*padding-top: 10px;*/
 	}
 	.cont-row{
 		margin-top: 15px;
@@ -24,15 +23,22 @@
 	    padding-left: 15px;
 	  }
 	}
+	.sub-col{
+	    max-height: 550px;
+	    overflow: scroll;
+	}
+	.container{
+		margin-top: 15px;
+	}
 </style>
 <div class="container main-cont">
 	<div class="row header-row">
 		<div class="col-sm-12 header-col">
-			</span><h4 class="blog-header">Subscribers</h4>
+			</span><h3 class="blog-header">Subscribers</h3>
 		</div>
 	</div>
 	<div class="row cont-row">
-		<div class="col-sm-6">
+		<div class="col-sm-6 sub-col">
 			<% if @subscriptions.length > 0 %>
 			<table class="table table-sm table-responsive">
 				<thead>

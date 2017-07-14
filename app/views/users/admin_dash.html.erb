@@ -28,7 +28,7 @@
 	    </div>
     <% end %>
     <div class="row">
-    	<div class="col-sm-6 lookup-col">
+    	<div class="col-sm-4 lookup-col">
     		<h4 class="lookup-header">User Lookup</h4>
 			<form class="navbar-form" role="search" method="post" action="/users/search">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -40,7 +40,7 @@
 			</div>
 			</form>
     	</div>
-    	<div class="col-sm-6 lookup-col">
+    	<div class="col-sm-4 lookup-col">
     		<h4 class="lookup-header">Commission Lookup</h4>
 			<form class="navbar-form" role="search" method="post" action="/commissions/search">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -51,6 +51,11 @@
 				</div>
 			</div>
 			</form>
+    	</div>
+    	<div class="col-sm-4 lookup-col">
+    		<h4 class="lookup-header">Blogs</h4>
+    		<a href="/blogs/new">New</a> | 
+    		<a href="/blogs/edit">Edit</a>
     	</div>
     </div>
 </div>

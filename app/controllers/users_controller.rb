@@ -77,7 +77,7 @@ class UsersController < ApplicationController
 		else
 			flash[:created] = false
 		end
-		redirect_to '/'
+		redirect_to '/register'
 	end
 	def user_params
   		params.require(:user).permit(:first, :last, :email, :username, :password, :password_confirmation, :phone_number, :avatar, :about, :address, :city, :state, :country) 

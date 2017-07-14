@@ -66,4 +66,6 @@ class SessionsController < ApplicationController
 	end
 	def privacy_policy
 	end
+	def register
+	end
 end

@@ -76,6 +76,7 @@ Rails.application.routes.draw do
 	get '/commissions/process/:id' => 'commissions#process_commission'
 	get '/commissions/unprocess/:id' => 'commissions#unprocess'
 	get '/commissions/:id' => 'commissions#view'
+	get '/register' => 'sessions#register'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

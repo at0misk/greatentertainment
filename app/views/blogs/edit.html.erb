@@ -1,46 +1,99 @@
 <style type="text/css">
 	.btn-danger{
-		float: right;
-		margin-bottom: 2%;
-		margin-top: 2%;
+	    position: absolute;
+	    right: 15px;
+	    top: 0;
+	}
+	.btn-col{
+		text-align: center;
+	}
+	.container{
+		background-color: white;
+		min-height: 550px;
+		margin-top: 15px;
+	}
+	form .row{
+		padding-right: 15px;
+	}
+	.img-fluid{
+		width: 100%;
+		height: auto;
+		border-bottom: 1px solid #cccccc;
+		max-height: 351.88px;
+		-moz-transition: all 0.4s;
+		-webkit-transition: all 0.4s;
+		transition: all 0.4s;
+		margin-bottom: 15px;
+	}
+	.header-col{
+		padding: 0px;
+	}
+	.blog-col{
+		margin: 15px 0px;
+		border: 1px solid #ccc;
+		min-height: 822px;
+		width: 47%;
+		margin-left: 2%;
+		padding-top: 15px;
 	}
 </style>
 <div class="container">
 	<div class="row">
+	    <div class="col-sm-12 header-col">
+	      <div class="modal-header">
+	        <h3 class="modal-title modalh3" id="loginModalLabel">Edit Blogs</h3>
+	      </div>
+	    </div>
+    </div>
+	<div class="row">
 		<% @blogs.each do |val| %>
-		<div class="col-sm-6">
+		<div class="col-sm-6 blog-col">
 			<div class="row">
-			<form action="/blogs/destroy" method="POST" data-remote="true" class="chatBoxForm">
+				<div class="col-sm-2">
+				</div>
+				<div class="col-sm-10">
+			<form action="/blogs/destroy" method="POST" class="chatBoxForm">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 				<input type="hidden" name="id" value="<%= val.id %>">
 				<button class="btn btn-danger" data-confirm="Delete Post?">X</button>
 			</form>
+				<%= image_tag(val.image.url, :class => 'img-fluid') %>
+				</div>
 			</div>
-			<form action="/blogs/<%= val.id %>" method="post" class="form-horizontal">
+			<form action="/blogs/<%= val.id %>" method="post" class="form-horizontal" enctype="multipart/form-data">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 			<input name="_method" value="PATCH" type="hidden">
 			<input name="blog[user_id]" type="hidden" value="<%= val.user.id %>">
 			<div class="row">
 				<div class="form-group">
-				    <label for="title" class="col-sm-4 control-label">Title</label>
-				    <div class="col-sm-8">
+				    <label for="title" class="col-sm-2 control-label">Title</label>
+				    <div class="col-sm-10">
 				        <input name="blog[title]" type="text" class="form-control" id="title" value="<%= val.title %>" />
 				    </div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group">
-				    <label for="content" class="col-sm-4 control-label">Post:</label>
-				    <div class="col-sm-8">
+				    <label for="content" class="col-sm-2 control-label">Post:</label>
+				    <div class="col-sm-10">
 				    	<textarea name="blog[content]" class="form-control" id="content" rows="15"><%= val.content %></textarea>
 				    </div>
 				</div>
 			</div>
 			<div class="row">
+				<div class="form-group photo-group">
+			    <label for="inputFile" class="col-sm-2 control-label">Image</label>
+			    <div class="col-sm-10">
+			    	<input name="blog[image]" type="file" class="form-control-file" id="inputFile" aria-describedby="fileHelp">
+			    </div>
+			</div>
+			</div>
+			<div class="row">
 				<div class="form-group">
-				    <label for="submit" class="col-sm-4 control-label"></label>
-				    <div class="col-sm-8 btn-col">
-				        <button class="btn btn-primary">Edit</button>
+					<div class="col-sm-2">
+					</div>
+				    <div class="col-sm-10 btn-col">
+				        <button class="btn btn-contact">Edit</button>
 				    </div>
 				</div>
 			</div>

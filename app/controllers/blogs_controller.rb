@@ -23,18 +23,33 @@ class BlogsController < ApplicationController
 		@blog = Blog.find(params[:id])
 	end
 	def edit
-		@blogs = Blog.all
+		@user = User.find(session[:user_id])
+		if @user.permod
+			@blogs = Blog.all
+		else
+			redirect_to '/' and return
+		end
 	end
 	def update
-		@blog = Blog.find(params['id'])
-		if @blog.update(blog_params)
+		@user = User.find(session[:user_id])
+		if @user.permod			
+			@blog = Blog.find(params['id'])
+			if @blog.update(blog_params)
+			end
+			redirect_to "/blogs/#{@blog.id}" and return
+		else
+			redirect_to "/" and return
 		end
-		redirect_to "/blogs/#{@blog.id}"
 	end
 	def destroy
-		@blog = Blog.find(params['id'])
-		Blog.find(params['id']).destroy
-		redirect_to "/blogs"
+		@user = User.find(session[:user_id])
+		if @user.permod	
+			@blog = Blog.find(params['id'])
+			Blog.find(params['id']).destroy
+			redirect_to "/blogs" and return
+		else
+			redirect_to "/" and return
+		end
 	end
 	def index
 		@blogs = Blog.all

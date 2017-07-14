@@ -514,7 +514,7 @@ fieldset[disabled] .btn-yellow.active {
 
 .btn-col-login{
   text-align: center;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .btn-col-contact{
@@ -591,6 +591,7 @@ button:hover{
 
 .forgot-small{
   display: block;
+  margin-top: 10px;
 }
 
 .navbar-brand{
@@ -626,7 +627,7 @@ button:hover{
             <li><a data-toggle="modal" data-target="#loginModal"><button class="btn btn-sm btn-contact">Login</button></a></li>
             <!-- <li><a href="#"><button class="btn btn-sm btn-contact">Register</button></a></li> -->
           <% end %>
-          <li><a href="/" class="interested_agent">Interested in becoming an agent?</a></li>
+          <li><a href="/register" class="interested_agent">Interested in becoming an agent?</a></li>
         </ul>
 <!--           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
@@ -646,7 +647,14 @@ button:hover{
             </li>
           </ul> -->
           <ul class="nav navbar-nav navbar-right">
+          <% if session[:user_id] %>
+              <% @user = User.find(session[:user_id]) %>
+              <% if @user.permod %>
+                <li class="condo nav-li"><a href="/admin_dash">Admins</a></li>
+              <% end %>
+          <% else %>
             <li class="condo nav-li"><a href="#">Condos</a></li>
+          <% end %>
             <li class="nav-li"><a href="http://www1.latesttraveloffers.com/lton/OfferGroups.asp?site=VTHARC&OfferGroupId=4880" target="_blank">Cruises</a></li>
             <li class="nav-li"><a href="#">Specials</a></li>
             <li class="nav-li"><a href="https://www.faregrabbr.com/#/flight" target="_blank">Air</a></li>
@@ -890,5 +898,4 @@ $('#agent-drop').click(function () {
   });
 
 </script>
-  <link rel="stylesheet" href="https://codepen.io/at0misk/pen/owoyJd.css">
 </html>
