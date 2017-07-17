@@ -713,17 +713,17 @@ button:hover{
         <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <div class="row form-row-login">
         <div class="form-group">
-            <label for="email" class="col-sm-3 control-label">Email</label>
+            <label for="email-login" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-6">
-                <input name="email" type="text" class="form-control" id="email" required/>
+                <input name="email" type="text" class="form-control" id="email-login" required/>
             </div>
         </div>
       </div>
       <div class="row form-row-login">
         <div class="form-group">
-            <label for="password" class="col-sm-3 control-label">Password</label>
+            <label for="password-login" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-6 pw-col">
-                <input name="password" type="password" class="form-control" id="password" required/>
+                <input name="password" type="password" class="form-control" id="password-login" required/>
                 <small class="forgot-small"><a href="/forgot_password">Forgot Password?</a></small>
             </div>
         </div>
@@ -764,25 +764,25 @@ button:hover{
       <input name="user_id" type="hidden" value="<%= @header_user.id %>">
       <div class="row">
         <div class="form-group">
-            <label for="email" class="col-sm-3 control-label">Email</label>
+            <label for="email-contact" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-6">
-                <input name="email" type="text" class="form-control" id="email" required/>
+                <input name="email" type="text" class="form-control" id="email-contact" required/>
             </div>
         </div>
       </div>
       <div class="row">
         <div class="form-group">
-            <label for="first" class="col-sm-3 control-label">First Name</label>
+            <label for="first-contact" class="col-sm-3 control-label">First Name</label>
             <div class="col-sm-6">
-                <input name="first" type="text" class="form-control" id="first" required/>
+                <input name="first" type="text" class="form-control" id="first-contact" required/>
             </div>
         </div>
       </div>
       <div class="row">
         <div class="form-group">
-            <label for="last" class="col-sm-3 control-label">Last Name</label>
+            <label for="last-contact" class="col-sm-3 control-label">Last Name</label>
             <div class="col-sm-6">
-                <input name="last" type="text" class="form-control" id="last" required/>
+                <input name="last" type="text" class="form-control" id="last-contact" required/>
             </div>
         </div>
       </div>

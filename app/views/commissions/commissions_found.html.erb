@@ -47,7 +47,7 @@
 					<% @commissions.each do |val| %>
 					<tr>
 						<td><a href="/commissions/<%= val.id %>"><%= val.id %></a></td>
-						<td><%= val.agent_id %></td>
+						<td><%= val.user.id %></td>
 						<td><%= number_to_currency(val.trip_total) %></td>
 						<td><%= number_to_currency(val.estimate) %></td>
 						<td><%= val.first %> <%= val.last %></a></td>

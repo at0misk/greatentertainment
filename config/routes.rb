@@ -72,6 +72,7 @@ Rails.application.routes.draw do
 	get 'privacy_policy' => 'sessions#privacy_policy'
 	post '/commissions' => 'commissions#create'
 	post '/commissions/search' => 'commissions#search'
+	post '/commissions/unprocessed_search' => 'commissions#unprocessed_search'
 	get '/commissions_found' => 'commissions#commissions_found'
 	get '/commissions/process/:id' => 'commissions#process_commission'
 	get '/commissions/unprocess/:id' => 'commissions#unprocess'

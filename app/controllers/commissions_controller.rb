@@ -39,6 +39,16 @@ class CommissionsController < ApplicationController
 			redirect_to "/admin_dash" and return
 		end
 	end
+	def unprocessed_search
+		@commissions = Commission.where("processed = false")
+		if @commissions
+			@@search_commissions = @commissions
+			redirect_to "/commissions_found"
+		else
+			flash[:errors] = "No Users Found"
+			redirect_to "/admin_dash" and return
+		end
+	end
 	def commissions_found
 		@commissions = @@search_commissions.paginate(:page => params[:page])
 	end
