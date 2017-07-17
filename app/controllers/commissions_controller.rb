@@ -54,4 +54,9 @@ class CommissionsController < ApplicationController
 		@commission.save
 		redirect_to "/commissions/#{@commission.id}"
 	end
+	def import_commissions
+		Commission.import(params[:file])
+		redirect_to '/admin_dash'
+		flash[:imported] = "Users Imported"
+	end
 end

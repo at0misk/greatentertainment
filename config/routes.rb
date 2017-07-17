@@ -78,6 +78,7 @@ Rails.application.routes.draw do
 	get '/commissions/:id' => 'commissions#view'
 	get '/register' => 'sessions#register'
 	post '/import_users' => 'users#import_users'
+	post '/import_commissions' => 'commissions#import_commissions'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

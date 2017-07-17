@@ -592,16 +592,13 @@ button:hover{
   color: #a94442;
 }
 .pw-col{
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .forgot-small{
+  text-align: center;
   display: block;
   margin-top: 10px;
-}
-
-.navbar-brand{
-    margin-left: 30px !important;
 }
 
 .nav-height{
@@ -680,7 +677,7 @@ button:hover{
                 <li><a href="/gallery/<%= @user.username %>" data-turbolinks="false">View Photo Gallery</a></li>
                 <li><a href="/gallery/edit/<%= @user.username %>" data-turbolinks="false">Edit Photo Gallery</a></li>
                 <li><a href="/specials/new/<%= @user.username %>">New Special</a></li>
-                <li><a href="/specials/all_specials/<%= @user.username %>">Edit Specials</a>
+                <li><a href="/specials/all_specials/<%= @user.username %>">Edit Specials</a></li>
                 <li><a href="/subscriptions">View Subscribers</a></li>
                 <!-- <li><a href="/commissions">View Comissions</a></li> -->
                 <li><a href="/commissions/tracker">Commission Tracking Form</a></li>
@@ -696,6 +693,7 @@ button:hover{
               </ul>
            </li>
             <% end %>
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -717,7 +715,7 @@ button:hover{
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-6">
-                <input name="email" type="text" class="form-control" id="email-login" required/>
+                <input name="email" type="text" class="form-control" id="email" required/>
             </div>
         </div>
       </div>
@@ -725,16 +723,16 @@ button:hover{
         <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-6 pw-col">
-                <input name="password" type="password" class="form-control" id="password-login" required/>
+                <input name="password" type="password" class="form-control" id="password" required/>
                 <small class="forgot-small"><a href="/forgot_password">Forgot Password?</a></small>
             </div>
         </div>
       </div>
       <div class="row form-row-login">
         <div class="form-group">
-            <label for="submit" class="col-sm-3 control-label"></label>
+            <label for="login-submit" class="col-sm-3 control-label"></label>
             <div class="col-sm-6 btn-col btn-col-login">
-                <button class="btn btn-contact">Login</button>
+                <button class="btn btn-contact" id="login-submit">Login</button>
             </div>
         </div>
       </div>
