@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 	# puts @message.subresource_uris
 
     #   # Let's respond to the ajax call with some positive reinforcement
-    #   @msg = { :message => 'Phone call incoming!', :status => 'ok' }
+      @msg = { :message => 'Phone call incoming!', :status => 'ok' }
 
     # else
 
