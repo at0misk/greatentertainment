@@ -27,7 +27,7 @@ class CommissionsController < ApplicationController
 		redirect_to "/#{@user.username}"
 	end
 	def commission_params
-		params.require(:commission).permit(:user_id, :email, :first, :last, :address, :city, :state, :country, :traveler_names, :traveler_phone, :traveler_email, :depart, :return, :itinerary, :ticket, :supplier, :airline, :hotel, :car_rental, :form, :last_4, :comments, :trip_total, :estimate, :zip, :agent_id, :processed)
+		params.require(:commission).permit(:user_id, :email, :first, :last, :address, :city, :state, :country, :traveler_names, :traveler_phone, :traveler_email, :depart, :return, :itinerary, :ticket, :supplier, :airline, :hotel, :car_rental, :form, :last_4, :comments, :trip_total, :estimate, :zip, :agent_id, :processed, :c2go)
 	end
 	def search
 		@commissions = Commission.where("email LIKE ? OR first LIKE ? OR last LIKE ? OR traveler_names LIKE ? OR traveler_email LIKE ? OR traveler_phone LIKE ?", "%#{params['search']}%","%#{params['search']}%","%#{params['search']}%","%#{params['search']}%","%#{params['search']}%","%#{params['search']}%")
@@ -40,7 +40,7 @@ class CommissionsController < ApplicationController
 		end
 	end
 	def commissions_found
-		@commissions = @@search_commissions
+		@commissions = @@search_commissions.paginate(:page => params[:page])
 	end
 	def process_commission
 		@commission = Commission.find(params['id'])

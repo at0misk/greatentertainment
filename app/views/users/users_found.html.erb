@@ -13,6 +13,7 @@
 	}
 	td{
 		text-align: left;
+		min-width: 100px;
 	}
 </style>
 <div class="container admin-dash-cont">
@@ -24,14 +25,15 @@
 	    </div>
     </div>
     <div class="row">
-    	<div class="col-sm-2">
-    	</div>
-    	<div class="col-sm-8 lookup-col">
+    	<div class="col-sm-12 lookup-col">
+    	<% if @users.length == 0 %>
+    		<h4 class="lookup-header">No Users Found</h4>
+    	<% else %>
     		<h4 class="lookup-header">Users Found</h4>
 			<table class="table table-responsive table-striped">
 				<thead>
 					<tr>
-						<!-- <th>ID</th> -->
+						<th>ID</th>
 						<th>Name</th>
 						<th>Email</th>
 						<th>Actions</th>
@@ -42,7 +44,7 @@
 				<tbody>
 					<% @users.each do |val| %>
 					<tr>
-						<!-- <td></td> -->
+						<td><%= val.agent_id %></td>
 						<td><a href="/<%= val.username %>"><%= val.first %> <%= val.last %></a></td>
 						<td><%= val.email %></td>
 						<td><a href="/forgot_password" target="_blank">Reset Password</a></td>
@@ -54,8 +56,8 @@
 					<% end %>
 				</tbody>
 			</table>
-    	</div>
-    	<div class="col-sm-2">
+		<%= will_paginate @users %>
+		<% end %>
     	</div>
     </div>
 </div>

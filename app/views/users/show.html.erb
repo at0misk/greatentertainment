@@ -1083,9 +1083,10 @@ p {
 #phone-call {
   border-color: #153649;
   border-radius: 50%;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   transition: all .3s;
+  padding: 0px;
 }
 #phone-call:hover {
   
@@ -1255,7 +1256,7 @@ p {
 				</div>
 				<div class="col-sm-8 col-md-6 col-xs-7 userInfo">
 					<span class="meet">Meet Your Agent:</span>
-					<h4 class="name"><%= @page_user.first.capitalize %> <%= @page_user.last.capitalize %></h4>
+					<h4 class="name"><%= @page_user.first.titleize %> <%= @page_user.last.titleize %></h4>
 					<p class="about"><%= @page_user.about %></p>
 						<button id="phone-call" class="btn btn-contact" data-toggle="modal" data-target="#callModal"><span class="glyphicon glyphicon-earphone phone-glyphicon" aria-hidden="true"></span></button>
 				</div>

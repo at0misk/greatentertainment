@@ -84,7 +84,7 @@ skip_before_action :verify_authenticity_token
 		redirect_to '/register'
 	end
 	def user_params
-  		params.require(:user).permit(:first, :last, :email, :username, :password, :password_confirmation, :phone_number, :avatar, :about, :address, :city, :state, :country) 
+  		params.require(:user).permit(:first, :last, :email, :username, :password, :password_confirmation, :phone_number, :avatar, :about, :address, :city, :state, :country, :c2go, :apt, :upline_id, :agent_id) 
 	end
 	def show
 		@page_user = User.find_by_username(params['username'])
@@ -281,7 +281,7 @@ skip_before_action :verify_authenticity_token
 	def admin_dash
 	end
 	def user_search
-		@users = User.where("email LIKE ? OR first LIKE ? OR last LIKE ? OR username LIKE ?", "%#{params['search']}%","%#{params['search']}%","%#{params['search']}%","%#{params['search']}%")
+		@users = User.where("email LIKE ? OR first LIKE ? OR last LIKE ? OR username LIKE ? OR agent_id LIKE ?", "%#{params['search']}%","%#{params['search']}%","%#{params['search']}%","%#{params['search']}%","%#{params['search']}%")
 		if @users
 			@@search_users = @users
 			redirect_to "/users_found"
@@ -291,7 +291,7 @@ skip_before_action :verify_authenticity_token
 		end
 	end
 	def users_found
-		@users = @@search_users
+		@users = @@search_users.paginate(:page => params[:page])
 	end
 	def recover
 		@user = User.find_by(email: params['email'])
@@ -369,5 +369,10 @@ skip_before_action :verify_authenticity_token
 		@featured.update_attribute(:featured, false)
 		@featured.save
 		redirect_to "/specials/all_specials/#{@user.username}"
+	end
+	def import_users
+		User.import(params[:file])
+		redirect_to '/admin_dash'
+		flash[:imported] = "Users Imported"
 	end
 end

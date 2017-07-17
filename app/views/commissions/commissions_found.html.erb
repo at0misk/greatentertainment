@@ -25,6 +25,9 @@
     </div>
     <div class="row">
     	<div class="col-sm-12 lookup-col">
+    		<% if @commissions.length == 0 %>
+       		<h4 class="lookup-header">No Commissions Found</h4>
+    		<% else %>
     		<h4 class="lookup-header">Commissions Found</h4>
 			<table class="table table-responsive table-striped">
 				<thead>
@@ -60,6 +63,8 @@
 					<% end %>
 				</tbody>
 			</table>
+			<%= will_paginate @users %>
+			<% end %>
     	</div>
     </div>
 </div>

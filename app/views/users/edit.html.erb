@@ -83,6 +83,14 @@
 				</div>
 				<div class="row">
 					<div class="form-group">
+					    <label for="c2go" class="col-sm-3 control-label">C2GO ID #</label>
+					    <div class="col-sm-9">
+					        <input name="user[c2go]" type="text" class="form-control" id="last" value="<%= @user.c2go %>" required/>
+					    </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
 					    <label for="email" class="col-sm-3 control-label">Email</label>
 					    <div class="col-sm-9">
 					        <input name="user[email]" type="text" class="form-control" id="email" value="<%= @user.email %>" required/>
@@ -248,6 +256,9 @@
 				},
 				'user[password_confirmation]': {
 					equalTo: '#password'
+				},
+				'user[c2go]': {
+					maxlength: 7
 				}
 			},
 	        highlight: function (element) {
