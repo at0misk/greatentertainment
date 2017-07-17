@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'twilio-ruby'
 
 class UsersController < ApplicationController
 skip_before_action :verify_authenticity_token
@@ -54,11 +55,13 @@ skip_before_action :verify_authenticity_token
     # Our response to this request will be an XML document in the "TwiML"
     # format. Our Ruby library provides a helper for generating one
     # of these documents
-    response = Twilio::TwiML::Response.new do |r|
-      r.say 'Thanks for contacting our sales department. Our ' +
-        'next available representative will take your call.', :voice => 'alice'
+    response = Twilio::TwiML::VoiceResponse.new do |r|
+      r.say('Thanks for contacting our sales department. Our '\
+        'next available representative will take your call.', voice: 'alice')
       r.dial number: params[:sales_number]
     end
+
+
     render xml: response.to_s
   end
 
