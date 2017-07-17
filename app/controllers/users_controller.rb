@@ -54,11 +54,11 @@ class UsersController < ApplicationController
     # format. Our Ruby library provides a helper for generating one
     # of these documents
     response = Twilio::TwiML::Response.new do |r|
-      r.Say 'Thanks for contacting our sales department. Our ' +
+      r.say 'Thanks for contacting our sales department. Our ' +
         'next available representative will take your call.', :voice => 'alice'
-      r.Dial params[:sales_number]
+      r.dial number: params[:sales_number]
     end
-    render text: response.text
+    render xml: response.to_s
   end
 
 	def create
