@@ -62,7 +62,7 @@
     }
     .navbar-brand{
       padding: 3px;
-      width: 170px;
+      width: 300px;
       margin-left: -30px !important;
     }
     .evo{
@@ -443,7 +443,7 @@ fieldset[disabled] .btn-yellow.active {
       padding-top: 10px;
     }
     .evo-footer img{
-      width: 240px;
+      width: 180px;
       margin-right: 25px;
     }
     .evo-copy{
@@ -617,7 +617,7 @@ button:hover{
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <span class="navbar-brand"><a href="/"><%#= image_tag('ata-logo') %><span class="logo-text"><span class="evo">ARCHER</span><span class="travel">TRAVEL AGENTS</span></span></a></span>
+          <span class="navbar-brand"><a href="/"><%= image_tag('evologo.png') %><span class="logo-text"><span class="evo">EVOLUTION</span><span class="travel">TRAVEL</span></span></a></span>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav log-reg-nav">
@@ -834,16 +834,27 @@ button:hover{
   <div class="container-fluid footerCont">
   <div class="row footer-row">
     <div class="col-sm-4">
-      <span class="logo evo-footer"><%= image_tag('logo.png') %></span>
+      <span class="logo evo-footer"><%= image_tag('evologo-words.png') %></span>
+        <div class="copy evo-copy">
+          <p>Headquarters:</p>
+          <p>6671 Las Vegas Blvd South</p>
+          <p>Suite D-210,</p>
+          <p>Las Vegas NV 89119</p>
+        </div>
       </div>
       <div class="col-sm-4">
+      <span class="logo"><%= image_tag('logo.png') %></span>
+        <div class="copy evo-copy">
+          <p>Evolution Travel is an affiliate of</p>
+          <p>Archer Travel Service, Inc.</p>
+        </div>
       </div>
       <div class="col-sm-4">
         <div class="copy copy-right">
-          <p>Copyrights &copy; 2017 All Rights Reserved by Archer Travel Service, Inc. - <a href="/privacy_policy" target="_blank">Privacy Policy</a></p>
+          <p>Copyrights &copy; 2017 All Rights Reserved by Evolution Travel LLC. - <%= link_to "Privacy Polyicy", asset_path("PrivacyPolicy.pdf"), target: "_blank" %></p>
           <p>"Registered in all states that require Seller of Travel Registration."</p>
           <p>Seller of Travel: CA 2001330-10, FL 35395</p>
-          <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Support@archertravel.com</p>
+          <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Support@myevolutiontravel.com</p>
           <p> <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>(800) 272-4377</p>
         </div>
       </div>
