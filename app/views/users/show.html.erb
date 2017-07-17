@@ -2002,6 +2002,26 @@ p {
 
 $(document).on('turbolinks:load',function(){
 
+    $('#callform').on('submit', function(e) {
+        // Prevent form submission and repeat clicks
+        e.preventDefault();
+        $submit.attr('disabled', 'disabled');
+
+        // Submit the form via ajax
+        $.ajax({
+            url:'/call',
+            method:'POST',
+            data: $form.serialize()
+        }).done(function(data) {
+            alert(data.message);
+        }).fail(function() {
+            alert('There was a problem calling you - please try again later.');
+        }).always(function() {
+            $submit.removeAttr('disabled');
+        });
+
+    });
+
 $('.first_special_a').click(function(){
 	$('.first_special_form').submit();
 })
