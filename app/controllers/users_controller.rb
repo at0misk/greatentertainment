@@ -1,6 +1,7 @@
 require 'open-uri'
 
 class UsersController < ApplicationController
+skip_before_action :verify_authenticity_token
 @@search_users = {}
 # Temp test credentials until live account
   @@twilio_sid = 'AC181e8543ebb9d284eb206ac11cf3760e'
