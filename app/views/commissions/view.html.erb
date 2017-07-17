@@ -10,6 +10,13 @@
 	.cont-row{
 		margin-top: 15px;
 	}
+	.btn-col{
+		text-align: right;
+	}
+	.process-col{
+		padding-right: 0px;
+		margin-bottom: 15px;
+	}
 </style>
 <div class="container">
 	<div class="row">
@@ -20,35 +27,246 @@
 	    </div>
     </div>
 	<div class="row cont-row">
-		<div class="col-sm-6">
-		<p>Agent: <%= @commission.first %> <%= @commission.last %></p>
-		<p>Email: <%= @commission.email %></p>
-		<p>Address: <%= @commission.address %></p>
-		<p>City: <%= @commission.city %></p>
-		<p>State: <%= @commission.state %></p>
-		<p>Zip Code: <%= @commission.zip %></p>
-		<p>Travelers: <%= @commission.traveler_names %></p>
-		<p>Traveler Phone: <%= @commission.traveler_phone %></p>
-		<p>Traveler Email: <%= @commission.traveler_email %></p>
-		<p>Depart: <%= @commission.depart.strftime("%m/%d/%y") %></p>
-		<p>Return: <%= @commission.return.strftime("%m/%d/%y") %></p>
-		</div>
-		<div class="col-sm-6 right">
-		<p>Itinerary: <%= @commission.itinerary %></p>
-		<p>Ticket / Confirmation #: <%= @commission.ticket %></p>
-		<p>Supplier: <%= @commission.supplier %></p>
-		<p>Airline: <%= @commission.airline %></p>
-		<p>Hotel: <%= @commission.hotel %></p>
-		<p>Car Rental: <%= @commission.car_rental %></p>
-		<p>Payment Form: <%= @commission.form %></p>
-		<p>Trip Total: <%= number_to_currency(@commission.trip_total) %></p>
-		<p>Estimated Commission: <%= number_to_currency(@commission.estimate) %></p>
-		<p>Last 4 of Credit Card: <%= @commission.last_4 %></p>
-		<% if @commission.processed %>
-		<td><a href="/commissions/unprocess/<%= @commission.id %>" data-confirm="Really re-open this commission?"><button class="btn btn-contact btn-sm">Re-Open</button></a></td>
-		<% else %>
-		<td><a href="/commissions/process/<%= @commission.id %>" data-confirm="Really process this commission?"><button class="btn btn-contact btn-sm">Process</button></a></td>
-		<% end %>
+		<div class="col-sm-12">
+			<form action="/commissions" method="post" class="form-horizontal" enctype="multipart/form-data" id="tracker-form">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<input name="commission[user_id]" value="<%= @commission.user.id %>" type="hidden">
+			<input name="commission[processed]" value="false" type="hidden">
+			<div class="row">
+				<div class="form-group">
+				    <label for="agent_first_name" class="col-sm-2 control-label">Agent First Name</label>
+				    <div class="col-sm-8">
+				        <input name="commission[first]" type="text" class="form-control" id="agent_first_name" value="<%= @commission.user.first %>" required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="agent_last_name" class="col-sm-2 control-label">Agent Last Name</label>
+				    <div class="col-sm-8">
+				        <input name="commission[last]" type="text" class="form-control" id="agent_last_name" value="<%= @commission.user.last %>" required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="agent_email" class="col-sm-2 control-label">Agent Email</label>
+				    <div class="col-sm-8">
+				        <input name="commission[email]" type="text" class="form-control" id="agent_email" value="<%= @commission.user.email %>" required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="agent_address" class="col-sm-2 control-label">Address</label>
+				    <div class="col-sm-8">
+				        <input name="commission[address]" type="text" class="form-control" id="agent_address" value="<%= @commission.user.address %>" required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="agent_city" class="col-sm-2 control-label">City</label>
+				    <div class="col-sm-8">
+				        <input name="commission[city]" type="text" class="form-control" id="agent_city" value="<%= @commission.user.city %>" required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="agent_state" class="col-sm-2 control-label">State</label>
+				    <div class="col-sm-8">
+				        <input name="commission[state]" type="text" class="form-control" id="agent_state" value="<%= @commission.user.state %>" required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="zip" class="col-sm-2 control-label">Zip Code</label>
+				    <div class="col-sm-8">
+				        <input name="commission[zip]" type="text" class="form-control" id="zip" value="<%= @commission.user.zip %>" required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="agent_country" class="col-sm-2 control-label">Country</label>
+				    <div class="col-sm-8">
+				        <input name="commission[country]" type="text" class="form-control" id="agent_country" value="<%= @commission.user.country %>" required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="traveler_names" class="col-sm-2 control-label">Traveler Names</label>
+				    <div class="col-sm-8">
+				        <textarea name="commission[traveler_names]" class="form-control" id="traveler_names" rows="8" required><%= @commission.traveler_names %></textarea>
+				        <div class="characters">0/250</div>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="traveler_phone" class="col-sm-2 control-label">Primary Traveler Phone</label>
+				    <div class="col-sm-8">
+				        <input name="commission[traveler_phone]" type="number" class="form-control" id="traveler_phone" required value="<%= @commission.traveler_phone %>"/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="traveler_email" class="col-sm-2 control-label">Primary Traveler Email</label>
+				    <div class="col-sm-8">
+				        <input name="commission[traveler_email]" type="text" class="form-control" id="traveler_email" required value="<%= @commission.traveler_email %>"/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="departure" class="col-sm-2 control-label">Departure Date</label>
+				    <div class="col-sm-8">
+				        <input name="commission[depart]" type="date" class="form-control" id="departure" min="<%= Date.today %>" required value="<%= @commission.depart %>"/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="return" class="col-sm-2 control-label">Return Date</label>
+				    <div class="col-sm-8">
+				        <input name="commission[return]" type="date" class="form-control" id="return" required value="<%= @commission.return %>"/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="itinerary" class="col-sm-2 control-label">Itinerary (Include Ship Name for Cruises)</label>
+				    <div class="col-sm-8">
+				        <textarea name="commission[itinerary]" class="form-control" id="itinerary" rows="8" required><%= @commission.itinerary %></textarea>
+				        <div class="characters">0/250</div>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="ticket" class="col-sm-2 control-label">Ticket # / Confirmation #</label>
+				    <div class="col-sm-8">
+				        <input name="commission[ticket]" type="text" class="form-control" id="ticket" required value="<%= @commission.ticket %>"/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="supplier" class="col-sm-2 control-label">Supplier Name</label>
+				    <div class="col-sm-8">
+				        <input name="commission[supplier]" type="text" class="form-control" id="supplier" required value="<%= @commission.supplier %>"/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="airline" class="col-sm-2 control-label">Airline</label>
+				    <div class="col-sm-8">
+				        <input name="commission[airline]" type="text" class="form-control" id="airline" value="<%= @commission.airline %>"/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="hotel" class="col-sm-2 control-label">Hotel</label>
+				    <div class="col-sm-8">
+				        <input name="commission[hotel]" type="text" class="form-control" id="hotel" value="<%= @commission.hotel %>"/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="car_rental" class="col-sm-2 control-label">Car Rental Agency</label>
+				    <div class="col-sm-8">
+				        <input name="commission[car_rental]" type="text" class="form-control" id="car_rental" value="<%= @commission.car_rental %>"/>
+				    </div>
+				</div>
+			</div>
+<!-- 			<div class="row">
+				<div class="form-group">
+				    <label for="c2go" class="col-sm-2 control-label">C2GO ID #</label>
+				    <div class="col-sm-8">
+				        <input name="commission[c2go]" type="text" class="form-control" id="c2go" required/>
+				        <small class="form-text text-muted c2go-text">Use the 5 digit number after CG found on the front of your card.</small>
+				    </div>
+				</div>
+			</div> -->
+			<div class="row">
+				<div class="form-group">
+				    <label for="total_price" class="col-sm-2 control-label">Trip Total Price</label>
+				    <div class="col-sm-8">
+				        <input name="commission[trip_total]" type="number" class="form-control" id="total_price" required value="<%= @commission.trip_total %>"/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="estimate" class="col-sm-2 control-label">Estimated Commission Total</label>
+				    <div class="col-sm-8">
+				        <input name="commission[estimate]" type="number" class="form-control" id="estimate" required value="<%= @commission.estimate %>"/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="payment_form" class="col-sm-2 control-label">Form of Payment</label>
+				    <div class="col-sm-8">
+				        <input name="commission[form]" type="text" class="form-control" id="payment_form" required value="<%= @commission.form %>"/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="last_4" class="col-sm-2 control-label">Last 4 Digits of Credit Card</label>
+				    <div class="col-sm-8">
+				        <input name="commission[last_4]" type="text" class="form-control" id="last_4" maxlength="4" value="<%= @commission.last_4 %>"/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="commission[c2go]" class="col-sm-2 control-label">C2GO ID #</label>
+				    <div class="col-sm-8">
+				        <input name="commission[c2go]" type="text" class="form-control" id="commission[c2go]" value="<%= @commission.user.c2go %>"required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				    <label for="comments" class="col-sm-2 control-label">Comments</label>
+				    <div class="col-sm-8">
+				        <textarea name="commission[comments]" class="form-control" id="comments" rows="8"><%= @commission.comments %></textarea>
+				        <div class="characters">0/250</div>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+				<div class="col-sm-2">
+				</div>
+				    <div class="col-sm-8 btn-col">
+				        <button class="btn btn-green">Edit</button>
+				        </form>
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<div class="col-sm-2">
+					</div>
+					<div class="col-sm-8 btn-col process-col">
+						<% if @commission.processed %>
+							<td><a href="/commissions/unprocess/<%= @commission.id %>" data-confirm="Really re-open this commission?"><button class="btn btn-contact">Re-Open</button></a></td>
+							<% else %>
+							<td><a href="/commissions/process/<%= @commission.id %>" data-confirm="Really process this commission?"><button class="btn btn-contact">Process</button></a></td>
+							<% end %>
+				</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
