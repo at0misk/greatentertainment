@@ -1242,7 +1242,7 @@ p {
 
 .user-special-row{
 	min-height: 300px;
-	/*background-color: #4f4f4f;*/
+	background-color: #4f4f4f;
 	color: white;
 	margin-top: 15px;
 }
@@ -1263,14 +1263,16 @@ p {
 }
 
 .user-special-btn-col button{
-	width: 100%;
+	/*width: 100%;*/
+    position: absolute;
+    bottom: 10px;
 }
 
-.user-special-description{
+/*.user-special-description{
 	height: 125px;
     text-overflow: ellipsis;
     overflow: hidden;
-}
+}*/
 
 .user-a{
 	color: white;
@@ -1286,7 +1288,7 @@ p {
 }
 
 .user-a:hover{
-	color: white;
+	color: white !important;
 	opacity: 1;
 }
 
@@ -1456,7 +1458,7 @@ p {
 				</div>
 			</div>
 			<a href="/specials/<%= @page_user.id %>/<%= @special.id %>" class="user-a"><div class="row user-special-row">
-				<div class="col-sm-4 user-special-col">
+				<div class="col-md-4 user-special-col">
 					<h4>Special of the Week</h4>
 					<h5><%= @special.title %></h5>
 					<h5><%= @special.depart.strftime("%m/%d/%y") %> - <%= @special.return.strftime("%m/%d/%y") %></h5>
@@ -1466,7 +1468,7 @@ p {
 					<button class="btn btn-yellow">Learn More</button>
 					</div>
 				</div>
-				<div class="col-sm-8 user-special-img">
+				<div class="col-md-8 user-special-img">
 					<%= image_tag(@special.image.url, class: 'img-fluid, user-special-img-image') %>
 				</div></a>
 			</div>	
