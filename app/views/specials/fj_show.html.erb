@@ -93,9 +93,15 @@
 			<div class="row box-row">
 				<div class="price-info col-sm-6">
 					<h5>From</h5>
-					<h4>$<%= @fj.price %></h4>
-					<h5><%= @fj.flights.titleize %></h5>
-					<h5><%= @fj.includes[8..-1] %></h5>
+					<% if @fj.location == "Hawaii" %>
+						<h4>$<%= @fj.price %></h4>
+						<h5><%= @fj.flights.titleize %></h5>
+						<h5><%= @fj.includes[8..-1] %></h5>
+					<% else %>
+						<h4><%= @fj.price %></h4>
+						<h5><%= @fj.flights.titleize %></h5>
+						<h5><%= @fj.dates %></h5>
+					<% end %>
 				</div>
 				<a href="#" data-toggle="modal" data-target="#specialModal" class="modal-target"><div class="interest-info col-sm-6">
 					<h4>I'm interested in this special!</h4>
