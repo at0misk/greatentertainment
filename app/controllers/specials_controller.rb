@@ -84,9 +84,9 @@ class SpecialsController < ApplicationController
 				puts @description.gsub("\t", "")
 				# fail
 			else
-				desc = desc_doc.css('#overviewHotelProperty')
+				@description = desc_doc.css('#overviewHotelProperty').text
+
 			end
-			# @description = desc.text
 			# fail
 			@page_user = User.find(session[:page_user_id])
 		else
