@@ -1390,14 +1390,14 @@ p {
 		<!-- Data to send to scrape view -->
 				<form action="/fj_special" method="post" class="first_special_form">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-				<input name="location" type="hidden" value="<%= @first_location %>">
-				<input name="title" type="hidden" value="<%= @first_title %>">
-				<input name="price" type="hidden" value="<%= @first_price %>">
-				<input name="flights" type="hidden" value="<%= @first_flights_nights %>">
-				<input name="date" type="hidden" value="<%= @first_date %>">
-				<input name="ref" type="hidden" value="<%= @first_detail_link %>">
-				<input name="agent_ref" type="hidden" value="<%=  @first_agent_ref %>">
-				<input name="img_src" type="hidden" value="<%= @first_image_src %>">
+				<input name="title" type="hidden" value="<%= @hawaii_hotelname%>">
+				<input name="price" type="hidden" value="<%= @hawaii_price %>">
+				<input name="flights" type="hidden" value="<%= @hawaii_nights %>">
+				<input name="includes" type="hidden" value="<%= @hawaii_includes %>">
+				<input name="ref" type="hidden" value="<%= @hawaii_href %>">
+				<input name="agent_ref" type="hidden" value="<%=  @hawaii_href %>">
+				<input name="img_src" type="hidden" value="<%= @hawaii_image_src %>">
+				<input name="location" type="hidden" value="Hawaii">
 				</form>
 				<form action="/fj_special" method="post" class="second_special_form">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -1436,11 +1436,11 @@ p {
 		<div class="col-lg-4 col-md-12 outerCol" data-no-turbolinks="true">
 			<div class="row specialsRow">
 				<div class="col-sm-4 col-xs-12 specialBox s1 first_special_a">
-				<h4 class="specialHeader"><%= @first_location %></h4>
-				<p><%= @first_title %></p>
-				<p class="price-p"><%= @first_price %></p>
-				<p class="special-box-p"><%= @first_flights_nights.downcase %></p>
-				<p class="special-box-p"><%= @first_date %></p>
+				<h4 class="specialHeader">Hawaii</h4>
+				<p><%= @hawaii_hotelname %></p>
+				<p class="price-p">$<%= @hawaii_price %></p>
+				<p class="special-box-p"><%= @hawaii_nights %></p>
+				<p class="special-box-p"><%= @hawaii_includes[8..-1] %></p>
 				</div>
 				<div class="col-sm-4 col-xs-12 specialBox s2 second_special_a">
 				<h4 class="specialHeader"><%= @second_location %></h4>

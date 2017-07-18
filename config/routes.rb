@@ -80,6 +80,8 @@ Rails.application.routes.draw do
 	get '/register' => 'sessions#register'
 	post '/import_users' => 'users#import_users'
 	post '/import_commissions' => 'commissions#import_commissions'
+	get '/test_scrape' => 'users#test_scrape'
+	get '/hawaii/:url' => 'specials#hawaii'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

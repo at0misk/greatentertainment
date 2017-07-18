@@ -172,11 +172,35 @@ skip_before_action :verify_authenticity_token
 		# fail
 		# 
 		# Specials
+		doc = Nokogiri::HTML(open("http://www.applevacations.com/hawaii-vacation-deals/"))
+		@hawaii_hotelname = doc.css('.hotelname')[0].text
+		@hawaii_href = doc.css('.hotelname a')[0]['href']
+		@hawaii_description = doc.css('.valuePlus')[0].text
+		@hawaii_price = doc.css('.bigprice_price')[0].text
+		@hawaii_nights = doc.css('.bigger strong')[0].text
+		@hawaii_includes = doc.css('.blue')[0].text
+		@hawaii_image_src = "http://www.applevacations.com" + doc.css('.hotelimage')[0]['src']
 		# 
 		@special = Special.where(user_id: @page_user.id, featured: true).first
 		if @current_user && @current_user.id == @page_user.id
 			@unapproved_photos = Photo.where(user_id: @current_user.id, allowed: false)
 		end
+	end
+	def test_scrape
+		doc = Nokogiri::HTML(open("http://www.applevacations.com/hawaii-vacation-deals/"))
+		@hawaii_hotelname = doc.css('.hotelname')[0].text
+		@hawaii_href = doc.css('.hotelname a')[0]['href']
+		@hawaii_description = doc.css('.valuePlus')[0].text
+		@hawaii_price = doc.css('.bigprice_price')[0].text
+		@hawaii_nights = doc.css('.bigger strong')[0].text
+		@hawaii_includes = doc.css('.blue')[0].text
+		puts @hawaii_hotelname
+		puts @hawaii_href
+		puts @hawaii_description
+		puts @hawaii_price
+		puts @hawaii_nights
+		puts @hawaii_includes[8..-1]
+		fail
 	end
 	def edit
 		@user = User.find_by_username(params['username'])

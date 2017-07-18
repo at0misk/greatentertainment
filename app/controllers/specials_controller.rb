@@ -72,17 +72,18 @@ class SpecialsController < ApplicationController
 		redirect_to "/specials/all_specials/#{@user.username}"
 	end
 	def fj_create
-		@@fj = Fj_special.new(params['title'], params['location'], params['price'], params['flights'], params['date'], params['ref'], params['agent_ref'], params['img_src'])
+		@@fj = Fj_special.new(params['title'], params['location'], params['price'], params['flights'], params['date'], params['ref'], params['agent_ref'], params['img_src'], params['includes'])
 		redirect_to '/fj_show'
 	end
 	def fj_show
 		if @@fj.present?
 			@fj = @@fj
-			desc_doc = Nokogiri::HTML(open("#{@fj.ref}"))
-			puts @fj.ref
-			desc = desc_doc.css('#overviewHotelProperty')
-			@description = desc.text
-			puts @description
+			if @fj.location == "Hawaii"
+				desc_doc = Nokogiri::HTML(open("#{@fj.ref}"))
+				desc = desc_doc.css('div')[35].text.gsub("\n", "")
+				fail
+			end
+			# @description = desc.text
 			# fail
 			@page_user = User.find(session[:page_user_id])
 		else
@@ -96,10 +97,14 @@ class SpecialsController < ApplicationController
 		flash[:sent_mail] = true
 		redirect_to "/#{@user.username}"
 	end
+	def hawaii
+		@user = User.find(session[:page_user_id])
+		doc = Nokogiri::HTML(open(params['url']))
+	end
 end
 
 class Fj_special
-	def initialize(title, location, price, flights, dates, ref, agent_ref, img_src)
+	def initialize(title, location, price, flights, dates, ref, agent_ref, img_src, includes)
 		@title = title
 		@location = location
 		@price = price
@@ -108,6 +113,7 @@ class Fj_special
 		@ref = ref
 		@agent_ref = agent_ref
 		@img_src = img_src
+		@includes = includes
 	end
-	attr_reader :title, :location, :price, :flights, :dates, :ref, :agent_ref, :img_src
+	attr_reader :title, :location, :price, :flights, :dates, :ref, :agent_ref, :img_src, :includes
 end
