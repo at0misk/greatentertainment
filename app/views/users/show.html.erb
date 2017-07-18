@@ -1409,7 +1409,20 @@ p {
 				<p class="special-box-p"><%= @hawaii_nights %></p>
 				<p class="special-box-p"><%= @hawaii_includes[8..-1] %></p>
 				</div>
-			
+				<div class="col-sm-4 col-xs-12 specialBox s2 second_special_a">
+				<h4 class="specialHeader"><%= @second_location %></h4>
+				<p><%= @second_title %></p>
+				<p class="price-p"><%= @second_price %></p>
+				<p class="special-box-p"><%= @second_flights_nights.downcase %></p>
+				<p class="special-box-p"><%= @second_date %></p>
+				</div>
+				<div class="col-sm-4 col-xs-12 specialBox s3 third_special_a">
+				<h4 class="specialHeader"><%= @third_location %></h4>
+				<p><%= @third_title %></p>
+				<p class="price-p"><%= @third_price %></p>
+				<p class="special-box-p"><%= @third_flights_nights.downcase %></p>
+				<p class="special-box-p"><%= @third_date %></p>
+				</div>
 			</div>
 			<a href="/specials/<%= @page_user.id %>/<%= @special.id %>" class="user-a"><div class="row user-special-row">
 				<div class="col-md-4 user-special-col">
