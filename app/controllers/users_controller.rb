@@ -104,68 +104,68 @@ skip_before_action :verify_authenticity_token
 		@blogs = Blog.all.limit(2).order(created_at: "DESC")
 		# 
 		# Funjet Scrape
-		# 
-		doc = Nokogiri::HTML(open("http://www.funjet.com/deals/all-deals"))
-		titles = doc.css('.b-OnSaleProduct__name>a')
-		refs = doc.css('.b-OnSaleCTA__button')
-		locations = doc.css('#OnSaleItemRollUpDetailHeader>h3')
-		prices = doc.css('.b-OnSaleCTA__amount')
-		dates = doc.css('.b-OnSaleItem__details__departures')
-		flights_nights = doc.css('.b-OnSaleCTA__nightsType')
-		photos = doc.css('.b-OnSaleItem__photo>img')
-		agent_ref = doc.css('.b-OnSaleCTA__button')
-		# 
-		@first_ref = "http://www.funjet.com#{refs[0]['href']}"
-		@first_agent_ref = "http://www.funjet.com#{agent_ref[0]['href']}"
-		@first_title = titles[0].text
-		@first_detail_link = titles[0]['href']
-		@first_location = locations[0].text
-		@first_price = prices[0].text
-		@first_location.slice! "Hotels"
-		@first_date = dates[0].text
-		@first_date.slice! "more"
-		@first_date.slice! " for this Price"
-		@first_flights_nights = flights_nights[0].text
-		@first_image_src = photos[0]['ng-src']
-		# 
-		@second_ref = "http://www.funjet.com#{refs[1]['href']}"
-		@second_agent_ref = "http://www.funjet.com#{agent_ref[1]['href']}"
-		@second_title = titles[2].text
-		@second_detail_link = titles[2]['href']
-		@second_location = locations[1].text
-		@second_price = prices[1].text
-		@second_location.slice! "Hotels"
-		@second_date = dates[1].text
-		@second_date.slice! "more"
-		@second_date.slice! " for this Price"
-		@second_flights_nights = flights_nights[1].text
-		@second_image_src = photos[1]['ng-src']
-		#
-		@third_ref = "http://www.funjet.com#{refs[2]['href']}"
-		@third_agent_ref = "http://www.funjet.com#{agent_ref[2]['href']}"
-		@third_title = titles[4].text
-		@third_detail_link = titles[4]['href']
-		@third_location = locations[2].text
-		@third_price = prices[2].text
-		@third_location.slice! "Hotels"
-		@third_date = dates[2].text
-		@third_date.slice! "more"
-		@third_date.slice! " for this Price"
-		@third_flights_nights = flights_nights[2].text
-		@third_image_src = photos[2]['ng-src']
-		# 
-		@fourth_ref = "http://www.funjet.com#{refs[3]['href']}"
-		@fourth_agent_ref = "http://www.funjet.com#{agent_ref[3]['href']}"
-		@fourth_title = titles[6].text
-		@fourth_detail_link = titles[6]['href']
-		@fourth_location = locations[3].text
-		@fourth_price = prices[3].text
-		@fourth_location.slice! "Hotels"
-		@fourth_date = dates[3].text
-		@fourth_date.slice! "more"
-		@fourth_date.slice! " for this Price"
-		@fourth_flights_nights = flights_nights[3].text
-		@fourth_image_src = photos[3]['ng-src']
+		# # 
+		# doc = Nokogiri::HTML(open("http://www.funjet.com/deals/all-deals"))
+		# titles = doc.css('.b-OnSaleProduct__name>a')
+		# refs = doc.css('.b-OnSaleCTA__button')
+		# locations = doc.css('#OnSaleItemRollUpDetailHeader>h3')
+		# prices = doc.css('.b-OnSaleCTA__amount')
+		# dates = doc.css('.b-OnSaleItem__details__departures')
+		# flights_nights = doc.css('.b-OnSaleCTA__nightsType')
+		# photos = doc.css('.b-OnSaleItem__photo>img')
+		# agent_ref = doc.css('.b-OnSaleCTA__button')
+		# # 
+		# @first_ref = "http://www.funjet.com#{refs[0]['href']}"
+		# @first_agent_ref = "http://www.funjet.com#{agent_ref[0]['href']}"
+		# @first_title = titles[0].text
+		# @first_detail_link = titles[0]['href']
+		# @first_location = locations[0].text
+		# @first_price = prices[0].text
+		# @first_location.slice! "Hotels"
+		# @first_date = dates[0].text
+		# @first_date.slice! "more"
+		# @first_date.slice! " for this Price"
+		# @first_flights_nights = flights_nights[0].text
+		# @first_image_src = photos[0]['ng-src']
+		# # 
+		# @second_ref = "http://www.funjet.com#{refs[1]['href']}"
+		# @second_agent_ref = "http://www.funjet.com#{agent_ref[1]['href']}"
+		# @second_title = titles[2].text
+		# @second_detail_link = titles[2]['href']
+		# @second_location = locations[1].text
+		# @second_price = prices[1].text
+		# @second_location.slice! "Hotels"
+		# @second_date = dates[1].text
+		# @second_date.slice! "more"
+		# @second_date.slice! " for this Price"
+		# @second_flights_nights = flights_nights[1].text
+		# @second_image_src = photos[1]['ng-src']
+		# #
+		# @third_ref = "http://www.funjet.com#{refs[2]['href']}"
+		# @third_agent_ref = "http://www.funjet.com#{agent_ref[2]['href']}"
+		# @third_title = titles[4].text
+		# @third_detail_link = titles[4]['href']
+		# @third_location = locations[2].text
+		# @third_price = prices[2].text
+		# @third_location.slice! "Hotels"
+		# @third_date = dates[2].text
+		# @third_date.slice! "more"
+		# @third_date.slice! " for this Price"
+		# @third_flights_nights = flights_nights[2].text
+		# @third_image_src = photos[2]['ng-src']
+		# # 
+		# @fourth_ref = "http://www.funjet.com#{refs[3]['href']}"
+		# @fourth_agent_ref = "http://www.funjet.com#{agent_ref[3]['href']}"
+		# @fourth_title = titles[6].text
+		# @fourth_detail_link = titles[6]['href']
+		# @fourth_location = locations[3].text
+		# @fourth_price = prices[3].text
+		# @fourth_location.slice! "Hotels"
+		# @fourth_date = dates[3].text
+		# @fourth_date.slice! "more"
+		# @fourth_date.slice! " for this Price"
+		# @fourth_flights_nights = flights_nights[3].text
+		# @fourth_image_src = photos[3]['ng-src']
 		# description.each do |val|
 		# 	puts val.text
 		# end

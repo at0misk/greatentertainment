@@ -1399,39 +1399,6 @@ p {
 				<input name="img_src" type="hidden" value="<%= @hawaii_image_src %>">
 				<input name="location" type="hidden" value="Hawaii">
 				</form>
-				<form action="/fj_special" method="post" class="second_special_form">
-				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-				<input name="location" type="hidden" value="<%= @second_location %>">
-				<input name="title" type="hidden" value="<%= @second_title %>">
-				<input name="price" type="hidden" value="<%= @second_price %>">
-				<input name="flights" type="hidden" value="<%= @second_flights_nights %>">
-				<input name="date" type="hidden" value="<%= @second_date %>">
-				<input name="ref" type="hidden" value="<%= @second_detail_link %>">
-				<input name="agent_ref" type="hidden" value="<%=  @second_agent_ref %>">
-				<input name="img_src" type="hidden" value="<%= @second_image_src %>">
-				</form>
-				<form action="/fj_special" method="post" class="third_special_form">
-				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-				<input name="location" type="hidden" value="<%= @third_location %>">
-				<input name="title" type="hidden" value="<%= @third_title %>">
-				<input name="price" type="hidden" value="<%= @third_price %>">
-				<input name="flights" type="hidden" value="<%= @third_flights_nights %>">
-				<input name="date" type="hidden" value="<%= @third_date %>">
-				<input name="ref" type="hidden" value="<%= @third_detail_link %>">
-				<input name="agent_ref" type="hidden" value="<%=  @third_agent_ref %>">
-				<input name="img_src" type="hidden" value="<%= @third_image_src %>">
-				</form>
-				<form action="/fj_special" method="post" class="fourth_special_form">
-				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-				<input name="location" type="hidden" value="<%= @fourth_location %>">
-				<input name="title" type="hidden" value="<%= @fourth_title %>">
-				<input name="price" type="hidden" value="<%= @fourth_price %>">
-				<input name="flights" type="hidden" value="<%= @fourth_flights_nights %>">
-				<input name="date" type="hidden" value="<%= @fourth_date %>">
-				<input name="ref" type="hidden" value="<%= @fourth_detail_link %>">
-				<input name="agent_ref" type="hidden" value="<%=  @fourth_agent_ref %>">
-				<input name="img_src" type="hidden" value="<%= @fourth_image_src %>">
-				</form>
 		<!--  -->
 		<div class="col-lg-4 col-md-12 outerCol" data-no-turbolinks="true">
 			<div class="row specialsRow">
@@ -1442,20 +1409,7 @@ p {
 				<p class="special-box-p"><%= @hawaii_nights %></p>
 				<p class="special-box-p"><%= @hawaii_includes[8..-1] %></p>
 				</div>
-				<div class="col-sm-4 col-xs-12 specialBox s2 second_special_a">
-				<h4 class="specialHeader"><%= @second_location %></h4>
-				<p><%= @second_title %></p>
-				<p class="price-p"><%= @second_price %></p>
-				<p class="special-box-p"><%= @second_flights_nights.downcase %></p>
-				<p class="special-box-p"><%= @second_date %></p>
-				</div>
-				<div class="col-sm-4 col-xs-12 specialBox s3 third_special_a">
-				<h4 class="specialHeader"><%= @third_location %></h4>
-				<p><%= @third_title %></p>
-				<p class="price-p"><%= @third_price %></p>
-				<p class="special-box-p"><%= @third_flights_nights.downcase %></p>
-				<p class="special-box-p"><%= @third_date %></p>
-				</div>
+			
 			</div>
 			<a href="/specials/<%= @page_user.id %>/<%= @special.id %>" class="user-a"><div class="row user-special-row">
 				<div class="col-md-4 user-special-col">

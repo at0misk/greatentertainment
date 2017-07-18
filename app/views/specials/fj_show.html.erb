@@ -19,7 +19,7 @@
 		text-align: center;
 	}
 	.img-fluid{
-		max-width: 100%;
+		width: 100%;
 		height: auto;
 	}
 	.price-info{
@@ -34,7 +34,7 @@
 	.interest-info{
 		text-align: center;
 		padding: 15px;
-		padding-top: 70px;
+		padding-top: 45px;
 		margin: 35px 10px;
 		width: 46%;
 		background: #eba10a;
@@ -103,7 +103,11 @@
 			</div>
 		</div>
 		<div class="col-sm-6">
-			<p class="description"><%= @description %></p>
+			<% if @fj.location == "Hawaii" %>
+				<p><%= @description[615..-65] %></p>
+			<% else %>
+				<p><%= @description %></p>
+			<% end %>
 		</div>
 	</div>
 </div>
