@@ -69,7 +69,7 @@
 		color: white;
 	}
 	.booked-div{
-	    float: right;
+	    /*float: right;*/
 	    text-align: center;
 	    background: #5b90b2;
 	    padding-bottom: 15px;
@@ -218,11 +218,12 @@
 			<div class="booked-div col-sm-3">
 				<a href="#" data-toggle="modal" data-target="#galleryModal"><button class="btn btn-contact">Upload Photos Here!</button></a>
 			</div>
+		</div>
 		<% else %>
 		<div class="row photo-row no-photo-row">
 			<div class="col-sm-9 photo-col">
 				<h4 class="none-found">No photos found</h4>
-				<h5 class="none-found"><a hhref="#" data-toggle="modal" data-target="#galleryModal">Click Here to upload photos</a></h5>
+				<h5 class="none-found"><a href="#" data-toggle="modal" data-target="#galleryModal">Click Here to upload photos</a></h5>
 			</div>
 			<div class="description-div col-sm-3">
 				<div class="booked-div">
@@ -236,8 +237,8 @@
 		<div class="col-sm-9">
 			<h4 class="booked">Have you booked with <%#= @page_user.first %> <%#= @page_user.last %>? Upload photos from your trip <a href="/gallery_upload/<%#= @page_user.username %>">here!</a></h4>
 			<h5>Upload photos from your trip <a href="/gallery_upload/<%= @page_user.username %>">here</a>!</h5> -->
-		</div>
-	</div>
+		<!-- </div> -->
+	<!-- </div> -->
 </div>
 
 <!-- Contact Modal -->

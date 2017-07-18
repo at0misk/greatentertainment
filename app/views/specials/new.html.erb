@@ -63,6 +63,10 @@
 	    margin-right: 15px;
 	    margin-top: 15px;
 	}
+	.errors-div{
+		padding-left: 30px;
+		padding-top: 15px;
+	}
 </style>
 <div class="container">
 	<div class="row header-row">
@@ -169,7 +173,15 @@
 				<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6 weekly weekly-img">
 					<%= image_tag('colloseum', :class => 'img-fluid' ) %>
 				</div>
-			</a>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 errors-div">
+				<% if flash[:errors] %>
+					<% flash[:errors].each do |val| %>
+						<p><%= val %></p>
+					<% end %>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>

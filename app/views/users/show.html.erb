@@ -55,7 +55,7 @@
 	.specialBox{
 		/*border: 1px solid black;*/
 		height: 100%;
-		min-height: 200px;
+		min-height: 175px;
 		color: white;
 		overflow: hidden;
 		padding-top: 15px !important;
@@ -986,6 +986,7 @@ fieldset[disabled] .btn-fare.active {
     white-space: nowrap;
     overflow: hidden;
     text-align: center;
+    margin-top: 0px;
 }
 
 .price-p{
@@ -1239,6 +1240,59 @@ p {
    color: rgba(21, 54, 73, 0.9);
 }
 
+.user-special-row{
+	min-height: 300px;
+	/*background-color: #4f4f4f;*/
+	color: white;
+	margin-top: 15px;
+}
+
+.user-special-col{
+	min-height: 301px;
+	background-color: #4f4f4f;
+}
+
+.user-special-img{
+	padding: 0px
+}
+
+.user-special-img img{
+	width: 100%;
+	height: auto;
+}
+
+.user-special-btn-col button{
+	width: 100%;
+}
+
+.user-special-description{
+	height: 125px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.user-a{
+	color: white;
+	-moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
+.user-a img{
+	-moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
+.user-a:hover{
+	color: white;
+	opacity: 1;
+}
+
+.user-a img:hover{
+	opacity: 0.8;
+}
+
 </style>
 <% content_for :head do %>
   <meta name="turbolinks-cache-control" content="no-cache">
@@ -1258,12 +1312,12 @@ p {
 					<span class="meet">Meet Your Agent:</span>
 					<h4 class="name"><%= @page_user.first.titleize %> <%= @page_user.last.titleize %></h4>
 					<p class="about"><%= @page_user.about %></p>
-						<button id="phone-call" class="btn btn-contact" data-toggle="modal" data-target="#callModal"><span class="glyphicon glyphicon-earphone phone-glyphicon" aria-hidden="true"></span></button>
+<!-- 						<button id="phone-call" class="btn btn-contact" data-toggle="modal" data-target="#callModal"><span class="glyphicon glyphicon-earphone phone-glyphicon" aria-hidden="true"></span></button> -->
 				</div>
 			</div>
 			<div class="row contactRow">
 				<a href="#" data-toggle="modal" data-target="#contactModal"><div class="col-sm-10 col-xs-10 contact-col contact-left">
-					<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 id="contacth3" class="lefth3">Contact <%= @page_user.first.capitalize %></h3>
+					<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><h3 id="contacth3" class="lefth3">Contact <%= @page_user.first.titleize %></h3>
 					<div class="phone-div">
 						<small class="phone"><span class="glyphicon glyphicon-earphone phone-glyphicon tiny-phone" aria-hidden="true"></span> <%= number_to_phone(@page_user.phone_number) %></small>
 					</div>
@@ -1330,6 +1384,7 @@ p {
 				</div> -->
 			</div>
 		</div>
+		<!-- Data to send to scrape view -->
 				<form action="/fj_special" method="post" class="first_special_form">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 				<input name="location" type="hidden" value="<%= @first_location %>">
@@ -1374,173 +1429,46 @@ p {
 				<input name="agent_ref" type="hidden" value="<%=  @fourth_agent_ref %>">
 				<input name="img_src" type="hidden" value="<%= @fourth_image_src %>">
 				</form>
+		<!--  -->
 		<div class="col-lg-4 col-md-12 outerCol" data-no-turbolinks="true">
-			<% if @specials.length == 0 %>
 			<div class="row specialsRow">
-				<div class="col-sm-6 col-xs-12 specialBox s1 first_special_a">
+				<div class="col-sm-4 col-xs-12 specialBox s1 first_special_a">
 				<h4 class="specialHeader"><%= @first_location %></h4>
 				<p><%= @first_title %></p>
 				<p class="price-p"><%= @first_price %></p>
 				<p class="special-box-p"><%= @first_flights_nights.downcase %></p>
 				<p class="special-box-p"><%= @first_date %></p>
 				</div>
-				<div class="col-sm-6 col-xs-12 specialBox s2 second_special_a">
+				<div class="col-sm-4 col-xs-12 specialBox s2 second_special_a">
 				<h4 class="specialHeader"><%= @second_location %></h4>
 				<p><%= @second_title %></p>
 				<p class="price-p"><%= @second_price %></p>
 				<p class="special-box-p"><%= @second_flights_nights.downcase %></p>
 				<p class="special-box-p"><%= @second_date %></p>
 				</div>
-			</div>
-			<div class="row specialsRow">
-				<div class="col-sm-6 col-xs-12 specialBox s3 third_special_a">
+				<div class="col-sm-4 col-xs-12 specialBox s3 third_special_a">
 				<h4 class="specialHeader"><%= @third_location %></h4>
 				<p><%= @third_title %></p>
 				<p class="price-p"><%= @third_price %></p>
 				<p class="special-box-p"><%= @third_flights_nights.downcase %></p>
 				<p class="special-box-p"><%= @third_date %></p>
 				</div>
-				<div class="col-sm-6 col-xs-12 specialBox s4 fourth_special_a">
-				<h4 class="specialHeader"><%= @fourth_location %></h4>
-				<p><%= @fourth_title %></p>
-				<p class="price-p"><%= @fourth_price %></p>
-				<p class="special-box-p"><%= @fourth_flights_nights.downcase %></p>
-				<p class="special-box-p"><%= @fourth_date %></p>
+			</div>
+			<a href="/specials/<%= @page_user.id %>/<%= @special.id %>" class="user-a"><div class="row user-special-row">
+				<div class="col-sm-4 user-special-col">
+					<h4>Special of the Week</h4>
+					<h5><%= @special.title %></h5>
+					<h5><%= @special.depart.strftime("%m/%d/%y") %> - <%= @special.return.strftime("%m/%d/%y") %></h5>
+					<h5><%= number_to_currency(@special.price) %> pp</h5>
+					<p class="user-special-description"></p>
+					<div class="user-special-btn-col">
+					<button class="btn btn-yellow">Learn More</button>
+					</div>
 				</div>
+				<div class="col-sm-8 user-special-img">
+					<%= image_tag(@special.image.url, class: 'img-fluid, user-special-img-image') %>
+				</div></a>
 			</div>	
-			<%elsif @specials.length == 1 %>
-			<div class="row specialsRow">
-				<a href="/specials/<%= @page_user.id %>/<%= @specials[0].id %>"><div class="col-sm-6 col-xs-12 specialBox s1 first_special_a">
-				<h4 class="specialHeader"><%= @specials[0].location %></h4>
-				<p><%= @specials[0].title %></p>
-				<p class="price-p"><%= number_to_currency(@specials[0].price, strip_insignificant_zeros: true) %></p>
-				<p class="special-box-p">per person</p>
-				<p class="special-box-p">Dates: <%= @specials[0].depart.strftime("%m/%d/%y") %> - <%= @specials[0].return.strftime("%m/%d/%y") %></p>
-				</div></a>
-				<div class="col-sm-6 col-xs-12 specialBox s2 second_special_a">
-				<h4 class="specialHeader"><%= @second_location %></h4>
-				<p><%= @second_title %></p>
-				<p class="price-p"><%= @second_price %></p>
-				<p class="special-box-p"><%= @second_flights_nights.downcase %></p>
-				<p class="special-box-p"><%= @second_date %></p>
-				</div>
-			</div>
-			<div class="row specialsRow">
-				<div class="col-sm-6 col-xs-12 specialBox s3 third_special_a">
-				<h4 class="specialHeader"><%= @third_location %></h4>
-				<p><%= @third_title %></p>
-				<p class="price-p"><%= @third_price %></p>
-				<p class="special-box-p"><%= @third_flights_nights.downcase %></p>
-				<p class="special-box-p"><%= @third_date %></p>
-				</div>
-				<div class="col-sm-6 col-xs-12 specialBox s4 fourth_special_a">
-				<h4 class="specialHeader"><%= @fourth_location %></h4>
-				<p><%= @fourth_title %></p>
-				<p class="price-p"><%= @fourth_price %></p>
-				<p class="special-box-p"><%= @fourth_flights_nights %></p>
-				<p class="special-box-p"><%= @fourth_date %></p>
-				</div>
-			</div>
-			<%elsif @specials.length == 2 %>
-			<div class="row specialsRow">
-				<a href="/specials/<%= @page_user.id %>/<%= @specials[0].id %>"><div class="col-sm-6 col-xs-12 specialBox s1 first_special_a">
-				<h4 class="specialHeader"><%= @specials[0].location %></h4>
-				<p><%= @specials[0].title %></p>
-				<p class="price-p"><%= number_to_currency(@specials[0].price, strip_insignificant_zeros: true) %></p>
-				<p class="special-box-p">per person</p>
-				<p class="special-box-p">Dates: <%= @specials[0].depart.strftime("%m/%d/%y") %> - <%= @specials[0].return.strftime("%m/%d/%y") %></p>
-				</div></a>
-				<a href="/specials/<%= @page_user.id %>/<%= @specials[1].id %>"><div class="col-sm-6 col-xs-12 specialBox s2 first_special_a">
-				<h4 class="specialHeader"><%= @specials[1].location %></h4>
-				<p><%= @specials[1].title %></p>
-				<p class="price-p"><%= number_to_currency(@specials[1].price, strip_insignificant_zeros: true) %></p>
-				<p class="special-box-p">per person</p>
-				<p class="special-box-p">Dates: <%= @specials[1].depart.strftime("%m/%d/%y") %> - <%= @specials[1].return.strftime("%m/%d/%y") %></p>
-				</div></a>
-			</div>
-			<div class="row specialsRow">
-				<div class="col-sm-6 col-xs-12 specialBox s3 third_special_a">
-				<h4 class="specialHeader"><%= @third_location %></h4>
-				<p><%= @third_title %></p>
-				<p class="price-p"><%= @third_price %></p>
-				<p class="special-box-p"><%= @third_flights_nights.downcase %></p>
-				<p class="special-box-p"><%= @third_date %></p>
-				</div>
-				<div class="col-sm-6 col-xs-12 specialBox s4 fourth_special_a">
-				<h4 class="specialHeader"><%= @fourth_location %></h4>
-				<p><%= @fourth_title %></p>
-				<p class="price-p"><%= @fourth_price %></p>
-				<p class="special-box-p"><%= @fourth_flights_nights %></p>
-				<p class="special-box-p"><%= @fourth_date %></p>
-				</div>
-			</div>
-			<%elsif @specials.length == 3 %>
-			<div class="row specialsRow">
-				<a href="/specials/<%= @page_user.id %>/<%= @specials[0].id %>"><div class="col-sm-6 col-xs-12 specialBox s1 first_special_a">
-				<h4 class="specialHeader"><%= @specials[0].location %></h4>
-				<p><%= @specials[0].title %></p>
-				<p class="price-p"><%= number_to_currency(@specials[0].price, strip_insignificant_zeros: true) %></p>
-				<p class="special-box-p">per person</p>
-				<p class="special-box-p">Dates: <%= @specials[0].depart.strftime("%m/%d/%y") %> - <%= @specials[0].return.strftime("%m/%d/%y") %></p>
-				</div></a>
-				<a href="/specials/<%= @page_user.id %>/<%= @specials[1].id %>"><div class="col-sm-6 col-xs-12 specialBox s2 first_special_a">
-				<h4 class="specialHeader"><%= @specials[1].location %></h4>
-				<p><%= @specials[1].title %></p>
-				<p class="price-p"><%= number_to_currency(@specials[1].price, strip_insignificant_zeros: true) %></p>
-				<p class="special-box-p">per person</p>
-				<p class="special-box-p">Dates: <%= @specials[1].depart.strftime("%m/%d/%y") %> - <%= @specials[1].return.strftime("%m/%d/%y") %></p>
-				</div></a>
-			</div>
-			<div class="row specialsRow">
-				<a href="/specials/<%= @page_user.id %>/<%= @specials[2].id %>"><div class="col-sm-6 col-xs-12 specialBox s3 first_special_a">
-				<h4 class="specialHeader"><%= @specials[2].location %></h4>
-				<p><%= @specials[2].title %></p>
-				<p class="price-p"><%= number_to_currency(@specials[2].price, strip_insignificant_zeros: true) %></p>
-				<p class="special-box-p">per person</p>
-				<p class="special-box-p">Dates: <%= @specials[2].depart.strftime("%m/%d/%y") %> - <%= @specials[2].return.strftime("%m/%d/%y") %></p>
-				</div></a>
-				<div class="col-sm-6 col-xs-12 specialBox s4 fourth_special_a">
-				<h4 class="specialHeader"><%= @fourth_location %></h4>
-				<p><%= @fourth_title %></p>
-				<p class="price-p"><%= @fourth_price %></p>
-				<p class="special-box-p"><%= @fourth_flights_nights %></p>
-				<p class="special-box-p"><%= @fourth_date %></p>
-				</div>
-			</div>
-			<%elsif @specials.length == 4 %>
-			<div class="row specialsRow">
-				<a href="/specials/<%= @page_user.id %>/<%= @specials[0].id %>"><div class="col-sm-6 col-xs-12 specialBox s1 first_special_a">
-				<h4 class="specialHeader"><%= @specials[0].location %></h4>
-				<p><%= @specials[0].title %></p>
-				<p class="price-p"><%= number_to_currency(@specials[0].price, strip_insignificant_zeros: true) %></p>
-				<p class="special-box-p">per person</p>
-				<p class="special-box-p">Dates: <%= @specials[0].depart.strftime("%m/%d/%y") %> - <%= @specials[0].return.strftime("%m/%d/%y") %></p>
-				</div></a>
-				<a href="/specials/<%= @page_user.id %>/<%= @specials[1].id %>"><div class="col-sm-6 col-xs-12 specialBox s2 first_special_a">
-				<h4 class="specialHeader"><%= @specials[1].location %></h4>
-				<p><%= @specials[1].title %></p>
-				<p class="price-p"><%= number_to_currency(@specials[1].price, strip_insignificant_zeros: true) %></p>
-				<p class="special-box-p">per person</p>
-				<p class="special-box-p">Dates: <%= @specials[1].depart.strftime("%m/%d/%y") %> - <%= @specials[1].return.strftime("%m/%d/%y") %></p>
-				</div></a>
-			</div>
-			<div class="row specialsRow">
-				<a href="/specials/<%= @page_user.id %>/<%= @specials[2].id %>"><div class="col-sm-6 col-xs-12 specialBox s3 first_special_a">
-				<h4 class="specialHeader"><%= @specials[2].location %></h4>
-				<p><%= @specials[2].title %></p>
-				<p class="price-p"><%= number_to_currency(@specials[2].price, strip_insignificant_zeros: true) %></p>
-				<p class="special-box-p">per person</p>
-				<p class="special-box-p">Dates: <%= @specials[2].depart.strftime("%m/%d/%y") %> - <%= @specials[2].return.strftime("%m/%d/%y") %></p>
-				</div></a>
-				<a href="/specials/<%= @page_user.id %>/<%= @specials[3].id %>"><div class="col-sm-6 col-xs-12 specialBox s4 first_special_a">
-				<h4 class="specialHeader"><%= @specials[3].location %></h4>
-				<p><%= @specials[3].title %></p>
-				<p class="price-p"><%= number_to_currency(@specials[3].price, strip_insignificant_zeros: true) %></p>
-				<p class="special-box-p">per person</p>
-				<p class="special-box-p">Dates: <%= @specials[3].depart.strftime("%m/%d/%y") %> - <%= @specials[3].return.strftime("%m/%d/%y") %></p>
-				</div></a>
-			</div>
-			<% end %>
 			<div class="row vacationRow">
 				<a href="/quote"><div class="col-sm-10 col-xs-10 contact-col contact-left-middle">
 					<h3>Vacation Quote Request</h3>

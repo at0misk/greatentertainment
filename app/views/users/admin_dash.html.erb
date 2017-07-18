@@ -77,6 +77,9 @@
 				</div>
 			</div>
 			</form>
+			<% if flash[:imported] %>
+				<h5><%= flash[:imported] %></h5>
+			<% end %>
     	</div>
 <!--     	<div class="col-sm-4 lookup-col">
     		<h4 class="lookup-header">Import Commissions</h4>

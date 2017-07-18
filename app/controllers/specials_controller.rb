@@ -7,11 +7,13 @@ class SpecialsController < ApplicationController
 		@user = User.find(session[:user_id])
 		@special = Special.new(special_params)
 		@featured = Special.where(user_id: session[:user_id], featured: true)
-		if @featured.length < 4
+		if @featured.length < 1
 			@special.update_attribute(:featured, true)
 		end
 		if @special.save
 		else
+			flash[:errors] = @special.errors.full_messages
+			redirect_to "/specials/new/#{@user.username}" and return
 		end
 		redirect_to "/specials/all_specials/#{@user.username}"
 	end
@@ -55,7 +57,7 @@ class SpecialsController < ApplicationController
 	def feature
 		@user = User.find(session[:user_id])
 		@featured = Special.where(user_id: session[:user_id], featured: true)
-		if @featured.length > 3 
+		if @featured.length > 0
 			@featured.last.update_attribute(:featured, false)
 		end
 		@new_feature = Special.find(params['id'])
