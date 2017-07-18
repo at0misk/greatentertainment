@@ -78,11 +78,13 @@ class SpecialsController < ApplicationController
 	def fj_show
 		if @@fj.present?
 			@fj = @@fj
+			desc_doc = Nokogiri::HTML(open("#{@fj.ref}"))
 			if @fj.location == "Hawaii"
-				desc_doc = Nokogiri::HTML(open("#{@fj.ref}"))
 				@description = desc_doc.css('div')[35].text.gsub("\n", "")
 				puts @description.gsub("\t", "")
 				# fail
+			else
+				desc = desc_doc.css('#overviewHotelProperty')
 			end
 			# @description = desc.text
 			# fail
