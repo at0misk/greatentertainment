@@ -991,7 +991,7 @@ fieldset[disabled] .btn-fare.active {
 
 .price-p{
 	font-size: 26px !important;
-	text-align: center;
+	/*text-align: center;*/
 	margin-bottom: 0px !important;
 }
 
@@ -1014,12 +1014,12 @@ fieldset[disabled] .btn-fare.active {
 }
 
 .special-box-p{
-	text-align: center;
+	/*text-align: center;*/
 	font-size: 14px !important;
 }
 
 .specialBox p{
-	text-align: center;
+	/*text-align: center;*/
 }
 
 .faregrabbr_text{
@@ -1244,7 +1244,7 @@ p {
 	min-height: 300px;
 	background-color: #4f4f4f;
 	color: white;
-	margin-top: 15px;
+	/*margin-top: 15px;*/
 }
 
 .user-special-col{
@@ -1294,6 +1294,22 @@ p {
 
 .user-a img:hover{
 	opacity: 0.8;
+}
+
+.specials-header{
+	/*text-align: center;*/
+	margin-top: 20px;
+	margin-left: 30px;
+}
+
+.specials-header-row{
+	background-color: #07549c;
+	color: white;
+	min-height: 60px;
+}
+
+.users-special-row{
+	margin-top: 15px;
 }
 
 </style>
@@ -1434,6 +1450,9 @@ p {
 				</form>
 		<!--  -->
 		<div class="col-lg-4 col-md-12 outerCol" data-no-turbolinks="true">
+			<div class="row specials-header-row">
+				<h4 class="specials-header">Travel Specials & Hot Deals</h4>
+			</div>
 			<div class="row specialsRow">
 				<div class="col-sm-4 col-xs-12 specialBox s1 first_special_a">
 				<h4 class="specialHeader">Hawaii</h4>
@@ -1456,6 +1475,9 @@ p {
 				<p class="price-p">$<%= @cruise_price %></p>
 				<p class="special-box-p"><%= @cruise_nights %></p>
 				</div>
+			</div>
+			<div class="row specials-header-row users-special-row">
+				<h4 class="specials-header"><%= @page_user.first.titleize %>'s Recommended Trip</h4>
 			</div>
 			<a href="/specials/<%= @page_user.id %>/<%= @special.id %>" class="user-a"><div class="row user-special-row">
 				<div class="col-md-4 user-special-col">
