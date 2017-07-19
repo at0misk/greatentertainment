@@ -199,6 +199,9 @@ skip_before_action :verify_authenticity_token
 		@cruise_image_src = "https://www.ncl.com" + doc.css('.picture')[0]['src']
 		# 
 		@special = Special.where(user_id: @page_user.id, featured: true).first
+		if @special.length == 0
+			@special = Special.find_by(user_id: 2)
+		end
 		if @current_user && @current_user.id == @page_user.id
 			@unapproved_photos = Photo.where(user_id: @current_user.id, allowed: false)
 		end
