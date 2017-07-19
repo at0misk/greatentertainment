@@ -80,7 +80,12 @@ class SpecialsController < ApplicationController
 			@fj = @@fj
 			desc_doc = Nokogiri::HTML(open("#{@fj.ref}"))
 			if @fj.location == "Hawaii"
+				desc_doc.encoding = "UTF-8"
 				@description = desc_doc.css('div')[35].text.gsub("\n", "")
+				@facilities = desc_doc.css('.bg_yellow>table').to_s
+				@facilities = @facilities.gsub(/.*?(?=HOTEL FACILITIES)/im, "")
+				# puts @facilities
+				# fail
 				# puts @description.gsub("\t", "")
 				# @second_picture = desc_doc.css('.vfmPhoto')[0]
 				# puts @second_picture

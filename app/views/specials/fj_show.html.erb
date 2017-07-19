@@ -1,12 +1,13 @@
 <style type="text/css">
 	.top-row{
-		margin-top: 15px;
+		/*margin-top: 15px;*/
 	}
 	.container{
 		min-height: 550px;
 		/*color: white;*/
 		background-color: white;
 		margin-top: 15px;
+		padding-bottom: 15px;
 	}
 	.header-row{
 	    background-color: #07549c;
@@ -53,7 +54,7 @@
 		text-align: justify;
 	}
 	.box-row{
-		height: 175px;
+		/*height: 175px;*/
 	}
 	.box-row .col-sm-6{
 		/*height: 100%;*/
@@ -63,7 +64,7 @@
 		font-size: 20px;
 	}
 	.special-modal-header-background{
-		background-color: #153649;
+		background-color: #07549c;
 	}
 	.modal-target{
 		color: white !important;
@@ -92,6 +93,7 @@
 	    border: 1px solid #ccc;
 	    padding: 15px;
 		background-color: #f1f1f1;
+		margin-top: 15px;
 	}
 	.map-col{
 		padding-right: 0px;
@@ -101,10 +103,17 @@
 	}
 	.interested-col button{
 		width: 100%;
+		margin-top: 15px;
 	}
 	.why{
 		padding: 0px 15px;
 		margin-bottom: 30px;
+	}
+	.title-row{
+		background-color: #07549c;
+    	color: white;
+    	padding-bottom: 15px;
+    	margin-bottom: 15px;
 	}
 @media (max-width: 767px) {
 	.box-row{
@@ -116,35 +125,51 @@
   <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
 <div class="container">
-	<div class="row header-row">
-		<div class="col-sm-12 header-col">
-			<h3 class="title"><%= @fj.location %> Special</h3>
-		</div>
-	</div>
 	<div class="row top-row">
 		<% if @fj.location == "Mexico" %>
 			<div class="col-sm-6 img-col">
 					<img class="img-fluid mexico-img" src="<%= @fj.img_src %>">
+					<div class="col-sm-12 info-col">
+						<p><%= @description %></p>
+					</div>
 			</div>
 			<% else %>
 			<div class="col-sm-6 img-col">
 				<img class="img-fluid" src="<%= @fj.img_src %>">
+			<div class="col-sm-12 info-col">
+				<% if @fj.location == "Hawaii" %>
+					<p><%= @description[615..-65] %></p>
+				<% elsif @fj.location == "Cruise" %>
+					<div class="col-sm-6">
+					<p><%= @description %></p>
+					</div>
+					<div class="col-sm-6 map-col">
+					<img class="img-fluid map" src="<%= @map %>">
+					</div>
+				<% else %>
+					<p><%= @description %></p>
+				<% end %>
+			</div>
 			</div>
 			<% end %>
 			<div class="col-sm-6 box-row">
 				<!-- <div class="price-info col-sm-6"> -->
+					<div class="row title-row">
 					<h3 class="title-header"><%= @fj.title.titleize %></h3>
 					<% if @fj.location == "Hawaii" %>
 						<h4 class="title-header">$<%= @fj.price %></h4>
 						<h5 class="title-header"><%= @fj.flights.titleize %></h5>
 						<h5 class="title-header"><%= @fj.includes[8..-1] %></h5>
+						</div>
+						<%= @facilities.html_safe %>
 					<% elsif @fj.location == "Mexico" %>
 						<h4 class="title-header"><%= @fj.price %></h4>
-						<h5 class="title-header"><%= @fj.flights.titleize %> <%= @fj.includes %></h5>
-						<h5 class="title-header"><%= @fj.dates %></h5>
+						<h5 class="title-header"><%= @fj.flights.titleize %> <%= @fj.includes %> avail. <%= @fj.dates %></h5>
+						</div>
 						<p class="why"><%= @why %></p>
 					<% elsif @fj.location == "Cruise" %>
 						<h4 class="title-header">Starting From $<%= @fj.price %></h4>
+						</div>
 						<table class="table table-responsive">
 							<thead>
 								<th>Day</th>
@@ -181,7 +206,7 @@
 						<div class="col-sm-2">
 						</div>
 						<div class="col-sm-8 interested-col">
-							<button class="btn btn-contact" data-toggle="modal" data-target="#specialModal">I'm Interested in This Special!</button>
+							<button class="btn btn-blue" data-toggle="modal" data-target="#specialModal">I'm Interested in This Special!</button>
 						</div>
 						<div class="col-sm-2">
 						</div>
@@ -190,22 +215,6 @@
 <!-- 				<a href="#" data-toggle="modal" data-target="#specialModal" class="modal-target"><div class="interest-info col-sm-6">
 					<h4>I'm interested in this special!</h4>
 				</div></a> -->
-			</div>
-	</div>
-	<div class="row desc-row">
-			<div class="col-sm-6 info-col">
-				<% if @fj.location == "Hawaii" %>
-					<p><%= @description[615..-65] %></p>
-				<% elsif @fj.location == "Cruise" %>
-					<div class="col-sm-6">
-					<p><%= @description %></p>
-					</div>
-					<div class="col-sm-6 map-col">
-					<img class="img-fluid map" src="<%= @map %>">
-					</div>
-				<% else %>
-					<p><%= @description %></p>
-				<% end %>
 			</div>
 	</div>
 </div>
@@ -267,7 +276,7 @@
 			<div class="row">
 				<div class="form-group">
 				    <div class="col-sm-12 btn-col btn-col-special">
-				        <button class="btn btn-contact btn-contact-modal">Send</button>
+				        <button class="btn btn-blue btn-contact-modal">Send</button>
 				    </div>
 				</div>
 			</div>
