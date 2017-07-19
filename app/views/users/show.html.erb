@@ -985,7 +985,7 @@ fieldset[disabled] .btn-fare.active {
 	text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    text-align: center;
+    /*text-align: center;*/
     margin-top: 0px;
 }
 
@@ -1481,8 +1481,7 @@ p {
 			</div>
 			<a href="/specials/<%= @page_user.id %>/<%= @special.id %>" class="user-a"><div class="row user-special-row">
 				<div class="col-md-4 user-special-col">
-					<h4>Special of the Week</h4>
-					<h5><%= @special.title %></h5>
+					<h4><%= @special.title %></h4>
 					<h5><%= @special.depart.strftime("%m/%d/%y") %> - <%= @special.return.strftime("%m/%d/%y") %></h5>
 					<h5><%= number_to_currency(@special.price) %> pp</h5>
 					<p class="user-special-description"></p>
