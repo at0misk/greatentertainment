@@ -1413,14 +1413,13 @@ p {
 				</form>
 				<form action="/fj_special" method="post" class="third_special_form">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-				<input name="location" type="hidden" value="<%= @third_location %>">
-				<input name="title" type="hidden" value="<%= @third_title %>">
-				<input name="price" type="hidden" value="<%= @third_price %>">
-				<input name="flights" type="hidden" value="<%= @third_flights_nights %>">
-				<input name="date" type="hidden" value="<%= @third_date %>">
-				<input name="ref" type="hidden" value="<%= @third_detail_link %>">
-				<input name="agent_ref" type="hidden" value="<%=  @third_agent_ref %>">
-				<input name="img_src" type="hidden" value="<%= @third_image_src %>">
+				<input name="location" type="hidden" value="Cruise">
+				<input name="flights" type="hidden" value="<%= @cruise_name %>">
+				<input name="title" type="hidden" value="<%= @cruise_name %>">
+				<input name="price" type="hidden" value="<%= @cruise_price %>">
+				<input name="ref" type="hidden" value="<%= @cruise_href %>">
+				<input name="agent_ref" type="hidden" value="<%=  @cruise_href %>">
+				<input name="img_src" type="hidden" value="<%= @cruise_image_src %>">
 				</form>
 				<form action="/fj_special" method="post" class="fourth_special_form">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -1449,14 +1448,13 @@ p {
 				<p class="price-p"><%= @mexico_price %></p>
 				<p class="special-box-p"><%= @mexico_nights %></p>
 				<p class="special-box-p"><%= @mexico_includes %></p>
-				<p class="special-box-p">Dates: <%= @mexico_dates %></p>
+				<!-- <p class="special-box-p">Dates: <%#= @mexico_dates %></p> -->
 				</div>
 				<div class="col-sm-4 col-xs-12 specialBox s3 third_special_a">
-				<h4 class="specialHeader"><%= @third_location %></h4>
-				<p><%= @third_title %></p>
-				<p class="price-p"><%= @third_price %></p>
-				<p class="special-box-p"><%= @third_flights_nights.downcase %></p>
-				<p class="special-box-p"><%= @third_date %></p>
+				<h4 class="specialHeader">Cruise</h4>
+				<p><%= @cruise_name %></p>
+				<p class="price-p">$<%= @cruise_price %></p>
+				<p class="special-box-p"><%= @cruise_nights %></p>
 				</div>
 			</div>
 			<a href="/specials/<%= @page_user.id %>/<%= @special.id %>" class="user-a"><div class="row user-special-row">

@@ -81,20 +81,36 @@ class SpecialsController < ApplicationController
 			desc_doc = Nokogiri::HTML(open("#{@fj.ref}"))
 			if @fj.location == "Hawaii"
 				@description = desc_doc.css('div')[35].text.gsub("\n", "")
-				puts @description.gsub("\t", "")
+				# puts @description.gsub("\t", "")
+				# @second_picture = desc_doc.css('.vfmPhoto')[0]
+				# puts @second_picture
 				# fail
 			elsif @fj.location == "Mexico"
+				@new_src = desc_doc.css('#gallery_0>img')[0]['src']
+				@fj.img_src = "http://www.cheapcaribbean.com" + @new_src
 				@description = desc_doc.css(".mobileResortLove .padded").text
+				@why = desc_doc.css('.mobileResortGo .padded').text
 				# puts @description
 				# fail
+			elsif @fj.location == "Cruise"
+				@description = desc_doc.css('.intro-text').text.gsub("â", "'")
+				@map = "https://www.ncl.com" + desc_doc.css('.intro-figure>img')[0]['src']
+				@table = desc_doc.css('.table td')
+				# rowss = data.css("td[valign='top'] table tr") # All the <tr>this is a line</tr>
+				@table.each do |row|
+				  puts row.text # Will print all the 'this is a line'
+				end
 			else
 				@description = desc_doc.css('#overviewHotelProperty').text
-
 			end
 			# fail
 			@page_user = User.find(session[:page_user_id])
 		else
-			redirect_to '/'
+			if @page_user
+				redirect_to "/#{@page_user.username}" and return
+			else
+				redirect_to "/" and return
+			end
 		end
 	end
 	def interested_funjet
@@ -110,6 +126,16 @@ class SpecialsController < ApplicationController
 	end
 end
 
+class Itinerary
+	def initialize(day, port, arrive, depart)
+		@day = day
+		@port = port
+		@arrive = arrive
+		@depart = depart
+	end
+	attr_accessor :day, :port, :arrive, :depart
+end
+
 class Fj_special
 	def initialize(title, location, price, flights, dates, ref, agent_ref, img_src, includes)
 		@title = title
@@ -122,5 +148,5 @@ class Fj_special
 		@img_src = img_src
 		@includes = includes
 	end
-	attr_reader :title, :location, :price, :flights, :dates, :ref, :agent_ref, :img_src, :includes
+	attr_accessor :title, :location, :price, :flights, :dates, :ref, :agent_ref, :img_src, :includes
 end

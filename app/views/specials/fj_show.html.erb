@@ -4,12 +4,13 @@
 	}
 	.container{
 		min-height: 550px;
-		color: white;
-		background-color: #4f4f4f;
+		/*color: white;*/
+		background-color: white;
 		margin-top: 15px;
 	}
 	.header-row{
-	    background-color: #eba10a;
+	    background-color: #07549c;
+	    color: white;
 	    margin-top: 0px;
 	    height: 66px;
 	    padding-top: 20px;
@@ -26,7 +27,7 @@
 		text-align: center;
 		padding: 10px 15px;
 		padding-top: 20px;
-		margin: 35px 10px;
+		margin: 0px 10px;
 		width: 46%;
 		background: grey;
 		/*min-height: 150px;*/
@@ -35,7 +36,7 @@
 		text-align: center;
 		padding: 15px;
 		padding-top: 45px;
-		margin: 35px 10px;
+		margin: 0px 10px;
 		width: 46%;
 		background: #eba10a;
 	}
@@ -62,7 +63,7 @@
 		font-size: 20px;
 	}
 	.special-modal-header-background{
-		background-color: #EBA10A;
+		background-color: #153649;
 	}
 	.modal-target{
 		color: white !important;
@@ -71,12 +72,45 @@
 		color: white;
 		opacity: 0.7;
 	}
-	.btn-yellow{
+	.btn-contact-modal{
 		float: right;
 	}
 	.special-form{
 		padding-right: 30px;
 	}
+	.mexico-img{
+		max-height: 250px;
+	}
+	.desc-row{
+		margin: 15px 0px;
+	}
+	.img-col{
+		padding-right: 0px;
+	}
+	.info-col{
+	    padding-left: 0;
+	    border: 1px solid #ccc;
+	    padding: 15px;
+		background-color: #f1f1f1;
+	}
+	.map-col{
+		padding-right: 0px;
+	}
+	.title-header{
+		text-align: center;
+	}
+	.interested-col button{
+		width: 100%;
+	}
+	.why{
+		padding: 0px 15px;
+		margin-bottom: 30px;
+	}
+@media (max-width: 767px) {
+	.box-row{
+		height: auto;
+	}
+}
 </style>
 <% content_for :head do %>
   <meta name="turbolinks-cache-control" content="no-cache">
@@ -84,41 +118,95 @@
 <div class="container">
 	<div class="row header-row">
 		<div class="col-sm-12 header-col">
-			<h3 class="title"><%= @fj.title %> - <%= @fj.location %></h3>
+			<h3 class="title"><%= @fj.location %> Special</h3>
 		</div>
 	</div>
 	<div class="row top-row">
-		<div class="col-sm-6">
-			<img class="img-fluid" src="<%= @fj.img_src %>">
-			<div class="row box-row">
-				<div class="price-info col-sm-6">
-					<h5>From</h5>
+		<% if @fj.location == "Mexico" %>
+			<div class="col-sm-6 img-col">
+					<img class="img-fluid mexico-img" src="<%= @fj.img_src %>">
+			</div>
+			<% else %>
+			<div class="col-sm-6 img-col">
+				<img class="img-fluid" src="<%= @fj.img_src %>">
+			</div>
+			<% end %>
+			<div class="col-sm-6 box-row">
+				<!-- <div class="price-info col-sm-6"> -->
+					<h3 class="title-header"><%= @fj.title.titleize %></h3>
 					<% if @fj.location == "Hawaii" %>
-						<h4>$<%= @fj.price %></h4>
-						<h5><%= @fj.flights.titleize %></h5>
-						<h5><%= @fj.includes[8..-1] %></h5>
+						<h4 class="title-header">$<%= @fj.price %></h4>
+						<h5 class="title-header"><%= @fj.flights.titleize %></h5>
+						<h5 class="title-header"><%= @fj.includes[8..-1] %></h5>
 					<% elsif @fj.location == "Mexico" %>
-						<h4><%= @fj.price %></h4>
-						<h5><%= @fj.flights.titleize %> <%= @fj.includes %></h5>
-						<h5><%= @fj.dates %></h5>
+						<h4 class="title-header"><%= @fj.price %></h4>
+						<h5 class="title-header"><%= @fj.flights.titleize %> <%= @fj.includes %></h5>
+						<h5 class="title-header"><%= @fj.dates %></h5>
+						<p class="why"><%= @why %></p>
+					<% elsif @fj.location == "Cruise" %>
+						<h4 class="title-header">Starting From $<%= @fj.price %></h4>
+						<table class="table table-responsive">
+							<thead>
+								<th>Day</th>
+								<th>Cruise Ports</th>
+								<th>Arrive</th>
+								<th>Depart</th>
+							</thead>
+							<tbody>
+								<% x = 0 %>
+								<% @table.each do |val| %>
+									<% if x == 0 %>
+										<tr>
+									<% end %>
+										<% if val.text.length < 50 %>
+											<td><%= val.text %></td>
+										<% else %>
+											<% next %>
+										<% end %>
+									<% if x == 3 %>
+										</tr>
+										<% x = 0 %>
+									<% elsif x < 4 %>
+										<% x += 1 %>
+									<% end %>
+								<% end %>
+							</tbody>
+						</table>	
 					<% else %>
 						<h4><%= @fj.price %></h4>
 						<h5><%= @fj.flights.titleize %></h5>
 						<h5><%= @fj.dates %></h5>
 					<% end %>
-				</div>
-				<a href="#" data-toggle="modal" data-target="#specialModal" class="modal-target"><div class="interest-info col-sm-6">
+					<div class="row">
+						<div class="col-sm-2">
+						</div>
+						<div class="col-sm-8 interested-col">
+							<button class="btn btn-contact" data-toggle="modal" data-target="#specialModal">I'm Interested in This Special!</button>
+						</div>
+						<div class="col-sm-2">
+						</div>
+					</div>
+				<!-- </div> -->
+<!-- 				<a href="#" data-toggle="modal" data-target="#specialModal" class="modal-target"><div class="interest-info col-sm-6">
 					<h4>I'm interested in this special!</h4>
-				</div></a>
+				</div></a> -->
 			</div>
-		</div>
-		<div class="col-sm-6">
-			<% if @fj.location == "Hawaii" %>
-				<p><%= @description[615..-65] %></p>
-			<% else %>
-				<p><%= @description %></p>
-			<% end %>
-		</div>
+	</div>
+	<div class="row desc-row">
+			<div class="col-sm-6 info-col">
+				<% if @fj.location == "Hawaii" %>
+					<p><%= @description[615..-65] %></p>
+				<% elsif @fj.location == "Cruise" %>
+					<div class="col-sm-6">
+					<p><%= @description %></p>
+					</div>
+					<div class="col-sm-6 map-col">
+					<img class="img-fluid map" src="<%= @map %>">
+					</div>
+				<% else %>
+					<p><%= @description %></p>
+				<% end %>
+			</div>
 	</div>
 </div>
 
@@ -179,7 +267,7 @@
 			<div class="row">
 				<div class="form-group">
 				    <div class="col-sm-12 btn-col btn-col-special">
-				        <button class="btn btn-yellow">Send</button>
+				        <button class="btn btn-contact btn-contact-modal">Send</button>
 				    </div>
 				</div>
 			</div>
