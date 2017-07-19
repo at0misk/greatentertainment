@@ -55,7 +55,7 @@
 	.specialBox{
 		/*border: 1px solid black;*/
 		height: 100%;
-		min-height: 175px;
+		min-height: 182px;
 		color: white;
 		overflow: hidden;
 		padding-top: 15px !important;
@@ -1401,14 +1401,15 @@ p {
 				</form>
 				<form action="/fj_special" method="post" class="second_special_form">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-				<input name="location" type="hidden" value="<%= @second_location %>">
-				<input name="title" type="hidden" value="<%= @second_title %>">
-				<input name="price" type="hidden" value="<%= @second_price %>">
-				<input name="flights" type="hidden" value="<%= @second_flights_nights %>">
-				<input name="date" type="hidden" value="<%= @second_date %>">
-				<input name="ref" type="hidden" value="<%= @second_detail_link %>">
-				<input name="agent_ref" type="hidden" value="<%=  @second_agent_ref %>">
-				<input name="img_src" type="hidden" value="<%= @second_image_src %>">
+				<input name="title" type="hidden" value="<%= @mexico_hotelname%>">
+				<input name="price" type="hidden" value="<%= @mexico_price %>">
+				<input name="flights" type="hidden" value="<%= @mexico_nights %>">
+				<input name="includes" type="hidden" value="<%= @mexico_includes %>">
+				<input name="ref" type="hidden" value="<%= @mexico_href %>">
+				<input name="agent_ref" type="hidden" value="<%=  @mexico_href %>">
+				<input name="img_src" type="hidden" value="<%= @mexico_image_src %>">
+				<input name="date" type="hidden" value="<%= @mexico_dates %>">
+				<input name="location" type="hidden" value="Mexico">
 				</form>
 				<form action="/fj_special" method="post" class="third_special_form">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -1443,11 +1444,12 @@ p {
 				<p class="special-box-p"><%= @hawaii_includes[8..-1] %></p>
 				</div>
 				<div class="col-sm-4 col-xs-12 specialBox s2 second_special_a">
-				<h4 class="specialHeader"><%= @second_location %></h4>
-				<p><%= @second_title %></p>
-				<p class="price-p"><%= @second_price %></p>
-				<p class="special-box-p"><%= @second_flights_nights.downcase %></p>
-				<p class="special-box-p"><%= @second_date %></p>
+				<h4 class="specialHeader">Mexico</h4>
+				<p><%= @mexico_hotelname %></p>
+				<p class="price-p"><%= @mexico_price %></p>
+				<p class="special-box-p"><%= @mexico_nights %></p>
+				<p class="special-box-p"><%= @mexico_includes %></p>
+				<p class="special-box-p">Dates: <%= @mexico_dates %></p>
 				</div>
 				<div class="col-sm-4 col-xs-12 specialBox s3 third_special_a">
 				<h4 class="specialHeader"><%= @third_location %></h4>

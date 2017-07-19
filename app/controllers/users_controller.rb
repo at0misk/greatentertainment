@@ -180,6 +180,16 @@ skip_before_action :verify_authenticity_token
 		@hawaii_nights = doc.css('.bigger strong')[0].text
 		@hawaii_includes = doc.css('.blue')[0].text
 		@hawaii_image_src = "http://www.applevacations.com" + doc.css('.hotelimage')[0]['src']
+		#
+		doc = Nokogiri::HTML(open("http://www.cheapcaribbean.com/deals/mexico-all-inclusive.html"))
+		@mexico_hotelname = doc.css('#deal_feat_0_vp_ResortUrl')[0].text
+		@mexico_href = "http://www.cheapcaribbean.com" + doc.css('#deal_feat_0_vp_ResortUrl')[0]['href']
+		@mexico_price = doc.css(".estPrice")[1].text
+		@mexico_nights = doc.css(".numNightsExpr")[1].text
+		@mexico_includes = "Including Airfare"
+		@mexico_image_src = "http://www.cheapcaribbean.com" + doc.css(".mobile-top-deals-img-width")[1]['src']
+		@mexico_dates = doc.css(".mobileTallTravelDate")[1].text
+		@mexico_dates = @mexico_dates[12..-1]
 		# 
 		@special = Special.where(user_id: @page_user.id, featured: true).first
 		if @current_user && @current_user.id == @page_user.id
@@ -187,19 +197,18 @@ skip_before_action :verify_authenticity_token
 		end
 	end
 	def test_scrape
-		doc = Nokogiri::HTML(open("http://www.applevacations.com/hawaii-vacation-deals/"))
-		@hawaii_hotelname = doc.css('.hotelname')[0].text
-		@hawaii_href = doc.css('.hotelname a')[0]['href']
-		@hawaii_description = doc.css('.valuePlus')[0].text
-		@hawaii_price = doc.css('.bigprice_price')[0].text
-		@hawaii_nights = doc.css('.bigger strong')[0].text
-		@hawaii_includes = doc.css('.blue')[0].text
-		puts @hawaii_hotelname
-		puts @hawaii_href
-		puts @hawaii_description
-		puts @hawaii_price
-		puts @hawaii_nights
-		puts @hawaii_includes[8..-1]
+		doc = Nokogiri::HTML(open("http://www.cheapcaribbean.com/deals/mexico-all-inclusive.html"))
+		@mexico_hotelname = doc.css('#deal_feat_0_vp_ResortUrl')[0].text
+		@mexico_href = "http://www.cheapcaribbean.com" + doc.css('#deal_feat_0_vp_ResortUrl')[0]['href']
+		@mexico_price = doc.css(".estPrice")[1].text
+		@mexico_nights = doc.css(".numNightsExpr")[1].text
+		@mexico_includes = "Including Airfare"
+		@mexico_image_src = "http://www.cheapcaribbean.com" + doc.css(".mobile-top-deals-img-width")[1]['src']
+		puts @mexico_hotelname
+		puts @mexico_href
+		puts @mexico_price
+		puts @mexico_nights
+		puts @mexico_image_src
 		fail
 	end
 	def edit

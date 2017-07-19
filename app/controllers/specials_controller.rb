@@ -83,6 +83,10 @@ class SpecialsController < ApplicationController
 				@description = desc_doc.css('div')[35].text.gsub("\n", "")
 				puts @description.gsub("\t", "")
 				# fail
+			elsif @fj.location == "Mexico"
+				@description = desc_doc.css(".mobileResortLove .padded").text
+				# puts @description
+				# fail
 			else
 				@description = desc_doc.css('#overviewHotelProperty').text
 
