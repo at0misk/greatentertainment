@@ -22,7 +22,7 @@
 		position: relative;
 		/*background-color: #4f4f4f;*/
 		height: 100%;
-		color: white;
+		/*color: white;*/
 	}
 	.weekly-img{
 		height: 100%;
@@ -30,10 +30,10 @@
 		overflow: hidden; 
 	}
 	.example-col{
-		background-color: #07549c;
+		/*background-color: #07549c;*/
 	    /*width: 45%;*/
 	    /*margin: 0% 2%;*/
-	    color: white;
+	    /*color: white;*/
 	    padding-right: 0px;
 	    /*margin-top: 15px;*/
 	}
@@ -42,7 +42,7 @@
 		height: 100%;
 	}
 	.social-media a{
-		color: white;
+		color: #07549c
 	}
 	.social-media{
 		display: inline-block;
@@ -70,7 +70,7 @@
 	.special-form{
 		padding-right: 30px;
 	}
-	.outer-col .btn-contact{
+	.outer-col .btn-blue{
 	    position: absolute;
 	    bottom: 0;
 	    /* text-align: center; */
@@ -114,7 +114,7 @@
 		.container{
 			height: auto;
 			min-height: 770px;
-			background-color: #07549c;
+			/*background-color: #07549c;*/
 		}
 		.weekly-img{
 			height: auto;
@@ -132,6 +132,15 @@
 			padding-left: 15px;
 		}
 	}
+	.header-row{
+	    color: white;
+	    background-color: #07549c;
+	    margin: 0px -30px;
+	    padding-left: 30px;
+	}
+	.weekly p{
+		margin-top: 15px;
+	}
 </style>
 <% content_for :head do %>
 <meta property="og:title" content="<%= @special.title %>" />
@@ -144,15 +153,17 @@
 		<div class="row">
 			<div class="col-sm-12 example-col outer-col">
 				<div class="col-lg-4 col-md-4 col-sm-12 weekly weekly-details-special">
-					<h4><%= @special.title %></h4>
-					<h5><%= number_to_currency(@special.price) %> pp</h5>
-					<h5 class="dates"><%= @special.depart.strftime('%m/%d/%y') %> - <%= @special.return.strftime('%m/%d/%y') %></h5>
+					<div class="row header-row">
+					<h3><%= @special.title %></h3>
+					<h4><%= number_to_currency(@special.price) %> pp</h4>
+					<h4 class="dates"><%= @special.depart.strftime('%m/%d/%y') %> - <%= @special.return.strftime('%m/%d/%y') %></h4>
+					</div>
 					<%= simple_format(@special.description) %>
 					<div class="social-div">
 						<h5 class="social-media"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></h5>
 						<h5 class="social-media"><a href="https://twitter.com/home?status=http%253A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></h5>
 					</div>
-				<button class="btn btn-contact" data-toggle="modal" data-target="#specialModal">I'm Interested in this Special!</button>
+				<button class="btn btn-blue" data-toggle="modal" data-target="#specialModal">I'm Interested in this Special!</button>
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-12 weekly weekly-img">
 					<%= image_tag(@special.image.url, :class => 'img-fluid' ) %>
