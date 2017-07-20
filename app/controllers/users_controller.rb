@@ -300,7 +300,7 @@ skip_before_action :verify_authenticity_token
 	def gallery_update
 		@user = User.find(session[:user_id])
 		@photo = Photo.find(params['id'])
-		if @photo.id == session[:user_id]
+		if @photo.user.id == session[:user_id]
 		    if @photo.update(photo_params)
 		    	flash[:errors] = nil
 		    else
