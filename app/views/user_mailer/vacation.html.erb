@@ -1,15 +1,16 @@
-<table class="email-table" style="width: 538px; padding: 20px; background: #fff; margin: 40px auto; text-align: left; font-family: 'Helvetica Neue'">
+<table class="email-table" style="box-shadow: 0px 2px 9px 3px #ccc; width: 538px; padding: 20px; background: white; margin: 40px auto; text-align: left; font-family: 'Helvetica Neue'">
   <tbody>
     <tr class="header-row">
       <td>
-        <h1 style="font-size: 20px">Hello, <%= @user.first %> <%= @user.last %>!</h1>
-        <h4><%= @first %> <%= @last %> wants to go on vacation!</h4>
-        <p>Here's the details:</p>
+        <%= image_tag('evologo-words', :style => "width: 50%; margin-left: 25%;") %>
+        <h1 style="font-size: 20px; text-align: center; color:#022344">Hello, <%= @user.first %> <%= @user.last %>!</h1>
+        <h4 style="text-align: center; color:#022344"><%= @first %> <%= @last %> wants to go on vacation!</h4>
       </td>
     </tr>
-    <tr class="body-row">
-      <td>
-        <p>Name: <%= @first %> <%= @last %></p>
+    <tr style="background-color: #07549c; color: white;" class="body-row">
+      <td style="padding: 15px;">
+        <h4 style="padding: 15px 0px; background-color: white; color: #022344; margin: 0px -15px; margin-top: -15px; padding-left: 15px; border: 1px solid #ccc;">Here's the details:</h4>
+        <p style="margin-top: 15px;">Name: <%= @first %> <%= @last %></p>
         <p>Email: <%= @email %></p>
         <p>Phone Number: <%= @number %></p>
         <p>Departure Airport: <%= @airport %></p>

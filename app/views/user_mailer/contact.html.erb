@@ -2,8 +2,9 @@
   <tbody>
     <tr class="header-row">
       <td>
-        <h1 style="font-size: 20px">Hello, <%= @user.first %> <%= @user.last %>!</h1>
-        <h4><%= @first %> <%= @last %> sent you the following message:</h4>
+        <%= image_tag('evologo-words', :style => "width: 50%; margin-left: 25%;") %>
+        <h1 style="font-size: 20px; text-align: center; color:#022344">Hello, <%= @user.first %> <%= @user.last %>!</h1>
+        <h4 style="text-align: center; color:#022344"><%= @first %> <%= @last %> sent you the following message:</h4>
       </td>
     </tr>
     <tr class="body-row">
