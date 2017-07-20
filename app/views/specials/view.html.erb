@@ -141,6 +141,18 @@
 	.weekly p{
 		margin-top: 15px;
 	}
+	.title{
+		display: inline-block;
+	}
+	.price{
+		display: inline-block;
+		float: right;
+		margin-right: 15px;
+		margin-top: 15px;
+	}
+	.dates{
+		margin-top: 0px;
+	}
 </style>
 <% content_for :head do %>
 <meta property="og:title" content="<%= @special.title %>" />
@@ -154,8 +166,8 @@
 			<div class="col-sm-12 example-col outer-col">
 				<div class="col-lg-4 col-md-4 col-sm-12 weekly weekly-details-special">
 					<div class="row header-row">
-					<h3><%= @special.title %></h3>
-					<h4><%= number_to_currency(@special.price) %> pp</h4>
+					<h3 class="title"><%= @special.title %></h3>
+					<h4 class="price"><%= number_to_currency(@special.price) %> pp</h4>
 					<h4 class="dates"><%= @special.depart.strftime('%m/%d/%y') %> - <%= @special.return.strftime('%m/%d/%y') %></h4>
 					</div>
 					<%= simple_format(@special.description) %>
