@@ -1380,16 +1380,18 @@ p {
 							<p class="blue">Read More...</p>
 						</div>
 					</div></a>
-					<a href="/blogs/<%= @blogs[1].id %>" class="blog-a"><div class="row blogContent">
-						<div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 blogImgCol">
-							<%= image_tag(@blogs[1].image.url, :class => 'img-fluid blog-image') %>
-						</div>
-						<div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 blog-content-col">
-							<h4 class="blog-header-front"><%= @blogs[1].title.titleize %></h4>
-							<h5>Written by <%= @blogs[1].author.titleize %></h5>
-							<p class="blue">Read More...</p>
-						</div>
-					</div></a>
+					<% if @blogs.length > 1 %>
+						<a href="/blogs/<%= @blogs[1].id %>" class="blog-a"><div class="row blogContent">
+							<div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 blogImgCol">
+								<%= image_tag(@blogs[1].image.url, :class => 'img-fluid blog-image') %>
+							</div>
+							<div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 blog-content-col">
+								<h4 class="blog-header-front"><%= @blogs[1].title.titleize %></h4>
+								<h5>Written by <%= @blogs[1].author.titleize %></h5>
+								<p class="blue">Read More...</p>
+							</div>
+						</div></a>
+					<% end %>
 				<% end %>
 <!-- 				<div class="row blogContent">
 					<div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 blogImgCol">
