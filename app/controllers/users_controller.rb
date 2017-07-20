@@ -101,7 +101,7 @@ skip_before_action :verify_authenticity_token
 		end
 		@latest = Blog.where(user_id: @page_user.id).last
 		@cruise = Cruise.where(user_id: @page_user.id).last
-		@blogs = Blog.all.limit(2).order(created_at: "DESC")
+		@blogs = Blog.all.limit(3).order(created_at: "DESC")
 		# 
 		# Funjet Scrape
 		# 

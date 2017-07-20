@@ -19,7 +19,11 @@ class UserMailer < ApplicationMailer
   	@last = last
   	@airport = airport
     @budget = budget
-    @return_airport = return_airport
+    if !@return_airport
+      @return_airport = airport
+    else
+      @return_airport = return_airport
+    end
   	@email = email
   	@number = number
   	@destination = destination

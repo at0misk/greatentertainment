@@ -10,7 +10,7 @@ class UserMailerPreview < ActionMailer::Preview
   end
   def vacation
     user = OpenStruct.new(email: "demo@example.com", first: "John", last: "Doe")
-    UserMailer.vacation(user, "Kevin", "Taylor", "JFK", "ktp925@gmail.com", "973-919-2402", "Hawaii", "01/01/2020", "02/02/2020", "2", "0", "Hello! asdf asdf asdf")
+    UserMailer.vacation(user, "Kevin", "Taylor", "JFK", "", "$149-200", "ktp925@gmail.com", "973-919-2402", "Hawaii", "01/01/2020", "02/02/2020", "2", "0", "Hello! asdf asdf asdf")
   end
   def user_special
     user = OpenStruct.new(email: "demo@example.com", first: "John", last: "Doe")
