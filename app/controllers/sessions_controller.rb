@@ -45,8 +45,8 @@ class SessionsController < ApplicationController
 	end
 	def quote_process
 		# Send email for quote here
-		@user = User.find(session[:user_id])
-		UserMailer.vacation(@user, params['first'], params['last'], params['airport'], params['email'], params['phone'], params['destination'], params['departure'], params['return'], params['adults'], params['children'], params['comments']).deliver_now
+		@user = User.find(session[:page_user_id])
+		UserMailer.vacation(@user, params['first'], params['last'], params['airport'], params['return_airport'], params['budget'], params['email'], params['phone'], params['destination'], params['departure'], params['return'], params['adults'], params['children'], params['comments']).deliver_now
 		flash[:sent_mail] = true
 		if params['subscribe']
 			subscription = Subscription.new(user_id: session[:user_id], email: params['email'], first: params['first'], last: params['last'])

@@ -36,6 +36,10 @@
 	.custom-checkbox{
 		text-align: center;
 	}
+	small{
+	    margin-top: 15px;
+	    display: block;
+	}
 </style>
 <div class="container">
 	<div class="row header-row">
@@ -66,9 +70,18 @@
 			</div>
 			<div class="row form-row">
 				<div class="form-group">
-				    <label for="airport" class="col-sm-4 control-label">Preferred Airport</label>
+				    <label for="airport" class="col-sm-4 control-label">Departure Airport</label>
 				    <div class="col-sm-8">
 				        <input name="airport" type="text" class="form-control" id="airport" required/>
+				    </div>
+				</div>
+			</div>
+			<div class="row form-row">
+				<div class="form-group">
+				    <label for="return_airport" class="col-sm-4 control-label">Return Airport</label>
+				    <div class="col-sm-8">
+				        <input name="return_airport" placeholder="" type="text" class="form-control" id="return_airport"/>
+				        <small id="returnHelp" class="form-text text-muted">If different from departure.</small>
 				    </div>
 				</div>
 			</div>
@@ -102,7 +115,7 @@
 				<div class="form-group">
 				    <label for="departure" class="col-sm-4 control-label">Departure Date</label>
 				    <div class="col-sm-8">
-				        <input name="departure" type="date" class="form-control" id="departure" required/>
+				        <input name="departure" type="date" class="form-control" id="departure" min="<%= Date.today %>" required/>
 				    </div>
 				</div>
 			</div>
@@ -110,7 +123,7 @@
 				<div class="form-group">
 				    <label for="return" class="col-sm-4 control-label">Return Date</label>
 				    <div class="col-sm-8">
-				        <input name="return" type="date" class="form-control" id="return" required/>
+				        <input name="return" type="date" class="form-control" id="return" min="<%= Date.today %>" required/>
 				    </div>
 				</div>
 			</div>
@@ -127,10 +140,25 @@
 					    <label for="children" class="col-sm-4 control-label travel-label">Children</label>
 					    <div class="col-sm-8">
 					        <input name="children" type="number" class="form-control" id="children" min="0" placeholder="0" value="0"/>
+				        <small id="childrenHelp" class="form-text text-muted">Under 18.</small>
 					    </div>
 					</div>
 				</div>
 			</div>
+			<div class="row form-row">
+				  <div class="form-group">
+				    <label for="budget" class="col-sm-4 control-label">Budget</label>
+				    <div class="col-sm-8">
+				    <select class="form-control" id="budget" name="budget" required>
+				      <option>$0 - $149</option>
+				      <option>$150 - $199</option>
+				      <option>$200 - $249</option>
+				      <option>$250+</option>
+				    </select>
+				    <small id="budgetHelp" class="form-text text-muted">Per Day</small>
+				    </div>
+				  </div>
+			 </div>
 			<div class="row form-row">
 				<div class="form-group">
 				    <label for="comments" class="col-sm-4 control-label">Comments</label>

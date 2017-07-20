@@ -18,9 +18,9 @@
 		/*border: 1px solid black;*/
 		margin-top: 15px;
 	}
-	.weekly-details{
+	.weekly-details-special{
 		position: relative;
-		background-color: #4f4f4f;
+		/*background-color: #4f4f4f;*/
 		height: 100%;
 		color: white;
 	}
@@ -30,7 +30,7 @@
 		overflow: hidden; 
 	}
 	.example-col{
-		background-color: #4f4f4f;
+		background-color: #07549c;
 	    /*width: 45%;*/
 	    /*margin: 0% 2%;*/
 	    color: white;
@@ -70,7 +70,7 @@
 	.special-form{
 		padding-right: 30px;
 	}
-	.outer-col .btn-yellow{
+	.outer-col .btn-contact{
 	    position: absolute;
 	    bottom: 0;
 	    /* text-align: center; */
@@ -81,7 +81,7 @@
 		font-size: 20px;
 	}
 	.special-modal-header-background{
-		background-color: #EBA10A;
+		background-color: #153649;
 	}
 	.outer-col{
 		height: 550px;
@@ -92,7 +92,7 @@
 			height: 470px;
 			min-height: 470px;
 		}
-		.outer-col .btn-yellow{
+		.outer-col .btn-contact{
 			position: relative;
 		}
 		.weekly-details{
@@ -103,7 +103,7 @@
 		}
 	}
 	@media (max-width: 991px){
-		.outer-col .btn-yellow{
+		.outer-col .btn-contact{
 			/*position: relative;*/
 			margin: 0px;
 		}
@@ -143,7 +143,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 example-col outer-col">
-				<div class="col-lg-4 col-md-4 col-sm-12 weekly weekly-details">
+				<div class="col-lg-4 col-md-4 col-sm-12 weekly weekly-details-special">
 					<h4><%= @special.title %></h4>
 					<h5><%= number_to_currency(@special.price) %> pp</h5>
 					<h5 class="dates"><%= @special.depart.strftime('%m/%d/%y') %> - <%= @special.return.strftime('%m/%d/%y') %></h5>
@@ -152,7 +152,7 @@
 						<h5 class="social-media"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></h5>
 						<h5 class="social-media"><a href="https://twitter.com/home?status=http%253A//52.24.144.110/specials/<%= @special.user.id %>/<%= @special.id %>" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></h5>
 					</div>
-				<button class="btn btn-yellow" data-toggle="modal" data-target="#specialModal">I'M INTERESTED IN THIS SPECIAL!</button>
+				<button class="btn btn-contact" data-toggle="modal" data-target="#specialModal">I'M INTERESTED IN THIS SPECIAL!</button>
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-12 weekly weekly-img">
 					<%= image_tag(@special.image.url, :class => 'img-fluid' ) %>
@@ -243,7 +243,7 @@
 			<div class="row">
 				<div class="form-group">
 				    <div class="col-sm-12 btn-col btn-col-special">
-				        <button class="btn btn-yellow">Send</button>
+				        <button class="btn btn-contact">Send</button>
 				    </div>
 				</div>
 			</div>
