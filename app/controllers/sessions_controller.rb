@@ -67,5 +67,6 @@ class SessionsController < ApplicationController
 	def privacy_policy
 	end
 	def register
+		redirect_to "/"
 	end
 end
