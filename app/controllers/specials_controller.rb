@@ -15,7 +15,7 @@ class SpecialsController < ApplicationController
 			flash[:errors] = @special.errors.full_messages
 			redirect_to "/specials/new/#{@user.username}" and return
 		end
-		redirect_to "/specials/all_specials/#{@user.username}"
+		redirect_to "/#{@user.username}"
 	end
 	def special_params
 		params.require(:special).permit(:title, :depart, :return, :vacancy, :description, :user_id, :image, :price, :featured, :location)
