@@ -204,12 +204,37 @@ skip_before_action :verify_authenticity_token
 		end
 	end
 	def test_scrape
-		doc = Nokogiri::HTML(open("https://www.ncl.com/vacations/?pageSize=50&numberOfGuests=4294953449&sortBy=Hotdeals&state=null&currentPage=1&"))
-		@cruise_name = doc.css('.card-title')[0].text
-		@cruise_href = "https://www.ncl.com" + doc.css('.card-title>a')[0]['href']
-		@cruise_price = doc.css('.price')[0].text
-		@cruise_nights = "Avg per person"
-		@cruise_image_src = "https://www.ncl.com" + doc.css('.picture')[0]['src']
+		# Parses the call from cs4000
+		string = "0|88800|Toni Ward|9252047444|rawdestinations@gmail.com|raw|"
+		count = 0
+		id = ''
+		agentname = ''
+		phone = ''
+		email = ''
+		username = ''
+		string[2..-1].split("").each do |val|
+			if val == "|"
+				count += 1
+				next
+			end
+			if count == 0
+				id += val
+				next
+			elsif count == 1
+				agentname += val
+				next
+			elsif count == 2
+				phone += val
+				next
+			elsif count == 3
+				email += val
+				next
+			elsif count == 4
+				username += val
+				next
+			end
+		end
+		puts id, agentname, phone, email, username
 	end
 	def edit
 		@user = User.find_by_username(params['username'])
