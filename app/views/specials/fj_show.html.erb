@@ -149,6 +149,8 @@
 			<div class="col-sm-6 img-col">
 				<img class="img-fluid" src="<%= @fj.img_src %>">
 			<% if @fj.location == "Hawaii" %>
+				<h3 class="title-header"><%= @fj.price %> Avg per night</h3>
+				<h4 class="title-header">1 Room, 2 Adults</h4>
 			<% else %>
 				<div class="col-sm-12 info-col">
 						<!-- <p><%#= @description[615..-65] %></p> -->
@@ -164,6 +166,15 @@
 					<% end %>
 				</div>
 			<% end %>
+				<div class="row">
+					<div class="col-sm-2">
+					</div>
+					<div class="col-sm-8 interested-col">
+						<button class="btn btn-blue" data-toggle="modal" data-target="#specialModal">I'm Interested in This Special!</button>
+					</div>
+					<div class="col-sm-2">
+					</div>
+				</div>
 			</div>
 			<% end %>
 			<div class="col-sm-6 box-row">
@@ -171,17 +182,25 @@
 					<div class="row title-row">
 					<h3 class="title-header"><%= @fj.title.titleize %></h3>
 					<% if @fj.location == "Hawaii" %>
-						<h4 class="title-header"><%= @fj.price %> Avg per night</h4>
-						<h5 class="title-header">1 Room, 2 Adults</h5>
 						</div>
 						<%= @facilities.html_safe %>
 					<% elsif @fj.location == "Mexico" %>
-						<h4 class="title-header"><%= @fj.price %></h4>
-						<h5 class="title-header"><%= @fj.flights.titleize %> <%= @fj.includes %> avail. <%= @fj.dates %></h5>
 						</div>
-						<p class="why"><%= @why %></p>
+							<div class="row">
+								<p class="why"><%= @why %></p>
+								<h3 class="title-header"><%= @fj.price %></h3>
+								<h4 class="title-header"><%= @fj.flights %> <%= @fj.includes %></h4>
+							</div>
+							<div class="row">
+								<div class="col-sm-2">
+								</div>
+								<div class="col-sm-8 interested-col">
+									<button class="btn btn-blue" data-toggle="modal" data-target="#specialModal">I'm Interested in This Special!</button>
+								</div>
+								<div class="col-sm-2">
+								</div>
+							</div>
 					<% elsif @fj.location == "Cruise" %>
-						<h4 class="title-header">Starting From $<%= @fj.price %></h4>
 						</div>
 						<table class="table table-responsive">
 							<thead>
@@ -209,21 +228,22 @@
 									<% end %>
 								<% end %>
 							</tbody>
-						</table>	
+						</table>
+						<h3 class="title-header">Starting From $<%= @fj.price %> Per Person</h3>
+							<div class="row">
+								<div class="col-sm-2">
+								</div>
+								<div class="col-sm-8 interested-col">
+									<button class="btn btn-blue" data-toggle="modal" data-target="#specialModal">I'm Interested in This Special!</button>
+								</div>
+								<div class="col-sm-2">
+								</div>
+							</div>	
 					<% else %>
 						<h4><%= @fj.price %></h4>
 						<h5><%= @fj.flights.titleize %></h5>
 						<h5><%= @fj.dates %></h5>
 					<% end %>
-					<div class="row">
-						<div class="col-sm-2">
-						</div>
-						<div class="col-sm-8 interested-col">
-							<button class="btn btn-blue" data-toggle="modal" data-target="#specialModal">I'm Interested in This Special!</button>
-						</div>
-						<div class="col-sm-2">
-						</div>
-					</div>
 				<!-- </div> -->
 <!-- 				<a href="#" data-toggle="modal" data-target="#specialModal" class="modal-target"><div class="interest-info col-sm-6">
 					<h4>I'm interested in this special!</h4>
