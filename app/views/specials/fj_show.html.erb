@@ -151,6 +151,15 @@
 			<% if @fj.location == "Hawaii" %>
 				<h3 class="title-header"><%= @fj.price %> Avg per night</h3>
 				<h4 class="title-header">1 Room, 2 Adults</h4>
+				<div class="row">
+					<div class="col-sm-2">
+					</div>
+					<div class="col-sm-8 interested-col">
+						<button class="btn btn-blue" data-toggle="modal" data-target="#specialModal">I'm Interested in This Special!</button>
+					</div>
+					<div class="col-sm-2">
+					</div>
+				</div>
 			<% else %>
 				<div class="col-sm-12 info-col">
 						<!-- <p><%#= @description[615..-65] %></p> -->
@@ -166,15 +175,6 @@
 					<% end %>
 				</div>
 			<% end %>
-				<div class="row">
-					<div class="col-sm-2">
-					</div>
-					<div class="col-sm-8 interested-col">
-						<button class="btn btn-blue" data-toggle="modal" data-target="#specialModal">I'm Interested in This Special!</button>
-					</div>
-					<div class="col-sm-2">
-					</div>
-				</div>
 			</div>
 			<% end %>
 			<div class="col-sm-6 box-row">
