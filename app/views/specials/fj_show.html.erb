@@ -127,6 +127,13 @@
 	#feedback-link-overview{
 		display: none;
 	}
+	.important-amenities-container div{
+		display: list-item;
+		margin-left: 15px;
+	}
+	.hotel-description{
+		padding: 15px;
+	}
 @media (max-width: 767px) {
 	.box-row{
 		height: auto;
@@ -171,7 +178,9 @@
 						<img class="img-fluid map" src="<%= @map %>">
 						</div>
 					<% else %>
-						<p><%= @description %></p>
+						<div class="col-sm-12">
+							<p><%= @description %></p>
+						</div>
 					<% end %>
 				</div>
 			<% end %>
@@ -181,8 +190,8 @@
 				<!-- <div class="price-info col-sm-6"> -->
 					<div class="row title-row">
 					<h3 class="title-header"><%= @fj.title.titleize %></h3>
-					<% if @fj.location == "Hawaii" %>
 						</div>
+					<% if @fj.location == "Hawaii" %>
 						<%= @facilities.html_safe %>
 					<% elsif @fj.location == "Mexico" %>
 						</div>
@@ -199,9 +208,7 @@
 								</div>
 								<div class="col-sm-2">
 								</div>
-							</div>
 					<% elsif @fj.location == "Cruise" %>
-						</div>
 						<table class="table table-responsive">
 							<thead>
 								<th>Day</th>

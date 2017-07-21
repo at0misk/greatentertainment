@@ -733,12 +733,12 @@ button:hover{
         </div>
         <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav log-reg-nav">
-          <% if session[:user_id] %>
-            <li><a href="/logout"><button class="btn btn-sm btn-contact">Logout</button></a></li>
-          <% else %>
-            <li><a data-toggle="modal" data-target="#loginModal"><button class="btn btn-sm btn-contact">Login</button></a></li>
+          <%# if session[:user_id] %>
+            <!-- <li><a href="/logout"><button class="btn btn-sm btn-contact">Logout</button></a></li> -->
+          <%# else %>
+            <!-- <li><a data-toggle="modal" data-target="#loginModal"><button class="btn btn-sm btn-contact">Login</button></a></li> -->
             <!-- <li><a href="#"><button class="btn btn-sm btn-contact">Register</button></a></li> -->
-          <% end %>
+          <%# end %>
           <li><a href="http://www.myevolutiontravel.com/enroll.php" class="interested_agent" target="_blank">Interested in becoming an agent?</a></li>
         </ul>
 <!--           <ul class="nav navbar-nav">
@@ -799,6 +799,8 @@ button:hover{
                 <li><a href="#">One more separated link</a></li> -->
               </ul>
            </li>
+           <% else %>
+            <li class="nav-li"><a data-toggle="modal" data-target="#loginModal">Login</a></li>
             <% end %>
           </ul>
         </div><!--/.nav-collapse -->
