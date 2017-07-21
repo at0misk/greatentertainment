@@ -76,14 +76,22 @@ class SpecialsController < ApplicationController
 		redirect_to '/fj_show'
 	end
 	def fj_show
+		@page_user = User.find(session[:page_user_id]) if session[:page_user_id]
 		if @@fj.present?
 			@fj = @@fj
 			desc_doc = Nokogiri::HTML(open("#{@fj.ref}"))
 			if @fj.location == "Hawaii"
-				desc_doc.encoding = "UTF-8"
-				@description = desc_doc.css('div')[35].text.gsub("\n", "")
-				@facilities = desc_doc.css('.bg_yellow>table').to_s
-				@facilities = @facilities.gsub(/.*?(?=HOTEL FACILITIES)/im, "")
+				# @fj.img_src = desc_doc.css('.jumbo-hero>.selected')[0]['src']
+				# @fj.img_src.slice!(0)
+				# @fj.img_src = "https://www.expedia.com" + @fj.img_src
+				# puts @fj.img_src
+				# fail
+				# @description = desc_doc.css('#ABOUT_TAB')
+				@facilities = desc_doc.css('.hotel-description').to_s
+				@facilities.strip
+				puts @facilities
+				# fail
+				# @facilities = @facilities.gsub(/.*?(?=HOTEL FACILITIES)/im, "")
 				# puts @facilities
 				# fail
 				# puts @description.gsub("\t", "")
@@ -109,7 +117,6 @@ class SpecialsController < ApplicationController
 				@description = desc_doc.css('#overviewHotelProperty').text
 			end
 			# fail
-			@page_user = User.find(session[:page_user_id])
 		else
 			if @page_user
 				redirect_to "/#{@page_user.username}" and return

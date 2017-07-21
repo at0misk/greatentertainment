@@ -118,6 +118,15 @@
 	#fj-special-form .row{
 		padding-left: 15px;
 	}
+	.hotel-description h2{
+		display: none;
+	}
+	#local-expert-link{
+		display: none;
+	}
+	#feedback-link-overview{
+		display: none;
+	}
 @media (max-width: 767px) {
 	.box-row{
 		height: auto;
@@ -139,20 +148,22 @@
 			<% else %>
 			<div class="col-sm-6 img-col">
 				<img class="img-fluid" src="<%= @fj.img_src %>">
-			<div class="col-sm-12 info-col">
-				<% if @fj.location == "Hawaii" %>
-					<p><%= @description[615..-65] %></p>
-				<% elsif @fj.location == "Cruise" %>
-					<div class="col-sm-6">
-					<p><%= @description %></p>
-					</div>
-					<div class="col-sm-6 map-col">
-					<img class="img-fluid map" src="<%= @map %>">
-					</div>
-				<% else %>
-					<p><%= @description %></p>
-				<% end %>
-			</div>
+			<% if @fj.location == "Hawaii" %>
+			<% else %>
+				<div class="col-sm-12 info-col">
+						<!-- <p><%#= @description[615..-65] %></p> -->
+					<% if @fj.location == "Cruise" %>
+						<div class="col-sm-6">
+						<p><%= @description %></p>
+						</div>
+						<div class="col-sm-6 map-col">
+						<img class="img-fluid map" src="<%= @map %>">
+						</div>
+					<% else %>
+						<p><%= @description %></p>
+					<% end %>
+				</div>
+			<% end %>
 			</div>
 			<% end %>
 			<div class="col-sm-6 box-row">
@@ -160,9 +171,8 @@
 					<div class="row title-row">
 					<h3 class="title-header"><%= @fj.title.titleize %></h3>
 					<% if @fj.location == "Hawaii" %>
-						<h4 class="title-header">$<%= @fj.price %></h4>
-						<h5 class="title-header"><%= @fj.flights.titleize %></h5>
-						<h5 class="title-header"><%= @fj.includes[8..-1] %></h5>
+						<h4 class="title-header"><%= @fj.price %> Avg per night</h4>
+						<h5 class="title-header">1 Room, 2 Adults</h5>
 						</div>
 						<%= @facilities.html_safe %>
 					<% elsif @fj.location == "Mexico" %>
