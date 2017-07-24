@@ -206,27 +206,27 @@ skip_before_action :verify_authenticity_token
 		# 
 		# Specials
 		doc1 = Nokogiri::HTML(open("https://www.expedia.com/Honolulu.d1488.Destination-Travel-Guides?rfrr=TG.Destinations.City.POI.1.4"))
-		@hawaii_hotelname = doc1.css('.hotel-name')[1].text
-		@hawaii_href = doc1.css('.tile-content>a')[1]['href']
-		@hawaii_price = doc1.css('.price')[1].text
-		@hawaii_image_src = doc1.css('.tile-content>a>figure')[1]['data-src']
+		@hawaii_hotelname = doc1.at('.hotel-name').text
+		@hawaii_href = doc1.at('.tile-content>a')['href']
+		@hawaii_price = doc1.at('.price').text
+		@hawaii_image_src = doc1.at('.tile-content>a>figure')['data-src']
 		#
 		doc2 = Nokogiri::HTML(open("http://www.cheapcaribbean.com/deals/mexico-all-inclusive.html"))
-		@mexico_hotelname = doc2.css('#deal_feat_0_vp_ResortUrl')[0].text
-		@mexico_href = "http://www.cheapcaribbean.com" + doc2.css('#deal_feat_0_vp_ResortUrl')[0]['href']
-		@mexico_price = doc2.css(".estPrice")[1].text
-		@mexico_nights = doc2.css(".numNightsExpr")[1].text
+		@mexico_hotelname = doc2.at('#deal_feat_0_vp_ResortUrl').text
+		@mexico_href = "http://www.cheapcaribbean.com" + doc2.at('#deal_feat_0_vp_ResortUrl')['href']
+		@mexico_price = doc2.at(".estPrice").text
+		@mexico_nights = doc2.at(".numNightsExpr").text
 		@mexico_includes = "Including Airfare"
-		@mexico_image_src = "http://www.cheapcaribbean.com" + doc2.css(".mobile-top-deals-img-width")[1]['src']
-		@mexico_dates = doc2.css(".mobileTallTravelDate")[1].text
+		@mexico_image_src = "http://www.cheapcaribbean.com" + doc2.at(".mobile-top-deals-img-width")['src']
+		@mexico_dates = doc2.at(".mobileTallTravelDate").text
 		@mexico_dates = @mexico_dates[12..-1]
 		# 
 		doc3 = Nokogiri::HTML(open("https://www.ncl.com/vacations/?pageSize=50&numberOfGuests=4294953449&sortBy=Hotdeals&state=null&currentPage=1&"))
-		@cruise_name = doc3.css('.card-title')[0].text
-		@cruise_href = "https://www.ncl.com" + doc3.css('.card-title>a')[0]['href']
-		@cruise_price = doc3.css('.price')[0].text
+		@cruise_name = doc3.at('.card-title').text
+		@cruise_href = "https://www.ncl.com" + doc3.at('.card-title>a')['href']
+		@cruise_price = doc3.at('.price').text
 		@cruise_nights = "Avg per person"
-		@cruise_image_src = "https://www.ncl.com" + doc3.css('.picture')[0]['src']
+		@cruise_image_src = "https://www.ncl.com" + doc3.at('.picture')['src']
 		# 
 		@special = Special.where(user_id: @page_user.id, featured: true).first
 		if !@special
