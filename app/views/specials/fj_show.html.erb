@@ -54,6 +54,7 @@
 		text-align: justify;
 	}
 	.box-row{
+		/*background-color: white;*/
 		/*height: 175px;*/
 	}
 	.box-row .col-sm-6{
@@ -110,10 +111,10 @@
 		margin-bottom: 30px;
 	}
 	.title-row{
-		background-color: #07549c;
-    	color: white;
+/*		background-color: #07549c;
+    	color: white;*/
     	padding-bottom: 15px;
-    	margin-bottom: 15px;
+    	/*margin-bottom: 15px;*/
 	}
 	#fj-special-form .row{
 		padding-left: 15px;
@@ -133,7 +134,8 @@
 	}
 	.hotel-description{
 		padding: 15px;
-		padding-top: 0px;
+		padding-top: 1px;
+		background-color: white;
 	}
 @media (max-width: 767px) {
 	.box-row{
@@ -155,6 +157,9 @@
 			</div>
 			<% else %>
 			<div class="col-sm-6 img-col">
+					<div class="row title-row">
+					<h3 class="title-header"><%= @fj.title.titleize %></h3>
+						</div>
 				<img class="img-fluid" src="<%= @fj.img_src %>">
 			<% if @fj.location == "Hawaii" %>
 				<h3 class="title-header"><%= @fj.price %> Avg per night</h3>
@@ -189,15 +194,13 @@
 			<% end %>
 			<div class="col-sm-6 box-row">
 				<!-- <div class="price-info col-sm-6"> -->
-					<div class="row title-row">
-					<h3 class="title-header"><%= @fj.title.titleize %></h3>
-						</div>
 					<% if @fj.location == "Hawaii" %>
 						<%= @facilities.html_safe %>
 					<% elsif @fj.location == "Mexico" %>
 						</div>
 							<div class="row">
 								<div class="col-sm-6">
+									<h3 class="title-header"><%= @fj.title.titleize %></h3>
 									<p class="why"><%= @why %></p>
 									<h3 class="title-header"><%= @fj.price %></h3>
 									<h4 class="title-header"><%= @fj.flights %> <%= @fj.includes %></h4>
