@@ -127,13 +127,7 @@ skip_before_action :verify_authenticity_token
 		else
 			session[:page_user_id] = @page_user.id
 			@current_user = User.find(session[:user_id]) if session[:user_id]
-			@request_count = Topic.where(user_id: session[:user_id]).length if session[:user_id]
-				if @request_count && @request_count > 0
-					@page_user_topics = Topic.where(user_id: session[:user_id])
-				end
 		end
-		@latest = Blog.where(user_id: @page_user.id).last
-		@cruise = Cruise.where(user_id: @page_user.id).last
 		@blogs = Blog.all.limit(3).order(created_at: "DESC")
 		# 
 		# Funjet Scrape
