@@ -730,7 +730,7 @@ button:hover{
           </button>
           <% if session[:page_user_id] %>
           <% @page_user = User.find(session[:page_user_id]) %>
-            <span class="navbar-brand"><a href="/<%= @page_user.username %>"><%= image_tag(asset_path('evologo.png')) %><span class="logo-text"><span class="evo">EVOLUTION</span><span class="travel">TRAVEL</span></span></a></span>
+            <span class="navbar-brand"><a href="/<%= @page_user.username %>"><%= image_tag('evologo.png') %><span class="logo-text"><span class="evo">EVOLUTION</span><span class="travel">TRAVEL</span></span></a></span>
           <% else %>
             <span class="navbar-brand"><a href="/"><%= image_tag('evologo.png') %><span class="logo-text"><span class="evo">EVOLUTION</span><span class="travel">TRAVEL</span></span></a></span>
           <% end %>
