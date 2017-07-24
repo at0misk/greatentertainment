@@ -66,22 +66,55 @@ skip_before_action :verify_authenticity_token
   end
 
 	def create
-		# @user = User.new(user_params)
-		# @dupe_user = User.find_by_username(@user.username)
-		# @dupe_email = User.find_by(email: @user.email)
-		# if @dupe_user
-		# 	flash[:errors] = "Username already taken"
-		# elsif @dupe_email
-		# 	flash[:errors] = "Email already in use"
-		# end
-		# if @user.save
-		# 	flash[:created] = true
-		# 	session[:user_id] = @user.id
-		# 	redirect_to "/#{@user.username}" and return 
-		# else
-		# 	flash[:created] = false
-		# end
-		# redirect_to '/register'
+		@user = User.find_by(agent_id: params["evolution_id"])
+		if @user
+			random_password = Array.new(10).map { (65 + rand(58)).chr }.join
+			@user.password = random_password
+			@user.save!
+			UserMailer.create_and_deliver_password_change(@user, random_password, "register").deliver_now
+			flash[:reg_errors] = "An email has been sent with your temporary password."
+		else
+			evo_doc = Nokogiri::HTML(open("http://www.cs4000.net/ET/checkid.asp?site=#{params['evolution_id']}"))
+			string = evo_doc.css('body').text
+			count = 0
+			id = ''
+			agentname = ''
+			phone = ''
+			email = ''
+			username = ''
+			string[2..-1].split("").each do |val|
+				if val == "|"
+					count += 1
+					next
+				end
+				if count == 0
+					id += val
+					next
+				elsif count == 1
+					agentname += val
+					next
+				elsif count == 2
+					phone += val
+					next
+				elsif count == 3
+					email += val
+					next
+				elsif count == 4
+					username += val
+					next
+				end
+			end
+			first = agentname[0, agentname.index(" ")]
+			last = agentname.sub(/.*? /, '')
+			puts first, last, id, agentname, phone, email, username
+			random_password = Array.new(10).map { (65 + rand(58)).chr }.join
+			@user = User.new(first: first, last: last, agent_id: id, email: email, username: username)
+			@user.password = random_password
+			@user.save(:validate => false)
+			UserMailer.create_and_deliver_password_change(@user, random_password, "register").deliver_now
+			flash[:reg_errors] = "An email has been sent with your temporary password."
+		end
+		redirect_to '/register'
 	end
 	def user_params
   		params.require(:user).permit(:first, :last, :email, :username, :password, :password_confirmation, :phone_number, :avatar, :about, :address, :city, :state, :country, :c2go, :apt, :upline_id, :agent_id) 
@@ -359,7 +392,7 @@ skip_before_action :verify_authenticity_token
 			random_password = Array.new(10).map { (65 + rand(58)).chr }.join
 			@user.password = random_password
 			@user.save!
-			UserMailer.create_and_deliver_password_change(@user, random_password).deliver_now
+			UserMailer.create_and_deliver_password_change(@user, random_password, "forgot").deliver_now
 			flash[:errors] = "Email sent"
 		end
 		redirect_to "/"

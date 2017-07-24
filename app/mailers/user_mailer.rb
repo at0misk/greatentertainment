@@ -64,10 +64,15 @@ class UserMailer < ApplicationMailer
     mail(to: recipient.email, subject: "#{subject}")
   end
 
-  def create_and_deliver_password_change(user, random_password)
+  def create_and_deliver_password_change(user, random_password, from)
+    @from = from
     @user = user
     @random_password = random_password
-    mail(to: "#{@user.email}", subject: 'Password Recovery')
+    if from == "forgot"
+      mail(to: "#{@user.email}", subject: 'Password Recovery')
+    elsif from == "register"
+      mail(to: "#{@user.email}", subject: 'Account Registration')
+    end
   end
 
 end
