@@ -1296,6 +1296,7 @@ p {
 	/*text-align: center;*/
 	margin-top: 20px;
 	margin-left: 30px;
+	display: inline-block;
 }
 
 .specials-header-row{
@@ -1306,6 +1307,10 @@ p {
 
 .users-special-row{
 	margin-top: 15px;
+}
+
+.special-errors{
+	margin-left: 20px;
 }
 
 </style>
@@ -1467,6 +1472,9 @@ p {
 			<div class="box-shadow row">
 				<div class="row specials-header-row">
 					<h4 class="specials-header">Travel Specials & Hot Deals</h4>
+					<% if flash[:errors] %>
+						<small class="special-errors"><%= flash[:errors] %>
+					<% end %>
 				</div>
 				<div class="row specialsRow">
 					<div class="col-sm-4 col-xs-12 specialBox s1 first_special_a">
