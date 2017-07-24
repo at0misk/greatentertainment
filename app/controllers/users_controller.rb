@@ -66,22 +66,22 @@ skip_before_action :verify_authenticity_token
   end
 
 	def create
-		@user = User.new(user_params)
-		@dupe_user = User.find_by_username(@user.username)
-		@dupe_email = User.find_by(email: @user.email)
-		if @dupe_user
-			flash[:errors] = "Username already taken"
-		elsif @dupe_email
-			flash[:errors] = "Email already in use"
-		end
-		if @user.save
-			flash[:created] = true
-			session[:user_id] = @user.id
-			redirect_to "/#{@user.username}" and return 
-		else
-			flash[:created] = false
-		end
-		redirect_to '/register'
+		# @user = User.new(user_params)
+		# @dupe_user = User.find_by_username(@user.username)
+		# @dupe_email = User.find_by(email: @user.email)
+		# if @dupe_user
+		# 	flash[:errors] = "Username already taken"
+		# elsif @dupe_email
+		# 	flash[:errors] = "Email already in use"
+		# end
+		# if @user.save
+		# 	flash[:created] = true
+		# 	session[:user_id] = @user.id
+		# 	redirect_to "/#{@user.username}" and return 
+		# else
+		# 	flash[:created] = false
+		# end
+		# redirect_to '/register'
 	end
 	def user_params
   		params.require(:user).permit(:first, :last, :email, :username, :password, :password_confirmation, :phone_number, :avatar, :about, :address, :city, :state, :country, :c2go, :apt, :upline_id, :agent_id) 
