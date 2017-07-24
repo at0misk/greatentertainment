@@ -199,28 +199,41 @@ skip_before_action :verify_authenticity_token
 		# fail
 		# 
 		# Specials
-		doc1 = Nokogiri::HTML(open("https://www.expedia.com/Honolulu.d1488.Destination-Travel-Guides?rfrr=TG.Destinations.City.POI.1.4"))
-		@hawaii_hotelname = doc1.at('.hotel-name').text
-		@hawaii_href = doc1.at('.tile-content>a')['href']
-		@hawaii_price = doc1.at('.price').text
-		@hawaii_image_src = doc1.at('.tile-content>a>figure')['data-src']
-		#
-		doc2 = Nokogiri::HTML(open("http://www.cheapcaribbean.com/deals/mexico-all-inclusive.html"))
-		@mexico_hotelname = doc2.at('#deal_feat_0_vp_ResortUrl').text
-		@mexico_href = "http://www.cheapcaribbean.com" + doc2.at('#deal_feat_0_vp_ResortUrl')['href']
-		@mexico_price = doc2.at(".estPrice").text
-		@mexico_nights = doc2.at(".numNightsExpr").text
-		@mexico_includes = "Including Airfare"
-		@mexico_image_src = "http://www.cheapcaribbean.com" + doc2.at(".mobile-top-deals-img-width")['src']
-		@mexico_dates = doc2.at(".mobileTallTravelDate").text
-		@mexico_dates = @mexico_dates[12..-1]
-		# 
-		doc3 = Nokogiri::HTML(open("https://www.ncl.com/vacations/?pageSize=50&numberOfGuests=4294953449&sortBy=Hotdeals&state=null&currentPage=1&"))
-		@cruise_name = doc3.at('.card-title').text
-		@cruise_href = "https://www.ncl.com" + doc3.at('.card-title>a')['href']
-		@cruise_price = doc3.at('.price').text
-		@cruise_nights = "Avg per person"
-		@cruise_image_src = "https://www.ncl.com" + doc3.at('.picture')['src']
+		hydra = Typhoeus::Hydra.hydra
+
+		first_request = Typhoeus::Request.new("https://www.expedia.com/Honolulu.d1488.Destination-Travel-Guides?rfrr=TG.Destinations.City.POI.1.4")
+		second_request = Typhoeus::Request.new("http://www.cheapcaribbean.com/deals/mexico-all-inclusive.html")
+		third_request = Typhoeus::Request.new("https://www.ncl.com/vacations/?pageSize=50&numberOfGuests=4294953449&sortBy=Hotdeals&state=null&currentPage=1&")
+		first_request.on_complete do |response|
+			doc1 = Nokogiri::HTML(response.response_body)
+			@hawaii_hotelname = doc1.at('.hotel-name').text
+			@hawaii_href = doc1.at('.tile-content>a')['href']
+			@hawaii_price = doc1.at('.price').text
+			@hawaii_image_src = doc1.at('.tile-content>a>figure')['data-src']
+		end
+		second_request.on_complete do |response|
+			doc2 = Nokogiri::HTML(response.response_body)
+			@mexico_hotelname = doc2.at('#deal_feat_0_vp_ResortUrl').text
+			@mexico_href = "http://www.cheapcaribbean.com" + doc2.at('#deal_feat_0_vp_ResortUrl')['href']
+			@mexico_price = doc2.at(".estPrice").text
+			@mexico_nights = doc2.at(".numNightsExpr").text
+			@mexico_includes = "Including Airfare"
+			@mexico_image_src = "http://www.cheapcaribbean.com" + doc2.at(".mobile-top-deals-img-width")['src']
+			@mexico_dates = doc2.at(".mobileTallTravelDate").text
+			@mexico_dates = @mexico_dates[12..-1]
+		end
+		third_request.on_complete do |response|
+			doc3 = Nokogiri::HTML(response.response_body)
+			@cruise_name = doc3.at('.card-title').text
+			@cruise_href = "https://www.ncl.com" + doc3.at('.card-title>a')['href']
+			@cruise_price = doc3.at('.price').text
+			@cruise_nights = "Avg per person"
+			@cruise_image_src = "https://www.ncl.com" + doc3.at('.picture')['src']
+		end
+		hydra.queue first_request
+		hydra.queue second_request
+		hydra.queue third_request
+		hydra.run # this is a blocking call that returns once all requests are complete
 		# 
 		@special = Special.where(user_id: @page_user.id, featured: true).first
 		if !@special

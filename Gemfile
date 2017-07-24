@@ -34,6 +34,7 @@ gem 'paperclip'
 gem 'local_time'
 gem 'twilio-ruby'
 gem 'libxml-ruby'
+gem 'typhoeus'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
