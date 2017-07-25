@@ -34,7 +34,7 @@ Rails.application.configure do
    :address              => "smtp.gmail.com",
    :port                 => 587,
    :user_name            => "archertravelmailer",
-   :password             => "billions1!",
+   :password             => "billions1!!",
    :authentication       => "plain",
   :enable_starttls_auto => true
   }
