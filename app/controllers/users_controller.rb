@@ -203,7 +203,7 @@ skip_before_action :verify_authenticity_token
 
 		first_request = Typhoeus::Request.new("https://www.expedia.com/Honolulu.d1488.Destination-Travel-Guides?rfrr=TG.Destinations.City.POI.1.4")
 		second_request = Typhoeus::Request.new("http://www.cheapcaribbean.com/deals/mexico-all-inclusive.html")
-		third_request = Typhoeus::Request.new("https://www.ncl.com/vacations/?pageSize=50&numberOfGuests=4294953449&sortBy=Hotdeals&state=null&currentPage=1&")
+		third_request = Typhoeus::Request.new("https://www.ncl.com/vacations/?pageSize=1&numberOfGuests=0&sortBy=Hotdeals&state=null&currentPage=1&")
 		first_request.on_complete do |response|
 			if response.success?
 				doc1 = Nokogiri::HTML(response.response_body)
