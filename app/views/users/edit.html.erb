@@ -263,7 +263,10 @@
 				},
 				'user[c2go]': {
 					maxlength: 7
-				}
+				},
+				'user[username]': {
+                alphanumeric: true
+            }
 			},
 	        highlight: function (element) {
 	            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
