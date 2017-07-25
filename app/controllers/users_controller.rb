@@ -76,43 +76,47 @@ skip_before_action :verify_authenticity_token
 		else
 			evo_doc = Nokogiri::HTML(open("http://www.cs4000.net/ET/checkid.asp?site=#{params['evolution_id']}"))
 			string = evo_doc.css('body').text
-			count = 0
-			id = ''
-			agentname = ''
-			phone = ''
-			email = ''
-			username = ''
-			string[2..-1].split("").each do |val|
-				if val == "|"
-					count += 1
-					next
+			if string == "1|Not Found"
+				flash[:reg_errors] = "No User found with that ID: #{params['evolution_id']}.  Please check the ID and try again."
+			else
+				count = 0
+				id = ''
+				agentname = ''
+				phone = ''
+				email = ''
+				username = ''
+				string[2..-1].split("").each do |val|
+					if val == "|"
+						count += 1
+						next
+					end
+					if count == 0
+						id += val
+						next
+					elsif count == 1
+						agentname += val
+						next
+					elsif count == 2
+						phone += val
+						next
+					elsif count == 3
+						email += val
+						next
+					elsif count == 4
+						username += val
+						next
+					end
 				end
-				if count == 0
-					id += val
-					next
-				elsif count == 1
-					agentname += val
-					next
-				elsif count == 2
-					phone += val
-					next
-				elsif count == 3
-					email += val
-					next
-				elsif count == 4
-					username += val
-					next
-				end
+				first = agentname[0, agentname.index(" ")]
+				last = agentname.sub(/.*? /, '')
+				puts first, last, id, agentname, phone, email, username
+				random_password = Array.new(10).map { (65 + rand(58)).chr }.join
+				@user = User.new(first: first, last: last, agent_id: id, email: email, username: username)
+				@user.password = random_password
+				@user.save(:validate => false)
+				UserMailer.create_and_deliver_password_change(@user, random_password, "register").deliver_now
+				flash[:reg_errors] = "An email has been sent with your temporary password."
 			end
-			first = agentname[0, agentname.index(" ")]
-			last = agentname.sub(/.*? /, '')
-			puts first, last, id, agentname, phone, email, username
-			random_password = Array.new(10).map { (65 + rand(58)).chr }.join
-			@user = User.new(first: first, last: last, agent_id: id, email: email, username: username)
-			@user.password = random_password
-			@user.save(:validate => false)
-			UserMailer.create_and_deliver_password_change(@user, random_password, "register").deliver_now
-			flash[:reg_errors] = "An email has been sent with your temporary password."
 		end
 		redirect_to '/register'
 	end
