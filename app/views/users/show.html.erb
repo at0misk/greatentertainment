@@ -1349,7 +1349,7 @@ p {
 	margin-left: 15px;
 }
 
-.box-shadow-profile{
+#profile-outer-div{
 	padding-left: 0px !important;
 	margin-left: 0px !important;
 }
@@ -1361,7 +1361,7 @@ p {
 <div class="container-fluid outer-cont" data-turbolinks="false">
 	<div class="row outerRow">
 		<div class="col-lg-4 col-md-12 outerCol">
-		<div class="box-shadow box-shadow-profile row">
+		<div class="box-shadow box-shadow-profile row" id="profile-outer-div">
 			<div class="row profileRow">
 				<div class="col-sm-4 col-md-6 col-xs-5 profileDiv">
 				<% if @page_user.avatar.url == '/avatars/original/missing.png' %>
