@@ -575,6 +575,7 @@ fieldset[disabled] .btn-fare.active {
 	}
 
 	.faregrabbr_h4{
+		font-size: 15px;
 		margin-bottom: 0px;
 		/*margin-top: 15px !important*/
 		margin-top: 5px !important;
@@ -638,7 +639,7 @@ fieldset[disabled] .btn-fare.active {
 
 @media (max-width: 1146px){
 	.faregrabbr_h4{
-		font-size: 18px;
+		font-size: 15px;
 	}
 }
 
@@ -707,6 +708,9 @@ fieldset[disabled] .btn-fare.active {
 	}
 	.specialWeeklyRow h4{
 		font-size: 28px !important;
+	}
+	.faregrabbr_h4{
+		font-size: 20px;
 	}
 }
 
@@ -1315,7 +1319,7 @@ p {
 
 /* temp bg img fix */
 .cruise-booking-row {
-  background-image: url(<%= image_url('evolution-travel-travel-agent-desk.jpg') %>);
+  background-image: url(<%= image_url('evolution-travel-cruise-ship.jpg') %>);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -1335,10 +1339,14 @@ p {
 
 
 .faregrabbrProfile {
-  background-image: url(<%= image_url('evolution-travel-cruise-ship.jpg') %>);
+  background-image: url(<%= image_url('evolution-travel-travel-agent-desk.jpg') %>);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+.edit-pencil{
+	margin-left: 15px;
 }
 
 </style>
@@ -1362,7 +1370,7 @@ p {
 					<!-- <h3><%#= image_url('evolution-travel-cruise-ship.jpg') %></h3> -->
 					<!-- <h3><%#= image_url('evolution-travel-travel-agent-desk.jpg') %></h3> -->
 					<h4 class="name"><%= @page_user.first.titleize %> <%= @page_user.last.titleize %></h4>
-					<p class="about"><%= @page_user.about %></p>
+					<p class="about"><%= @page_user.about %><% if @page_user.id == session[:user_id] %><a href="/<%= @page_user.username %>/edit" title="Edit your profile"><span class="glyphicon glyphicon-pencil edit-pencil" aria-hidden="true"></span></a><% end %></p>
 <!-- 						<button id="phone-call" class="btn btn-contact" data-toggle="modal" data-target="#callModal"><span class="glyphicon glyphicon-earphone phone-glyphicon" aria-hidden="true"></span></button> -->
 				</div>
 			</div>
@@ -1771,26 +1779,26 @@ p {
 			</div>
 			<div class="row faregrabbrRow faregrabbrWhite">
 				<a href="https://www.faregrabbr.com" target="_blank"><div class="col-sm-10 col-xs-10 contact-col contact-left-right faregrabbr_col">
-					<h4 class="faregrabbr_h4" id="fareH4">Looking for a Lower Airfare?</h4>
-					<%= image_tag('faregrabbr.png', class: "faregrabbr_logo") %><h5 class="faregrabbr_text"> can search all airlines for up to 30 days</h5>
-				</div>
-				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
-					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
-				</div></a>
-			</div>
-			<div class="row faregrabbrRow cruise-booking-row">
-				<a href="http://www1.latesttraveloffers.com/lton/OfferGroups.asp?site=VTHARC&OfferGroupId=4880" target="_blank""><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
-					<h4>Cruise Booking Engine</h4>
-					<h5>Explore cruises all over the world</h5>
+					<h4 class="faregrabbr_h4" id="fareH4">Looking for a Low Cost Airfare?</h4>
+					<%= image_tag('faregrabbr.png', class: "faregrabbr_logo") %><h5 class="faregrabbr_text"> can search all airlines for up to 30 days to get you the lowest price.</h5>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
 				</div></a>
 			</div>
 			<div class="row faregrabbrRow faregrabbrProfile">
-				<a href="http://www1.latesttraveloffers.com/lton/OfferGroups.asp?site=VTHARC&OfferGroupId=891" target="_blank"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
-					<h4>Land Tour Booking Engine</h4>
-					<h5>Tour operators worldwide</h5>
+				<a href="http://www1.latesttraveloffers.com/lton/DetailedSearch.asp" target="_blank"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
+					<h4>Vacation Search Engine</h4>
+					<h5>Get Your Next Vacation Idea Here!</h5>
+				</div>
+				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
+					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>
+				</div></a>
+			</div>
+			<div class="row faregrabbrRow cruise-booking-row">
+				<a href="#"><div class="col-sm-10 col-xs-10 contact-col contact-left-right">
+					<h4>Evolution Group Cruise Listings</h4>
+					<h5>(Coming Soon)</h5>
 				</div>
 				<div class="col-sm-2 col-xs-2 contact-col arrow-col">
 					<span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span>

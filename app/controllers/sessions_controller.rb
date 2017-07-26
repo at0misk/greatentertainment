@@ -69,4 +69,6 @@ class SessionsController < ApplicationController
 	def register
 		# redirect_to "/"
 	end
+	def resources
+	end
 end
