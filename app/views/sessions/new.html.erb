@@ -16,12 +16,12 @@
 	}
 </style>
 <div class="container">
-	<% if !session[:user_id] %>
 	<div class="row">
 		<div class="col-sm-12 logo-col">
 			<%= image_tag('evologo-words.png') %>
 		</div>
 	</div>
+	<% if !session[:user_id] %>
 	<div class="row">
 		<div class="col-sm-3">
 		</div>
@@ -58,5 +58,12 @@
 		<div class="col-sm-3">
 		</div>
 	</div>
+	<% end %>
+	<% if flash[:errors] %>
+		<div class="row">
+			<div class="col-sm-12 error-col">
+				<p><%= flash[:errors] %></p>
+			</div>
+		</div>
 	<% end %>
 </div>
