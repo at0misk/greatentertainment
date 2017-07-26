@@ -1313,6 +1313,34 @@ p {
 	margin-left: 20px;
 }
 
+/* temp bg img fix */
+.cruise-booking-row {
+  background-image: url(<%= image_url('evolution-travel-travel-agent-desk.jpg') %>);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.cruise-booking-row a .contact-left-right {
+  background-color: rgba(67, 112, 153, 0.6);
+}
+
+.cruise-booking-row .arrow-col {
+  background-color: rgba(67, 112, 153, 0.9);
+}
+
+.hover-arrow-right, .cruise-booking-row .arrow-col:hover {
+  background-color: #437099 !important;
+}
+
+
+.faregrabbrProfile {
+  background-image: url(<%= image_url('evolution-travel-cruise-ship.jpg') %>);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 </style>
 <% content_for :head do %>
   <meta name="turbolinks-cache-control" content="no-cache">
