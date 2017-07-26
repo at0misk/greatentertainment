@@ -4,12 +4,12 @@
       <td>
         <%= image_tag('evologo-words.png', :style => "width: 50%; margin-left: 25%;") %>
         <h1 style="font-size: 20px; text-align: center; color:#022344">Hello, <%= @user.first %> <%= @user.last %>!</h1>
-        <h4 style="text-align: center; color:#022344"><%= @first %> <%= @last %> is interested in your special: <%= @special.title %>!</h4>
+        <h4 style="text-align: center; color:#022344"><%= @first %> <%= @last %> (<a href="mailto:<%= @email %>"><%= @email %></a>) is interested in your special: <%= @special.title %>!</h4>
       </td>
     </tr>
-    <tr style="background-color: #07549c; color: white;" class="body-row">
+    <tr style="color: #022344;" class="body-row">
       <td style="padding: 15px;">
-        <h4 style="padding: 15px 0px; background-color: white; color: #022344; margin: 0px -15px; margin-top: -15px; padding-left: 15px; border: 1px solid #ccc;">Here's the details:</h4>
+        <h4 style="padding: 15px 0px; background-color: white; color: #022344; margin: 0px -15px; margin-top: -15px; padding-left: 15px;">Here's the details:</h4>
         <p style="margin-top: 15px;">Name: <%= @first %> <%= @last %></p>
         <p>Email: <%= @email %></p>
         <p>Phone Number: <%= @number %></p>
