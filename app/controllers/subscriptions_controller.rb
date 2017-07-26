@@ -22,8 +22,17 @@ class SubscriptionsController < ApplicationController
 		params.require(:subscription).permit(:user_id, :email, :first, :last)
 	end
 	def index
-		@user = User.find(session[:user_id])
-		@subscriptions = Subscription.where(user_id: @user.id)
+		if session[:user_id]
+			@user = User.find(session[:user_id])
+			@subscriptions = Subscription.where(user_id: @user.id)
+		else
+			if session[:page_user_id]
+				@page_user = User.find(session[:page_user_id])
+				redirect_to "/#{@page_user.username}" and return
+			else
+				redirect_to "/" and return
+			end
+		end
 	end
 	def destroy
 		Subscription.find(params['id']).destroy

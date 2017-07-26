@@ -76,7 +76,7 @@ skip_before_action :verify_authenticity_token
 		else
 			evo_doc = Nokogiri::HTML(open("http://www.cs4000.net/ET/checkid.asp?site=#{params['evolution_id']}"))
 			string = evo_doc.css('body').text
-			if string == "1|Not Found" || "0||N/A|N/A|N/A||"
+			if string == "1|Not Found" || string == "0||N/A|N/A|N/A||"
 				flash[:reg_errors] = "No User found with that ID: #{params['evolution_id']}.  Please check the ID and try again."
 			else
 				count = 0
@@ -391,8 +391,16 @@ skip_before_action :verify_authenticity_token
 		session[:user_id] = nil
 	end
 	def admin_dash
+		@user = User.find(session[:user_id])
+		if !@user.permod
+			redirect_to "/" and return
+		end
 	end
 	def user_search
+		@user = User.find(session[:user_id])
+		if !@user.permod
+			redirect_to "/" and return
+		end
 		@users = User.where("email LIKE ? OR first LIKE ? OR last LIKE ? OR username LIKE ? OR agent_id LIKE ?", "%#{params['search']}%","%#{params['search']}%","%#{params['search']}%","%#{params['search']}%","%#{params['search']}%")
 		if @users
 			@@search_users = @users
@@ -403,6 +411,10 @@ skip_before_action :verify_authenticity_token
 		end
 	end
 	def users_found
+		@user = User.find(session[:user_id])
+		if !@user.permod
+			redirect_to "/" and return
+		end
 		@users = @@search_users.paginate(:page => params[:page])
 	end
 	def recover
@@ -428,6 +440,10 @@ skip_before_action :verify_authenticity_token
 		end
 	end
 	def admins_update
+		@admin_user = User.find(session[:user_id])
+		if !@admin_user.permod
+			redirect_to "/" and return
+		end
 		@user = User.find_by_username(params['username'])
 		# if @user.id == session[:user_id]
 	    if @user.update(user_params)
@@ -441,16 +457,28 @@ skip_before_action :verify_authenticity_token
 		redirect_to "/#{@user.username}"
 	end
 	def admins_destroy_user
+		@admin_user = User.find(session[:user_id])
+		if !@admin_user.permod
+			redirect_to "/" and return
+		end
 		User.find(params[:id]).destroy
 		flash[:errors] = "User Destroyed"
 		redirect_to "/admin_dash"
 	end
 	def admins_edit_gallery
+		@admin_user = User.find(session[:user_id])
+		if !@admin_user.permod
+			redirect_to "/" and return
+		end
 		@approved_photos = Photo.where(user_id: params['id'], allowed: true).order('updated_at DESC')
 		@unapproved_photos = Photo.where(user_id: params['id'], allowed: false).order('updated_at DESC')
 		@user = User.find(params['id'])
 	end
 	def admins_gallery_update
+		@admin_user = User.find(session[:user_id])
+		if !@admin_user.permod
+			redirect_to "/" and return
+		end
 		@photo = Photo.find(params['id'])
 		    if @photo.update(photo_params)
 		    	flash[:errors] = nil
@@ -460,10 +488,18 @@ skip_before_action :verify_authenticity_token
 		redirect_to "/gallery/#{@photo.user.username}"
 	end
 	def admins_edit_specials
+		@admin_user = User.find(session[:user_id])
+		if !@admin_user.permod
+			redirect_to "/" and return
+		end
 		@user = User.find(params['id'])
 		@specials = Special.where(user_id: params['id'])
 	end
 	def admins_feature
+		@admin_user = User.find(session[:user_id])
+		if !@admin_user.permod
+			redirect_to "/" and return
+		end
 		@special = Special.find(params['id'])
 		@user = @special.user
 		@featured = Special.where(user_id: @user.id, featured: true)
@@ -475,6 +511,10 @@ skip_before_action :verify_authenticity_token
 		redirect_to "/specials/all_specials/#{@user.username}"
 	end
 	def admins_unfeature
+		@admin_user = User.find(session[:user_id])
+		if !@admin_user.permod
+			redirect_to "/" and return
+		end
 		@special = Special.find(params['id'])
 		@user = @special.user
 		@featured = Special.find(params['id'])
@@ -483,6 +523,10 @@ skip_before_action :verify_authenticity_token
 		redirect_to "/specials/all_specials/#{@user.username}"
 	end
 	def import_users
+		@admin_user = User.find(session[:user_id])
+		if !@admin_user.permod
+			redirect_to "/" and return
+		end
 		User.import(params[:file])
 		redirect_to '/admin_dash'
 		flash[:imported] = "Users Imported"

@@ -4,27 +4,54 @@ class CommissionsController < ApplicationController
 		@commission = Commission.find(params['id'])
 	end
 	def index
-		@user = User.find(session[:user_id])
+		if session[:user_id]
+			@user = User.find(session[:user_id])
+		else
+			if session[:page_user_id]
+				@page_user = User.find(session[:page_user_id])
+				redirect_to "/#{@page_user.username}"
+			else
+				redirect_to "/" and return
+			end
+		end
 	end
 	def tracker
-		@user = User.find(session[:user_id])
+		if session[:user_id]
+			@user = User.find(session[:user_id])
+		else
+			if session[:page_user_id]
+				@page_user = User.find(session[:page_user_id])
+				redirect_to "/#{@page_user.username}"
+			else
+				redirect_to "/" and return
+			end
+		end
 	end
 	def create
-		@user = User.find(session[:user_id])
-		@commission = Commission.new(commission_params)
-		if @commission.save
-			@user.address = @commission.address
-			@user.city = @commission.city
-			@user.state = @commission.state
-			@user.country = @commission.country
-			@user.zip = @commission.zip
-			@user.save
-			flash[:sent_mail] = true
-			# email commission here
+		if session[:user_id]
+			@user = User.find(session[:user_id])
+			@commission = Commission.new(commission_params)
+			if @commission.save
+				@user.address = @commission.address
+				@user.city = @commission.city
+				@user.state = @commission.state
+				@user.country = @commission.country
+				@user.zip = @commission.zip
+				@user.save
+				flash[:sent_mail] = true
+				# email commission here
+			else
+				flash[:errors] = "Something went wrong!"
+			end
+			redirect_to "/#{@user.username}"
 		else
-			flash[:errors] = "Something went wrong!"
+			if session[:page_user_id]
+				@page_user = User.find(session[:page_user_id])
+				redirect_to "/#{@page_user.username}"
+			else
+				redirect_to "/" and return
+			end
 		end
-		redirect_to "/#{@user.username}"
 	end
 	def commission_params
 		params.require(:commission).permit(:user_id, :email, :first, :last, :address, :city, :state, :country, :traveler_names, :traveler_phone, :traveler_email, :depart, :return, :itinerary, :ticket, :supplier, :airline, :hotel, :car_rental, :form, :last_4, :comments, :trip_total, :estimate, :zip, :agent_id, :processed, :c2go)
