@@ -76,7 +76,7 @@
 	}
 	.header-row-user-index{
 		color: white;
-		background-color: #153649;
+		background-color: #07549c;
 	}
 	.specials-row{
 		margin-top: 15px;
@@ -124,9 +124,9 @@
 				<div class="row btn-row">
 					<div class="col-sm-4">
 					<% if val.featured %>
-						<a href="/specials/unfeature/<%= val.id %>"><button class="btn btn btn-contact">Remove From Profile</button>
+						<a href="/specials/unfeature/<%= val.id %>"><button class="btn btn btn-blue">Remove From Profile</button>
 					<% else %>
-						<a href="/specials/feature/<%= val.id %>"><button class="btn btn-contact">Feature</button></a>
+						<a href="/specials/feature/<%= val.id %>"><button class="btn btn-blue">Feature</button></a>
 					<% end %>
 					</div>
 					<div class="col-sm-4">
