@@ -10,15 +10,53 @@
 		background-color: white;
 		margin-top: 15px;
 	}
+	.logo-col{
+		text-align: center;
+		margin-top: 25px;
+	}
 </style>
 <div class="container">
+	<% if !session[:user_id] %>
 	<div class="row">
-		<div class="col-sm-6">
-			<h3>Archer Travel Agents</h3>
-			<h5>Landing page placeholder</h5>
-			<% if flash[:errors] %>
-				<h5><%= flash[:errors] %></h5>
-			<% end %>
+		<div class="col-sm-12 logo-col">
+			<%= image_tag('evologo-words.png') %>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-sm-3">
+		</div>
+		<div class="col-sm-6">
+		<form action="/sessions" method="post" class="form-horizontal" id="login-form">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <div class="row form-row-login">
+        <div class="form-group">
+            <label for="email-login" class="col-sm-2 control-label"></label>
+            <div class="col-sm-8">
+                <input placeholder="Email" name="email" type="text" class="form-control" id="email-login" required/>
+            </div>
+        </div>
+      </div>
+      <div class="row form-row-login">
+        <div class="form-group">
+            <label for="password-login" class="col-sm-2 control-label"></label>
+            <div class="col-sm-8 pw-col">
+                <input placeholder="Password" name="password" type="password" class="form-control" id="password-login" required/>
+                <small class="forgot-small"><a href="/forgot_password">Forgot Password?</a></small>
+            </div>
+        </div>
+      </div>
+      <div class="row form-row-login">
+        <div class="form-group">
+            <label for="login-submit" class="col-sm-3 control-label"></label>
+            <div class="col-sm-6 btn-col btn-col-login">
+                <button class="btn btn-contact" id="login-submit">Login</button>
+            </div>
+        </div>
+      </div>
+      </form>
+		</div>
+		<div class="col-sm-3">
+		</div>
+	</div>
+	<% end %>
 </div>
