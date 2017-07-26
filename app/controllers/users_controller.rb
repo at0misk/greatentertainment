@@ -132,6 +132,10 @@ skip_before_action :verify_authenticity_token
 			session[:page_user_id] = @page_user.id
 			@current_user = User.find(session[:user_id]) if session[:user_id]
 		end
+		if @current_user && !@current_user.about
+			flash[:new] = 'true'
+			redirect_to "/#{@current_user.username}/edit" and return
+		end
 		@blogs = Blog.all.limit(3).order(created_at: "DESC")
 		# 
 		# Funjet Scrape
@@ -247,7 +251,7 @@ skip_before_action :verify_authenticity_token
 		# 
 		@special = Special.where(user_id: @page_user.id, featured: true).first
 		if !@special
-			@special = Special.find_by(user_id: 2)
+			@special = Special.find_by(user_id: 10)
 		end
 		if @current_user && @current_user.id == @page_user.id
 			@unapproved_photos = Photo.where(user_id: @current_user.id, allowed: false)

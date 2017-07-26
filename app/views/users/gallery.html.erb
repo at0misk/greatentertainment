@@ -190,8 +190,8 @@
 			<% end %>
 		</div>
 	</div>
-	<div class="row photo-row">
 		<% if @photos.length > 0 %>
+		<div class="row photo-row">
 			<div class="col-sm-9 photo-col">
 				<div class="fotorama" data-width="100%" data-fit="cover" data-ratio="700/467" data-minwidth="400" data-maxwidth="1000" data-minheight="300" data-maxheight="100%">
 <!-- 				  <img src="http://s.fotorama.io/1.jpg">
@@ -220,7 +220,7 @@
 			</div>
 		</div>
 		<% else %>
-		<div class="row photo-row no-photo-row">
+		<div class="row no-photo-row">
 			<div class="col-sm-9 photo-col">
 				<h4 class="none-found">No photos found</h4>
 				<h5 class="none-found"><a href="#" data-toggle="modal" data-target="#galleryModal">Click Here to upload photos</a></h5>

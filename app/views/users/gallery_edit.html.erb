@@ -41,14 +41,14 @@
 		height: auto;
 		margin-top: 15px;
 	}
-	.header-row{
+	.header-row-edit{
 		text-align: center;
 		background-color: #153649;
 		color: white;
 		padding-bottom: 10px;
 		margin-bottom: 15px;
 	}
-	.header-approve{
+	#header-approve{
 		background-color: #06b78d;
 	}
 	.content .col-sm-6{
@@ -97,7 +97,7 @@
 <div class="container view-cont">
 	<div class="row content">
 		<div class="col-sm-6">
-			<div class="row header-row">
+			<div class="row header-row-edit">
 				<div class="col-sm-12">
 					<h3>Current Gallery Photos</h3>
 				</div>
@@ -136,7 +136,7 @@
 			<% end %>
 		</div>
 		<div class="col-sm-6">
-			<div class="row header-row header-approve">
+			<div class="row header-row-edit" id="header-approve">
 				<div class="col-sm-12">
 					<h3>Photos to Approve</h3>
 				</div>

@@ -1,5 +1,5 @@
 <style type="text/css">
-	.header-row{
+	.header-row-edit{
 		background-color: #153649;
 		color: white;
 		margin-top: 0px;
@@ -21,7 +21,7 @@
 	.right-col{
 		height: 100%;
 	}
-	.edit-container{
+	#edit-container{
 		background-color: white;
 		padding: 0px 30px;
 		margin-top: 15px;
@@ -58,13 +58,16 @@
 <% content_for :head do %>
   <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
-<div class="container edit-container">
-	<div class="row header-row">
+<div class="container" id="edit-container">
+	<div class="row header-row-edit">
 		<div class="col-sm-12">
 			<h3 class="form-header">Edit Profile</h3>
 		</div>
 	</div>
 	<div class="row form-row">
+			<% if flash[:new] %>
+				<h4 class="form-header">Welcome!  Please fill out your About Me and provide a picture for your profile.</h4>
+			<% end %>
 	<form action="/<%= @user.username %>" method="POST" class="form-horizontal" enctype="multipart/form-data" id="user-edit-form">
 		<div class="col-sm-6">
 					<input name="_method" type="hidden" value="PATCH">

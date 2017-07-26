@@ -2,12 +2,12 @@
 	.btn-col-special{
 		text-align: right;
 	}
-	.container{
+	#special-container{
 		min-height: 550px;
 		background: white;
 		margin-top: 15px;
 	}
-	.header-row{
+	.header-row-special{
 		color: white;
 		background-color: #e84c3d;
 		height: 60px;
@@ -71,14 +71,10 @@
 		text-align: center;
 	}
 </style>
-<div class="container">
-	<div class="row header-row">
-		<div class="col-sm-6 gal-col">
-			<div class="col-sm-4">
-			</div>
-			<div class="col-sm-8">
-				<h4 class="form-header">List a New Special</h4>
-			</div>
+<div class="container" id="special-container">
+	<div class="row header-row-special">
+		<div class="col-sm-12 gal-col">
+			<h4 class="form-header">List a New Special</h4>
 		</div>
 	</div>
 	<div class="row form-row">
@@ -154,7 +150,7 @@
 				<div class="form-group">
 				    <label for="submit" class="col-sm-4 control-label"></label>
 				    <div class="col-sm-8 btn-col-special">
-				        <button class="btn btn-contact">Create</button>
+				        <button class="btn btn-red">Create</button>
 				    </div>
 				</div>
 			</div>
@@ -178,7 +174,7 @@
 					<!-- <p class="special-yellow">Click to see more</p> -->
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6 weekly weekly-img">
-					<%= image_tag('colloseum.jpg', :class => 'img-fluid' ) %>
+					<%= image_tag('colloseum', :class => 'img-fluid' ) %>
 				</div>
 		</div>
 		<div class="row">
