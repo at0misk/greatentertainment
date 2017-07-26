@@ -6,7 +6,7 @@ class UserMailerPreview < ActionMailer::Preview
   end
   def contact
     user = OpenStruct.new(email: "demo@example.com", first: "John", last: "Doe")
-    UserMailer.contact(user, "Kevin", "Taylor", "Hello! asdf asdf asdf")
+    UserMailer.contact(user, "Kevin", "Taylor", "ktp925@gmail.com", "Hello! asdf asdf asdf")
   end
   def vacation
     user = OpenStruct.new(email: "demo@example.com", first: "John", last: "Doe")

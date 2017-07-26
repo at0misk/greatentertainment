@@ -4,7 +4,7 @@
       <td>
         <%= image_tag('evologo-words.png', :style => "width: 50%; margin-left: 25%;") %>
         <h1 style="font-size: 20px; text-align: center; color:#022344">Hello, <%= @user.first %> <%= @user.last %>!</h1>
-        <h4 style="text-align: center; color:#022344"><%= @first %> <%= @last %> sent you the following message:</h4>
+        <h4 style="text-align: center; color:#022344"><%= @first %> <%= @last %> (<a href="<%= @email %>"><%= @email %></a>) sent you the following message:</h4>
       </td>
     </tr>
     <tr class="body-row">

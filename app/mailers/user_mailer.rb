@@ -5,11 +5,12 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "Welcome to our site!")
   end
 
-  def contact(user, first, last, message)
+  def contact(user, first, last, email, message)
   	@user = user
   	@first = first
   	@last = last
   	@message = message
+    @email = email
   	mail(to: @user.email, subject: "#{first} #{last} sent you a message!")
   end
 
