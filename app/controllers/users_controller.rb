@@ -76,7 +76,7 @@ skip_before_action :verify_authenticity_token
 		else
 			evo_doc = Nokogiri::HTML(open("http://www.cs4000.net/ET/checkid.asp?site=#{params['evolution_id']}"))
 			string = evo_doc.css('body').text
-			if string == "1|Not Found"
+			if string == "1|Not Found" || "0||N/A|N/A|N/A||"
 				flash[:reg_errors] = "No User found with that ID: #{params['evolution_id']}.  Please check the ID and try again."
 			else
 				count = 0
