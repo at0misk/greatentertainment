@@ -273,6 +273,16 @@ small{
 	color: #dc1125;
 }
 
+	@media (max-width: 767px){
+		#msform{
+			margin-top: 60px;
+		}
+		#msform fieldset{
+			width: 100%;
+			margin: 0px !important
+		}
+	}
+
 </style>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
 <div class="container">
@@ -728,7 +738,12 @@ $('.next').click(function(){
 })
 
 $('.previous').click(function(){
-	$('body').height(1700);
+    if ($(window).width() < 768) {
+		$('body').height(1985);
+    }
+    else{
+		$('body').height(1700);
+	}
 	$('html, body').animate({
         scrollTop: $("#progressbar").offset().top
     }, 750);
