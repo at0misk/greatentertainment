@@ -12,11 +12,12 @@
         <h4 style="padding: 15px 0px; background-color: white; color: #022344; margin: 0px -15px; margin-top: -15px; padding-left: 15px;">Here's the details:</h4>
         <h3 tyle="padding: 15px 0px; background-color: white; color: #022344; margin: 0px -15px; margin-top: -15px; padding-left: 15px;">Personal Details:</h3>
         <p style="margin-top: 15px;">Name: <%= @first %> <%= @last %></p>
-        <p>Email: <%= @email %></p>
+        <p>Email: <a href="mailto:<%= @email %>"><%= @email %></a></p>
         <p>Phone Number: <%= @number %></p>
         <p>Depart: <%= @depart_date %></p>
         <p>Return: <%= @return_date %></p>
         <p>Dates flexible: <% if @flexible %>Yes<% else %>No<% end %></p>
+        <h3 tyle="padding: 15px 0px; background-color: white; color: #022344; margin: 0px -15px; margin-top: -15px; padding-left: 15px;">Location Details:</h3>
         <p>Where would you like to explore?</p>
           <ul>
           <% @explore_options.each do |val| %>
@@ -53,6 +54,7 @@
           <li><%= @view_other %></li>
           <% end %>
           </ul>
+        <h3 tyle="padding: 15px 0px; background-color: white; color: #022344; margin: 0px -15px; margin-top: -15px; padding-left: 15px;">Booking/Party Details:</h3>
         <p>What would you like included in your booking?</p>
           <ul>
           <% @include_options.each do |val| %>
