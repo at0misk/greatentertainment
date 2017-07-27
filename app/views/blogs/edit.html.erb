@@ -74,6 +74,14 @@
 			</div>
 			<div class="row">
 				<div class="form-group">
+				    <label for="author" class="col-sm-2 control-label">Author</label>
+				    <div class="col-sm-10">
+				        <input name="blog[author]" type="text" class="form-control" id="title" value="<%= val.author %>" />
+				    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
 				    <label for="content" class="col-sm-2 control-label">Post:</label>
 				    <div class="col-sm-10">
 				    	<textarea name="blog[content]" class="form-control" id="content" rows="15"><%= val.content %></textarea>
