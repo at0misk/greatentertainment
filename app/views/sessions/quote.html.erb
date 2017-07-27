@@ -1,6 +1,6 @@
 <style type="text/css">
 	.container{
-		min-height: 550px;
+		min-height: 1550px;
 		background-color: white;
 		margin-top: 15px;
 	}
@@ -21,7 +21,7 @@
 		padding-top: 10px;
 	}
 	.form-row{
-		margin-top: 15px;
+		/*margin-top: 15px;*/
 		padding-right: 15px;
 	}
 	.travel-label{
@@ -40,7 +40,231 @@
 	    margin-top: 15px;
 	    display: block;
 	}
+
+/*form styles*/
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+}
+
+#msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+    display: none;
+}
+
+/*inputs*/
+#msform input, #msform textarea, #msform select{
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2C3E50;
+    font-size: 13px;
+}
+
+#msform select{
+	height: 50px;
+}
+
+#msform input:focus, #msform textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #DC1125;
+    outline-width: 0;
+    transition: All 0.5s ease-in;
+    -webkit-transition: All 0.5s ease-in;
+    -moz-transition: All 0.5s ease-in;
+    -o-transition: All 0.5s ease-in;
+}
+
+/*buttons*/
+#msform .action-button {
+    width: 100px;
+    background: #DC1125;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
+}
+
+#msform .action-button-previous {
+    width: 100px;
+    background: #C5C5F1;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button-previous:hover, #msform .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #C5C5F1;
+}
+
+/*headings*/
+.fs-title {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/*progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+
+#progressbar li {
+    list-style-type: none;
+    /*color: white;*/
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 24.33%;
+    float: left;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    background: white;
+    border-radius: 25px;
+    margin: 0 auto 10px auto;
+}
+
+/*progressbar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1; /*put it behind the numbers*/
+}
+
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before, #progressbar li.active:after {
+    background: #DC1125;
+    color: white;
+}
+
+.control-label{
+	float: left;
+}
+
+.date-label{
+	font-weight: 500;
+	color: #5a5a5a;
+}
+
+.check-group{
+	color: #5a5a5a;
+	margin-top: 10px;
+}
+
+.form-group{
+	margin-bottom: 0px;
+	padding-right: 0px;
+}
+
+.form-check-input{
+	width: auto !important;
+}
+
+.sub-sub{
+    margin-top: 0;
+    line-height: inherit;
+    padding: 0px 10%;
+    margin-bottom: 0px;
+}
+
+.form-check-inline{
+	display: inline-block;
+	width: auto;
+}
+
+.form-check-inline .form-check-label{
+	font-weight: 500;
+	margin: 5px 3px;
+}
+
+.sub-label{
+	padding: 0;
+    text-align: left;
+    margin-bottom: 10px;
+    padding-left: 7px;
+    font-weight: 600;
+    margin-top: 25px;
+    font-size: 15px;
+}
+
+small{
+	text-align: left;
+    padding-left: 7px;
+    color: #666666;
+    margin-top: 0px;
+}
+
+.checks{
+	text-align: left;
+}
+
 </style>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
 <div class="container">
 	<div class="row header-row-quote">
 		<div class="col-sm-12 header-col">
@@ -198,10 +422,519 @@
 		</div>
 		<div class="col-sm-6">
 		</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <form id="msform">
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active">Personal Details</li>
+                <li>Location Details</li>
+                <li>Booking/Party Details</li>
+                <li>Final Thoughts</li>
+            </ul>
+            <!-- fieldsets -->
+            <fieldset>
+                <h2 class="fs-title">Personal Details</h2>
+                <h3 class="fs-subtitle">Basic Information</h3>
+			<div class="row form-row">
+				<div class="form-group col-sm-6">
+				    <!-- <label for="first-quote" class="control-label">First Name</label> -->
+			        <input name="first" type="text" id="first-quote" placeholder="First Name" required/>
+				</div>
+			    <div class="form-group col-sm-6">
+				    <!-- <label for="last-quote" class="control-label">Last Name</label> -->
+			        <input name="last" type="text" id="last-quote" placeholder="Last Name" required/>
+			    </div>
+			</div>
+			<div class="row form-row">
+			    <div class="form-group col-sm-6">
+				    <!-- <label for="email-quote" class="control-label">Email</label> -->
+			        <input name="email" type="text" id="email-quote" placeholder="Email" required/>
+			    </div>
+				<div class="form-group col-sm-6">
+				    <!-- <label for="phone-quote" class="control-label">Phone</label> -->
+			        <input name="phone" type="text" id="phone-quote" placeholder="Phone" required/>
+				</div>
+			</div>
+			<div class="row form-row">
+				<div class="form-group col-sm-6">
+				    <label for="departure" class="control-label date-label">Travel Dates Available (From)</label>
+				    <input name="departure" type="date" id="departure" min="<%= Date.today %>" required/>
+				</div>
+			    <div class="form-group col-sm-6">
+				    <label for="return" class="control-label date-label">To</label>
+			        <input name="return" type="date" id="return" min="<%= Date.today %>" required/>
+			    </div>
+			</div>
+			<div class="row form-row">
+				<div class="form-group col-sm-12 check-group">
+				    <input name="flexible" type="checkbox" class="form-check-input"> My Dates Are Flexible</input>
+				</div>
+<!-- 			    <div class="form-group col-sm-6">
+			        <input name="return" type="checkbox" class="form-check-input" id="return" checked> Contact me with specials</input>
+			    </div> -->
+			</div>
+                <input type="button" name="next" class="next btn-red action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Location Details</h2>
+                <h3 class="fs-subtitle">What kind of trip are you thinking of?</h3>
+                <h3 class="fs-subtitle sub-sub">On land?  Out at sea?  R & R or constant nightlife?  Tell us a little about where you'd like to go and what kind of experience you're interested in!</h3>
+                <h3 class="fs-subtitle sub-sub sub-label">Where would you like to explore?</h3>
+                <div class="checks">
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Mexico" name="explore-options"> Mexico
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Caribbean" name="explore-options"> Caribbean
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Hawaii" name="explore-options"> Hawaii
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Alaska" name="explore-options"> Alaska
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Europe" name="explore-options"> Europe
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Cruise" name="explore-options"> Cruise
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="River Cruise" name="explore-options"> River Cruise
+					  </label>
+					</div>
+				</div>
+				<input name="other-explore" type="text" id="other-quote" placeholder="Other"/>
+				<!-- <small>Check all that apply!</small> -->
+                <h3 class="fs-subtitle sub-sub sub-label">What kind of vibe are you looking for?</h3>
+				<div class="checks">
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Romantic" name="vibe-options"> Romantic
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Off the Beaten Path" name="vibe-options"> Off the Beaten Path
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Local Culture" name="vibe-options"> Local Culture
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Food/Wine" name="vibe-options"> Food/Wine
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Party" name="vibe-options"> Party
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Rest and Relaxation" name="vibe-options"> Rest and Relaxation
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Kid/Family Friendly" name="vibe-options"> Kid/Family Friendly
+					  </label>
+					</div>
+				</div>
+				<input name="other-vibe" type="text" id="other-quote" placeholder="Other"/>
+				<h3 class="fs-subtitle sub-sub sub-label">What activities are you interested in?</h3>
+				<div class="checks">
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Beach & Water Activities" name="activity-options"> Beach & Water Activities
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Scuba" name="activity-options"> Scuba
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Golf" name="activity-options"> Golf
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Theater/Arts" name="activity-options"> Theater/Arts
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Gambling" name="activity-options"> Gambling
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Adventure Activities" name="activity-options"> Adventure Activities
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Nightlife" name="activity-options"> Nightlife
+					  </label>
+					</div>
+				</div>
+				<input name="other-activities" type="text" id="other-quote" placeholder="Other"/>
+				<h3 class="fs-subtitle sub-sub sub-label">View or Cabin Preference?</h3>
+				<div class="checks">
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Oceanview" name="view-options"> Oceanview
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Oceanfront" name="view-options"> Oceanfront
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Garden" name="view-options"> Garden
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Inside Cabin (cruise)" name="view-options"> Inside Cabin (cruise)
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Outside Cabin (cruise)" name="view-options"> Outside Cabin (cruise)
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Balcony (cruise)" name="view-options"> Balcony (cruise)
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Suite (cruise)" name="view-options"> Suite (cruise)
+					  </label>
+					</div>
+				</div>
+				<input name="other-view" type="text" id="other-quote" placeholder="Other"/>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next btn-red action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Booking/Party Details</h2>
+                <h3 class="fs-subtitle">Travel Budget Details</h3>
+                <h3 class="fs-subtitle sub-sub sub-label">What would you like included in your booking?</h3>
+				<div class="checks">
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="airCheckbox1" value="Air" name="view-options"> Air
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="transfersCheckbox2" value="Airport Transfers" name="view-options"> Airport Transfers
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="carCheckbox3" value="Car Rental" name="view-options"> Car Rental
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="hrcCheckbox1" value="Hotel/Resort/Cruise" name="view-options"> Hotel/Resort/Cruise
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="act-budgetCheckbox3" value="Activities" name="view-options"> Activities
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="mealsCheckbox2" value="Meals Included" name="view-options"> Meals Included
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="alcoholCheckbox3" value="Alcohol Included" name="view-options"> Alcohol Included
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="tipsCheckbox3" value="Tips Included" name="view-options"> Tips Included
+					  </label>
+					</div>
+				</div>
+				<input name="other-included" type="text" id="other-quote" placeholder="Other"/>
+                <h3 class="fs-subtitle sub-sub sub-label">What is your trip budget?</h3>
+				    <select id="budget" name="budget" required>
+				      <option>$0 - $149</option>
+				      <option>$150 - $199</option>
+				      <option>$200 - $249</option>
+				      <option>$250+</option>
+				    </select>
+                <h3 class="fs-subtitle sub-sub sub-label">What resort/hotel star rating do you prefer?</h3>
+				<div class="checks">
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="3starCheckbox1" value="3 Star" name="star-options"> 3 Star
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="4starCheckbox2" value="4 Star" name="star-options"> 4 Star
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="5starCheckbox3" value="5 Star" name="star-options"> 5 Star
+					  </label>
+					</div>
+				</div>
+                <h3 class="fs-subtitle sub-sub sub-label">If applicable, what size car rental will you need?</h3>
+				<div class="checks">
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="compactCheckbox1" value="Compact/Economy" name="rentalcar-options"> Compact/Economy
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="standardCheckbox2" value="Standard" name="rentalcar-options"> Standard
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="fullCheckbox3" value="Full Size" name="rentalcar-options"> Full Size
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="suvCheckbox2" value="SUV/Van/Pickup" name="rentalcar-options"> SUV/Van/Pickup
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="fullCheckbox3" value="Luxury" name="rentalcar-options"> Luxury
+					  </label>
+					</div>
+				</div>
+				<input name="other-carrental" type="text" id="other-quote" placeholder="Other"/>
+                <h3 class="fs-subtitle">Party Details</h3>
+                <input name="party-size" type="number" id="party-size" placeholder="Size of Travel Party">
+                <h3 class="fs-subtitle sub-sub sub-label">Our Party Includes:</h3>
+				<div class="checks">
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="infantCheckbox1" value="Infant/Toddler" name="traveler-type-options"> Infant/Toddler
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="childrenCheckbox2" value="Children (under 13)" name="traveler-type-options"> Children (under 13)
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="teensCheckbox3" value="Teens (13-19)" name="traveler-type-options"> Teens (13-19)
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="adultsCheckbox2" value="Adults (20-59)" name="traveler-type-options"> Adults (20-59)
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="fullCheckbox3" value="Seniors (60+)" name="traveler-type-options"> Seniors (60+)
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="physiclAccomCheckbox3" value="People who require physical accomodations" name="traveler-type-options"> People who require physical accomodations
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="vetCheckbox3" value="Veterans/Military" name="traveler-type-options"> Veterans/Military
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="fireCheckbox3" value="Fire/Police" name="traveler-type-options"> Fire/Police
+					  </label>
+					</div>
+				</div>
+				<h3 class="fs-subtitle sub-sub sub-label">Traveling for a special occasion?</h3>
+				<div class="checks">
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="birthdayCheckbox1" value="Birthday" name="occasion-options"> Birthday
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="anniversaryCheckbox2" value="Anniversary" name="occasion-options"> Anniversary
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="honeymoonCheckbox3" value="Honeymoon" name="occasion-options"> Honeymoon
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="weddingCheckbox2" value="Destination Wedding" name="occasion-options"> Destination Wedding
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="bachCheckbox3" value="Destination Bachelor/Bachelorette Party" name="traveler-type-options"> Destination Bachelor/Bachelorette Party
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="reunionCheckbox3" value="Family Reunion" name="occasion-options"> Family Reunion
+					  </label>
+					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="rewardCheckbox3" value="Company Incentive/Reward Travel" name="occasion-options"> Company Incentive/Reward Travel
+					  </label>
+					</div>
+				<input name="other-occasion" type="text" id="other-quote" placeholder="Other"/>
+				</div>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next btn-red action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Final Thoughts</h2>
+                <h3 class="fs-subtitle">What else would you like us to know?</h3>
+				<h3 class="fs-subtitle sub-sub sub-label">Are we missing anything?  What else would you like us to know about your party, budget, and/or travel preferences?</h3>
+				<textarea name="comments"></textarea>
+				<select id="budget" name="contact_preference" required>
+				      <option>Phone</option>
+				      <option>Email</option>
+				      <option>Either</option>
+				</select>
+                <input type="text" name="email" placeholder="Email"/>
+                <input type="password" name="pass" placeholder="Password"/>
+                <input type="password" name="cpass" placeholder="Confirm Password"/>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="submit" name="submit" class="submit action-button" value="Submit"/>
+            </fieldset>
+        </form>
+    </div>
+</div>
 	</div>
+<!-- /.MultiStep Form -->
 
 <script type="text/javascript">
   $(document).on('turbolinks:load',function(){
+
+//jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
+
+$(".next").click(function(){
+	console.log($(this));
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	next_fs = $(this).parent().next();
+	
+	//activate next step on progressbar using the index of next_fs
+	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+	
+	//show the next fieldset
+	next_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale current_fs down to 80%
+			scale = 1 - (1 - now) * 0.2;
+			//2. bring next_fs from the right(50%)
+			left = (now * 50)+"%";
+			//3. increase opacity of next_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({
+        'transform': 'scale('+scale+')',
+        'position': 'absolute'
+      });
+			next_fs.css({'left': left, 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+
+$(".previous").click(function(){
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	previous_fs = $(this).parent().prev();
+	
+	//de-activate current step on progressbar
+	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+	
+	//show the previous fieldset
+	previous_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale previous_fs from 80% to 100%
+			scale = 0.8 + (1 - now) * 0.2;
+			//2. take current_fs to the right(50%) - from 0%
+			left = ((1-now) * 50)+"%";
+			//3. increase opacity of previous_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({'left': left});
+			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
+
+$(".submit").click(function(){
+
+})
 
 	    $('#quote-form').validate({
 		      rules: {
