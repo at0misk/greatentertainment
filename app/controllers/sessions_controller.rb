@@ -41,7 +41,11 @@ class SessionsController < ApplicationController
 		redirect_to "/#{@last_user.username}"
 	end
 	def quote
-		@page_user = User.find(session[:page_user_id])
+		if session[:page_user_id]
+			@page_user = User.find(session[:page_user_id])
+		else
+			redirect_to "/" and return
+		end
 	end
 	def quote_process
 		# Send email for quote here

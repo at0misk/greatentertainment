@@ -176,7 +176,7 @@
 						<label for="current_image" class="col-sm-3 control-label">Current Photo</label>
 						<div class="col-sm-9 img-col">
 							<% if @user.avatar.url == '/avatars/original/missing.png' %>
-								<%= image_tag 'placeholder_user', :class => "img-fluid", :size => '150x150' %>
+								<%= image_tag 'placeholder_user.jpg', :class => "img-fluid", :size => '150x150' %>
 							<% else %>
 								<%= image_tag @user.avatar.url, :class => "img-fluid" %>
 							<% end %>
