@@ -1,7 +1,8 @@
 <style type="text/css">
 	.container{
-		min-height: 1550px;
-		background-color: white;
+		min-height: 650px;
+		height: 100%;
+		background-color: transparent;
 		margin-top: 15px;
 	}
 	.btn-col{
@@ -15,8 +16,8 @@
 		text-align: center;
 	}
 	.header-row-quote{
-		color: white;
-		background-color: #e84c3d;
+    color: #161616;
+    background-color: transparent;
 		height: 60px;
 		padding-top: 10px;
 	}
@@ -87,7 +88,7 @@
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    border: 1px solid #DC1125;
+    border: 1px solid #07549c;
     outline-width: 0;
     transition: All 0.5s ease-in;
     -webkit-transition: All 0.5s ease-in;
@@ -98,7 +99,7 @@
 /*buttons*/
 #msform .action-button {
     width: 100px;
-    background: #DC1125;
+    background: #07549c;
     font-weight: bold;
     color: white;
     border: 0 none;
@@ -109,7 +110,7 @@
 }
 
 #msform .action-button:hover, #msform .action-button:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #07549c;
 }
 
 #msform .action-button-previous {
@@ -198,7 +199,7 @@
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
 #progressbar li.active:before, #progressbar li.active:after {
-    background: #DC1125;
+    background: #07549c;
     color: white;
 }
 
@@ -263,165 +264,19 @@ small{
 	text-align: left;
 }
 
+.thanks-copy{
+	padding: 0px 15%;
+}
+
 </style>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
 <div class="container">
 	<div class="row header-row-quote">
-		<div class="col-sm-12 header-col">
+		<div class="col-sm-8 header-col col-md-offset-2">
 			<h4 class="sub-header">Get a Quote From <%= @page_user.first %> <%= @page_user.last %></h4>
+			<h5 class="sub-header thanks-copy">Thanks so much for your interest in traveling! I'd love to get to know you better before we chat! Can you tell me a little bit about your travel interests?</h5>
 		</div>
 	</div>
-	<div class="row form-row">
-			<form action="/quote" method="post" class="form-horizontal" id="quote-form">
-		<div class="col-sm-6" data-no-turbolinks="true">
-			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-			<input name="user_id" type="hidden" value="<%= @page_user.id %>">
-			<div class="row form-row">
-				<div class="form-group">
-				    <label for="destination" class="col-sm-6 control-label">Where do you want to go?</label>
-				    <div class="col-sm-6">
-				        <input name="destination" type="text" class="form-control" id="destination" required/>
-				    </div>
-				</div>
-			</div>
-			<div class="row form-row">
-				<div class="form-group">
-				    <label for="first-quote" class="col-sm-6 control-label">Your First Name</label>
-				    <div class="col-sm-6">
-				        <input name="first" type="text" class="form-control" id="first-quote" required/>
-				    </div>
-				</div>
-			</div>
-			<div class="row form-row">
-				<div class="form-group">
-				    <label for="last-quote" class="col-sm-6 control-label">Your Last Name</label>
-				    <div class="col-sm-6">
-				        <input name="last" type="text" class="form-control" id="last-quote" required/>
-				    </div>
-				</div>
-			</div>
-			<div class="row form-row">
-				<div class="form-group">
-				    <label for="email-quote" class="col-sm-6 control-label">Your Email</label>
-				    <div class="col-sm-6">
-				        <input name="email" type="text" class="form-control" id="email-quote" required/>
-				    </div>
-				</div>
-			</div>
-			<div class="row form-row">
-				<div class="form-group">
-				    <label for="phone" class="col-sm-6 control-label">Your Phone Number</label>
-				    <div class="col-sm-6">
-				        <input name="phone" type="text" class="form-control" id="phone" required/>
-				    </div>
-				</div>
-			</div>
-			<div class="row form-row">
-				<div class="form-group">
-				    <label for="departure" class="col-sm-6 control-label">Departure Date</label>
-				    <div class="col-sm-6">
-				        <input name="departure" type="date" class="form-control" id="departure" min="<%= Date.today %>" required/>
-				    </div>
-				</div>
-			</div>
-			<div class="row form-row">
-				<div class="form-group">
-				    <label for="return" class="col-sm-6 control-label">Return Date</label>
-				    <div class="col-sm-6">
-				        <input name="return" type="date" class="form-control" id="return" min="<%= Date.today %>" required/>
-				    </div>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6">
-			<div class="row form-row">
-				<div class="form-group">
-				    <label for="airport" class="col-sm-6 control-label">Departure Airport</label>
-				    <div class="col-sm-6">
-				        <input name="airport" type="text" class="form-control" id="airport" required/>
-				    </div>
-				</div>
-			</div>
-			<div class="row form-row">
-				<div class="form-group">
-				    <label for="return_airport" class="col-sm-6 control-label">Return Airport</label>
-				    <div class="col-sm-6">
-				        <input name="return_airport" placeholder="" type="text" class="form-control" id="return_airport"/>
-				        <small id="returnHelp" class="form-text text-muted">If different from departure.</small>
-				    </div>
-				</div>
-			</div>
-			<div class="row form-row">
-				  <div class="form-group">
-				    <label for="budget" class="col-sm-6 control-label">Budget</label>
-				    <div class="col-sm-6">
-				    <select class="form-control" id="budget" name="budget" required>
-				      <option>$0 - $149</option>
-				      <option>$150 - $199</option>
-				      <option>$200 - $249</option>
-				      <option>$250+</option>
-				    </select>
-				    <small id="budgetHelp" class="form-text text-muted">Per Day</small>
-				    </div>
-				  </div>
-			 </div>
-			<div class="row form-row">
-				<label for="travelers" class="col-sm-4 control-label">Travelers</label>
-				<div class="col-sm-8">
-					<div class="form-group col-sm-6">
-					    <label for="adults" class="col-sm-4 control-label travel-label">Adults</label>
-					    <div class="col-sm-8">
-					        <input name="adults" type="number" class="form-control" id="adults" min="1" placeholder="1" value="1"/>
-				    </div>
-				</div>
-				<div class="form-group col-sm-6">
-					    <label for="children" class="col-sm-4 control-label travel-label">Children</label>
-					    <div class="col-sm-8">
-					        <input name="children" type="number" class="form-control" id="children" min="0" placeholder="0" value="0"/>
-				        <small id="childrenHelp" class="form-text text-muted">Under 18.</small>
-					    </div>
-					</div>
-				</div>
-			</div>
-			<div class="row form-row">
-				<div class="form-group">
-				    <label for="comments" class="col-sm-4 control-label">Comments</label>
-				    <div class="col-sm-8">
-				        <textarea rows="8" name="comments" class="form-control" id="comments"></textarea>
-				    </div>
-				</div>
-			</div>
-			<div class="col-sm-4">
-			</div>
-	      <label class="custom-control custom-checkbox form-group col-sm-8">
-	        <input type="checkbox" name="subscribe" class="custom-control-input" checked>
-	        <span class="custom-control-indicator"></span>
-	        <span class="custom-control-description">Contact me about specials</span>
-	      </label>
-			<div class="row form-row">
-				<div class="form-group">
-					<div class="col-sm-4">
-					</div>
-				    <div class="col-sm-8 btn-col">
-				        <button class="btn btn-red">Get Quote</button>
-				    </div>
-				</div>
-			</div>
-		</div>
-		</form>
-			<% if flash[:sub] %>
-				<div class="row">
-					<div class="col-sm-4">
-					</div>
-					<div class="col-sm-6">
-						<h4><%= flash[:sub] %></h4>
-					</div>
-				</div>
-				<% flash[:sub] = nil %>
-			<% end %>
-		</div>
-		<div class="col-sm-6">
-		</div>
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <form id="msform">
@@ -832,15 +687,13 @@ small{
                 <h2 class="fs-title">Final Thoughts</h2>
                 <h3 class="fs-subtitle">What else would you like us to know?</h3>
 				<h3 class="fs-subtitle sub-sub sub-label">Are we missing anything?  What else would you like us to know about your party, budget, and/or travel preferences?</h3>
-				<textarea name="comments"></textarea>
+				<textarea name="comments" rows="6"></textarea>
+				<h3 class="fs-subtitle sub-sub sub-label">I prefer to be contacted by</h3>
 				<select id="budget" name="contact_preference" required>
 				      <option>Phone</option>
 				      <option>Email</option>
 				      <option>Either</option>
 				</select>
-                <input type="text" name="email" placeholder="Email"/>
-                <input type="password" name="pass" placeholder="Password"/>
-                <input type="password" name="cpass" placeholder="Confirm Password"/>
                 <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                 <input type="submit" name="submit" class="submit action-button" value="Submit"/>
             </fieldset>
