@@ -1938,7 +1938,7 @@ ul, ol {
 			<div class="row profileRow">
 				<div class="col-sm-4 col-md-6 col-xs-5 profileDiv">
 				<% if @page_user.avatar.url == '/avatars/original/missing.png' %>
-					<%= image_tag 'placeholder_user', :class => "img-fluid" %>
+					<%= image_tag 'placeholder_user.jpg', :class => "img-fluid" %>
 				<% else %>
 					<%= image_tag @page_user.avatar.url(:medium), :class => "img-fluid" %>
 				<% end %>
