@@ -152,6 +152,7 @@
     overflow: hidden;
     /*CSS counters to number the steps*/
     counter-reset: step;
+    padding-top: 15px;
 }
 
 #progressbar li {
@@ -708,14 +709,14 @@ small{
 
 $('.next').click(function(){
 	$('html, body').animate({
-        scrollTop: $("#msform").offset().top
+        scrollTop: $("#progressbar").offset().top
     }, 750);
 })
 
 $('.previous').click(function(){
 	$('body').height(1700);
 	$('html, body').animate({
-        scrollTop: $("#msform").offset().top
+        scrollTop: $("#progressbar").offset().top
     }, 750);
 })
 
