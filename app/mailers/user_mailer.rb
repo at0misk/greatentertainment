@@ -14,25 +14,34 @@ class UserMailer < ApplicationMailer
   	mail(to: @user.email, subject: "#{first} #{last} sent you a message!")
   end
 
-  def vacation(user, first, last, airport, return_airport, budget, email, number, destination, depart_date, return_date, adults, children, comments)
+  def vacation(user, first, last, email, phone, departure, return_date, flexible, explore_options, other_explore, vibe_options, other_vibe, activity_options, other_activity, view_options, other_view, include_options, other_include, budget, star_options, rentalcar_options, other_rentalcar, party_size, traveler_type_options, occasion_options, other_occasion, comments, contact_preference)
   	@user = user
   	@first = first
-  	@last = last
-  	@airport = airport
-    @budget = budget
-    if !@return_airport
-      @return_airport = airport
-    else
-      @return_airport = return_airport
-    end
   	@email = email
-  	@number = number
-  	@destination = destination
-  	@depart_date = depart_date
-  	@return_date = return_date
-  	@adults = adults
-  	@children = children
-  	@comments = comments
+    @phone = phone
+    @depart_date = departure
+    @return_date = return_date
+    @flexible = flexible
+    @explore_options = explore_options
+    @explore_other = other_explore
+    @vibe_options = vibe_options
+    @vibe_other = other_vibe
+    @activity_options = activity_options
+    @activity_other = other_activity
+    @view_options = view_options
+    @view_other = other_view
+    @include_options = include_options
+    @include_other = other_include
+    @budget = budget
+    @star_options = star_options
+    @rentalcar_options = rentalcar_options
+    @rentalcar_other = other_rentalcar
+    @party_size = party_size
+    @traveler_type_options = traveler_type_options
+    @occasion_options = occasion_options
+    @occasion_other = other_occasion
+    @comments = comments
+    @contact_preference = contact_preference
   	mail(to: @user.email, subject: "#{first} #{last} wants to go on vacation!")
   end
 

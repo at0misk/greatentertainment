@@ -10,17 +10,91 @@
     <tr style="color: #022344;" class="body-row">
       <td style="padding: 15px;">
         <h4 style="padding: 15px 0px; background-color: white; color: #022344; margin: 0px -15px; margin-top: -15px; padding-left: 15px;">Here's the details:</h4>
+        <h3 tyle="padding: 15px 0px; background-color: white; color: #022344; margin: 0px -15px; margin-top: -15px; padding-left: 15px;">Personal Details:</h3>
         <p style="margin-top: 15px;">Name: <%= @first %> <%= @last %></p>
         <p>Email: <%= @email %></p>
         <p>Phone Number: <%= @number %></p>
-        <p>Departure Airport: <%= @airport %></p>
-        <p>Return Airport: <%= @return_airport %></p>
-        <p>Destination: <%= @destination %></p>
         <p>Depart: <%= @depart_date %></p>
         <p>Return: <%= @return_date %></p>
-        <p>Adults: <%= @adults %></p>
-        <p>Children: <%= @children %><p>
+        <p>Dates flexible: <% if @flexible %>Yes<% else %>No<% end %></p>
+        <p>Where would you like to explore?</p>
+          <ul>
+          <% @explore_options.each do |val| %>
+          <li><%= val %></li>
+          <% end %>
+          <% if @explore_other %>
+          <li><%= @explore_other %></li>
+          <% end %>
+          </ul>
+        <p>What kind of vibe are you looking for?</p>
+          <ul>
+          <% @vibe_options.each do |val| %>
+          <li><%= val %></li>
+          <% end %>
+          <% if @vibe_other %>
+          <li><%= @vibe_other %></li>
+          <% end %>
+          </ul>
+        <p>What activities are you interested in?</p>
+          <ul>
+          <% @activity_options.each do |val| %>
+          <li><%= val %></li>
+          <% end %>
+          <% if @activity_other %>
+          <li><%= @activity_other %></li>
+          <% end %>
+          </ul>
+        <p>View or Cabin Preference?</p>
+          <ul>
+          <% @view_options.each do |val| %>
+          <li><%= val %></li>
+          <% end %>
+          <% if @view_other %>
+          <li><%= @view_other %></li>
+          <% end %>
+          </ul>
+        <p>What would you like included in your booking?</p>
+          <ul>
+          <% @include_options.each do |val| %>
+          <li><%= val %></li>
+          <% end %>
+          <% if @include_other %>
+          <li><%= @include_other %></li>
+          <% end %>
+          </ul>
         <p>Budget: <%= @budget %></p>
+        <p>What resort/hotel star rating do you prefer?</p>
+          <ul>
+          <% @star_options.each do |val| %>
+          <li><%= val %></li>
+          <% end %>
+          </ul>
+        <p>If applicable, what size car rental will you need?</p>
+         <ul>
+          <% @rentalcar_options.each do |val| %>
+          <li><%= val %></li>
+          <% end %>
+          <% if @rentalcar_other %>
+          <li><%= @rentalcar_other %></li>
+          <% end %>
+          </ul>
+        <p>Party Size: <%= @party_size %></p>
+        <p>Our Party Includes:</p>
+          <ul>
+          <% @traveler_type_options.each do |val| %>
+          <li><%= val %></li>
+          <% end %>
+          </ul>
+        <p>Traveling for an occasion?:</p>
+          <ul>
+          <% @occasion_options.each do |val| %>
+          <li><%= val %></li>
+          <% end %>
+          <% if @occasion_other %>
+          <li><%= @occasion_other %></li>
+          <% end %>
+          </ul>
+        <p>Contact Preference: <%= @contact_preference %></p>
         <p>Comments: <%= @comments %></p>
       </td>
     </tr>
