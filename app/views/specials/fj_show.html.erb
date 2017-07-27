@@ -155,7 +155,7 @@
 			<div class="col-sm-6 img-col">
 					<img class="img-fluid mexico-img" src="<%= @fj.img_src %>">
 					<div class="col-sm-12 info-col">
-						<p><%= @description %></p>
+						<p><%= @why %></p>
 					</div>
 			</div>
 			<% else %>
@@ -204,7 +204,7 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<h3 class="title-header"><%= @fj.title.titleize %></h3>
-									<p class="why"><%= @why %></p>
+									<p class="why"><%= @description %></p>
 									<h3 class="title-header"><%= @fj.price %></h3>
 									<h4 class="title-header"><%= @fj.flights %> <%= @fj.includes %></h4>
 									<div class="row">

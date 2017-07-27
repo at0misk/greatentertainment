@@ -98,8 +98,10 @@ class SpecialsController < ApplicationController
 							if @fj.location == "Mexico"
 								@new_src = desc_doc.css('#gallery_0>img')[0]['src']
 								@fj.img_src = "http://www.cheapcaribbean.com" + @new_src
-								@description = desc_doc.css(".mobileResortLove .padded").text
+								@description = desc_doc.css(".mobileRoomInfo .padded").text
 								@why = desc_doc.css('.mobileResortGo .padded').text
+								@why += desc_doc.css('.mobileResortLove .padded').text
+								# @why += desc_doc.css('.mobileResortDescription>.padded>p').text
 							elsif @fj.location == "Cruise"
 								@description = desc_doc.css('.intro-text').text.gsub("â", "'")
 								@map = "https://www.ncl.com" + desc_doc.css('.intro-figure>img')[0]['src']
