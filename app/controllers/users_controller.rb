@@ -121,7 +121,7 @@ skip_before_action :verify_authenticity_token
 		redirect_to '/register'
 	end
 	def user_params
-  		params.require(:user).permit(:first, :last, :email, :username, :password, :password_confirmation, :phone_number, :avatar, :about, :address, :city, :state, :country, :c2go, :apt, :upline_id, :agent_id) 
+  		params.require(:user).permit(:first, :last, :email, :username, :password, :password_confirmation, :phone_number, :avatar, :about, :address, :city, :state, :country, :c2go, :apt, :upline_id, :agent_id, :zip) 
 	end
 	def show
 		@page_user = User.find_by_username(params['username'])
