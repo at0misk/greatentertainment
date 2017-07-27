@@ -280,7 +280,8 @@ small{
 	</div>
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <form id="msform">
+        <form id="msform" action="quote" method="post">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
             <!-- progressbar -->
             <ul id="progressbar">
                 <li class="active">Personal Details</li>
@@ -340,37 +341,37 @@ small{
                 <div class="checks">
 					<div class="form-check form-check-inline">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Mexico" name="explore-options"> Mexico
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Mexico" name="explore-options[]"> Mexico
 					  </label>
 					</div>
 					<div class="form-check form-check-inline">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Caribbean" name="explore-options"> Caribbean
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Caribbean" name="explore-options[]"> Caribbean
 					  </label>
 					</div>
 					<div class="form-check form-check-inline disabled">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Hawaii" name="explore-options"> Hawaii
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Hawaii" name="explore-options[]"> Hawaii
 					  </label>
 					</div>
 					<div class="form-check form-check-inline">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Alaska" name="explore-options"> Alaska
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Alaska" name="explore-options[]"> Alaska
 					  </label>
 					</div>
 					<div class="form-check form-check-inline">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Europe" name="explore-options"> Europe
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Europe" name="explore-options[]"> Europe
 					  </label>
 					</div>
 					<div class="form-check form-check-inline disabled">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Cruise" name="explore-options"> Cruise
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Cruise" name="explore-options[]"> Cruise
 					  </label>
 					</div>
 					<div class="form-check form-check-inline disabled">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="River Cruise" name="explore-options"> River Cruise
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="River Cruise" name="explore-options[]"> River Cruise
 					  </label>
 					</div>
 				</div>
@@ -453,7 +454,7 @@ small{
 					  </label>
 					</div>
 				</div>
-				<input name="other-activities" type="text" id="other-quote" placeholder="Other"/>
+				<input name="other-activity" type="text" id="other-quote" placeholder="Other"/>
 				<h3 class="fs-subtitle sub-sub sub-label">View or Cabin Preference?</h3>
 				<div class="checks">
 					<div class="form-check form-check-inline">
@@ -503,47 +504,47 @@ small{
 				<div class="checks">
 					<div class="form-check form-check-inline">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="airCheckbox1" value="Air" name="view-options"> Air
+					    <input class="form-check-input" type="checkbox" id="airCheckbox1" value="Air" name="include-options"> Air
 					  </label>
 					</div>
 					<div class="form-check form-check-inline">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="transfersCheckbox2" value="Airport Transfers" name="view-options"> Airport Transfers
+					    <input class="form-check-input" type="checkbox" id="transfersCheckbox2" value="Airport Transfers" name="include-options"> Airport Transfers
 					  </label>
 					</div>
 					<div class="form-check form-check-inline disabled">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="carCheckbox3" value="Car Rental" name="view-options"> Car Rental
+					    <input class="form-check-input" type="checkbox" id="carCheckbox3" value="Car Rental" name="include-options"> Car Rental
 					  </label>
 					</div>
 					<div class="form-check form-check-inline">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="hrcCheckbox1" value="Hotel/Resort/Cruise" name="view-options"> Hotel/Resort/Cruise
+					    <input class="form-check-input" type="checkbox" id="hrcCheckbox1" value="Hotel/Resort/Cruise" name="include-options"> Hotel/Resort/Cruise
 					  </label>
 					</div>
 					<div class="form-check form-check-inline disabled">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="act-budgetCheckbox3" value="Activities" name="view-options"> Activities
+					    <input class="form-check-input" type="checkbox" id="act-budgetCheckbox3" value="Activities" name="include-options"> Activities
 					  </label>
 					</div>
 					<div class="form-check form-check-inline">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="mealsCheckbox2" value="Meals Included" name="view-options"> Meals Included
+					    <input class="form-check-input" type="checkbox" id="mealsCheckbox2" value="Meals Included" name="include-options"> Meals Included
 					  </label>
 					</div>
 					<div class="form-check form-check-inline disabled">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="alcoholCheckbox3" value="Alcohol Included" name="view-options"> Alcohol Included
+					    <input class="form-check-input" type="checkbox" id="alcoholCheckbox3" value="Alcohol Included" name="include-options"> Alcohol Included
 					  </label>
 					</div>
 					<div class="form-check form-check-inline disabled">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="tipsCheckbox3" value="Tips Included" name="view-options"> Tips Included
+					    <input class="form-check-input" type="checkbox" id="tipsCheckbox3" value="Tips Included" name="include-options"> Tips Included
 					  </label>
 					</div>
 				</div>
-				<input name="other-included" type="text" id="other-quote" placeholder="Other"/>
-                <h3 class="fs-subtitle sub-sub sub-label">What is your trip budget?</h3>
+				<input name="other-include" type="text" id="other-quote" placeholder="Other"/>
+                <h3 class="fs-subtitle sub-sub sub-label">What is your trip budget? (per day)</h3>
 				    <select id="budget" name="budget" required>
 				      <option>$0 - $149</option>
 				      <option>$150 - $199</option>
@@ -596,7 +597,7 @@ small{
 					  </label>
 					</div>
 				</div>
-				<input name="other-carrental" type="text" id="other-quote" placeholder="Other"/>
+				<input name="other-rentalcar" type="text" id="other-quote" placeholder="Other"/>
                 <h3 class="fs-subtitle">Party Details</h3>
                 <input name="party-size" type="number" id="party-size" placeholder="Size of Travel Party">
                 <h3 class="fs-subtitle sub-sub sub-label">Our Party Includes:</h3>
@@ -691,10 +692,18 @@ small{
 				<textarea name="comments" rows="6"></textarea>
 				<h3 class="fs-subtitle sub-sub sub-label">I prefer to be contacted by</h3>
 				<select id="budget" name="contact_preference" required>
-				      <option>Phone</option>
 				      <option>Email</option>
+				      <option>Phone</option>
 				      <option>Either</option>
 				</select>
+			<div class="row form-row">
+				<div class="form-group col-sm-12 check-group">
+				    <input name="subscribe" type="checkbox" class="form-check-input" checked> Contact me about specials</input>
+				</div>
+<!-- 			    <div class="form-group col-sm-6">
+			        <input name="return" type="checkbox" class="form-check-input" id="return" checked> Contact me with specials</input>
+			    </div> -->
+			</div>
                 <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                 <input type="submit" name="submit" class="submit action-button" value="Submit"/>
             </fieldset>
