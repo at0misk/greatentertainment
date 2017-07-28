@@ -329,13 +329,11 @@ small{
 			</div>
 			<div class="row form-row">
 				<div class="form-group col-sm-6">
-				    <label for="departure" class="control-label date-label">Travel Dates Available (From)</label>
-				    <input name="departure" type="date" id="departure" min="<%= Date.today %>" required/>
+				    <input name="departure" type="text" id="departure" placeholder="When do you plan on traveling?" required/>
 				</div>
-			    <div class="form-group col-sm-6">
-				    <label for="return" class="control-label date-label">To</label>
-			        <input name="return" type="date" id="return" min="<%= Date.today %>" required/>
-			    </div>
+				<div class="form-group col-sm-6">
+	                <input name="party-size" type="number" id="party-size" placeholder="# In Your Travel Party">
+				</div>
 			</div>
 			<div class="row form-row">
 				<div class="form-group col-sm-12 check-group">
@@ -468,9 +466,14 @@ small{
 					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Nightlife" name="activity-options[]"> Nightlife
 					  </label>
 					</div>
+					<div class="form-check form-check-inline disabled">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Dining" name="activity-options[]"> Dining
+					  </label>
+					</div>
 				</div>
 				<input name="other-activity" type="text" id="other-quote" placeholder="Other"/>
-				<h3 class="fs-subtitle sub-sub sub-label">View or Cabin Preference?</h3>
+				<h3 class="fs-subtitle sub-sub sub-label">Room, View, or Cabin Preference?</h3>
 				<div class="checks">
 					<div class="form-check form-check-inline">
 					  <label class="form-check-label">
@@ -559,28 +562,37 @@ small{
 					</div>
 				</div>
 				<input name="other-include" type="text" id="other-quote" placeholder="Other"/>
-                <h3 class="fs-subtitle sub-sub sub-label">What is your trip budget? (per day)</h3>
-				    <select id="budget" name="budget" required>
-				      <option>$0 - $149</option>
-				      <option>$150 - $199</option>
-				      <option>$200 - $249</option>
-				      <option>$250+</option>
+                <h3 class="fs-subtitle sub-sub sub-label">What is your trip budget? (per person)</h3>
+				    <select id="budget" name="budget">
+				      <option>$0 - $500</option>
+				      <option>$501 - $1000</option>
+				      <option>$1001 - $1500</option>
+				      <option>$1501 - $2500</option>
+				      <option>$2500 - $5000</option>
+				      <option>$5000+</option>
 				    </select>
-                <h3 class="fs-subtitle sub-sub sub-label">What resort/hotel star rating do you prefer?</h3>
+                <h3 class="fs-subtitle sub-sub sub-label">Trip Duration (days)</h3>
+				    <select id="duration" name="duration">
+				      <option>2 - 3</option>
+				      <option>4 - 6</option>
+				      <option>7 - 10</option>
+				      <option>11+</option>
+				    </select> 
+                <h3 class="fs-subtitle sub-sub sub-label">Resort Preference</h3>
 				<div class="checks">
 					<div class="form-check form-check-inline">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="3starCheckbox1" value="3 Star" name="star-options[]"> 3 Star
+					    <input class="form-check-input" type="checkbox" id="3starCheckbox1" value="3 Star" name="star-options[]">Standard
 					  </label>
 					</div>
 					<div class="form-check form-check-inline">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="4starCheckbox2" value="4 Star" name="star-options[]"> 4 Star
+					    <input class="form-check-input" type="checkbox" id="4starCheckbox2" value="4 Star" name="star-options[]">Deluxe
 					  </label>
 					</div>
 					<div class="form-check form-check-inline disabled">
 					  <label class="form-check-label">
-					    <input class="form-check-input" type="checkbox" id="5starCheckbox3" value="5 Star" name="star-options[]"> 5 Star
+					    <input class="form-check-input" type="checkbox" id="5starCheckbox3" value="5 Star" name="star-options[]">Luxury
 					  </label>
 					</div>
 				</div>
@@ -614,7 +626,6 @@ small{
 				</div>
 				<input name="other-rentalcar" type="text" id="other-quote" placeholder="Other"/>
                 <h3 class="fs-subtitle">Party Details</h3>
-                <input name="party-size" type="number" id="party-size" placeholder="Size of Travel Party">
                 <h3 class="fs-subtitle sub-sub sub-label">Our Party Includes:</h3>
 				<div class="checks">
 					<div class="form-check form-check-inline">
@@ -706,7 +717,7 @@ small{
 				<h3 class="fs-subtitle sub-sub sub-label">Are we missing anything?  What else would you like us to know about your party, budget, and/or travel preferences?</h3>
 				<textarea name="comments" rows="6"></textarea>
 				<h3 class="fs-subtitle sub-sub sub-label">I prefer to be contacted by</h3>
-				<select id="budget" name="contact_preference" required>
+				<select id="budget" name="contact_preference">
 				      <option>Email</option>
 				      <option>Phone</option>
 				      <option>Either</option>
@@ -755,7 +766,7 @@ var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 
 $('#first-next').click(function(){
-	if( !$('#first-quote').val() || !$('#last-quote').val() || !$('#email-quote').val() || !$('#phone-quote').val() || !$('#departure').val() || !$('#return').val()){
+	if( !$('#first-quote').val() || !$('#last-quote').val() || !$('#email-quote').val() || !$('#phone-quote').val() || !$('#departure').val() || !$('#party-size').val()){
 		 $('.req-errors').text("Please fill out all of the above fields")
 		 $('fieldset').effect("shake");
 	}
@@ -912,27 +923,6 @@ $(".previous").click(function(){
 		easing: 'easeInOutBack'
 	});
 });
-
-$(".submit").click(function(){
-
-})
-
-	    $('#quote-form').validate({
-		      rules: {
-		        'phone': {
-		          digits: true
-		        },
-		        'email': {
-		        	email: true
-		        }
-		      },
-	          highlight: function (element) {
-	              $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-	          },
-	          success: function (element) {
-	              element.closest('.form-group').removeClass('has-error').addClass('has-success');
-	          }
-		 });
 
   });
 
