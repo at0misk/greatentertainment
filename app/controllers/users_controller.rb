@@ -210,7 +210,7 @@ skip_before_action :verify_authenticity_token
 		hydra = Typhoeus::Hydra.hydra
 
 		first_request = Typhoeus::Request.new("https://www.expedia.com/Honolulu.d1488.Destination-Travel-Guides?rfrr=TG.Destinations.City.POI.1.4")
-		second_request = Typhoeus::Request.new("http://www.cheapcaribbean.com/deals/mexico-all-inclusive.html")
+		second_request = Typhoeus::Request.new("https://www.cheapcaribbean.com/deals/mexico-all-inclusive.html")
 		third_request = Typhoeus::Request.new("https://www.ncl.com/vacations/?pageSize=1&numberOfGuests=0&sortBy=Hotdeals&state=null&currentPage=1&")
 		first_request.on_complete do |response|
 			if response.success?
@@ -225,7 +225,7 @@ skip_before_action :verify_authenticity_token
 			if response.success?
 				doc2 = Nokogiri::HTML(response.response_body)
 				@mexico_hotelname = doc2.at('#deal_feat_0_vp_ResortUrl').text
-				@mexico_href = "http://www.cheapcaribbean.com" + doc2.at('#deal_feat_0_vp_ResortUrl')['href']
+				@mexico_href = "https://www.cheapcaribbean.com" + doc2.at('#deal_feat_0_vp_ResortUrl')['href']
 				@mexico_price = doc2.at(".estPrice").text
 				@mexico_nights = doc2.at(".numNightsExpr").text
 				@mexico_includes = "Including Airfare"
