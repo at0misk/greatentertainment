@@ -251,7 +251,7 @@ skip_before_action :verify_authenticity_token
 		# 
 		@special = Special.where(user_id: @page_user.id, featured: true).first
 		if !@special
-			@special = Special.find_by(user_id: 2)
+			@special = Special.find_by(user_id: 1)
 		end
 		if @current_user && @current_user.id == @page_user.id
 			@unapproved_photos = Photo.where(user_id: @current_user.id, allowed: false)
