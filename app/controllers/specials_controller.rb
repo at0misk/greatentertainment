@@ -97,7 +97,7 @@ class SpecialsController < ApplicationController
 							desc_doc = Nokogiri::HTML(response.response_body)
 							if @fj.location == "Mexico"
 								@new_src = desc_doc.css('#gallery_0>img')[0]['src']
-								@fj.img_src = "http://www.cheapcaribbean.com" + @new_src
+								@fj.img_src = "https://www.cheapcaribbean.com" + @new_src
 								@description = desc_doc.css(".mobileRoomInfo .padded").text
 								@why = desc_doc.css('.mobileResortGo .padded').text
 								@why += desc_doc.css('.mobileResortLove .padded').text
