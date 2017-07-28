@@ -2,7 +2,7 @@
   <tbody>
     <tr class="header-row">
       <td>
-        <%= image_tag('evologo-words.png', :style => "width: 50%; margin-left: 25%;") %>
+        <%= image_tag('logo.png', :style => "width: 50%; margin-left: 25%;") %>
         <h1 style="font-size: 20px; text-align: center; color:#022344">Hello, <%= @user.first %> <%= @user.last %>!</h1>
         <h4 style="text-align: center; color:#022344"><%= @first %> <%= @last %> (<a href="mailto:<%= @email %>"><%= @email %></a>) wants to go on vacation!</h4>
       </td>
@@ -14,90 +14,136 @@
         <p style="margin-top: 15px;">Name: <%= @first %> <%= @last %></p>
         <p>Email: <a href="mailto:<%= @email %>"><%= @email %></a></p>
         <p>Phone Number: <%= @number %></p>
-        <p>Depart: <%= @depart_date %></p>
-        <p>Return: <%= @return_date %></p>
+        <p>When are you traveling?: <%= @depart_date %></p>
         <p>Dates flexible: <% if @flexible %>Yes<% else %>No<% end %></p>
         <h3 tyle="padding: 15px 0px; background-color: white; color: #022344; margin: 0px -15px; margin-top: -15px; padding-left: 15px;">Location Details:</h3>
+        <% if @explore_options || @explore_other != '' %>
         <p>Where would you like to explore?</p>
+        <% end %>
           <ul>
+        <% if @explore_options %>
           <% @explore_options.each do |val| %>
           <li><%= val %></li>
           <% end %>
-          <% if @explore_other %>
+        <% end %>
+          <% if @explore_other != '' %>
           <li><%= @explore_other %></li>
           <% end %>
           </ul>
-        <p>What kind of vibe are you looking for?</p>
+        <% if @vibe_options || @vibe_other != '' %>
+          <p>What kind of vibe are you looking for?</p>
+        <% end %>
           <ul>
+        <% if @vibe_options %>
           <% @vibe_options.each do |val| %>
           <li><%= val %></li>
           <% end %>
-          <% if @vibe_other %>
+        <% end %>
+          <% if @vibe_other != '' %>
           <li><%= @vibe_other %></li>
           <% end %>
           </ul>
-        <p>What activities are you interested in?</p>
+        <% if @activity_options || @activity_other != '' %>
+          <p>What activities are you interested in?</p>
+        <% end %>
           <ul>
+        <% if @activity_options %>
           <% @activity_options.each do |val| %>
           <li><%= val %></li>
           <% end %>
-          <% if @activity_other %>
+        <% end %>
+          <% if @activity_other != '' %>
           <li><%= @activity_other %></li>
           <% end %>
           </ul>
-        <p>View or Cabin Preference?</p>
+        <% if @view_options || @view_other != '' %>
+          <p>View or Cabin Preference?</p>
+        <% end %>
           <ul>
+        <% if @view_options %>
           <% @view_options.each do |val| %>
           <li><%= val %></li>
           <% end %>
-          <% if @view_other %>
+        <% end %>
+          <% if @view_other !='' %>
           <li><%= @view_other %></li>
           <% end %>
           </ul>
         <h3 tyle="padding: 15px 0px; background-color: white; color: #022344; margin: 0px -15px; margin-top: -15px; padding-left: 15px;">Booking/Party Details:</h3>
-        <p>What would you like included in your booking?</p>
+        <% if @include_options || @include_other != '' %>
+          <p>What would you like included in your booking?</p>
+        <% end %>
           <ul>
+        <% if @include_option %>
           <% @include_options.each do |val| %>
           <li><%= val %></li>
           <% end %>
-          <% if @include_other %>
+        <% end %>
+          <% if @include_other != '' %>
           <li><%= @include_other %></li>
           <% end %>
           </ul>
-        <p>Budget: <%= @budget %></p>
-        <p>What resort/hotel star rating do you prefer?</p>
+        <% if @budget %>
+          <p>Budget: <%= @budget %></p>
+        <% end %>
+        <% if @duration %>
+          <p>Duration: <%= @duration %></p>
+        <% end %>
+        <% if @star_options %>
+          <p>What resort/hotel star rating do you prefer?</p>
+        <% end %>
           <ul>
+        <% if @star_options %>
           <% @star_options.each do |val| %>
           <li><%= val %></li>
           <% end %>
+        <% end %>
           </ul>
-        <p>If applicable, what size car rental will you need?</p>
+        <% if @rentalcar_options || @rentalcar_other != '' %>
+          <p>If applicable, what size car rental will you need?</p>
+        <% end %>
          <ul>
+        <% if @rentalcar_options %>
           <% @rentalcar_options.each do |val| %>
           <li><%= val %></li>
           <% end %>
-          <% if @rentalcar_other %>
+        <% end %>
+          <% if @rentalcar_other != '' %>
           <li><%= @rentalcar_other %></li>
           <% end %>
           </ul>
-        <p>Party Size: <%= @party_size %></p>
+        <% if @party_size != '' %>
+          <p>Party Size: <%= @party_size %></p>
+        <% end %>
+        <% if @traveler_type_options %>
         <p>Our Party Includes:</p>
+        <% end %>
           <ul>
+        <% if @traveler_type_options %>
           <% @traveler_type_options.each do |val| %>
           <li><%= val %></li>
           <% end %>
+        <% end %>
           </ul>
-        <p>Traveling for an occasion?:</p>
+        <% if @occasion_options || @occasion_other != '' %>
+          <p>Traveling for an occasion?:</p>
+        <% end %>
           <ul>
+        <% if @occasion_options %>
           <% @occasion_options.each do |val| %>
           <li><%= val %></li>
           <% end %>
-          <% if @occasion_other %>
+        <% end %>
+          <% if @occasion_other != '' %>
           <li><%= @occasion_other %></li>
           <% end %>
           </ul>
-        <p>Contact Preference: <%= @contact_preference %></p>
-        <p>Comments: <%= @comments %></p>
+        <% if @contact_preference != '' %>
+          <p>Contact Preference: <%= @contact_preference %></p>
+        <% end %>
+        <% if @comments != '' %>
+          <p>Comments: <%= @comments %></p>
+        <% end %>
       </td>
     </tr>
   </tbody>

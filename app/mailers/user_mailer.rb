@@ -6,21 +6,20 @@ class UserMailer < ApplicationMailer
   end
 
   def contact(user, first, last, email, message)
-  	@user = user
-  	@first = first
-  	@last = last
-  	@message = message
+    @user = user
+    @first = first
+    @last = last
+    @message = message
     @email = email
-  	mail(to: @user.email, subject: "#{first} #{last} sent you a message!")
+    mail(to: @user.email, subject: "#{first} #{last} sent you a message!")
   end
 
-  def vacation(user, first, last, email, phone, departure, return_date, flexible, explore_options, other_explore, vibe_options, other_vibe, activity_options, other_activity, view_options, other_view, include_options, other_include, budget, star_options, rentalcar_options, other_rentalcar, party_size, traveler_type_options, occasion_options, other_occasion, comments, contact_preference)
-  	@user = user
-  	@first = first
-  	@email = email
+  def vacation(user, first, last, email, phone, departure, flexible, explore_options, other_explore, vibe_options, other_vibe, activity_options, other_activity, view_options, other_view, include_options, other_include, budget, duration, star_options, rentalcar_options, other_rentalcar, party_size, traveler_type_options, occasion_options, other_occasion, comments, contact_preference)
+    @user = user
+    @first = first
+    @email = email
     @phone = phone
     @depart_date = departure
-    @return_date = return_date
     @flexible = flexible
     @explore_options = explore_options
     @explore_other = other_explore
@@ -33,6 +32,7 @@ class UserMailer < ApplicationMailer
     @include_options = include_options
     @include_other = other_include
     @budget = budget
+    @duration = duration
     @star_options = star_options
     @rentalcar_options = rentalcar_options
     @rentalcar_other = other_rentalcar
@@ -42,29 +42,29 @@ class UserMailer < ApplicationMailer
     @occasion_other = other_occasion
     @comments = comments
     @contact_preference = contact_preference
-  	mail(to: @user.email, subject: "#{first} #{last} wants to go on vacation!")
+    mail(to: @user.email, subject: "#{first} #{last} wants to go on vacation!")
   end
 
   def user_special(user, special, first, last, email, number, message)
-  	@user = user
-  	@special = special
-  	@first = first
-  	@last = last
-  	@email = email
-  	@number = number
-  	@message = message
-  	mail(to: @user.email, subject: "#{first} #{last} is interested in your special!")
+    @user = user
+    @special = special
+    @first = first
+    @last = last
+    @email = email
+    @number = number
+    @message = message
+    mail(to: @user.email, subject: "#{first} #{last} is interested in your special!")
   end
 
   def funjet_special(user, ref, first, last, email, number, message)
-  	@user = user
-  	@ref = ref
-  	@first = first
-  	@last = last
-  	@email = email
-  	@number = number
-  	@message = message
-  	mail(to: @user.email, subject: "#{first} #{last} is interested in your special!")
+    @user = user
+    @ref = ref
+    @first = first
+    @last = last
+    @email = email
+    @number = number
+    @message = message
+    mail(to: @user.email, subject: "#{first} #{last} is interested in your special!")
   end
 
   def mail_subscribers(user, recipient, subject, message)
