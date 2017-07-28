@@ -229,7 +229,7 @@ skip_before_action :verify_authenticity_token
 				@mexico_price = doc2.at(".estPrice").text
 				@mexico_nights = doc2.at(".numNightsExpr").text
 				@mexico_includes = "Including Airfare"
-				@mexico_image_src = "http://www.cheapcaribbean.com" + doc2.at(".mobile-top-deals-img-width")['src']
+				@mexico_image_src = "https://www.cheapcaribbean.com" + doc2.at(".mobile-top-deals-img-width")['src']
 				@mexico_dates = doc2.at(".mobileTallTravelDate").text
 				@mexico_dates = @mexico_dates[12..-1]
 			end
