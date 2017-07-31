@@ -62,7 +62,7 @@ Rails.application.configure do
   :enable_starttls_auto => true
   }
   config.action_mailer.perform_caching = false
-  config.action_mailer.asset_host = 'https://evotravelagent.com'
+  config.action_mailer.asset_host = 'https://evotravelagent.com/assets'
   config.action_controller.asset_host = 'https://evotravelagent.com'
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
