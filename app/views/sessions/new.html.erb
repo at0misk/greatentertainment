@@ -69,4 +69,9 @@
 			</div>
 		</div>
 	<% end %>
+	<% if beta_errors %>
+		<% beta_errors.each do |val| %>
+			<p><%= val %></p>
+		<% end %>
+	<% end %>
 </div>
