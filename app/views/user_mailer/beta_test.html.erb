@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <%= image_tag('evologo-words.png', :style => "width: 30%; margin-top: 15px;") %>
+    <h1>Hello, <%= @user.first %> <%= @user.last %>!</h1>
+    <p>
+      Welcome to the beta test for the new Evolution Travel agent website!<br>
+    </p>
+    <p>
+      To login, please visit <a href="https://evotravelagent.com/register">here</a> and use this temporary password:
+    </p>
+    <h4><%= @random_password %></h4>
+    <p>
+      Once logged in, don't forget to change your password in the <b>Edit Profile</b> section under the <b>Agent</b> tab.
+    </p>
+    <p>
+      If you want to learn about everything that the new website has to offer, check out the <b>User Guide</b> section under the <b>Agent</b> tab.
+    </p>
+    <p style="margin-bottom: 15px;">Thanks, and have a great day!</p>
+  </body>
+</html>

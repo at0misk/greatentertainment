@@ -21,4 +21,9 @@ class UserMailerPreview < ActionMailer::Preview
     user = OpenStruct.new(email: "demo@example.com", first: "John", last: "Doe")
     UserMailer.funjet_special(user, "http://www.funjet.com/Deals/HotelOnly.aspx?onsaleid=470953&nights=5&price=70", "Kevin", "Taylor", "ktp925@gmail.com", "973-919-2402", "Hello! asdf asdf asdf")
   end
+  def beta_test
+    user = OpenStruct.new(email: "demo@example.com", first: "John", last: "Doe")
+    random_password = "dAWbjsEks8sk"
+    UserMailer.beta_test(user, random_password)
+  end
 end

@@ -211,26 +211,26 @@ skip_before_action :verify_authenticity_token
 
 		first_request = Typhoeus::Request.new("https://www.expedia.com/Honolulu.d1488.Destination-Travel-Guides?rfrr=TG.Destinations.City.POI.1.4")
 		second_request = Typhoeus::Request.new("https://www.cheapcaribbean.com/deals/mexico-all-inclusive.html")
-		third_request = Typhoeus::Request.new("https://www.ncl.com/vacations/?pageSize=1&numberOfGuests=0&sortBy=Hotdeals&state=null&currentPage=1&")
+		third_request = Typhoeus::Request.new("https://www.ncl.com/vacations/?pageSize=50&numberOfGuests=0&sortBy=Hotdeals&state=null&currentPage=2&")
 		first_request.on_complete do |response|
 			if response.success?
 				doc1 = Nokogiri::HTML(response.response_body)
-				@hawaii_hotelname = doc1.at('.hotel-name').text
-				@hawaii_href = doc1.at('.tile-content>a')['href']
-				@hawaii_price = doc1.at('.price').text
-				@hawaii_image_src = doc1.at('.tile-content>a>figure')['data-src']
+				@hawaii_hotelname = doc1.css('.hotel-name')[0].text
+				@hawaii_href = doc1.css('.tile-content>a')[0]['href']
+				@hawaii_price = doc1.css('.price')[0].text
+				@hawaii_image_src = doc1.css('.tile-content>a>figure')[0]['data-src']
 			end
 		end
 		second_request.on_complete do |response|
 			if response.success?
 				doc2 = Nokogiri::HTML(response.response_body)
-				@mexico_hotelname = doc2.at('#deal_feat_0_vp_ResortUrl').text
-				@mexico_href = "https://www.cheapcaribbean.com" + doc2.at('#deal_feat_0_vp_ResortUrl')['href']
-				@mexico_price = doc2.at(".estPrice").text
-				@mexico_nights = doc2.at(".numNightsExpr").text
+				@mexico_hotelname = doc2.css('#deal_feat_0_vp_ResortUrl')[0].text
+				@mexico_href = "https://www.cheapcaribbean.com" + doc2.css('#deal_feat_0_vp_ResortUrl')[0]['href']
+				@mexico_price = doc2.css(".estPrice")[0].text
+				@mexico_nights = doc2.css(".numNightsExpr")[0].text
 				@mexico_includes = "Including Airfare"
-				@mexico_image_src = "https://www.cheapcaribbean.com" + doc2.at(".mobile-top-deals-img-width")['src']
-				@mexico_dates = doc2.at(".mobileTallTravelDate").text
+				@mexico_image_src = "https://www.cheapcaribbean.com" + doc2.css(".mobile-top-deals-img-width")[0]['src']
+				@mexico_dates = doc2.css(".mobileTallTravelDate")[0].text
 				@mexico_dates = @mexico_dates[12..-1]
 			end
 		end
@@ -530,5 +530,63 @@ skip_before_action :verify_authenticity_token
 		User.import(params[:file])
 		redirect_to '/admin_dash'
 		flash[:imported] = "Users Imported"
+	end
+	def beta_test
+		ids = [88800, 23350, 91946, 68841, 94627, 60938, 79574, 18117, 18381, 84345, 30618, 90755, 35037, 34154, 17462, 55338, 48281, 18646, 68509, 46735, 17321, 31822, 36230, 79228, 94852, 65950, 68823, 30339, 31602, 24850, 41994, 44461, 54787, 31404, 36365, 81887, 81181, 71207, 79937, 86524, 92705, 69748, 32777, 44395, 72499, 24907, 10000, 72628, 62994, 76747, 19634, 77583, 11561, 46362, 27371, 63981, 84606]
+		ids.each do |val|
+			@user = User.find_by(agent_id: val)
+			if @user
+				random_password = Array.new(10).map { (65 + rand(58)).chr }.join
+				@user.password = random_password
+				@user.save!
+				# UserMailer.beta_test(@user, random_password).deliver_now
+			else
+				evo_doc = Nokogiri::HTML(open("http://www.cs4000.net/ET/checkid.asp?site=#{val}"))
+				# puts "http://www.cs4000.net/ET/checkid.asp?site=#{val}"
+				# fail
+				string = evo_doc.css('body').text
+				if string == "1|Not Found" || string == "0||N/A|N/A|N/A||"
+					flash[:reg_errors] = "No User found with that ID: #{val}.  Please check the ID and try again."
+				else
+					count = 0
+					id = ''
+					agentname = ''
+					phone = ''
+					email = ''
+					username = ''
+					string[2..-1].split("").each do |val|
+						if val == "|"
+							count += 1
+							next
+						end
+						if count == 0
+							id += val
+							next
+						elsif count == 1
+							agentname += val
+							next
+						elsif count == 2
+							phone += val
+							next
+						elsif count == 3
+							email += val
+							next
+						elsif count == 4
+							username += val
+							next
+						end
+					end
+					first = agentname[0, agentname.index(" ")]
+					last = agentname.sub(/.*? /, '')
+					puts first, last, id, agentname, phone, email, username
+					random_password = Array.new(10).map { (65 + rand(58)).chr }.join
+					@user = User.new(first: first, last: last, agent_id: id, email: email, username: username)
+					@user.password = random_password
+					@user.save(:validate => false)
+					# UserMailer.beta_test(@user, random_password).deliver_now
+				end
+			end
+		end
+		redirect_to "/"
 	end
 end

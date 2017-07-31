@@ -85,4 +85,10 @@ class UserMailer < ApplicationMailer
     end
   end
 
+  def beta_test(user, random_password)
+    @user = user
+    @random_password = random_password
+    mail(to: "#{@user.email}", subject: 'Welcome to the Evolution Travel Beta Test!')
+  end
+
 end

@@ -5,7 +5,7 @@ class User < ApplicationRecord
 	attr_accessor :skip_email_validation
 	do_not_validate_attachment_file_type :avatar
 	has_secure_password
-	validates :email, :username, uniqueness: true, unless: :skip_email_validation
+	validates :username, uniqueness: true, unless: :skip_email_validation
 	has_many :topics
 	has_many :messages
 	has_many :blogs

@@ -83,6 +83,7 @@ Rails.application.routes.draw do
 	get '/test_scrape' => 'users#test_scrape'
 	get '/hawaii/:url' => 'specials#hawaii'
 	get '/resources' => 'sessions#resources'
+	get '/beta' => 'users#beta_test'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
