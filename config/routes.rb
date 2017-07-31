@@ -86,6 +86,7 @@ Rails.application.routes.draw do
 	get '/beta' => 'users#beta_test'
 	get '/admins_active_users' => 'users#admins_active_users'
 	get '/admins_today_users' => 'users#admins_today_users'
+	get '/admins_beta_testers' => 'users#admins_beta_testers'
 	# ALL other routes must go above this --
 	resources :users, param: :username, :path => '/'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
