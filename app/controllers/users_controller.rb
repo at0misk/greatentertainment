@@ -546,8 +546,6 @@ skip_before_action :verify_authenticity_token
 				# UserMailer.beta_test(@user, random_password).deliver_now
 			else
 				evo_doc = Nokogiri::HTML(open("http://www.cs4000.net/ET/checkid.asp?site=#{val}"))
-				# puts "http://www.cs4000.net/ET/checkid.asp?site=#{val}"
-				# fail
 				string = evo_doc.css('body').text
 				if string == "1|Not Found" || string == "0||N/A|N/A|N/A||"
 					flash[:reg_errors] = "No User found with that ID: #{val}.  Please check the ID and try again."
