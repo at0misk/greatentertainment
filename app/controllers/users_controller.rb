@@ -549,7 +549,7 @@ skip_before_action :verify_authenticity_token
 				evo_doc = Nokogiri::HTML(open("http://www.cs4000.net/ET/checkid.asp?site=#{val}"))
 				string = evo_doc.css('body').text
 				if string == "1|Not Found" || string == "0||N/A|N/A|N/A||"
-					beta_errors << ["No User found with ID of #{val}"]
+					beta_errors << "No User found with ID of #{val}"
 				else
 					count = 0
 					id = ''
