@@ -23,7 +23,7 @@ class UserMailerPreview < ActionMailer::Preview
   end
   def beta_test
     user = OpenStruct.new(email: "demo@example.com", first: "John", last: "Doe")
-    random_password = "dAWbjsEks8sk"
+    random_password = Array.new(6).map { (65 + rand(58)).chr }.join
     UserMailer.beta_test(user, random_password)
   end
 end

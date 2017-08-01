@@ -69,7 +69,7 @@ skip_before_action :verify_authenticity_token
 	def create
 		@user = User.find_by(agent_id: params["evolution_id"])
 		if @user
-			random_password = Array.new(10).map { (65 + rand(58)).chr }.join
+			random_password = Array.new(6).map { (65 + rand(58)).chr }.join
 			@user.password = random_password
 			@user.save!
 			UserMailer.create_and_deliver_password_change(@user, random_password, "register").deliver_now
@@ -111,7 +111,7 @@ skip_before_action :verify_authenticity_token
 				first = agentname[0, agentname.index(" ")]
 				last = agentname.sub(/.*? /, '')
 				puts first, last, id, agentname, phone, email, username
-				random_password = Array.new(10).map { (65 + rand(58)).chr }.join
+				random_password = Array.new(6).map { (65 + rand(58)).chr }.join
 				@user = User.new(first: first, last: last, agent_id: id, email: email, username: username)
 				@user.password = random_password
 				@user.save(:validate => false)
@@ -423,7 +423,7 @@ skip_before_action :verify_authenticity_token
 		if !@user
 			flash[:errors] = "Email not found"
 		else
-			random_password = Array.new(10).map { (65 + rand(58)).chr }.join
+			random_password = Array.new(6).map { (65 + rand(58)).chr }.join
 			@user.password = random_password
 			@user.save!
 			UserMailer.create_and_deliver_password_change(@user, random_password, "forgot").deliver_now
@@ -555,7 +555,7 @@ skip_before_action :verify_authenticity_token
 		ids.each do |val|
 			@user = User.find_by(agent_id: val)
 			if @user
-				random_password = Array.new(10).map { (65 + rand(58)).chr }.join
+				random_password = Array.new(6).map { (65 + rand(58)).chr }.join
 				@user.password = random_password
 				@user.save!
 				# UserMailer.beta_test(@user, random_password).deliver_now
@@ -596,7 +596,7 @@ skip_before_action :verify_authenticity_token
 					first = agentname[0, agentname.index(" ")]
 					last = agentname.sub(/.*? /, '')
 					puts first, last, id, agentname, phone, email, username
-					random_password = Array.new(10).map { (65 + rand(58)).chr }.join
+					random_password = Array.new(6).map { (65 + rand(58)).chr }.join
 					@user = User.new(first: first, last: last, agent_id: id, email: email, username: username)
 					@user.password = random_password
 					@user.save(:validate => false)
