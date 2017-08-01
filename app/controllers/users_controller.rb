@@ -617,7 +617,7 @@ skip_before_action :verify_authenticity_token
 			@user = User.find_by(agent_id: val)
 			@duplicates = User.where(email: @user.email)
 			if @duplicates.length > 1
-				User.where("email = ? AND agent_id != ?", "#{@user.email}", val).delete_all
+				User.where("email = ? AND agent_id != ?", "#{@user.email}", "#{val}").delete_all
 			end
 		end
 		redirect_to '/'
