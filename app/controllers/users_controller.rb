@@ -69,6 +69,10 @@ skip_before_action :verify_authenticity_token
 	def create
 		@user = User.find_by(agent_id: params["evolution_id"])
 		if @user
+			@duplicates = User.where(email: @user.email)
+			if @duplicates.length > 1
+				User.where("email LIKE ? AND agent_id != ?", "%#{@user.email}%", "%#{params['evolution_id']}%").destroy_all
+			end
 			random_password = Array.new(6).map { (65 + rand(58)).chr }.join
 			@user.password = random_password
 			@user.save!
@@ -79,6 +83,7 @@ skip_before_action :verify_authenticity_token
 			string = evo_doc.css('body').text
 			if string == "1|Not Found" || string == "0||N/A|N/A|N/A||"
 				flash[:reg_errors] = "No User found with that ID: #{params['evolution_id']}.  Please check the ID and try again."
+				redirect_to '/register' and return
 			else
 				count = 0
 				id = ''
@@ -119,7 +124,7 @@ skip_before_action :verify_authenticity_token
 				flash[:reg_errors] = "An email has been sent with your temporary password."
 			end
 		end
-		redirect_to '/register'
+		redirect_to '/register' and return
 	end
 	def user_params
   		params.require(:user).permit(:first, :last, :email, :username, :password, :password_confirmation, :phone_number, :avatar, :about, :address, :city, :state, :country, :c2go, :apt, :upline_id, :agent_id, :zip) 
