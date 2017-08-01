@@ -611,4 +611,15 @@ skip_before_action :verify_authenticity_token
 		end
 		redirect_to "/"
 	end
+	def clean_testers
+		ids = [88800, 23350, 91946, 68841, 94627, 60938, 79574, 18117, 18381, 84345, 30618, 90755, 35037, 34154, 17462, 55338, 40281, 18646, 68509, 46735, 17321, 31822, 36230, 79228, 94852, 65950, 68823, 30339, 31602, 24850, 41994, 44461, 54787, 31404, 36365, 81887, 81181, 71207, 79937, 86524, 92705, 69748, 32777, 44395, 72499, 24907, 10000, 72628, 62994, 76747, 19634, 77583, 11561, 46362, 27371, 63981, 84606]
+		ids.each do |val|
+			@user = User.find_by(agent_id: val)
+			@duplicates = User.where(email: @user.email)
+			if @duplicates.length > 1
+				User.where("email = ? AND agent_id != ?", "#{@user.email}", val).delete_all
+			end
+		end
+		redirect_to '/'
+	end
 end
