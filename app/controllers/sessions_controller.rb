@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 		session[:page_user_id] = nil
 	end
 	def create
-		@user = User.find_by(User.where("LOWER(email) = ?", params['email'].downcase))
+		@user = User.find_by("LOWER(email) = ?", params['email'].downcase)
 		if @user
 			if @user.authenticate(params['password'])
 				session[:user_id] = @user.id
