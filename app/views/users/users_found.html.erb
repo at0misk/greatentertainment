@@ -36,6 +36,7 @@
 						<th>ID</th>
 						<th>Evo ID</th>
 						<th>Name</th>
+						<th>Username</th>
 						<th>Email</th>
 						<th>Actions</th>
 						<th></th>
@@ -48,6 +49,7 @@
 						<td><%= val.id %></td>
 						<td><%= val.agent_id %></td>
 						<td><a href="/<%= val.username %>"><%= val.first %> <%= val.last %></a></td>
+						<td><%= val.username %></td>
 						<td><%= val.email %></td>
 						<td><a href="/forgot_password" target="_blank">Reset Password</a></td>
 						<td><a href="/admins/edit_user/<%= val.id %>">Edit User Info</a></td>
