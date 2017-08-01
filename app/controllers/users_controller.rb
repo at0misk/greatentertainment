@@ -69,7 +69,7 @@ skip_before_action :verify_authenticity_token
 	def create
 		@user = User.find_by(agent_id: params["evolution_id"])
 		if @user
-			@duplicates = User.where(email: @user.email)
+			@duplicates = User.where("LOWER(email) = ?", @user.email.downcase)
 			if @duplicates.length > 1
 				User.where("email = ? AND agent_id != ?", "#{@user.email}", params['evolution_id']).delete_all
 			end
