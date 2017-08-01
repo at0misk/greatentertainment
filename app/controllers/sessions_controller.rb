@@ -69,6 +69,8 @@ class SessionsController < ApplicationController
 	def user_guide
 		@user = User.find(session[:user_id])
 	end
+	def user_guide_general
+	end
 	def privacy_policy
 	end
 	def register
