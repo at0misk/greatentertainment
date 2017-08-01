@@ -421,7 +421,11 @@ skip_before_action :verify_authenticity_token
 		if !@user.permod
 			redirect_to "/" and return
 		end
-		@users = @@search_users.paginate(:page => params[:page])
+		if @@search_users.length == 0
+			@users = User.none
+		else
+			@users = @@search_users.paginate(:page => params[:page])
+		end
 	end
 	def recover
 		@user = User.find_by(email: params['email'])
