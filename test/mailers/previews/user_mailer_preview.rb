@@ -26,4 +26,9 @@ class UserMailerPreview < ActionMailer::Preview
     random_password = Array.new(6).map { (65 + rand(58)).chr }.join
     UserMailer.beta_test(user, random_password)
   end
+  def recover
+      user = OpenStruct.new(email: "DEMO@EXAMPLE.COM", first: "John", last: "Doe")
+      random_password = Array.new(6).map { (65 + rand(58)).chr }.join
+      UserMailer.create_and_deliver_password_change(user, random_password, "forgot").deliver_now
+  end
 end
