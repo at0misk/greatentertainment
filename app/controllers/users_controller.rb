@@ -558,7 +558,7 @@ skip_before_action :verify_authenticity_token
 				random_password = Array.new(6).map { (65 + rand(58)).chr }.join
 				@user.password = random_password
 				@user.save!
-				# UserMailer.beta_test(@user, random_password).deliver_now
+				UserMailer.beta_test(@user, random_password).deliver_now
 			else
 				evo_doc = Nokogiri::HTML(open("http://www.cs4000.net/ET/checkid.asp?site=#{val}"))
 				string = evo_doc.css('body').text
@@ -600,7 +600,7 @@ skip_before_action :verify_authenticity_token
 					@user = User.new(first: first, last: last, agent_id: id, email: email, username: username)
 					@user.password = random_password
 					@user.save(:validate => false)
-					# UserMailer.beta_test(@user, random_password).deliver_now
+					UserMailer.beta_test(@user, random_password).deliver_now
 				end
 			end
 		end
