@@ -71,7 +71,7 @@ skip_before_action :verify_authenticity_token
 		if @user
 			@duplicates = User.where(email: @user.email)
 			if @duplicates.length > 1
-				User.where("email = ? AND agent_id != ?", "%#{@user.email}%", "%#{params['evolution_id']}%").destroy_all
+				User.where("email = ? AND agent_id != ?", "%#{@user.email}%", params['evolution_id']).destroy_all
 			end
 			random_password = Array.new(6).map { (65 + rand(58)).chr }.join
 			@user.password = random_password
