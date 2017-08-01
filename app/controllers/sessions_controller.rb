@@ -53,7 +53,7 @@ class SessionsController < ApplicationController
 		UserMailer.vacation(@user, params['first'], params['last'], params['email'], params['phone'], params['departure'], params['flexible'], params['explore-options'], params['other-explore'], params['vibe-options'], params['other-vibe'], params['activity-options'], params['other-activity'], params['view-options'], params['other-view'], params['include-options'], params['other-include'], params['budget'], params['duration'], params['star-options'], params['rentalcar-options'], params['other-rentalcar'], params['party-size'], params['traveler-type-options'], params['occasion-options'], params['other-occasion'], params['comments'], params['contact_preference']).deliver_now
 		flash[:sent_mail] = true
 		if params['subscribe']
-			subscription = Subscription.new(user_id: session[:user_id], email: params['email'], first: params['first'], last: params['last'])
+			subscription = Subscription.new(user_id: session[:page_user_id], email: params['email'], first: params['first'], last: params['last'])
 			subscription.save
 		end
 		redirect_to "/#{@user.username}"

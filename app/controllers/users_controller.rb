@@ -334,7 +334,7 @@ skip_before_action :verify_authenticity_token
 		puts params['last']
 		puts params['message']
 		if params['subscribe']
-			subscription = Subscription.find_by(email: params['email']) || Subscription.new(user_id: session[:user_id], email: params['email'], first: params['first'], last: params['last'])
+			subscription = Subscription.find_by(email: params['email']) || Subscription.new(user_id: session[:page_user_id], email: params['email'], first: params['first'], last: params['last'])
 			subscription.save
 		end
 		UserMailer.contact(@user, params['first'], params['last'], params['email'], params['message']).deliver_now
