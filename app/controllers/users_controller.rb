@@ -75,6 +75,7 @@ skip_before_action :verify_authenticity_token
 			end
 			random_password = Array.new(6).map { (65 + rand(58)).chr }.join
 			@user.password = random_password
+			@user.password_confirmation = random_password
 			@user.save!
 			UserMailer.create_and_deliver_password_change(@user, random_password, "register").deliver_now
 			flash[:reg_errors] = "An email has been sent with your temporary password."
@@ -119,6 +120,7 @@ skip_before_action :verify_authenticity_token
 				random_password = Array.new(6).map { (65 + rand(58)).chr }.join
 				@user = User.new(first: first, last: last, agent_id: id, email: email, username: username)
 				@user.password = random_password
+				@user.password_confirmation = random_password
 				@user.save(:validate => false)
 				UserMailer.create_and_deliver_password_change(@user, random_password, "register").deliver_now
 				flash[:reg_errors] = "An email has been sent with your temporary password."
@@ -434,6 +436,7 @@ skip_before_action :verify_authenticity_token
 		else
 			random_password = Array.new(6).map { (65 + rand(58)).chr }.join
 			@user.password = random_password
+			@user.password_confirmation = random_password
 			@user.save!
 			UserMailer.create_and_deliver_password_change(@user, random_password, "forgot").deliver_now
 			flash[:errors] = "Email sent"
@@ -566,6 +569,7 @@ skip_before_action :verify_authenticity_token
 			if @user
 				random_password = Array.new(6).map { (65 + rand(58)).chr }.join
 				@user.password = random_password
+				@user.password_confirmation = random_password
 				@user.save!
 				UserMailer.beta_test(@user, random_password).deliver_now
 			else
@@ -608,6 +612,7 @@ skip_before_action :verify_authenticity_token
 					random_password = Array.new(6).map { (65 + rand(58)).chr }.join
 					@user = User.new(first: first, last: last, agent_id: id, email: email, username: username)
 					@user.password = random_password
+					@user.password_confirmation = random_password
 					@user.save(:validate => false)
 					UserMailer.beta_test(@user, random_password).deliver_now
 				end
