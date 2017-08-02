@@ -633,12 +633,12 @@ skip_before_action :verify_authenticity_token
 	end
 	def find_dupes
 		@results = []
-		# @users = User.select(:agent_id).group(:agent_id).order(:agent_id).all
-		@users = User.select(:email).group(:email).order(:email).all
+		@users = User.select(:agent_id).group(:agent_id).order(:agent_id).all
+		# @users = User.select(:email).group(:email).order(:email).all
 		@users.each do |val|
 			count = 0
 			@users.each do |inner_val|
-				if val.email && inner_val.email && val.email.downcase == inner_val.email.downcase
+				if val.agent_id && inner_val.agent_id && val.agent_id == inner_val.agent_id
 					count += 1
 				end
 			end
