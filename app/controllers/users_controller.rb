@@ -631,4 +631,19 @@ skip_before_action :verify_authenticity_token
 		end
 		redirect_to '/'
 	end
+	def find_dupes
+		@results = []
+		@users = User.select(:agent_id).group(:agent_id).order(:agent_id).all
+		@users.each do |val|
+			count = 0
+			@users.each do |inner_val|
+				if val == inner_val
+					count += 1
+				end
+			end
+			if count > 1 
+				@results << val
+			end
+		end
+	end
 end
