@@ -638,7 +638,7 @@ skip_before_action :verify_authenticity_token
 		@users.each do |val|
 			count = 0
 			@users.each do |inner_val|
-				if val.downcase == inner_val.downcase
+				if val.email && inner_val.email && val.email.downcase == inner_val.email.downcase
 					count += 1
 				end
 			end
