@@ -3,11 +3,11 @@
   <head>
     <% if session[:page_user_id] %>
     <% @page_user = User.find(session[:page_user_id]) %>
-      <title>Evolution Travel - <%= @page_user.first %> <%= @page_user.last %></title>
+      <title>Great Entertainment Travel - <%= @page_user.first %> <%= @page_user.last %></title>
     <% else %>
-      <title>Evolution Travel</title>
+      <title>Great Entertainment Travel</title>
     <% end %>
-    <meta name="Description" content="Evolution Travel Group: A full-service agency offering a range of experiences, including Travel Incentives, Meetings and Events, Group and Leisure Trips.">
+    <meta name="Description" content="Great Entertainment Travel.">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -16,7 +16,6 @@
       <%= yield(:head) %>
     <% end %>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="shortcut icon" type="image/x-icon" href="<%= image_url('evo_logo_tiny.png') %>" />
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -781,6 +780,52 @@ button:hover{
     display: inline-block;
     width: 80%;
     margin-top: 20px;
+}
+
+.btn-contact { 
+  color: #ffffff; 
+  background-color: #4C0579; 
+  border-color: #130269; 
+} 
+ 
+.btn-contact:hover, 
+.btn-contact:focus, 
+.btn-contact:active, 
+.btn-contact.active, 
+.open .dropdown-toggle.btn-contact { 
+  color: #ffffff; 
+  background-color: #49247A; 
+  border-color: #130269; 
+} 
+ 
+.btn-contact:active, 
+.btn-contact.active, 
+.open .dropdown-toggle.btn-contact { 
+  background-image: none; 
+} 
+ 
+.btn-contact.disabled, 
+.btn-contact[disabled], 
+fieldset[disabled] .btn-contact, 
+.btn-contact.disabled:hover, 
+.btn-contact[disabled]:hover, 
+fieldset[disabled] .btn-contact:hover, 
+.btn-contact.disabled:focus, 
+.btn-contact[disabled]:focus, 
+fieldset[disabled] .btn-contact:focus, 
+.btn-contact.disabled:active, 
+.btn-contact[disabled]:active, 
+fieldset[disabled] .btn-contact:active, 
+.btn-contact.disabled.active, 
+.btn-contact[disabled].active, 
+fieldset[disabled] .btn-contact.active { 
+  background-color: #4C0579; 
+  border-color: #130269; 
+} 
+ 
+.btn-contact .badge { 
+  color: #4C0579; 
+  background-color: #ffffff; 
 }
 
   </style>

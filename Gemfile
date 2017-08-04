@@ -33,7 +33,7 @@ gem 'hirb'
 gem 'paperclip'
 gem 'local_time'
 gem 'twilio-ruby'
-# gem 'libxml-ruby'
+gem 'libxml-ruby'
 gem 'typhoeus'
 # gem 'google-analytics-rails', '1.1.1'
 # Use Capistrano for deployment
