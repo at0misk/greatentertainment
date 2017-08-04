@@ -2129,6 +2129,25 @@ ul, ol {
 					</div>
 				</div>
 			</div>
+			<div class="box-shadow row">
+				<div class="row specials-header-row users-special-row">
+					<h4 class="specials-header"><%= @page_user.first.titleize %>'s Recommended Trip</h4>
+				</div>
+				<a href="/specials/<%= @page_user.id %>/<%= @special.id %>" class="user-a"><div class="row user-special-row">
+					<div class="col-md-4 user-special-col">
+						<h4><%= @special.title %></h4>
+						<h5><%= @special.depart.strftime("%m/%d/%y") %> - <%= @special.return.strftime("%m/%d/%y") %></h5>
+						<h5><%= number_to_currency(@special.price) %> pp</h5>
+						<p class="user-special-description"></p>
+						<div class="user-special-btn-col">
+						<button class="btn btn-yellow">Learn More</button>
+						</div>
+					</div>
+					<div class="col-md-8 user-special-img">
+						<%= image_tag(@special.image.url, class: 'img-fluid, user-special-img-image') %>
+					</div></a>
+				</div>
+			</div>	
 			<div class="row vacationRow">
 				<a href="/quote"><div class="col-sm-10 col-xs-10 contact-col contact-left-middle">
 					<h3>Vacation Quote Request</h3>
